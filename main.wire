@@ -43,7 +43,9 @@
 
     <actions>
 
-        <!-- actions go here -->
+      <action name="onload" oninit="yes">
+        <load file="history.wire" target="CONTENT/include" />
+      </action>
 
     </actions>
 </wire>
