@@ -1,401 +1,49 @@
 <wire>
-<!-- boo -->
-  
+   <datasources>
+
+      <!-- datasources go here -->
+
+   </datasources>
+
    <styles>
-   
-    <style name="nav-text" color="#351e0c" font="HelveticaNeue-Bold" size="12" />       
-    <style name="nav-text-construction" width="[param:width]" height="100%" color="#ffffff" font="HelveticaNeue-Bold" size="13" xpos="[param:xpos]" alignment="center" valign="center" text="[param:text]" onclickup="alert"/>       
-    <style name="nav-text-audio" width="[param:width]" height="100%" color="#ffffff" font="HelveticaNeue-Bold" size="13" xpos="[param:xpos]" alignment="center" valign="center" text="[param:text]" onclickup="audio-off"/>            
+
+       <!-- styles go here -->
 
    </styles>
 
-   <!-- CLASSES -->
-
    <classes>
-   
- <class name="brush">
-    <panel name="[param:i]" height="10" width="10" background="[param:color]" xpos="[param:x]" ypos="[param:y]" ignoretouches="yes" cornerradius="5"></panel>
- </class>
-<class name="canvas-old">
-    <panel name="draw" alias="DRAW" width="100%" height="100%" onclickup="create" onmove="create"></panel>
-</class>
-<class name="canvas">
-    <canvas name="canvas" alias="CANVAS" width="100%" height="100%" stroke="yes" pensize="10" pencolor="#e32000">
-        <image name="cupcake" source="graphics/cupcake.1.png" ignoretouches="yes" align="center" valign="center"></image>
-    </canvas>
-</class>
-       
-   </classes>
-   
-    <!-- MAIN -->   
+
+        <!-- classes go here -->
+
+    </classes>
 
     <main>
-    <image name="background" source="graphics/wood.solid.png"></image>
-    <include name="book" alias="BOOKINCLUDE" width="100%" height="100%" />                                            
-          
-    <panel name="extras-curtain" alias="EXTRAS-CURTAIN" width="100%" height="100%" background="#000000" alpha="0">
-        <image name="grad" source="graphics/curtainRainbow.png" alpha="1"></image>
-    </panel>
-    <panel name="builder-curtain" alias="BUILDER-CURTAIN" width="100%" height="100%" background="#000000" alpha="0">
-        <image name="grad" source="graphics/curtainRainbow.png" alpha="1"></image>
-    </panel>
-    
-    <image name="extras" alias="EXTRAS" align="center" source="graphics/noteCard.png" alpha="0" ypos="100%">
-        <panel name="pager" width="90%" height="95%" align="center">
-            <pager name="white-bg" width="100%" height="100%" align="center" ypos="1%" orientation="vertical" paginate="no">
-                <panel name="body" width="90%" height="100%" align="center" valign="top">
-                    <web name="body" alias="BODY" width="100%" height="100%" file=" " pagetofit="yes" align="center" valign="center" transparent="yes" bounces="no" onnavigation="load-url" _childredURL="http://www.feedthechildren.org" _rulesURL="http://www.TheRainbowRace.com"></web>                   
-                </panel>
-            </pager>
-        </panel>
-    </image>
 
-    <image name="builder" alias="BUILDER" align="center" source="graphics/noteCard.png" alpha="0" ypos="100%">
-        <image name="share" source="graphics/share.png" xpos="96.7%" ypos="5%" onclickup="share-cupcake"></image>
-        <panel name="layout" width="90%" height="95%" align="center">
-            <panel name="colors" width="20%" height="85%" valign="center">
-                <panel name="row-1" width="100%" height="20%">
-                    <panel name="red" width="60" height="60" valign="center" cornerradius="30" borderwidth="3" bordercolor="#ffffff" background="#e32000" onclickup="change-color" _color="e32000"></panel>
-                    <panel name="yellow" width="60" height="60" valign="center" align="right" cornerradius="30" borderwidth="3" bordercolor="#ffffff" background="#efe500" onclickup="change-color" _color="efe500"></panel>
-                </panel>
-                <panel name="row-2" width="100%" height="20%" bottomof="row-1">
-                    <panel name="purple" width="60" height="60" valign="center" cornerradius="30" borderwidth="3" bordercolor="#ffffff" background="#a03fa2" onclickup="change-color" _color="a03fa2"></panel>
-                    <panel name="orange" width="60" height="60" valign="center" align="right" cornerradius="30" borderwidth="3" bordercolor="#ffffff" background="#e96f04" onclickup="change-color" _color="e96f04"></panel>
-                </panel>
-                <panel name="row-3" width="100%" height="20%" bottomof="row-2">
-                    <panel name="blue" width="60" height="60" valign="center" cornerradius="30" borderwidth="3" bordercolor="#ffffff" background="#007bac" onclickup="change-color" _color="007bac"></panel>
-                    <panel name="green" width="60" height="60" valign="center" align="right" cornerradius="30" borderwidth="3" bordercolor="#ffffff" background="#29c021" onclickup="change-color" _color="29c021"></panel>
-                </panel>
-                <panel name="row-4" width="100%" height="20%" bottomof="row-3">
-                    <panel name="pink" width="60" height="60" valign="center" cornerradius="30" borderwidth="3" bordercolor="#ffffff" background="#ec44c6" onclickup="change-color" _color="ec44c6"></panel>
-                    <panel name="brown" width="60" height="60" valign="center" align="right" cornerradius="30" borderwidth="3" bordercolor="#ffffff" background="#55422a" onclickup="change-color" _color="55422a"></panel>
-                </panel>
-                <panel name="row-5" width="100%" height="20%" bottomof="row-4">
-                    <panel name="white" width="60" height="60" valign="center" cornerradius="30" borderwidth="3" bordercolor="#ffffff" background="#eeeeee" onclickup="change-color" _color="eeeeee"></panel>
-                    <panel name="black" width="60" height="60" valign="center" align="right" cornerradius="30" borderwidth="3" bordercolor="#ffffff" background="#222222" onclickup="change-color" _color="222222"></panel>
-                </panel>
-            </panel>
-            <panel name="canvas-container" alias="CANVAS-CONTAINER" width="80%" height="100%" align="right">
-                
-            </panel>
+      <panel name="container" alias="CONTAINER" width="100%" height="100%" background="#ffffff">
+        <panel name="navigation" alias="NAVIGATION" width="100%" height="50" background="#000000" valign="bottom">
+        	<panel name="tab1" width="25%" height="100%">
+              <panel name="fakeImage" width="30" height="30" background="#ff0000" align="center" valign="center" />
+          	</panel>
+          	<panel name="tab2" width="25%" height="100%" rightof="tab1">
+              <panel name="fakeImage" width="30" height="30" background="#ff0000" align="center" valign="center" />
+          	</panel>
+          	<panel name="tab3" width="25%" height="100%" rightof="tab2">
+              <panel name="fakeImage" width="30" height="30" background="#ff0000" align="center" valign="center" />
+          	</panel>
+          	<panel name="tab4" width="25%" height="100%" rightof="tab3">
+              <panel name="fakeImage" width="30" height="30" background="#ff0000" align="center" valign="center" />
+          	</panel>
         </panel>
-    </image>
-
-    <image name="nav" alias="NAV" source="graphics/shelf.png" ypos="100%">
-        <panel name="trigger" alias="TRIGGER" width="126" height="57" align="center" onclickup="show-nav">
-            <text name="label" color="#2d2c2b" font="AmericanTypewriter-Bold" size="14" width="100%" height="100%" text="Learn More" alignment="center"></text>
+        <panel name="content" alias="CONTENT" width="100%" height="[eval:[object:CONTAINER.height] - [object:NAVIGATION.height]]">
+          <include name="include" height="100%" width="100%" />
         </panel>
-        <panel name="col1" width="14.28%" height="71.5%" valign="bottom" onclickup="audio-off" state="on">
-            <panel name="screen" width="100%" height="5" background="#5b3317" alpha="0"></panel>
-            <image name="icon" source="graphics/sound.png" align="center" ypos="25"></image>
-            <text name="label" style="nav-text" width="100%" height="fit" ypos="72" text="Narration : ON" alignment="center"></text>
-        </panel>
-        <panel name="col2" width="14.28%" height="71.5%" valign="bottom" rightof="col1" onclickup="show-extras" _title="EVERY PARENT NEEDS TO KNOW!" _file="documents/parents.html" _topic="parents">
-            <panel name="screen" width="100%" height="5" background="#f0e500" alpha="0"></panel>
-            <image name="icon" source="graphics/parents.png" align="center" ypos="25"></image>
-            <text name="label" style="nav-text" width="100%" height="fit" ypos="72" text="For Parents" alignment="center"></text>
-        </panel>
-        <panel name="col3" width="14.28%" height="71.5%" valign="bottom" rightof="col2" onclickup="show-extras" _title="ENDORSEMENTS for 'The Rainbow Race'" _file="documents/endorsements.html" _topic="endorsements">
-            <panel name="screen" width="100%" height="5" background="#a440a5" alpha="0"></panel>
-            <image name="icon" source="graphics/endorsements.png" align="center" ypos="25"></image>
-            <text name="label" style="nav-text" width="100%" height="fit" ypos="72" text="Endorsements" alignment="center"></text>
-        </panel>
-        <panel name="col4" width="14.28%" height="71.5%" valign="bottom" rightof="col3" onclickup="show-extras" _title="About Stella Gain the author of 'The Rainbow Race'" _file="documents/about.html" _topic="info">
-            <panel name="screen" width="100%" height="5" background="#de6a05" alpha="0"></panel>
-            <image name="icon" source="graphics/about.png" align="center" ypos="25"></image>
-            <text name="label" style="nav-text" width="100%" height="fit" ypos="72" text="Information" alignment="center"></text>
-        </panel>
-        <panel name="col5" width="14.28%" height="71.5%" valign="bottom" rightof="col4" onclickup="show-extras" text="FEED THE CHILDREN" _title="Feed The Children" _file="documents/children.html" _topic="children">
-            <panel name="screen" width="100%" height="5" background="#27c021" alpha="0"></panel>
-            <image name="icon" source="graphics/feedChildren.png" align="center" ypos="25"></image>
-            <text name="label" style="nav-text" width="100%" height="fit" ypos="72" text="Feed the Children" alignment="center"></text>
-        </panel>
-        <panel name="col6" width="14.28%" height="71.5%" valign="bottom" rightof="col5" onclickup="show-extras" _title="BONUS!" _file="documents/bonus.html" _topic="rules">
-            <panel name="screen" width="100%" height="5" background="#e92100" alpha="0"></panel>
-            <image name="icon" source="graphics/bonus.png" align="center" ypos="25"></image>
-            <text name="label" style="nav-text" width="100%" height="fit" ypos="72" text="Rules" alignment="center"></text>
-        </panel>   
-        <panel name="col7" width="14.28%" height="71.5%" valign="bottom" rightof="col6" onclickup="reveal-cupcake-builder">
-            <panel name="screen" width="100%" height="5" background="#0084ba" alpha="0"></panel>
-            <image name="icon" source="graphics/build.png" align="center" ypos="25"></image>
-            <text name="label" style="nav-text" width="100%" height="fit" ypos="72" text="Color-a-Cupcake" alignment="center"></text>
-        </panel>    
-        <!-- <panel name="target-container" width="100%" height="23.3%" padding="10" valign="bottom">
-            <image name="target" source="graphics/targetLogo.png" align="center" valign="center" onclickup="load-target-url"></image>
-        </panel> -->
-    </image>
-
-  <panel name="videoPlayer" alias="VIDEO-PLAYER" width="100%" height="100%" alpha="0">
-      <panel name="background" width="100%" height="100%" background="#111111" alpha="1"></panel>
-      <wait name="wait" alias="wait" width="100%" height="100%" />
-      <web name="video-canvas" alias="VIDEO-CANVAS" url="" width="100%" height="718" align="center" valign="bottom" bounces="no" alpha="0"/>
-      <panel name="nav" width="100%" height="50" background="#000000">
-          <text name="close" width="100%" height="100%" xpos="1%" color="#fff600" font="Helvetica-Bold" size="12" alignment="left" text="CLOSE VIDEO" onclickup="stop-video"></text>
       </panel>
-  </panel>
-      
+
     </main>
-    
-    <!-- ACTIONS -->       
 
     <actions>
-    
-    <!-- start-something --> 
-    <action name="start-something" oninit="yes">
-        <load file="book.wire" target="BOOKINCLUDE" />
-        <assign property="var:audio" value="yes" />
-        <assign property="var:file" value="audio/book1/CC COVER" />
-        <assign property="var:selectedColor" value="e32000" />
-        <assign property="var:cupcake" value="0" />
-        <play action="sound" _action="play" />
-        <translate ypos="92%" time=".25" curve="linear" target="NAV" />                            
-    </action>  
 
-    <!-- close-book -->
-    <action name="close-book">
-        <play action="hide-book" superwire="yes"/>
-    </action>
-    
-    <action name="show-check">
-        <alpha value="1" time=".25" target="_check" />
-        <play action="play-audio" _file="audio/bell"/>        
-    </action>
-    
-    <action name="show-slides">
-    <sync>
-        <assign property="var:file" value="audio/book1.short"/>                        
-        <play action="sound" _action="play" />
-        <alpha value="1" time=".5" target="SLIDE2" />
-        <alpha value="1" time=".5" target="SLIDE3" />
-        <alpha value="1" time=".5" target="SLIDE4" />
-        <alpha value="1" time=".5" target="SLIDE5" />
-        <alpha value="1" time=".5" target="SLIDE6" />
-        <alpha value="1" time=".5" target="SLIDE7" />
-        <alpha value="1" time=".5" delay="1" target="SLIDE8" />
-        <translate ypos="-40" time=".5" target="TAG" />
-    </sync>        
-    </action>
-    
-    <action name="hide-slides">
-        <alpha value="0" time="0" target="SLIDE2" />
-        <alpha value="0" time="0" target="SLIDE3" />
-        <alpha value="0" time="0" target="SLIDE4" />
-        <alpha value="0" time="0" target="SLIDE5" />
-        <alpha value="0" time="0" target="SLIDE6" />
-        <alpha value="0" time="0" target="SLIDE7" />
-        <alpha value="0" time="0" target="SLIDE8" />
-    </action>
-    
-    <!-- play-audio -->            
-    <action name="play-audio">
-        <if lhs="_page" operator="!=" rhs="">
-            <play action="load-image" _page="_page" />
-        </if>
-        <sync>
-            <if lhs="[var:audio]" operator="e" rhs="yes">    
-                <assign property="var:file" value="_file"/>                        
-                <play action="sound" _action="play" />
-            </if>                       
-        </sync>
-    </action> 
+        <!-- actions go here -->
 
-    <action name="load-image">
-        <load/>
-        <if lhs="[eval:(_page -1 >= 1)]" rhs="true" operator="eq">
-            <load target="CONTAINER/[eval: _page -1]"/>
-        </if>
-        <if lhs="[eval:(_page + 1 &lt;= 20)]" rhs="true" operator="eq">
-            <load target="CONTAINER/[eval: _page +1]"/>
-        </if>
-        <if lhs="[eval:(_page -2 >= 1)]" rhs="true" operator="eq">
-            <unload target="CONTAINER/[eval: _page - 2]"/>
-            <alpha value="1" target="CONTAINER/[eval: _page - 2]" />
-        </if>
-        <if lhs="[eval:(_page +2 &lt;= 20)]" rhs="true" operator="eq">
-            <unload target="CONTAINER/[eval: _page + 2]"/>
-            <alpha value="1" target="CONTAINER/[eval: _page + 2]" />
-        </if>
-    </action>  
-
-    <action name="play-fullSong">
-        <sync>
-            <load source="graphics/stopMusic.png" /> 
-            <assign property="var:file" value="_file"/>                        
-            <play action="sound" _action="play" />
-            <set onclickup="stop-fullSong" />
-        </sync> 
-        <sync>
-            <translate ypos="-30" time=".25" />
-            <translate ypos="-40" time=".25" />
-        </sync>  
-    </action>    
-    <action name="sound">
-        <sound action="_action" source="[var:file]" type="mp3"/>
-    </action>        
-    <action name="stop-audio">
-        <sync>    
-            <assign property="var:file" value="_file"/>                        
-            <play action="sound" _action="stop" />
-        </sync>
-    </action> 
-    <action name="stop-fullSong">
-        <sync>    
-            <load source="graphics/playMusic.png" />
-            <assign property="var:file" value="_file"/>                        
-            <play action="sound" _action="stop" />
-            <set onclickup="play-fullSong" />
-        </sync>
-        <sync>
-            <translate ypos="-30" time=".25" />
-            <translate ypos="-40" time=".25" />
-        </sync>
-    </action>    
-    <action name="show-video-tag">
-    <translate ypos="-50" time=".5" target="TAG-VIDEO" />
-    </action>
-    <action name="play-video">
-        <sync>
-            <alpha value="1" time=".5" target="VIDEO-PLAYER" />
-            <load url="_url" target="VIDEO-CANVAS" />
-            <alpha value="1" delay="1.5" target="VIDEO-CANVAS" />
-        </sync>
-    </action>   
-    <action name="stop-video">
-        <sync>
-            <alpha value="0" time=".5" target="VIDEO-CANVAS" />
-            <load url="about:blank" target="VIDEO-CANVAS" />
-            <alpha value="0" target="VIDEO-PLAYER" />
-        </sync>
-    </action>   
-    <action name="hide-video-tag">
-         <translate ypos="-200" time=".5" target="TAG-VIDEO" />
-    </action>  
-    <action name="load-rr-site">
-        <load url="safari-http://www.therainbowrace.com" target="VIDEO-CANVAS"/>
-    </action> 
-    <action name="load-ftc-site">
-        <load url="safari-http://www.feedthechildren.org/" target="VIDEO-CANVAS"/>
-    </action>
-
-    <action name="show-nav">
-        <translate valign="bottom" time=".25" curve="linear" target="NAV" />
-        <translate ypos="-15%" time=".25" curve="linear" target="BOOKS" />
-        <alpha value="1" target="NAV-BLOCKER" />  
-        <set onclickup="hide-nav" target="NAV/trigger" />
-        <assign property="object:TRIGGER/label.text" value="Close" />
-    </action>
-    <action name="hide-nav">
-        <if lhs="[var:extra-status]" operator="=" rhs="1">
-           <alpha value="0" time=".2" delay=".25" target="EXTRAS" />
-           <translate ypos="100%" time=".25" target="EXTRAS" />
-           <assign property="var:extra-status" value="0" /> 
-           <alpha value="0" time=".3" target="EXTRAS-CURTAIN" />
-           <unload file="_file" target="BODY" />
-           <alpha value="1" target="NAV/@on/icon" />
-        </if>
-        <if lhs="[var:builder-status]" operator="=" rhs="1">
-           <alpha value="0" time=".2" delay=".25" target="BUILDER" />
-           <translate ypos="100%" time=".25" target="BUILDER" />
-           <assign property="var:builder-status" value="0" /> 
-           <alpha value="0" time=".3" target="BUILDER-CURTAIN" />
-           <alpha value="1" target="NAV/@on/icon" />
-           <delete target="CANVAS" />
-        </if>
-        <translate ypos="92%" time=".25" curve="linear" target="NAV" /> 
-        <translate ypos="0%" time=".25" curve="linear" target="BOOKS" />
-        <alpha value="0" target="NAV-BLOCKER" />  
-        <set onclickup="show-nav" target="NAV/trigger" />
-        <assign property="object:TRIGGER/label.text" value="Learn More" />
-    </action> 
-    <action name="reveal-cupcake-builder">
-        <if lhs="[var:extra-status]" operator="=" rhs="1">
-         <play action="hide-extras" /> 
-        </if>
-        <create class="canvas" target="CANVAS-CONTAINER" />
-        <assign property="var:builder-status" value="1" />
-        <alpha value="1" time="0" target="BUILDER" />
-        <translate ypos="6%" time=".4" target="BUILDER" />
-        <alpha value=".5" time=".25" target="BUILDER-CURTAIN" /> 
-        <sync>
-            <alpha value="1" target="../@on/icon" />
-            <alpha value=".5" time=".25" target="icon" />
-            <set tostate="on" />
-        </sync>  
-    </action> 
-    <action name="dismiss-cupcake-builder">
-        <alpha value="0" time="0" delay=".4" target="BUILDER" />
-        <translate ypos="100%" time=".4" target="BUILDER" />
-        <alpha value="0" time=".25" target="BUILDER-CURTAIN" /> 
-        <assign property="var:builder-status" value="0" />
-        <delete target="CANVAS" />
-    </action> 
-    <action name="show-extras">
-        <if lhs="[var:builder-status]" operator="=" rhs="1">
-         <play action="dismiss-cupcake-builder" /> 
-        </if>
-        <alpha value="1" time="0" target="EXTRAS" />
-        <translate ypos="8%" time=".4" target="EXTRAS" />
-        <alpha value=".5" time=".25" target="EXTRAS-CURTAIN" />     
-        <assign property="var:extra-status" value="1" />    
-        <load file="_file" target="BODY" /> 
-        <assign property="var:extraTopic" value="_topic" />
-        <sync>
-            <alpha value="1" target="../@on/icon" />
-            <alpha value=".5" time=".25" target="icon" />
-            <set tostate="on" />
-        </sync>           
-    </action>
-    <action name="hide-extras">
-        <alpha value="0" time=".25" delay=".25" target="EXTRAS" />
-        <translate ypos="100%" time=".25" target="EXTRAS" />
-        <assign property="var:extra-status" value="0" /> 
-        <alpha value="0" time=".25" target="EXTRAS-CURTAIN" />
-        <unload file="_file" target="BODY" />               
-    </action>
-
-    <action name="audio-off">
-        <assign property="var:audio" value="no" />
-        <alpha value=".5" time=".25" target="icon" />
-        <assign property="object:label.text" value="Narration : OFF" />
-        <set onclickup="audio-on" />
-    </action>
-
-    <action name="audio-on">
-        <assign property="var:audio" value="yes" />
-        <alpha value="1" time=".25" target="icon" />
-        <assign property="object:label.text" value="Narration : ON" />
-        <set onclickup="audio-off" />                       
-    </action>
-
-    <action name="load-url">
-        <if lhs="[var:extraTopic]" operator="=" rhs="children">
-            <load url="safari-_childredURL" target="BODY" />
-        </if>
-        <if lhs="[var:extraTopic]" operator="=" rhs="rules">
-            <load url="safari-_rulesURL" target="BODY" />
-        </if>
-    </action>  
-    <action name="load-target-url">
-        <load url="safari-http://www.target.com" target="BODY" />
-    </action>  
-    <action name="create">
-        <sync>
-            <assign property="var:count" value="[eval:[var:count]+1]"/>
-            <create class="brush" x="[eval:_RW-touchedx - 1]" y="[eval:_RW-touchedy - 1]" i="[var:count]" color="[var:selectedColor]" target="DRAW"/>
-        </sync>
-    </action>
-    <action name="change-color">
-        <assign property="object:CANVAS.pencolor" value="_color" />
-    </action>
-    <action name="share-cupcake">
-        <sync>
-            <assign property="var:cupcake" value="[eval:[var:cupcake] + 1]" />
-            <capture tofile="cupcake[var:cupcake].png" target="CANVAS-CONTAINER" />
-            <email subject="I Made You a Cupcake!" body="" attachment="cupcake[var:cupcake].png" mimetype="image/png" />
-        </sync>
-    </action>
-    <action name="null" >
-    </action>         
-       
     </actions>
 </wire>
