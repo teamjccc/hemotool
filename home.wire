@@ -10,41 +10,34 @@
       <panel name="main" alias="MAIN" width="100%" height="88%" valign="bottom" alpha="1">
         <image name="background" source="images/bkgrd-home2.png"></image>
       </panel>
-      <panel name="icons" alias="ICONS" width="80%" height="75%" valign="bottom" align="center" alpha="3">
-          <panel name="profilebox" alias="PROFILEBOX" height="50%" width="50%" xpos="0" ypos="0" onclickup="goProfile">
-            <image name="profile" source="images/iconProfile.png" align="center"></image>
-            <text name="profiletext" width="100%" height="20" font="Helvetica-Bold" size="14" color="#656666" alignment="center" align="center" bottomof="profile" text="Profile"></text>
+      <panel name="icons" alias="ICONS" width="80%" height="75%" valign="bottom" align="center" alpha="1">
+          <panel name="profile" alias="PROFILEBOX" height="50%" width="50%" xpos="0" ypos="0" onclickup="navLoad">
+            <image name="profile" source="images/profile.png" align="center" ignoretouches="yes"></image>
+            <text name="profiletext" width="100%" height="20" font="Helvetica-Bold" size="14" color="#656666" alignment="center" align="center" bottomof="profile" text="Profile" ignoretouches="yes"></text>
           </panel>
-          <panel name="loggingbox" alias="LOGGINGBOX" height="50%" width="50%" rightof="profilebox" onclickup="goLogging">
-            <image name="logging" source="images/iconSyringe.png" align="center"></image>
+          <panel name="logging" alias="LOGGINGBOX" height="50%" width="50%" rightof="profile" onclickup="navLoad">
+            <image name="logging" source="images/syringe.png" align="center"></image>
             <text name="loggingtext" width="100%" height="20" font="Helvetica-Bold" size="14" color="#656666" alignment="center" align="center" bottomof="logging" text="Logging"></text>
           </panel>
-          <panel name="orderingbox" alias="ORDERINGBOX" height="50%" width="50%" bottomof="profilebox" onclickup="goOrdering">
-            <image name="ordering" source="images/iconOrdering.png" align="center"></image>
+          <panel name="ordering" alias="ORDERINGBOX" height="50%" width="50%" bottomof="profile" onclickup="navLoad">
+            <image name="ordering" source="images/ordering.png" align="center"></image>
             <text name="orderingtext" width="100%" height="20" font="Helvetica-Bold" size="14" color="#656666" alignment="center" align="center" bottomof="ordering" text="Ordering"></text>
           </panel>
-          <panel name="travelbox" alias="TRAVELBOX" height="50%" width="50%" bottomof="loggingbox" rightof="orderingbox" onclickup="goTravel">
-            <image name="travel" source="images/iconTravel.png" align="center"></image>
+          <panel name="travel" alias="TRAVELBOX" height="50%" width="50%" bottomof="logging" rightof="ordering" onclickup="navLoad">
+            <image name="travel" source="images/travel.png" align="center"></image>
             <text name="traveltext" width="100%" height="20" font="Helvetica-Bold" size="14" color="#656666" alignment="center" align="center" bottomof="travel" text="Travel"></text>
           </panel>
       </panel>
     </panel>
-    <panel name="content" alias="CONTENT" style="100">
+    <panel name="content" alias="CONTENT" style="100" alpha="0">
         <include name="include" style="100"/>
     </panel>
  </main>     
  <actions> 
-   <action name="goProfile">
-     <load file="profile.wire" target="CONTENT/include" />
-   </action>
-   <action name="goLogging">
-     <load file="logging.wire" target="CONTENT/include" />
-   </action>
-   <action name="goOrdering">
-     <load file="ordering.wire" target="CONTENT/include" />
-   </action>
-   <action name="goTravel">
-     <load file="travel.wire" target="CONTENT/include" />
-   </action>
+  <action name="navLoad">
+    <alert message="load [object:name].wire" />
+    <load file="[object:name].wire" target="CONTENT/include" />
+    <alpha value="1" time=".5" target="CONTENT" />
+  </action>
  </actions> 
 </wire>
