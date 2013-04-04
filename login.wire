@@ -1,0 +1,72 @@
+<wire>
+   <datasources>
+
+      <!-- datasources go here -->
+
+   </datasources>
+
+   <styles>
+
+       <!-- styles go here -->
+
+   </styles>
+
+   <classes>
+
+        <!-- classes go here -->
+
+    </classes>
+
+    <main>
+		<panel name="container" alias="CONTAINER" width="320" height="480" align="center" valign="center" clip="yes">
+       
+        <panel name="body-background" width="100%" height="100%" >
+     </panel>
+          <panel>
+          <image name="background" source="images/log-in3.jpg" valign="center" align="center"></image>
+        </panel>
+        <!--<panel name="top" alias="TOP"  width="15%" height="15%" align="center" background="#666666" alpha="2">
+          <image name="logo" source="images/HemoTool_logo.png" valign="center" align="center"></image>
+        </panel>-->
+        
+        <panel>
+          <textfield name="username" alias="USERNAME" width="27%" height="4%" font="Helvetica-Bold" alignment="center" ypos="350" size="16" color="#666666" borderwidth="1" bordercolor="#23c522" cornerradius="5" background="#ffffff" multiline="no" align="center" placeholder="Username" text="Username">
+              </textfield>
+	   
+	 </panel>
+      <panel>
+          <textfield name="password" alias="PASSWORD" width="27%" height="4%" font="Helvetica-Bold" alignment="center" size="16" color="#666666" borderwidth="1" bordercolor="#23c522" cornerradius="5" background="#ffffff" multiline="no" align="center" ypos="400" placeholder="password" text="Password">
+              </textfield>
+	    </panel>
+      
+     <panel>
+          <textfield name="forgotpassword" alias="FORGOTPASSWORD" width="27%" height="5%" font="Helvetica-Bold" alignment="center" ypos="440" size="16" color="#ffffff" border="1" cornerradius="5" fieldcolor="#666666" multiline="no" align="center"  placeholder="forgot password" text="Forgot password?">
+              </textfield>
+	    </panel>
+      
+       <panel>
+          <textfield name="signin" alias="SIGNIN" width="27%" height="4%" font="Helvetica-Bold" alignment="center" size="18" color="#ffffff" borderwidth="1" bordercolor="#ffffff" cornerradius="5" background="#8cdd22" multiline="no" align="center" ypos="480" placeholder="signin" text="Sign In">
+              </textfield>
+	    </panel>
+      
+       <panel>
+          <textfield name="createaccount" alias="CREATEACCOUNT" width="27%" height="5%" font="Helvetica-Bold" alignment="center" size="16" color="#ffffff" border="1" cornerradius="5" fieldcolor="#666666" multiline="no" align="center" ypos="520"  placeholder="create account" text="Create an account">
+              </textfield>
+	    </panel>
+      
+      <!--<panel name="button" width="20" height="5"  ypos="550" align="center" cornerradius="5" borderwidth="1" bordercolor="eeeeee" clip="yes">
+              <panel name="highlight" width="100%" height="50%" valign="top" background="#ffffff" alpha=".3"></panel>
+             <panel name="bg" width="100%" height="100%" background="#000000" alpha=".5"></panel>
+               <text name="signin-black" width="100%" height="fit" ypos="550" color="#000000" font="Helvetica-Bold" size="14" alignment="center" text="Sign in" alpha=".5" ></text>
+               <text name="signin" width="100%" height="fit" ypos="550" color="#ffffff" font="Helvetica-Bold" size="14" alignment="center" text="Sign in" ></text>
+           </panel>-->
+
+      </panel>
+  </main>
+
+    <actions>
+
+        <!-- actions go here -->
+
+    </actions>
+</wire>
