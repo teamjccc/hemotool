@@ -8,7 +8,7 @@
         <image name="logo" source="images/logo.png" valign="center" align="center"></image>
       </panel>
       <panel name="main" alias="MAIN" width="100%" height="88%" valign="bottom" alpha="1">
-        <image name="background" source="images/bkgrd-home2.png"></image>
+        <image name="background" source="images/bkgrd-home2.png" width="100%" height="100%"></image>
       </panel>
       <panel name="icons" alias="ICONS" width="80%" height="75%" valign="bottom" align="center" alpha="1">
           <panel name="profile" alias="PROFILE" height="50%" width="50%" xpos="0" ypos="0" onclickup="navLoad" _wire="profile.wire" _wirename="profile">
