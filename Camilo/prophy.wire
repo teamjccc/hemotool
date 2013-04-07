@@ -43,16 +43,16 @@
          </panel>
          <panel name="work-box" alias="WORK-BOX" style="work-space">
            <panel name="prophy-infusion-box" alias="PROPHY-INFUSION-BOX-BOX" width="100%" height="40" ypos="[object:HEADER.height]" background="#72777c">
-             <panel name="blank" alias="BLANK" width="" height=""></panel>
-             <panel name="cancelbutton" alias="CANCELBUTTON" width="20%" height="32" valign="center" cornerradius="5" borderwidth="1" bordercolor="eeeeee" clip="yes" rightof="BLANK" margin="10">
+             <panel name="blank" alias="BLANK" width="" height=""/>
+             <panel name="cancelbutton" alias="CANCELBUTTON" width="20%" height="32" valign="center" cornerradius="5" borderwidth="1" bordercolor="eeeeee" clip="yes" rightof="BLANK" margin="10" onclickup="cancel" _done="You clicked cancel">
                <panel name="highlight" width="100%" height="50%" valign="top" background="#ffffff" alpha=".3"></panel>
                <panel name="bg" width="100%" height="100%" background="#486b9b" alpha=".5"></panel>
                <text name="cancel-blue" width="100%" height="fit" ypos="5" color="#486b9b" font="Helvetica-Bold" size="14" alignment="center" text="Cancel" alpha=".5" ></text>
                <text name="Cancel" width="100%" height="fit" ypos="6" color="#ffffff" font="Helvetica-Bold" size="14" alignment="center" text="Cancel" ></text>
              </panel>
              <text name="prophy-infusion-box-title" alias="PROPHY-INFUSION-BOX-TITLE" height="100%" width="100%" size="14" font="Helvetica" alignment="center" text="Prophy Infusion"></text>
-             <panel name="blank2" alias="BLANK2" width="" height="" align="right"></panel>
-             <panel name="donebutton" alias="DONEBUTTON" width="20%" height="32" valign="center" cornerradius="5" borderwidth="1" bordercolor="eeeeee" clip="yes" leftof="BLANK2" margin="10">
+             <panel name="blank2" alias="BLANK2" width="" height="" align="right"/>
+             <panel name="donebutton" alias="DONEBUTTON" width="20%" height="32" valign="center" cornerradius="5" borderwidth="1" bordercolor="eeeeee" clip="yes" leftof="BLANK2" margin="10" onclickup="done" _done="You clicked done">
                <panel name="highlight" alias="" width="100%" height="50%" valign="top" background="#ffffff" alpha=".3"></panel>
                <panel name="bg" width="100%" height="100%" background="#486b9b" alpha=".5"></panel>
                <text name="done-blue" width="100%" height="fit" ypos="5" color="#486b9b" font="Helvetica-Bold" size="14" alignment="center" text="Done" alpha=".5" ></text>
@@ -62,27 +62,27 @@
            
            
            <panel name="settings" alias="SETTINGS" width="50%" lwidth="33%" height="120" background="2c2c2c" rightmargin="42" align="right" ypos="-125" shadowopacity="30%" shadowradius="3">
-             <object class="settings-links" name="reset" background=" " bottomof=" " onclickup="hide-settings" text="Sample Dropdown Selection 1"/>
-             <object class="settings-links" name="app" background="515151" bottomof="reset" onclickup="hide-settings" text="Sample Dropdown Selection 2"/>
-             <object class="settings-links" name="email"  background="515151" bottomof="app" onclickup="hide-settings" text="Sample Dropdown Selection 3"/>
+             <object class="settings-links" name="reset" background=" " bottomof=" " onclickup="hide-settings" text="Home"/>
+             <object class="settings-links" name="app" background="515151" bottomof="reset" onclickup="hide-settings" text="Quit Program"/>
+             <object class="settings-links" name="email"  background="515151" bottomof="app" onclickup="hide-settings" text="Option 3?"/>
            </panel>
            <pager name="pager_name" paginate="yes" orientation="vertical" width="100%" height="[eval: [object:CONTENTBOX.height] - [eval:[object:PROPHY-INFUSION-BOX.height] + [object:HEADER.height] + [object:NAV.height]]]" ypos="[eval: [object:HEADER.height] + [object:PROPHY-INFUSION-BOX-BOX.height]]">
-             <panel name="1" alias="ONE" align="center" >
+             <panel name="page1" alias="PAGE1" align="center" >
                <textfield name="date-textfield" ypos="0" alias="DATE-TEXTFIELD" style="data-box" placeholder="Date"/>
                <text name="bleed-location-textfield" alias="BLEED-LOCATION-TEXTFIELD" ypos="50" style="data-box" text="Select Medication..." bottomof="DATE-TEXTFIELD" margin-top="10" padding-left="10" alpha=".5"/>
                <textfield name="lot-number-textfield" alias="LOT-NUMBER-TEXTFIELD" bottomof="BLEED-LOCATION-TEXTFIELD" margin-top="10" style="data-box" placeholder="Lot Number"/>
                <textfield name="expiration-date-textfield" alias="EXPIRATION-DATE-TEXTFIELD" bottomof="LOT-NUMBER-TEXTFIELD" style="data-box" placeholder="Expiration Date"/>
                <textfield name="dose-textfield" alias="DOSE-TEXTFIELD" bottomof="EXPIRATION-DATE-TEXTFIELD" style="data-box" placeholder="Dose (IU)"/>
-               <text name="select-medication-text" alias="SELECT-MEDICATION-TEXT" bottomof="DOSE-TEXTFIELD" style="data-box" text="Select Medication..."/>
+               <text name="select-medication-text" alias="SELECT-MEDICATION-TEXT" bottomof="DOSE-TEXTFIELD" style="data-box" text="Barcode Scanner"/>
              </panel>
-              <panel name="as" width="100%" height="50">
+              <panel name="page2" alias="PAGE2" width="100%" height="50">
                 <textfield name="prophy-notes" alias="PROPHY-NOTES" ypos="0" style="data-box" placeholder="Notes"/>
                 <text name="submit" alias="SUBMIT" style="data-box" bottomof="PROPHY-NOTES" text="SUBMIT"/>
              </panel>
             
            </pager>
          </panel>
-         <image name="btn-settings" alias="BTN-SET" source="images/globalToolbar.cog-ipad.png" align="right" topmargin="5" rightmargin="12" valign="top" onclickup="show-settings"></image>
+         <image name="btn-settings" alias="BTN-SET" source="images/hamburger.png" align="right" rightmargin="12" valign="top" onclickup="show-settings"></image>
        </panel>
      </panel>
      <panel name="content" alias="CONTENT" style="100" alpha="0">
@@ -90,18 +90,24 @@
      </panel>
   	</main>     
  	<actions> 
-        <action name="navLoad">
+    	<action name="navLoad">
           <load file="_wire" wirename="_wirename" target="CONTENT/include" />
           <alpha value="1" time=".5" target="CONTENT" />
         </action>
-      <action name="show-settings">
-        <translate ypos="0" time=".5" curve="linear" target="SETTINGS" />
+      	<action name="show-settings">
+          <translate ypos="0" time=".5" curve="linear" target="SETTINGS" />
         <set onclickup="hide-settings" />
-    </action>
-    <action name="hide-settings">
-        <translate ypos="-125" time=".5" curve="linear" target="SETTINGS" />
-        <set onclickup="show-settings" />
-    </action>
+      	</action>
+        <action name="hide-settings">
+            <translate ypos="-125" time=".5" curve="linear" target="SETTINGS" />
+            <set onclickup="show-settings" />
+        </action>
+        <action name="done">
+          <alert message="_done"/>
+        </action>
+      	<action name="cancel">
+          <alert message="_cancel"/>
+        </action>
             <!-- !ACTIONS 
              
                
