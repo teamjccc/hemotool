@@ -38,8 +38,14 @@
          		    <button name="name" buttonstyle="plain" title="Add Bleed" align="center" alignment="center"></button>
                	</toolbar>-->
            <panel name="add-bleed-box" alias="ADD-BLEED-BOX" width="100%" height="40" ypos="[object:HEADER.height]" background="#72777c">
-             <image name="cancel" alias="CANCEL" height="70%" width="15%" valign="center" align="left" source="images/hamburger.png"/>
-             <text name="add-bleed-box-title" alias="ADD-BLEED-BOX-TITLE" height="100%" width="100%" alpha="1" size="14" font="Helvetica" alignment="center" text="Add Bleed"></text>
+             <panel name="blank" alias="BLANK" width="20" height="100%" background="testg"></panel>
+             <panel name="button" width="20%" height="32" valign="center" cornerradius="5" borderwidth="1" bordercolor="eeeeee" clip="yes" rightof="BLANK" margin-left="40">
+               <panel name="highlight" width="100%" height="50%" valign="top" background="#ffffff" alpha=".3"></panel>
+               <panel name="bg" width="100%" height="100%" background="#486b9b" alpha=".5"></panel>
+               <text name="cancel-blue" width="100%" height="fit" ypos="5" color="#486b9b" font="Helvetica-Bold" size="14" alignment="center" text="Cancel" alpha=".5" ></text>
+               <text name="Cancel" width="100%" height="fit" ypos="6" color="#ffffff" font="Helvetica-Bold" size="14" alignment="center" text="Cancel" ></text>
+             </panel>
+             <text name="add-bleed-box-title" alias="ADD-BLEED-BOX-TITLE" height="100%" width="100%" alpha=".5" size="14" font="Helvetica" alignment="center" text="Add Bleed"></text>
              <image name="done" alias="DONE" height="70%" width="15%" valign="center" align="right" source="images/hamburger.png"/>
            </panel>
            
@@ -62,7 +68,7 @@
                 <!--<camera alias="CAMERA" name="panel" face="back" ypos="220" album="bleedphotos" oncapture="" photoquality="" outputfile="" onclickup="picture" background="#FFFFFF" height="100%" width="100%" align="center" valign="top"></camera>-->
                 <panel name="5" alias="FIVE" align="center" ypos="290" >
                   <textfield name="notes-textfield" alias="NOTES-TEXTFIELD" style="data-box" onreturnkeypressed="" onreturnkeypressedtarget="" multiline="" placeholder="Notes">
-                    <!--<text name="bleed-location-text" alias="BLEED-LOCATION-TEXT" width="100%" height="100%"></text>-->
+                    <!--<text name="bleed-location-text" alias="BLEED-LOCATION-TEXT" width="100%" height="100%"></text> margin-bottom="60"-->
                   </textfield>
                 </panel>
               <!--<panel name="2" alias="TWO">
