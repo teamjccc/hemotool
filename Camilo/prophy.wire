@@ -35,7 +35,7 @@
          <panel name="work-box" alias="WORK-BOX" style="work-space">
               <!-- PLACE YOUR CODE HERE -->
             <!--<toolbar name="bar" height="40" width="100%" ypos="20">
-           	    <button name="name" buttonstyle="plain" title="Add Bleed" align="center" alignment="center"></button>
+            	    <button name="name" buttonstyle="plain" title="Add Bleed" align="center" alignment="center"></button>
                	</toolbar>-->
            <panel name="prophy-infusion-box" alias="PROPHY-INFUSION-BOX-BOX" width="100%" height="40" ypos="[object:HEADER.height]" background="#72777c">
              <panel name="blank" alias="BLANK" width="" height=""></panel>
@@ -54,14 +54,9 @@
                <text name="Done" width="100%" height="fit" ypos="6" color="#ffffff" font="Helvetica-Bold" size="14" alignment="center" text="Done" ></text>
              </panel> 
            </panel>
-              <pager name="pager_name" paginate="yes" orientation="vertical" width="100%" height="[eval: [object:CONTENTBOX.height] - [eval:[object:ADD-BLEED-BOX.height] + [object:HEADER.height] + [object:NAV.height]]]" ypos="[eval: [object:HEADER.height] + [object:ADD-BLEED-BOX.height]]">
+              <pager name="pager_name" paginate="yes" orientation="vertical" width="100%" height="[eval: [object:CONTENTBOX.height] - [eval:[object:PROPHY-INFUSION-BOX-BOX.height] + [object:HEADER.height] + [object:NAV.height]]]" ypos="[eval: [object:HEADER.height] + [object:PROPHY-INFUSION-BOX-BOX.height]]">
                 <panel name="1" alias="ONE" align="center" >
                   <textfield name="date-textfield" ypos="40" alias="DATE-TEXTFIELD" style="data-box" placeholder="Date">
-                    <!--<text name="bleed-location-text" alias="BLEED-LOCATION-TEXT" width="100%" height="100%"></text>-->
-                  </textfield>
-                </panel>
-                <panel name="2" alias="TWO" align="center" ypos="90">
-                  <textfield name="bleed-location-textfield" alias="BLEED-LOCATION-TEXTFIELD" style="data-box" placeholder="Select Medication">
                     <!--<text name="bleed-location-text" alias="BLEED-LOCATION-TEXT" width="100%" height="100%"></text>-->
                   </textfield>
                 </panel>
