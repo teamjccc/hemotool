@@ -68,18 +68,16 @@
            </panel>
            <pager name="pager_name" paginate="yes" orientation="vertical" width="100%" height="[eval: [object:CONTENTBOX.height] - [eval:[object:PROPHY-INFUSION-BOX.height] + [object:HEADER.height] + [object:NAV.height]]]" ypos="[eval: [object:HEADER.height] + [object:PROPHY-INFUSION-BOX-BOX.height]]">
              <panel name="1" alias="ONE" align="center" >
-               <textfield name="date-textfield" ypos="0" alias="DATE-TEXTFIELD" style="data-box" placeholder="Date">
-                 <!--<text name="bleed-location-text" alias="BLEED-LOCATION-TEXT" width="100%" height="100%"></text>-->
-               </textfield>
-               <text name="bleed-location-textfield" alias="BLEED-LOCATION-TEXT" ypos="50" style="data-box" text="Select Medication..." padding-left="10" alpha=".5"/>
-               <textfield name="lot-number-textfield" alias="LOT-NUMBER-TEXTFIELD" ypos="100" style="data-box" placeholder="Lot Number"/>
-               <textfield name="expiration-date-textfield" alias="EXPIRATION-DATE-TEXTFIELD" ypos="150" style="data-box" placeholder="Expiration Date"/>
-               <textfield name="dose-textfield" alias="DOSE-TEXTFIELD" ypos="200" style="data-box" placeholder="Dose (IU)"/>
-               <text name="select-medication-text" alias="SELECT-MEDICATION-TEXT" ypos="250" style="data-box" text="Select Medication..."/>
-               <textfield name="prophy-notes" alias="PROPHY-NOTES" ypos="300" style="data-box" placeholder="Notes"/>
-              </panel>
-              	  <panel name="as" width="100%" height="50">
-               <text name="submit" alias="SUBMIT" ypos="0" style="data-box" text="SUBMIT"/>
+               <textfield name="date-textfield" ypos="0" alias="DATE-TEXTFIELD" style="data-box" placeholder="Date"/>
+               <text name="bleed-location-textfield" alias="BLEED-LOCATION-TEXTFIELD" ypos="50" style="data-box" text="Select Medication..." bottomof="DATE-TEXTFIELD" margin-top="10" padding-left="10" alpha=".5"/>
+               <textfield name="lot-number-textfield" alias="LOT-NUMBER-TEXTFIELD" bottomof="BLEED-LOCATION-TEXTFIELD" margin-top="10" style="data-box" placeholder="Lot Number"/>
+               <textfield name="expiration-date-textfield" alias="EXPIRATION-DATE-TEXTFIELD" bottomof="LOT-NUMBER-TEXTFIELD" style="data-box" placeholder="Expiration Date"/>
+               <textfield name="dose-textfield" alias="DOSE-TEXTFIELD" bottomof="EXPIRATION-DATE-TEXTFIELD" style="data-box" placeholder="Dose (IU)"/>
+               <text name="select-medication-text" alias="SELECT-MEDICATION-TEXT" bottomof="DOSE-TEXTFIELD" style="data-box" text="Select Medication..."/>
+             </panel>
+              <panel name="as" width="100%" height="50">
+                <textfield name="prophy-notes" alias="PROPHY-NOTES" ypos="0" style="data-box" placeholder="Notes"/>
+                <text name="submit" alias="SUBMIT" style="data-box" bottomof="PROPHY-NOTES" text="SUBMIT"/>
              </panel>
             
            </pager>
