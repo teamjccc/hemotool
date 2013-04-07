@@ -6,13 +6,22 @@
      <style name="testr" background="#ff0000" alpha=".4"/><!-- transparent red -->
      <style name="testg" background="#00ff00" alpha=".4"/><!-- transparent green -->
      <style name="testb" background="#0000ff" alpha=".4"/><!-- transparent blue -->
+     <style name="text-settingsMenu" width="60%" height="30" color="#e6e6e6" font="GillSans" size="16" rightof="img" align="left" valign="center" leftmargin="15%" alignment="center"/>
    </styles>
+   <classes>
+    <class name="settings-links">
+      <panel name="[param:name]" width="100%" height="40" align="center" bottomof="[param:bottomof]" onclickup="[param:onclickup]">
+        <panel name="top-rule" width="100%" height="1" valign="top" background="[param:background]" ></panel>
+        <panel name="bottom-rule" width="100%" height="1" valign="bottom" background="212121"></panel>
+        <text name="text" style="text-settingsMenu" text="[param:text]"></text>
+           </panel>
+    </class>
+  </classes>
    <main>
      <panel name="container" alias="CONTAINER" style="100">
        <panel name="contentbox" alias="CONTENTBOX" style="100" xpos="0" ypos="0" background="#cccccc">
          <panel name="header" alias="HEADER" width="100%" height="40" background="#212121" align="center" valign="top">
            <text name="patient" alias="PATIENT" height="100%" width="50%" color="#cccccc" font="Helvetica-Bold" size="18" align="center" alignment="center" text="Dakota"></text>
-           <image name="menu" height="70%" width="15%" valign="center" align="right" source="images/hamburger.png"/>
          </panel>
          <panel name="nav" alias="NAV" width="100%" height="50" background="#212121" align="center" valign="bottom">
            <panel name="tab1" width="25%" height="100%" onclickup="navLoad" _wire="profile.wire" _wirename="profile">
@@ -33,10 +42,6 @@
            </panel>
          </panel>
          <panel name="work-box" alias="WORK-BOX" style="work-space">
-              <!-- PLACE YOUR CODE HERE -->
-            <!--<toolbar name="bar" height="40" width="100%" ypos="20">
-            	    <button name="name" buttonstyle="plain" title="Add Bleed" align="center" alignment="center"></button>
-               	</toolbar>-->
            <panel name="prophy-infusion-box" alias="PROPHY-INFUSION-BOX-BOX" width="100%" height="40" ypos="[object:HEADER.height]" background="#72777c">
              <panel name="blank" alias="BLANK" width="" height=""></panel>
              <panel name="cancelbutton" alias="CANCELBUTTON" width="20%" height="32" valign="center" cornerradius="5" borderwidth="1" bordercolor="eeeeee" clip="yes" rightof="BLANK" margin="10">
@@ -54,50 +59,48 @@
                <text name="Done" width="100%" height="fit" ypos="6" color="#ffffff" font="Helvetica-Bold" size="14" alignment="center" text="Done" ></text>
              </panel> 
            </panel>
-              <pager name="pager_name" paginate="yes" orientation="vertical" width="100%" height="[eval: [object:CONTENTBOX.height] - [eval:[object:PROPHY-INFUSION-BOX-BOX.height] + [object:HEADER.height] + [object:NAV.height]]]" ypos="[eval: [object:HEADER.height] + [object:PROPHY-INFUSION-BOX-BOX.height]]">
-                <panel name="1" alias="ONE" align="center" >
-                  <textfield name="date-textfield" ypos="40" alias="DATE-TEXTFIELD" style="data-box" placeholder="Date">
-                    <!--<text name="bleed-location-text" alias="BLEED-LOCATION-TEXT" width="100%" height="100%"></text>-->
-                  </textfield>
-                </panel>
-                <panel name="2" alias="TWO" align="center" ypos="90">
-                  <textfield name="bleed-location-textfield" alias="BLEED-LOCATION-TEXTFIELD" style="data-box" placeholder="Bleed Location">
-                    <!--<text name="bleed-location-text" alias="BLEED-LOCATION-TEXT" width="100%" height="100%"></text>-->
-                  </textfield>
-                </panel>
-                <panel name="3" alias="THREE" align="center" ypos="140">
-                  <textfield name="type-of-bleed-textfield" alias="TYPE-OF-BLEED-TEXTFIELD" style="data-box" placeholder="Type of Bleed">
-                    <!--<text name="bleed-location-text" alias="BLEED-LOCATION-TEXT" width="100%" height="100%"></text>-->
-                  </textfield>
-                </panel>
-                <!--<camera alias="CAMERA" name="panel" face="back" ypos="220" album="bleedphotos" oncapture="" photoquality="" outputfile="" onclickup="picture" background="#FFFFFF" height="100%" width="100%" align="center" valign="top"></camera>-->
-                <panel name="5" alias="FIVE" align="center" ypos="290" >
-                  <textfield name="notes-textfield" alias="NOTES-TEXTFIELD" style="data-box" onreturnkeypressed="" onreturnkeypressedtarget="" multiline="" placeholder="Notes">
-                    <!--<text name="bleed-location-text" alias="BLEED-LOCATION-TEXT" width="100%" height="100%"></text> margin-bottom="60"-->
-                  </textfield>
-                </panel>
-              <!--<panel name="2" alias="TWO">
-                <textfield name="bleed-location" alias="BLEED-LOCATION" style="data-box" background="000000" borderwidth="4" bordercolor="00ffff" alignment="center" placeholder="Bleed Location" size="14">
-                  <text name="bleed-location-text" alias="BLEED-LOCATION-TEXT" width="100%" height="100%"></text>
-                </textfield>
-              </panel>-->
-                           
-              <!--<panel name="box1" width="300" height="300" align="center" ypos="15%" padding-left="20" padding-right="50" padding-top="10" padding-bottom="30" background="#ff0000" >
-                <panel name="inside" width="100%" height="100%" background="#0000ff"></panel>
-              </panel>-->
-              </pager>                
+           
+           
+           <panel name="settings" alias="SETTINGS" width="50%" lwidth="33%" height="120" background="2c2c2c" rightmargin="42" align="right" ypos="-125" shadowopacity="30%" shadowradius="3">
+             <object class="settings-links" name="reset" background=" " bottomof=" " onclickup="hide-settings" text="Sample Dropdown Selection 1"/>
+             <object class="settings-links" name="app" background="515151" bottomof="reset" onclickup="hide-settings" text="Sample Dropdown Selection 2"/>
+             <object class="settings-links" name="email"  background="515151" bottomof="app" onclickup="hide-settings" text="Sample Dropdown Selection 3"/>
+           </panel>
+           <pager name="pager_name" paginate="yes" orientation="vertical" width="100%" height="[eval: [object:CONTENTBOX.height] - [eval:[object:PROPHY-INFUSION-BOX.height] + [object:HEADER.height] + [object:NAV.height]]]" ypos="[eval: [object:HEADER.height] + [object:PROPHY-INFUSION-BOX-BOX.height]]">
+             <panel name="1" alias="ONE" align="center" >
+               <textfield name="date-textfield" ypos="0" alias="DATE-TEXTFIELD" style="data-box" placeholder="Date">
+                 <!--<text name="bleed-location-text" alias="BLEED-LOCATION-TEXT" width="100%" height="100%"></text>-->
+               </textfield>
+               <text name="bleed-location-textfield" alias="BLEED-LOCATION-TEXT" ypos="50" style="data-box" text="Select Medication..." padding-left="10"/>
+               <textfield name="lot-number-textfield" alias="LOT-NUMBER-TEXTFIELD" ypos="100" style="data-box" placeholder="Lot Number"/>
+               <textfield name="expiration-date-textfield" alias="EXPIRATION-DATE-TEXTFIELD" ypos="150" style="data-box" placeholder="Expiration Date"/>
+               <textfield name="dose-textfield" alias="DOSE-TEXTFIELD" ypos="200" style="data-box" placeholder="Dose (IU)"/>
+               <text name="select-medication-text" alias="SELECT-MEDICATION-TEXT" ypos="250" style="data-box" text="Select Medication..."/>
+               <textfield name="prophy-notes" alias="PROPHY-NOTES" ypos="300" style="data-box" placeholder="Notes"/>
+               <text name="submit" alias="SUBMIT" ypos="350" style="data-box" text="SUBMIT"/>
+             </panel>
+           </pager>
          </panel>
+         <image name="btn-settings" alias="BTN-SET" source="images/globalToolbar.cog-ipad.png" align="right" topmargin="5" rightmargin="12" valign="top" onclickup="show-settings"></image>
        </panel>
      </panel>
      <panel name="content" alias="CONTENT" style="100" alpha="0">
        <include name="include" style="100"/>
      </panel>
-  	</main>     
+     </main>     
  	<actions> 
         <action name="navLoad">
           <load file="_wire" wirename="_wirename" target="CONTENT/include" />
           <alpha value="1" time=".5" target="CONTENT" />
         </action>
+      <action name="show-settings">
+        <translate ypos="0" time=".5" curve="linear" target="SETTINGS" />
+        <set onclickup="hide-settings" />
+    </action>
+    <action name="hide-settings">
+        <translate ypos="-125" time=".5" curve="linear" target="SETTINGS" />
+        <set onclickup="show-settings" />
+    </action>
             <!-- !ACTIONS 
              
                
