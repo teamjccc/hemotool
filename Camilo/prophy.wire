@@ -1,0 +1,121 @@
+<wire>
+   <styles>
+     <style name="100" width="100%" height="100%"/>
+     <style name="work-space" width="100%" height="[eval: [object:CONTENTBOX.height] - [eval:[object:HEADER.height] + [object:NAV.height]]]"/>
+     <style name="data-box" width="200" height="50" align="center" alignment="left" background="ffffff" cornerradius="6" borderwidth="2" bordercolor="000000" valignment="center" padding-left="10" alpha="1" size="14"/>
+     <style name="testr" background="#ff0000" alpha=".4"/><!-- transparent red -->
+     <style name="testg" background="#00ff00" alpha=".4"/><!-- transparent green -->
+     <style name="testb" background="#0000ff" alpha=".4"/><!-- transparent blue -->
+   </styles>
+   <main>
+     <panel name="container" alias="CONTAINER" style="100">
+       <panel name="contentbox" alias="CONTENTBOX" style="100" xpos="0" ypos="0" background="#cccccc">
+         <panel name="header" alias="HEADER" width="100%" height="40" background="#212121" align="center" valign="top">
+           <text name="patient" alias="PATIENT" height="100%" width="50%" color="#cccccc" font="Helvetica-Bold" size="18" align="center" alignment="center" text="Dakota"></text>
+           <image name="menu" height="70%" width="15%" valign="center" align="right" source="images/hamburger.png"/>
+         </panel>
+         <panel name="nav" alias="NAV" width="100%" height="50" background="#212121" align="center" valign="bottom">
+           <panel name="tab1" width="25%" height="100%" onclickup="navLoad" _wire="profile.wire" _wirename="profile">
+             <image name="icon" height="32" align="center" ypos="10%" source="images/profile.png"/>
+             <text name="tab1-txt" alias="TAB1-TXT" height="10" width="100%" color="#cccccc" font="Helvetica-Bold" size="8" bottomof="icon" align="center" alignment="center" text="Profile"></text>
+           </panel>
+           <panel name="tab2" width="25%" height="100%" rightof="tab1">
+             <image name="icon" height="32" align="center" ypos="10%" source="images/logging_active.png"/>
+             <text name="tab2-txt" alias="TAB2-TXT" height="10" width="100%" color="#cccccc" font="Helvetica-Bold" size="8" bottomof="icon" align="center" alignment="center" text="Logging"></text>
+           </panel>
+           <panel name="tab3" width="25%" height="100%" rightof="tab2" onclickup="navLoad" _wire="ordering.wire" _wirename="ordering">
+             <image name="icon" height="32" align="center" ypos="10%" source="images/ordering.png"/>
+             <text name="tab3-txt" alias="TAB3-TXT" height="10" width="100%" color="#cccccc" font="Helvetica-Bold" size="8" bottomof="icon" align="center" alignment="center" text="Ordering"></text>
+           </panel>
+           <panel name="tab4" width="25%" height="100%" rightof="tab3" onclickup="navLoad" _wire="travel.wire" _wirename="travel">
+             <image name="icon" height="32" align="center" ypos="10%" source="images/travel.png"/>
+             <text name="tab4-txt" alias="TAB4-TXT" height="10" width="100%" color="#cccccc" font="Helvetica-Bold" size="8" bottomof="icon" align="center" alignment="center" text="Travel"></text>
+           </panel>
+         </panel>
+         <panel name="work-box" alias="WORK-BOX" style="work-space">
+              <!-- PLACE YOUR CODE HERE -->
+            <!--<toolbar name="bar" height="40" width="100%" ypos="20">
+           	    <button name="name" buttonstyle="plain" title="Add Bleed" align="center" alignment="center"></button>
+               	</toolbar>-->
+           <panel name="prophy-infusion-box" alias="PROPHY-INFUSION-BOX-BOX" width="100%" height="40" ypos="[object:HEADER.height]" background="#72777c">
+             <panel name="blank" alias="BLANK" width="" height=""></panel>
+             <panel name="cancelbutton" alias="CANCELBUTTON" width="20%" height="32" valign="center" cornerradius="5" borderwidth="1" bordercolor="eeeeee" clip="yes" rightof="BLANK" margin="10">
+               <panel name="highlight" width="100%" height="50%" valign="top" background="#ffffff" alpha=".3"></panel>
+               <panel name="bg" width="100%" height="100%" background="#486b9b" alpha=".5"></panel>
+               <text name="cancel-blue" width="100%" height="fit" ypos="5" color="#486b9b" font="Helvetica-Bold" size="14" alignment="center" text="Cancel" alpha=".5" ></text>
+               <text name="Cancel" width="100%" height="fit" ypos="6" color="#ffffff" font="Helvetica-Bold" size="14" alignment="center" text="Cancel" ></text>
+             </panel>
+             <text name="prophy-infusion-box-title" alias="PROPHY-INFUSION-BOX-TITLE" height="100%" width="100%" size="14" font="Helvetica" alignment="center" text="Prophy Infusion"></text>
+             <panel name="blank2" alias="BLANK2" width="" height="" align="right"></panel>
+             <panel name="donebutton" alias="DONEBUTTON" width="20%" height="32" valign="center" cornerradius="5" borderwidth="1" bordercolor="eeeeee" clip="yes" leftof="BLANK2" margin="10">
+               <panel name="highlight" alias="" width="100%" height="50%" valign="top" background="#ffffff" alpha=".3"></panel>
+               <panel name="bg" width="100%" height="100%" background="#486b9b" alpha=".5"></panel>
+               <text name="done-blue" width="100%" height="fit" ypos="5" color="#486b9b" font="Helvetica-Bold" size="14" alignment="center" text="Done" alpha=".5" ></text>
+               <text name="Done" width="100%" height="fit" ypos="6" color="#ffffff" font="Helvetica-Bold" size="14" alignment="center" text="Done" ></text>
+             </panel> 
+           </panel>
+              <pager name="pager_name" paginate="yes" orientation="vertical" width="100%" height="[eval: [object:CONTENTBOX.height] - [eval:[object:ADD-BLEED-BOX.height] + [object:HEADER.height] + [object:NAV.height]]]" ypos="[eval: [object:HEADER.height] + [object:ADD-BLEED-BOX.height]]">
+                <panel name="1" alias="ONE" align="center" >
+                  <textfield name="date-textfield" ypos="40" alias="DATE-TEXTFIELD" style="data-box" placeholder="Date">
+                    <!--<text name="bleed-location-text" alias="BLEED-LOCATION-TEXT" width="100%" height="100%"></text>-->
+                  </textfield>
+                </panel>
+                <panel name="2" alias="TWO" align="center" ypos="90">
+                  <textfield name="bleed-location-textfield" alias="BLEED-LOCATION-TEXTFIELD" style="data-box" placeholder="Select Medication">
+                    <!--<text name="bleed-location-text" alias="BLEED-LOCATION-TEXT" width="100%" height="100%"></text>-->
+                  </textfield>
+                </panel>
+                <panel name="2" alias="TWO" align="center" ypos="90">
+                  <textfield name="bleed-location-textfield" alias="BLEED-LOCATION-TEXTFIELD" style="data-box" placeholder="Bleed Location">
+                    <!--<text name="bleed-location-text" alias="BLEED-LOCATION-TEXT" width="100%" height="100%"></text>-->
+                  </textfield>
+                </panel>
+                <panel name="3" alias="THREE" align="center" ypos="140">
+                  <textfield name="type-of-bleed-textfield" alias="TYPE-OF-BLEED-TEXTFIELD" style="data-box" placeholder="Type of Bleed">
+                    <!--<text name="bleed-location-text" alias="BLEED-LOCATION-TEXT" width="100%" height="100%"></text>-->
+                  </textfield>
+                </panel>
+                <!--<camera alias="CAMERA" name="panel" face="back" ypos="220" album="bleedphotos" oncapture="" photoquality="" outputfile="" onclickup="picture" background="#FFFFFF" height="100%" width="100%" align="center" valign="top"></camera>-->
+                <panel name="5" alias="FIVE" align="center" ypos="290" >
+                  <textfield name="notes-textfield" alias="NOTES-TEXTFIELD" style="data-box" onreturnkeypressed="" onreturnkeypressedtarget="" multiline="" placeholder="Notes">
+                    <!--<text name="bleed-location-text" alias="BLEED-LOCATION-TEXT" width="100%" height="100%"></text> margin-bottom="60"-->
+                  </textfield>
+                </panel>
+              <!--<panel name="2" alias="TWO">
+                <textfield name="bleed-location" alias="BLEED-LOCATION" style="data-box" background="000000" borderwidth="4" bordercolor="00ffff" alignment="center" placeholder="Bleed Location" size="14">
+                  <text name="bleed-location-text" alias="BLEED-LOCATION-TEXT" width="100%" height="100%"></text>
+                </textfield>
+              </panel>-->
+                           
+              <!--<panel name="box1" width="300" height="300" align="center" ypos="15%" padding-left="20" padding-right="50" padding-top="10" padding-bottom="30" background="#ff0000" >
+                <panel name="inside" width="100%" height="100%" background="#0000ff"></panel>
+              </panel>-->
+              </pager>                
+         </panel>
+       </panel>
+     </panel>
+     <panel name="content" alias="CONTENT" style="100" alpha="0">
+       <include name="include" style="100"/>
+     </panel>
+  	</main>     
+ 	<actions> 
+        <action name="navLoad">
+          <load file="_wire" wirename="_wirename" target="CONTENT/include" />
+          <alpha value="1" time=".5" target="CONTENT" />
+        </action>
+            <!-- !ACTIONS 
+             
+               
+               <action name="oninit" oninit="yes">
+                 put actions you want to trigger when the app is started (not running in the background). Delete this action if not needed. 
+               </action>
+               
+               <action name="onresume" onresume="yes">
+                 put actions you want to trigger when the app is opened from sleep (running in the background). Delete this action if not needed. 
+               </action>
+               
+               <action name="null"></action>-->
+           
+         
+    </actions> 
+</wire>
