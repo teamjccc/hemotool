@@ -42,25 +42,25 @@
              <text name="add-bleed-box-title" alias="ADD-BLEED-BOX-TITLE" height="100%" width="100%" alpha="1" size="14" font="Helvetica" alignment="center" text="Add Bleed"></text>
              <image name="done" alias="DONE" height="70%" width="15%" valign="center" align="right" source="images/hamburger.png"/>
            </panel>
-            <panel name="logging-bleed-main" alias="LOGGING-BLEED-MAIN" width="100%" height="[eval: [object:CONTENTBOX.height] - [eval:[object:ADD-BLEED-BOX.height] + [object:HEADER.height] + [object:NAV.height]]]" ypos="[eval: [object:HEADER.height] + [object:ADD-BLEED-BOX.height]]">
-              <pager name="pager_name" paginate="yes" orientation="vertical" width="100%" height="[eval: [object:CONTENTBOX.height] - [eval:[object:ADD-BLEED-BOX.height] + [object:HEADER.height] + [object:NAV.height]]]" ypos="">
-                <panel name="1" alias="ONE" align="center" height="50" ypos="40">
-                  <textfield name="date-textfield" alias="DATE-TEXTFIELD" style="data-box" placeholder="Date">
+           
+              <pager name="pager_name" paginate="yes" orientation="vertical" width="100%" height="[eval: [object:CONTENTBOX.height] - [eval:[object:ADD-BLEED-BOX.height] + [object:HEADER.height] + [object:NAV.height]]]" ypos="[eval: [object:HEADER.height] + [object:ADD-BLEED-BOX.height]]">
+                <panel name="1" alias="ONE" align="center" >
+                  <textfield name="date-textfield" ypos="40" alias="DATE-TEXTFIELD" style="data-box" placeholder="Date">
                     <!--<text name="bleed-location-text" alias="BLEED-LOCATION-TEXT" width="100%" height="100%"></text>-->
                   </textfield>
                 </panel>
-                <panel name="2" alias="TWO" align="center" height="50" ypos="90">
+                <panel name="2" alias="TWO" align="center" ypos="90">
                   <textfield name="bleed-location-textfield" alias="BLEED-LOCATION-TEXTFIELD" style="data-box" placeholder="Bleed Location">
                     <!--<text name="bleed-location-text" alias="BLEED-LOCATION-TEXT" width="100%" height="100%"></text>-->
                   </textfield>
                 </panel>
-                <panel name="3" alias="THREE" align="center" height="50" ypos="140">
+                <panel name="3" alias="THREE" align="center" ypos="140">
                   <textfield name="type-of-bleed-textfield" alias="TYPE-OF-BLEED-TEXTFIELD" style="data-box" placeholder="Type of Bleed">
                     <!--<text name="bleed-location-text" alias="BLEED-LOCATION-TEXT" width="100%" height="100%"></text>-->
                   </textfield>
                 </panel>
                 <!--<camera alias="CAMERA" name="panel" face="back" ypos="220" album="bleedphotos" oncapture="" photoquality="" outputfile="" onclickup="picture" background="#FFFFFF" height="100%" width="100%" align="center" valign="top"></camera>-->
-                <panel name="5" alias="FIVE" align="center" height="50" ypos="290">
+                <panel name="5" alias="FIVE" align="center" ypos="290" >
                   <textfield name="notes-textfield" alias="NOTES-TEXTFIELD" style="data-box" onreturnkeypressed="" onreturnkeypressedtarget="" multiline="" placeholder="Notes">
                     <!--<text name="bleed-location-text" alias="BLEED-LOCATION-TEXT" width="100%" height="100%"></text>-->
                   </textfield>
@@ -75,7 +75,7 @@
                 <panel name="inside" width="100%" height="100%" background="#0000ff"></panel>
               </panel>-->
               </pager>
-           </panel>                 
+                           
          </panel>
        </panel>
      </panel>
