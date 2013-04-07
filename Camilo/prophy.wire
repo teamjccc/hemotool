@@ -71,14 +71,17 @@
                <textfield name="date-textfield" ypos="0" alias="DATE-TEXTFIELD" style="data-box" placeholder="Date">
                  <!--<text name="bleed-location-text" alias="BLEED-LOCATION-TEXT" width="100%" height="100%"></text>-->
                </textfield>
-               <text name="bleed-location-textfield" alias="BLEED-LOCATION-TEXT" ypos="50" style="data-box" text="Select Medication..." padding-left="10"/>
+               <text name="bleed-location-textfield" alias="BLEED-LOCATION-TEXT" ypos="50" style="data-box" text="Select Medication..." padding-left="10" alpha=".5"/>
                <textfield name="lot-number-textfield" alias="LOT-NUMBER-TEXTFIELD" ypos="100" style="data-box" placeholder="Lot Number"/>
                <textfield name="expiration-date-textfield" alias="EXPIRATION-DATE-TEXTFIELD" ypos="150" style="data-box" placeholder="Expiration Date"/>
                <textfield name="dose-textfield" alias="DOSE-TEXTFIELD" ypos="200" style="data-box" placeholder="Dose (IU)"/>
                <text name="select-medication-text" alias="SELECT-MEDICATION-TEXT" ypos="250" style="data-box" text="Select Medication..."/>
                <textfield name="prophy-notes" alias="PROPHY-NOTES" ypos="300" style="data-box" placeholder="Notes"/>
-               <text name="submit" alias="SUBMIT" ypos="350" style="data-box" text="SUBMIT"/>
+              </panel>
+              	  <panel name="as" width="100%" height="50">
+               <text name="submit" alias="SUBMIT" ypos="0" style="data-box" text="SUBMIT"/>
              </panel>
+            
            </pager>
          </panel>
          <image name="btn-settings" alias="BTN-SET" source="images/globalToolbar.cog-ipad.png" align="right" topmargin="5" rightmargin="12" valign="top" onclickup="show-settings"></image>
@@ -87,7 +90,7 @@
      <panel name="content" alias="CONTENT" style="100" alpha="0">
        <include name="include" style="100"/>
      </panel>
-     </main>     
+  	</main>     
  	<actions> 
         <action name="navLoad">
           <load file="_wire" wirename="_wirename" target="CONTENT/include" />
