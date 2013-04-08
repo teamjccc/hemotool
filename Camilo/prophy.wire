@@ -10,11 +10,11 @@
    </styles>
    <classes>
     <class name="settings-links">
-      <panel name="[param:name]" width="100%" height="40" align="center" bottomof="[param:bottomof]" onclickup="[param:onclickup]">
-        <panel name="top-rule" width="100%" height="1" valign="top" background="[param:background]" ></panel>
-        <panel name="bottom-rule" width="100%" height="1" valign="bottom" background="212121"></panel>
-        <text name="text" style="text-settingsMenu" text="[param:text]"></text>
-           </panel>
+         <panel name="[param:name]" width="100%" height="40" align="center" bottomof="[param:bottomof]" onclickup="[param:onclickup]">
+        	<panel name="top-rule" width="100%" height="1" valign="top" background="[param:background]" ></panel>
+        	<panel name="bottom-rule" width="100%" height="1" valign="bottom" background="212121"></panel>
+        	<text name="text" style="text-settingsMenu" text="[param:text]"></text>
+    	</panel>
     </class>
   </classes>
    <main>
@@ -42,9 +42,9 @@
            </panel>
          </panel>
          <panel name="work-box" alias="WORK-BOX" style="work-space">
-           <panel name="prophy-infusion-box" alias="PROPHY-INFUSION-BOX-BOX" width="100%" height="40" ypos="[object:HEADER.height]" background="#72777c">
+           <panel name="prophy-infusion-box" alias="PROPHY-INFUSION-BOX" width="100%" height="40" ypos="[object:HEADER.height]" background="#72777c">
              <panel name="blank" alias="BLANK" width="" height=""/>
-             <panel name="cancelbutton" alias="CANCELBUTTON" width="20%" height="32" valign="center" cornerradius="5" borderwidth="1" bordercolor="eeeeee" clip="yes" rightof="BLANK" margin="10" onclickup="cancel" _done="You clicked cancel">
+             <panel name="cancelbutton" alias="CANCELBUTTON" width="20%" height="32" valign="center" cornerradius="5" borderwidth="1" bordercolor="eeeeee" clip="yes" rightof="BLANK" margin="10" onclickup="cancel" _cancel="You clicked cancel">
                <panel name="highlight" width="100%" height="50%" valign="top" background="#ffffff" alpha=".3"></panel>
                <panel name="bg" width="100%" height="100%" background="#486b9b" alpha=".5"></panel>
                <text name="cancel-blue" width="100%" height="fit" ypos="5" color="#486b9b" font="Helvetica-Bold" size="14" alignment="center" text="Cancel" alpha=".5" ></text>
@@ -66,7 +66,8 @@
              <object class="settings-links" name="app" background="515151" bottomof="reset" onclickup="hide-settings" text="Quit Program"/>
              <object class="settings-links" name="email"  background="515151" bottomof="app" onclickup="hide-settings" text="Option 3?"/>
            </panel>
-           <pager name="pager_name" paginate="yes" orientation="vertical" width="100%" height="[eval: [object:CONTENTBOX.height] - [eval:[object:PROPHY-INFUSION-BOX.height] + [object:HEADER.height] + [object:NAV.height]]]" ypos="[eval: [object:HEADER.height] + [object:PROPHY-INFUSION-BOX-BOX.height]]">
+           <!--<image name="background-image" source="images/bkgrd-home2.png" height="100%" width="100%"/>-->
+           <pager name="pager_name" paginate="yes" orientation="vertical" width="100%" height="[eval: [object:CONTENTBOX.height] - [eval:[object:PROPHY-INFUSION-BOX.height] + [object:HEADER.height] + [object:NAV.height]]]" ypos="[eval: [object:HEADER.height] + [object:PROPHY-INFUSION-BOX.height]]">
              <panel name="page1" alias="PAGE1" align="center" >
                <textfield name="date-textfield" ypos="0" alias="DATE-TEXTFIELD" style="data-box" placeholder="Date"/>
                <text name="bleed-location-textfield" alias="BLEED-LOCATION-TEXTFIELD" ypos="50" style="data-box" text="Select Medication..." bottomof="DATE-TEXTFIELD" margin-top="10" padding-left="10" alpha=".5"/>
@@ -77,7 +78,7 @@
              </panel>
               <panel name="page2" alias="PAGE2" width="100%" height="50">
                 <textfield name="prophy-notes" alias="PROPHY-NOTES" ypos="0" style="data-box" placeholder="Notes"/>
-                <text name="submit" alias="SUBMIT" style="data-box" bottomof="PROPHY-NOTES" text="SUBMIT"/>
+             	<text name="submit" alias="SUBMIT" style="data-box" bottomof="PROPHY-NOTES" text="SUBMIT"/>
              </panel>
             
            </pager>
@@ -108,7 +109,7 @@
       	<action name="cancel">
           <alert message="_cancel"/>
         </action>
-            <!-- !ACTIONS 
+      <!-- !ACTIONS 
              
                
                <action name="oninit" oninit="yes">
