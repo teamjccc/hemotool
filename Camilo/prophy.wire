@@ -2,8 +2,9 @@
    <styles>
      <style name="100" width="100%" height="100%"/>
      <style name="work-space" width="100%" height="[eval: [object:CONTENTBOX.height] - [eval:[object:HEADER.height] + [object:NAV.height]]]"/>
-     <style name="data-box" width="200" height="50" align="center" alignment="left" background="ffffff" cornerradius="6" borderwidth="2" bordercolor="212121" valignment="center" padding-left="10" alpha="1" size="14"/>
-     <style name="data-box2" width="200" height="50" align="center" alignment="left" background="ffffff" valignment="center" padding-left="10" alpha="1" size="14"/>
+     <style name="data-box" width="200" height="30" align="center" alignment="left" background="ffffff" cornerradius="6" borderwidth="2" bordercolor="212121" valignment="center" padding-left="10" alpha="1" size="14"/>
+     <style name="data-box2" width="200" height="30" align="center" alignment="left" background="ffffff" valignment="center" padding-left="10" alpha="1" size="14"/>
+     <style name="data-box3" width="170" height="30" align="center" alignment="left" background="ffffff" cornerradius="6" borderwidth="2" bordercolor="212121" valignment="center" padding-left="10" alpha="1" size="14"/>
      <style name="testr" background="#ff0000" alpha=".4"/><!-- transparent red -->
      <style name="testg" background="#00ff00" alpha=".4"/><!-- transparent green -->
      <style name="testb" background="#0000ff" alpha=".4"/><!-- transparent blue -->
@@ -46,41 +47,38 @@
          <panel name="work-box" alias="WORK-BOX" style="work-space">
            <panel name="prophy-infusion-box" alias="PROPHY-INFUSION-BOX" width="100%" height="40" ypos="[object:HEADER.height]" background="#72777c">
              <panel name="blank" alias="BLANK" width="" height=""/>
-             <panel name="cancelbutton" alias="CANCELBUTTON" width="20%" height="32" valign="center" cornerradius="5" borderwidth="1" bordercolor="eeeeee" clip="yes" rightof="BLANK" margin="10" onclickup="alertfunction" _amigo="You clicked done!">
+             <panel name="cancelbutton" alias="CANCELBUTTON" width="20%" height="32" valign="center" cornerradius="5" borderwidth="1" bordercolor="eeeeee" clip="yes" rightof="BLANK" margin="10" onclickup="alertfunction" _amigo="You clicked cancel!">
                <panel name="highlight" width="100%" height="50%" valign="top" background="#ffffff" alpha=".3"/>
                <panel name="bg" width="100%" height="100%" background="#486b9b" alpha=".5"/>
                <text name="cancel-blue" width="100%" height="fit" ypos="5" color="#486b9b" font="Helvetica-Bold" size="14" alignment="center" text="Cancel" alpha=".5"/>
                <text name="Cancel" width="100%" height="fit" ypos="6" color="#ffffff" font="Helvetica-Bold" size="14" alignment="center" text="Cancel"/>
              </panel>
              
-             <text name="prophy-infusion-box-title" alias="PROPHY-INFUSION-BOX-TITLE" height="100%" width="100%" size="14" font="Helvetica" alignment="center" text="Prophy Infusion"/>
+             <text name="prophy-infusion-box-title" alias="PROPHY-INFUSION-BOX-TITLE" height="14" width="100" size="14" font="Helvetica" valign="center" alignment="center" align="center" text="Prophy Infusion"/>
              
              <panel name="blank2" alias="BLANK2" width="" height="" align="right"/>
              <panel name="donebutton" alias="DONEBUTTON" width="20%" height="32" valign="center" cornerradius="5" borderwidth="1" bordercolor="eeeeee" clip="yes" leftof="BLANK2" margin="10" onclickup="alertfunction" _amigo="You clicked done!">
-               <panel name="highlight" alias="" width="100%" height="50%" valign="top" background="#ffffff" alpha=".3"/>
-               <panel name="bg" width="100%" height="100%" background="#486b9b" alpha=".5"/>
+               <panel name="highlight2" alias="" width="100%" height="50%" valign="top" background="#ffffff" alpha=".3"/>
+               <panel name="bg2" width="100%" height="100%" background="#486b9b" alpha=".5"/>
                <text name="done-blue" width="100%" height="fit" ypos="5" color="#486b9b" font="Helvetica-Bold" size="14" alignment="center" text="Done" alpha=".5"/>
                <text name="Done" width="100%" height="fit" ypos="6" color="#ffffff" font="Helvetica-Bold" size="14" alignment="center" text="Done"/>
              </panel> 
            </panel>
            
            <image name="background-image" source="images/bkgrd-home2.png" width="100%" height="[eval: [object:CONTENTBOX.height] - [eval:[object:PROPHY-INFUSION-BOX.height] + [object:HEADER.height] + [object:NAV.height]]]" ypos="[eval: [object:HEADER.height] + [object:PROPHY-INFUSION-BOX.height]]"/>
-           
-           <pager name="pager_name" paginate="yes" orientation="vertical" width="100%" height="[eval: [object:CONTENTBOX.height] - [eval:[object:PROPHY-INFUSION-BOX.height] + [object:HEADER.height] + [object:NAV.height]]]" ypos="[eval: [object:HEADER.height] + [object:PROPHY-INFUSION-BOX.height]]">
-             <panel name="page1" alias="PAGE1" align="center" >
-               <textfield name="date-textfield" ypos="0" alias="DATE-TEXTFIELD" style="data-box" placeholder="Date"/>
+           <text name="name" alias="NAME" width="100%" height="50" font="" color="#ffffff" size="25" alignment="center" text="" alpha="0"></text>
+
+               <textfield name="date-textfield" alias="DATE-TEXTFIELD" style="data-box" placeholder="Date" ypos="[eval: [object:HEADER.height] + [object:PROPHY-INFUSION-BOX.height]]"/>
                <text name="bleed-location-textfield" alias="BLEED-LOCATION-TEXTFIELD" ypos="50" style="data-box" text="Select Medication..." bottomof="DATE-TEXTFIELD" margin-top="10" padding-left="10"/>
                <textfield name="lot-number-textfield" alias="LOT-NUMBER-TEXTFIELD" bottomof="BLEED-LOCATION-TEXTFIELD" margin-top="10" style="data-box" placeholder="Lot Number"/>
                <textfield name="expiration-date-textfield" alias="EXPIRATION-DATE-TEXTFIELD" bottomof="LOT-NUMBER-TEXTFIELD" style="data-box" placeholder="Expiration Date"/>
                <textfield name="dose-textfield" alias="DOSE-TEXTFIELD" bottomof="EXPIRATION-DATE-TEXTFIELD" style="data-box" placeholder="Dose (IU)"/>
-               <text name="select-medication-text" alias="SELECT-MEDICATION-TEXT" bottomof="DOSE-TEXTFIELD" style="data-box" margin-top="10" text="Barcode Scanner"/>
-             </panel>
-              <panel name="page2" alias="PAGE2" width="100%" height="50">
-                <textfield name="prophy-notes" alias="PROPHY-NOTES" ypos="0" style="data-box" placeholder="Notes"/>
-             	<text name="submit" alias="SUBMIT" style="data-box" bottomof="PROPHY-NOTES" text="SUBMIT"/>
-             </panel>
-            
-           </pager>
+           		<panel name="barcode-container" alias="BARCODE-CONTAINTER" width="200" align="left">
+               		<text name="select-medication-text" alias="SELECT-MEDICATION-TEXT" bottomof="DOSE-TEXTFIELD" style="data-box3" alignment="center" margin-top="10" text="Barcode Scanner"/><!--180-->
+                  </panel>
+               <textfield name="prophy-notes" alias="PROPHY-NOTES" bottomof="SELECT-MEDICATION-TEXT"  margin-top="10" style="data-box" placeholder="Notes"/>
+               <text name="submit" alias="SUBMIT" style="data-box" bottomof="PROPHY-NOTES" margin-top="10" alignment="center" onclickup="alertfunction" _amigo="Success! You clicked SUBMIT" text="SUBMIT"/>
+          
            <panel name="settings" alias="SETTINGS" width="50%" lwidth="33%" height="120" background="2c2c2c" rightmargin="42" align="right" ypos="-125" shadowopacity="30%" shadowradius="3">
              <object class="settings-links" name="reset" background=" " bottomof=" " onclickup="hide-settings" text="Home"/>
              <object class="settings-links" name="app" background="515151" bottomof="reset" onclickup="hide-settings" text="Quit Program"/>
@@ -99,6 +97,9 @@
           <load file="_wire" wirename="_wirename" target="CONTENT/include" />
           <alpha value="1" time=".5" target="CONTENT" />
         </action>
+        <action name="alertfunction">
+          <alert message="_amigo"></alert>
+        </action>
       	<action name="show-settings">
           <translate ypos="0" time=".5" curve="linear" target="SETTINGS" />
         <set onclickup="hide-settings" />
@@ -107,22 +108,26 @@
             <translate ypos="-125" time=".5" curve="linear" target="SETTINGS" />
             <set onclickup="show-settings" />
         </action>
-        <action name="alertfunction">
-          <alert message="_amigo"></alert>
+      	<action name="show-settings2">
+          <translate ypos="0" time=".5" curve="linear" target="SETTINGS" />
+        <set onclickup="hide-settings" />
+      	</action>
+        <action name="hide-settings2">
+            <translate ypos="-125" time=".5" curve="linear" target="SETTINGS" />
+            <set onclickup="show-settings" />
         </action>
       <!--<action name="keyboard">
          <keyboard visible="yes" target="DATE-TEXTFIELD"/>
       </action>
-       !ACTIONS 
-                   <action name="oninit" oninit="yes">
-                     put actions you want to trigger when the app is started (not running in the background). Delete this action if not needed. 
-                   </action>
-                   
-                   <action name="onresume" onresume="yes">
-                     put actions you want to trigger when the app is opened from sleep (running in the background). Delete this action if not needed. 
-                   </action>
-                   
-                   <action name="null">
+                     <action name="oninit" oninit="yes">
+                       put actions you want to trigger when the app is started (not running in the background). Delete this action if not needed. 
+                     </action>
+                     
+                     <action name="onresume" onresume="yes">
+                       put actions you want to trigger when the app is opened from sleep (running in the background). Delete this action if not needed. 
+                     </action>
+                     
+                     <action name="null">
 	</action>-->
            
          
