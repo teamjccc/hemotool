@@ -10,35 +10,34 @@
       	<panel name="container" alias="CONTAINER" style="100">
     	 	<panel name="contentbox" alias="CONTENTBOX" style="100" xpos="0" ypos="0" background="#cccccc">
                 <panel name="header" alias="HEADER" width="100%" height="40" background="#212121" align="center" valign="top">
+                  	<panel name="header2" alias="HEADER2" width="100%" height="20" background="70757a" align="center" valign="top" alpha=".3"/>
+         			<panel name="header3" alias="HEADER3" width="100%" height="40" background="4d5258" align="center" valign="top" alpha=".5"/>
               		<text name="patient" alias="PATIENT" height="100%" width="50%" color="#cccccc" font="Helvetica-Bold" size="18" align="center" alignment="center" text="Dakota"></text>
                   	<image name="menu" height="70%" width="15%" valign="center" align="right" source="images/hamburger.png"/>
                 </panel>
               
               
-              
-          <panel name="prophy-infusion-box" alias="PROPHY-INFUSION-BOX" width="100%" height="40" ypos="[object:HEADER.height]" background="#72777c">
-             <panel name="blank" alias="BLANK" width="" height=""/>
-             <panel name="cancelbutton" alias="CANCELBUTTON" width="20%" height="32" valign="center" cornerradius="5" borderwidth="1" bordercolor="eeeeee" clip="yes" rightof="BLANK" margin="10" onclickup="alertfunction" _amigo="You clicked done!">
-               <panel name="highlight" width="100%" height="50%" valign="top" background="#ffffff" alpha=".3"/>
-               <panel name="bg" width="100%" height="100%" background="#486b9b" alpha=".5"/>
-               <text name="cancel-blue" width="100%" height="fit" ypos="5" color="#486b9b" font="Helvetica-Bold" size="14" alignment="center" text="Cancel" alpha=".5"/>
-               <text name="Cancel" width="100%" height="fit" ypos="6" color="#ffffff" font="Helvetica-Bold" size="14" alignment="center" text="Cancel"/>
+             <panel name="submenu" alias="SUBMENU" width="100%" height="40" ypos="[object:HEADER.height]" background="#72777c">
+             	<image name="pattern" width="100%" height="40" source="images/skewed_print.png"/>
+             	<panel name="blank" alias="BLANK" width="" height=""/>
+             	<panel name="emailbtn" alias="EMAILBTN" width="22%" height="32" valign="center" cornerradius="5" borderwidth="1" bordercolor="eeeeee" clip="yes" rightof="BLANK" margin="10" onclickup="alertfunction" _amigo="You clicked done!">
+                <panel name="highlight" width="100%" height="50%" valign="top" background="#ffffff" alpha=".3"/>
+                <panel name="bg" width="100%" height="100%" background="#486b9b" alpha=".5"/>
+                <text name="email-blue" width="100%" height="fit" ypos="5" color="#486b9b" font="Helvetica-Bold" size="14" alignment="center" text="Email" alpha=".5"/>
+                <text name="email" width="100%" height="fit" ypos="6" color="#ffffff" font="Helvetica-Bold" size="14" alignment="center" text="Email"/>
              </panel>
              
-             <text name="prophy-infusion-box-title" alias="PROPHY-INFUSION-BOX-TITLE" height="100%" width="100%" size="14" font="Helvetica" alignment="center" text="Prophy Infusion"/>
+             <text name="history" alias="HISTORY" height="100%" width="100%" size="17" color="#cccccc" font="Helvetica-Bold" alignment="center" text="History"/>
              
              <panel name="blank2" alias="BLANK2" width="" height="" align="right"/>
-             <panel name="donebutton" alias="DONEBUTTON" width="20%" height="32" valign="center" cornerradius="5" borderwidth="1" bordercolor="eeeeee" clip="yes" leftof="BLANK2" margin="10" onclickup="alertfunction" _amigo="You clicked done!">
-               <panel name="highlight" alias="" width="100%" height="50%" valign="top" background="#ffffff" alpha=".3"/>
-               <panel name="bg" width="100%" height="100%" background="#486b9b" alpha=".5"/>
-               <text name="done-blue" width="100%" height="fit" ypos="5" color="#486b9b" font="Helvetica-Bold" size="14" alignment="center" text="Done" alpha=".5"/>
-               <text name="Done" width="100%" height="fit" ypos="6" color="#ffffff" font="Helvetica-Bold" size="14" alignment="center" text="Done"/>
+             	<panel name="date-rangebtn" alias="DATE-RANGEBTN" width="23%" height="32" valign="center" cornerradius="5" borderwidth="1" bordercolor="eeeeee" clip="yes" leftof="BLANK2" margin="10" onclickup="alertfunction" _amigo="You clicked done!">
+                <panel name="highlight" alias="" width="100%" height="50%" valign="top" background="#ffffff" alpha=".3"/>
+                <panel name="bg" width="100%" height="100%" background="#486b9b" alpha=".5"/>
+                <text name="date-blue" width="100%" height="fit" ypos="5" color="#486b9b" font="Helvetica-Bold" size="12" alignment="center" text="Date Range" alpha=".5"/>
+                <text name="date" width="100%" height="fit" ypos="6" color="#ffffff" font="Helvetica-Bold" size="12" alignment="center" text="Date Range"/>
              </panel> 
-           </panel>
-              
-              
-              
-              
+          </panel>
+         
                 <panel name="nav" alias="NAV" width="100%" height="50" background="#212121" align="center" valign="bottom">
                     <panel name="tab1" width="25%" height="100%" onclickup="navLoad" _wire="profile.wire" _wirename="profile">
                       <image name="icon" height="32" align="center" ypos="10%" source="images/profile.png"/>
