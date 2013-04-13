@@ -17,8 +17,7 @@
                 </panel>
               
               
-             <panel name="submenu" alias="SUBMENU" width="100%" height="40" ypos="[object:HEADER.height]" background="#72777c">
-             	<image name="pattern" width="100%" height="40" source="images/skewed_print.png"/>
+             <panel name="submenu" alias="SUBMENU" width="100%" height="40" ypos="[object:HEADER.height]" background="#212121">
              	<panel name="blank" alias="BLANK" width="" height=""/>
              	<panel name="emailbtn" alias="EMAILBTN" width="22%" height="32" valign="center" cornerradius="5" borderwidth="1" bordercolor="eeeeee" clip="yes" rightof="BLANK" margin="10" onclickup="alertfunction" _amigo="You clicked done!">
                 <panel name="highlight" width="100%" height="50%" valign="top" background="#ffffff" alpha=".3"/>
@@ -62,7 +61,7 @@
                    
                   <panel name="historycontainer" alias="HISTORYCONTAINER" width="100%" align="center"> 
                      
-                     <panel name="roundbox" alias="ROUNDBOX" height="310" width="94%" cornerradius="5" bordercolor="#212121" borderwidth="1" align="center" ypos="80">
+                     <panel name="roundbox" alias="ROUNDBOX" height="310" width="94%" cornerradius="5" bordercolor="#212121" borderwidth="2" align="center" ypos="80">
                    
                     	 <panel name="section1" alias="SECTION1" height="50" width="100%">
                      		<text name="text1" alias="TEXT1" style="textboxes"></text>
