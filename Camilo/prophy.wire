@@ -49,18 +49,19 @@
          
          <panel name="work-box" alias="WORK-BOX" style="work-space">
            <panel name="prophy-infusion-box" alias="PROPHY-INFUSION-BOX" width="100%" height="40" ypos="[object:HEADER.height]" background="212324">
-             <!--<panel name="break" alias="BREAK" background="000000" width="100%" height="2"></panel>-->
+             <panel name="break" alias="BREAK" background="000000" width="100%" height="2"></panel>
+             <panel name="blank" alias="BLANK" width="" height=""/>
              
-             <panel name="blank" alias="BLANK" width="10" height=""/>
-             <panel name="cancelbutton" alias="CANCELBUTTON" width="20%" height="32" onclickup="alertfunction" _amigo="You clicked cancel!" valign="center" cornerradius="5" borderwidth="1" bordercolor="eeeeee" clip="yes" rightof="BLANK" >
+             <panel name="cancelbutton" alias="CANCELBUTTON" width="20%" height="32" valign="center" cornerradius="5" borderwidth="1" bordercolor="eeeeee" clip="yes" rightof="BLANK" onclickup="alertfunction" _amigo="You clicked cancel!">
                <panel name="highlight" width="100%" height="50%" valign="top" background="#ffffff" alpha=".3"/>
                <panel name="bg" width="100%" height="100%" background="#486b9b" alpha=".5"/>
                <text name="cancel-blue" width="100%" height="fit" ypos="5" color="#486b9b" font="Helvetica-Bold" size="14" alignment="center" text="Cancel" alpha=".5"/>
                <text name="Cancel" width="100%" height="fit" ypos="6" color="#ffffff" font="Helvetica-Bold" size="14" alignment="center" text="Cancel"/>
              </panel>
-             <!--<text name="prophy-infusion-box-title" alias="PROPHY-INFUSION-BOX-TITLE" height="17" width="135" size="17" font="Helvetica-Bold" color="cccccc" valign="center" align="center" text="Prophy Infusion"/>-->
              
-             <panel name="blank2" alias="BLANK2" width="10" height="" align="right"/>
+             <text name="prophy-infusion-box-title" alias="PROPHY-INFUSION-BOX-TITLE" height="17" width="135" size="17" font="Helvetica-Bold" color="cccccc" valign="center" align="center" text="Prophy Infusion"/>
+
+             <panel name="blank2" alias="BLANK2" width="" height="" align="right"/>
              <panel name="donebutton" alias="DONEBUTTON" width="20%" height="32" valign="center" cornerradius="5" borderwidth="1" bordercolor="eeeeee" clip="yes" leftof="BLANK2" onclickup="alertfunction" _amigo="You clicked done!">
                <panel name="highlight2" alias="" width="100%" height="50%" valign="top" background="#ffffff" alpha=".3"/>
                <panel name="bg2" width="100%" height="100%" background="#486b9b" alpha=".5"/>
@@ -70,8 +71,8 @@
            </panel>
            
            <image name="background-image" source="images/bkgrd-home2.png" width="100%" height="[eval: [object:CONTENTBOX.height] - [eval:[object:PROPHY-INFUSION-BOX.height] + [object:HEADER.height] + [object:NAV.height]]]" ypos="[eval: [object:HEADER.height] + [object:PROPHY-INFUSION-BOX.height]]"/>
-           <!--<text name="name" alias="NAME" width="100%" height="50" font="" color="#ffffff" size="25" alignment="center" text="" alpha="0"></text>-->
-			<panel name="94" alias="94" width="94%" height="100%" align="center" ypos="20">
+           
+			<!--<panel name="94" alias="94" width="94%" height="[eval: [object:CONTENTBOX.height] - [eval:[object:PROPHY-INFUSION-BOX.height] + [object:HEADER.height] + [object:NAV.height]]]" align="center" ypos="20">-->
             
                <textfield name="date-textfield" alias="DATE-TEXTFIELD" style="data-box" placeholder="Date" ypos="[eval: [object:HEADER.height] + [object:PROPHY-INFUSION-BOX.height]]"/>
                <text name="bleed-location-textfield" alias="BLEED-LOCATION-TEXTFIELD" style="data-box" text="Select Medication..." bottomof="DATE-TEXTFIELD" margin-top="10" ypos="50"/>
@@ -86,7 +87,7 @@
               
               <text name="select-medication-text" alias="SELECT-MEDICATION-TEXT" bottomof="MIDDLE-BOX" style="data-box" alignment="center" margin-top="10" text="Barcode Scanner"/><!--180-->
                <textfield name="prophy-notes" alias="PROPHY-NOTES" bottomof="SELECT-MEDICATION-TEXT" margin-top="10" style="data-box" placeholder="Notes"/>
-               <!--<text name="submit" alias="SUBMIT" background="ff0000" style="data-box" bottomof="PROPHY-NOTES" margin-top="10" alignment="center" onclickup="alertfunction" _amigo="Success! You clicked SUBMIT" text="SUBMIT"/>-->
+               <text name="submit" alias="SUBMIT" background="ff0000" style="data-box" bottomof="PROPHY-NOTES" margin-top="10" alignment="center" onclickup="alertfunction" _amigo="Success! You clicked SUBMIT" text="SUBMIT"/>
 			</panel>
            <panel name="settings" alias="SETTINGS" width="50%" lwidth="33%" height="120" background="2c2c2c" rightmargin="42" align="right" ypos="-125" shadowopacity="30%" shadowradius="3">
              <object class="settings-links" name="reset" background=" " bottomof=" " onclickup="hide-settings" text="Home"/>
@@ -95,7 +96,7 @@
            </panel>
          </panel>
          <image name="btn-settings" alias="BTN-SET" source="images/hamburger.png" align="right" rightmargin="12" valign="top" onclickup="show-settings"></image>
-       </panel>
+       <!--</panel>-->
      </panel>
      <panel name="content" alias="CONTENT" style="100" alpha="0">
        <include name="include" style="100"/>
