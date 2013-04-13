@@ -24,9 +24,9 @@
        <panel name="contentbox" alias="CONTENTBOX" style="100" xpos="0" ypos="0" background="">
          <panel name="header" alias="HEADER" width="100%" height="40">
            	<panel name="header2" alias="HEADER2" width="100%" height="20" background="70757a" align="center" valign="top" alpha=".3"/>
-         	<panel name="header3" alias="HEADER3" width="100%" height="40" background="4d5258" align="center" valign="top" alpha=".5"/>
-         <text name="patient" alias="PATIENT" height="100%" width="50%" color="#cccccc" font="Helvetica-Bold" size="18" align="center" alignment="center" text="Dakota" alpha="1"/>
-       </panel>
+           	<panel name="header3" alias="HEADER3" width="100%" height="40" background="4d5258" align="center" valign="top" alpha=".5"/>
+            <text name="patient" alias="PATIENT" height="100%" width="50%" color="#cccccc" font="Helvetica-Bold" size="18" align="center" alignment="center" text="Dakota" alpha="1"/>
+         </panel>
          
 
          <panel name="nav" alias="NAV" width="100%" height="50" background="#212121" align="center" valign="bottom">
@@ -49,7 +49,7 @@
          </panel>
          
          <panel name="work-box" alias="WORK-BOX" style="work-space">
-           <panel name="prophy-infusion-box" alias="PROPHY-INFUSION-BOX" width="100%" height="40" ypos="[object:HEADER.height]" background="#72777c">
+           <panel name="prophy-infusion-box" alias="PROPHY-INFUSION-BOX" width="100%" height="40" ypos="[object:HEADER.height]" background="212324">
              <panel name="break" alias="BREAK" background="000000" width="100%" height="2"></panel>
              <panel name="blank" alias="BLANK" width="" height=""/>
              
@@ -59,8 +59,8 @@
                <text name="cancel-blue" width="100%" height="fit" ypos="5" color="#486b9b" font="Helvetica-Bold" size="14" alignment="center" text="Cancel" alpha=".5"/>
                <text name="Cancel" width="100%" height="fit" ypos="6" color="#ffffff" font="Helvetica-Bold" size="14" alignment="center" text="Cancel"/>
              </panel>
+             <text name="prophy-infusion-box-title" alias="PROPHY-INFUSION-BOX-TITLE" height="17" width="135" size="17" font="Helvetica-Bold" color="cccccc" valign="center" align="center" alignment="center" text="Prophy Infusion"/>
              
-             <text name="prophy-infusion-box-title" alias="PROPHY-INFUSION-BOX-TITLE" height="100%" width="150" size="17" font="Helvetica-Bold" color="cccccc" valign="center" align="center" alignment="center" text="Prophy Infusion"/>
              
              <!--<panel name="blank2" alias="BLANK2" width="" height="" align="right"/>
              <panel name="donebutton" alias="DONEBUTTON" width="20%" height="32" valign="center" cornerradius="5" borderwidth="1" bordercolor="eeeeee" clip="yes" leftof="BLANK2" margin="10" onclickup="alertfunction" _amigo="You clicked done!">
@@ -79,11 +79,11 @@
                <text name="bleed-location-textfield" alias="BLEED-LOCATION-TEXTFIELD" style="data-box" text="Select Medication..." bottomof="DATE-TEXTFIELD" margin-top="10" ypos="50"/>
 
               <panel name="middle-box" alias="MIDDLE-BOX" width="100%" height="107" cornerradius="5" borderwidth="1" bordercolor="212121" bottomof="BLEED-LOCATION-TEXTFIELD" margin="10">
-               <textfield name="lot-number-textfield" alias="LOT-NUMBER-TEXTFIELD" style="data-box2" margin-top="10" placeholder="Lot Number"/>
+               <textfield name="lot-number-textfield" alias="LOT-NUMBER-TEXTFIELD" width="100%" style="data-box2" margin-top="10" placeholder="Lot Number"/>
                <panel name="bottom-border1" alias="BOTTOM-BORDER1" width="100%" height="1" background="212121" bottomof="LOT-NUMBER-TEXTFIELD"/>
-               <textfield name="expiration-date-textfield" alias="EXPIRATION-DATE-TEXTFIELD" style="data-box2" bottomof="BOTTOM-BORDER1" placeholder="Expiration Date"/>
+               <textfield name="expiration-date-textfield" alias="EXPIRATION-DATE-TEXTFIELD" width="100%" style="data-box2" bottomof="BOTTOM-BORDER1" placeholder="Expiration Date"/>
                <panel name="bottom-border2" alias="BOTTOM-BORDER2" width="100%" height="1" background="212121" bottomof="EXPIRATION-DATE-TEXTFIELD"/>
-               <textfield name="dose-textfield" alias="DOSE-TEXTFIELD" style="data-box2" bottomof="BOTTOM-BORDER2" placeholder="Dose (IU)"/>
+               <textfield name="dose-textfield" alias="DOSE-TEXTFIELD" width="100%" style="data-box2" bottomof="BOTTOM-BORDER2" placeholder="Dose (IU)"/>
               </panel>
               
               <text name="select-medication-text" alias="SELECT-MEDICATION-TEXT" bottomof="MIDDLE-BOX" style="data-box" alignment="center" margin-top="10" text="Barcode Scanner"/><!--180-->
