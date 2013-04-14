@@ -75,17 +75,17 @@
 			   <textfield name="date-textfield" alias="DATE-TEXTFIELD" width="94%" style="data-box" placeholder="Date" ypos="[eval: [object:HEADER.height] + [object:BREAK.height] + 20 + [object:PROPHY-INFUSION-BOX.height]]"/>
                <text name="bleed-location-textfield" alias="BLEED-LOCATION-TEXTFIELD" width="94%" style="data-box" text="Select Medication..." bottomof="DATE-TEXTFIELD" margin-top="10" ypos="50"/>
 
-              <panel name="middle-box" alias="MIDDLE-BOX" width="94%" height="107" align="center" cornerradius="5" borderwidth="1" bordercolor="212121" bottomof="BLEED-LOCATION-TEXTFIELD" margin="10">
-               <textfield name="lot-number-textfield" alias="LOT-NUMBER-TEXTFIELD" width="94%" style="data-box2" margin-top="10" placeholder="Lot Number"/>
-               <panel name="bottom-border1" alias="BOTTOM-BORDER1" width="94%" height="1" background="212121" bottomof="LOT-NUMBER-TEXTFIELD"/>
-               <textfield name="expiration-date-textfield" alias="EXPIRATION-DATE-TEXTFIELD" width="94%" style="data-box2" bottomof="BOTTOM-BORDER1" placeholder="Expiration Date"/>
-               <panel name="bottom-border2" alias="BOTTOM-BORDER2" width="94%" height="1" background="212121" bottomof="EXPIRATION-DATE-TEXTFIELD"/>
-               <textfield name="dose-textfield" alias="DOSE-TEXTFIELD" width="94%" style="data-box2" bottomof="BOTTOM-BORDER2" placeholder="Dose (IU)"/>
+              <panel name="middle-box" alias="MIDDLE-BOX" width="94%" height="107" align="center" cornerradius="5" borderwidth="1" bordercolor="212121" bottomof="BLEED-LOCATION-TEXTFIELD" margin-top="10">
+               <textfield name="lot-number-textfield" alias="LOT-NUMBER-TEXTFIELD" width="100%" style="data-box2" margin-top="10" placeholder="Lot Number"/>
+               <panel name="bottom-border1" alias="BOTTOM-BORDER1" width="100%" height="1" background="212121" bottomof="LOT-NUMBER-TEXTFIELD"/>
+               <textfield name="expiration-date-textfield" alias="EXPIRATION-DATE-TEXTFIELD" width="100%" style="data-box2" bottomof="BOTTOM-BORDER1" placeholder="Expiration Date"/>
+               <panel name="bottom-border2" alias="BOTTOM-BORDER2" width="100%" height="1" background="212121" bottomof="EXPIRATION-DATE-TEXTFIELD"/>
+               <textfield name="dose-textfield" alias="DOSE-TEXTFIELD" width="100%" style="data-box2" bottomof="BOTTOM-BORDER2" placeholder="Dose (IU)"/>
               </panel>
               
               <text name="select-medication-text" alias="SELECT-MEDICATION-TEXT" width="94%" bottomof="MIDDLE-BOX" style="data-box" alignment="center" margin-top="10" text="Barcode Scanner"/><!--180-->
-               <textfield name="prophy-notes" alias="PROPHY-NOTES" width="94%" bottomof="SELECT-MEDICATION-TEXT" margin-top="10" style="data-box" placeholder="Notes"/>
-               <text name="submit" alias="SUBMIT" background="486b9b" width="94%" style="data-box" bottomof="PROPHY-NOTES" margin-top="10" alignment="center" onclickup="alertfunction" _amigo="Success! You clicked SUBMIT" text="SUBMIT"/>
+              <textfield name="prophy-notes" alias="PROPHY-NOTES" width="94%" bottomof="SELECT-MEDICATION-TEXT" margin-top="10" style="data-box" placeholder="Notes"/>
+              <text name="submit" alias="SUBMIT" background="486b9b" width="94%" style="data-box" bottomof="PROPHY-NOTES" margin-top="10" alignment="center" onclickup="alertfunction" _message="Success! You clicked SUBMIT" text="SUBMIT"/>
 			</panel>
            <panel name="settings" alias="SETTINGS" width="50%" lwidth="33%" height="120" background="2c2c2c" rightmargin="42" align="right" ypos="-125" shadowopacity="30%" shadowradius="3">
              <object class="settings-links" name="reset" background=" " bottomof=" " onclickup="hide-settings" text="Home"/>
