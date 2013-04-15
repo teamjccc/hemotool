@@ -1,33 +1,61 @@
 <wire>
    <styles>
      <style name="100" width="100%" height="100%"/>
+     <style name="work-space" width="100%" height="[eval: [object:CONTENTBOX.height] - [eval:[object:HEADER.height] + [object:NAV.height]]]" ypos="20" align="center"/>
+     <style name="log-70" width="70%" height="[eval: [object:CONTENTBOX.height] - [eval:[object:HEADER.height] + [object:NAV.height]] -40]" ypos="10" align="center" />
    </styles>
    <main>
    		<panel name="container" alias="CONTAINER" style="100">
     	 	<panel name="contentbox" alias="CONTENTBOX" style="100" xpos="0" ypos="0" background="#cccccc">
                 <panel name="header" alias="HEADER" width="100%" height="40" background="#212121" align="center" valign="top">
               		<text name="patient" alias="PATIENT" height="100%" width="50%" color="#cccccc" font="Helvetica-Bold" size="18" align="center" alignment="center" text="Dakota"></text>
-                  	<toolbar name="bar" height="70%" width="15%" valign="center" align="right">  <!--replace with image -->
-                      <button name="menu" alias="MENU"/>
-                  	</toolbar>
+                  	<image name="menu" height="70%" width="15%" valign="center" align="right" source="images/hamburger.png"/>
                 </panel>
                 <panel name="nav" alias="NAV" width="100%" height="50" background="#212121" align="center" valign="bottom">
-                    <panel name="tab1" width="25%" height="100%" onclickuptarget="profile.wire">
-                      <image name="icon" height="40" align="center" valign="center" source="images/profile.png"/>
+                    <panel name="tab1" width="25%" height="100%" onclickup="navLoad" _wire="profile.wire" _wirename="profile">
+                      <image name="icon" height="32" align="center" ypos="10%" source="images/profile.png"/>
+                      <text name="tab1-txt" alias="TAB1-TXT" height="10" width="100%" color="#cccccc" font="Helvetica-Bold" size="8" bottomof="icon" align="center" alignment="center" text="Profile"></text>
                     </panel>
                   	<panel name="tab2" width="25%" height="100%" rightof="tab1">
-                      <image name="icon" height="40" align="center" valign="center" source="images/logging_active.png"/>
+                      <image name="icon" height="32" align="center" ypos="10%" source="images/logging_active.png"/>
+                      <text name="tab2-txt" alias="TAB2-TXT" height="10" width="100%" color="#cccccc" font="Helvetica-Bold" size="8" bottomof="icon" align="center" alignment="center" text="Logging"></text>
                     </panel>
-                    <panel name="tab3" width="25%" height="100%" rightof="tab2" onclickuptarget="ordering.wire">
-                      <image name="icon" height="40" align="center" valign="center" source="images/ordering.png"/>
+                    <panel name="tab3" width="25%" height="100%" rightof="tab2" onclickup="navLoad" _wire="ordering.wire" _wirename="ordering">
+                      <image name="icon" height="32" align="center" ypos="10%" source="images/ordering.png"/>
+                      <text name="tab3-txt" alias="TAB3-TXT" height="10" width="100%" color="#cccccc" font="Helvetica-Bold" size="8" bottomof="icon" align="center" alignment="center" text="Ordering"></text>
                     </panel>
-                    <panel name="tab4" width="25%" height="100%" rightof="tab3" onclickuptarget="travel.wire">
-                      <image name="icon" height="40" align="center" valign="center" source="images/travel.png"/>
+                    <panel name="tab4" width="25%" height="100%" rightof="tab3" onclickup="navLoad" _wire="travel.wire" _wirename="travel">
+                      <image name="icon" height="32" align="center" ypos="10%" source="images/travel.png"/>
+                      <text name="tab4-txt" alias="TAB4-TXT" height="10" width="100%" color="#cccccc" font="Helvetica-Bold" size="8" bottomof="icon" align="center" alignment="center" text="Travel"></text>
                     </panel>
+                 </panel>
+                 <panel name="work-box" alias="WORK-BOX" style="work-space">
+                  	<image name="background" source="images/bkgrd-home2.png" style="work-space"></image>
+                    <panel name="navbox" style="log-70">
+                      <panel name="nav1" alias="NAV1" height="33.3%" width="100%">
+                        <image name="prophynav" height="100" xpos="5" ypos="48" source="images/prophy.png" onclickup="navLoad" _wire="prophy.wire" _wirename="log"/>
+                        <text name="nav1-txt" alias="NAV1-TXT" width="100%" height="33.3%" xpos="75" ypos="95" color="#656666" font="Helvetica-Bold" size="16" text="Log Prophy\n   Infusion"></text>
+                      </panel>
+                      <panel name="nav2" alias="NAV2" height="33.3%" width="100%" bottomof="NAV1">
+                        <image name="lognav" height="100" valign="bottom" xpos="150" ypos="72" source="images/bleed.png" onclickup="navLoad" _wire="bleed.wire" _wirename="bleed"/>
+                        <text name="nav2-txt" alias="NAV2-TXT" width="100%" height="33.3%" xpos="155" ypos="105" color="#656666" font="Helvetica-Bold" size="16" text="Log Bleed"></text>
+                      </panel>
+                      <panel name="nav3" alias="NAV3" height="33.4%" width="100%" bottomof="NAV2">
+                        <image name="lognav" height="100" valign="top" xpos="30" ypos="55" source="images/folders.png" onclickup="navLoad" _wire="history.wire" _wirename="history"/>
+                        <text name="nav3-txt" alias="NAV3-TXT" width="100%" height="33.4%" xpos="50" ypos="78" color="#656666" font="Helvetica-Bold" size="16" text="History"></text>
+                      </panel>
+                   </panel>
                  </panel>
           	</panel>
    		</panel>
-   </main>
-   <actions>
-   </actions>
+     	<panel name="content" alias="CONTENT" style="100" alpha="0">
+       		<include name="include" style="100"/>
+        </panel>
+ 	</main>     
+ 	<actions> 
+        <action name="navLoad">
+          <load file="_wire" wirename="_wirename" target="CONTENT/include" />
+          <alpha value="1" time=".5" target="CONTENT" />
+        </action>
+    </actions> 
 </wire>
