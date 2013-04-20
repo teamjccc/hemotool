@@ -1,0 +1,7 @@
+<!--<panel name="settings" alias="SETTINGS" width="50%" lwidth="33%" height="120" background="2c2c2c" rightmargin="42" align="right" ypos="-125" shadowopacity="30%" shadowradius="3">
+                  <object class="settings-links" name="reset" background=" " bottomof=" " onclickup="hide-settings" text="Home"/>
+                  <object class="settings-links" name="app" background="515151" bottomof="reset" onclickup="hide-settings" text="Quit Program"/>
+                  <object class="settings-links" name="email"  background="515151" bottomof="app" onclickup="hide-settings" text="Option 3?"/>
+                </panel>
+          
+         <image name="btn-settings" alias="BTN-SET" source="images/hamburger.png" align="right" rightmargin="12" valign="top" onclickup="show-settings"></image>-->
