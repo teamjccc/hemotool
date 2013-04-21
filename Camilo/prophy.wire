@@ -21,7 +21,7 @@
 <main>
 	<panel name="container" alias="CONTAINER" style="100">
      	<panel name="contentbox" alias="CONTENTBOX" style="100" xpos="0" ypos="0">	
-    		<panel name="header" alias="HEADER" width="100%" height="40">
+    		<panel name="header" alias="HEADER" width="100%" height="40" background="212121">
             	<panel name="header2" alias="HEADER2" width="100%" height="20" background="70757a" align="center" valign="top" alpha=".3"/>
                	<panel name="header3" alias="HEADER3" width="100%" height="40" background="4d5258" align="center" valign="top" alpha=".5"/>
                	<text name="patient"  alias="PATIENT" width="50%" height="100%" color="#cccccc" font="Helvetica-Bold" size="18" align="center" alignment="center" text="Dakota" />
@@ -64,7 +64,7 @@
                    		<text name="Done" width="100%" height="fit" ypos="6" color="#ffffff" font="Helvetica-Bold" size="14" alignment="center" text="Done"/>
                		</panel>
                	</panel>
-               	<pager name="personal-scroll" orientation="vertical" paginate="yes" width="100%" height="[eval: [object:CONTENTBOX.height] - [eval:[object:PROPHY-INFUSION-BOX.height] + [object:BREAK.height] + [object:HEADER.height] + [object:NAV.height]]]" ypos="82">
+               	<pager name="personal-scroll" orientation="vertical" paginate="no" width="100%" height="[eval: [object:CONTENTBOX.height] - [eval:[object:PROPHY-INFUSION-BOX.height] + [object:BREAK.height] + [object:HEADER.height] + [object:NAV.height]]]" ypos="82">
                    	<panel name="page1" alias="PAGE1" width="100%" height="100%" valign="top">
                        	<panel name="pro-pic" alias="PRO-PIC" width="100%" fitheight="yes" align="center">
                            	<textfield name="date-textfield" alias="DATE-TEXTFIELD" width="94%" style="data-box" placeholder="Date" ypos="20"/>
@@ -77,11 +77,11 @@
                            		<textfield name="dose-textfield" alias="DOSE-TEXTFIELD" width="100%" style="data-box2" bottomof="BOTTOM-BORDER2" placeholder="Dose (IU)"/>
                        		</panel>
                        		<text name="select-medication-text" alias="SELECT-MEDICATION-TEXT" width="94%" bottomof="MIDDLE-BOX" style="data-box" alignment="center" margin-top="10" text="Barcode Scanner"/><!--180-->
-                      	</panel>
+                      		<textfield name="prophy-notes" alias="PROPHY-NOTES" width="94%" height="70" bottomof="SELECT-MEDICATION-TEXT" margin-top="10" style="data-box" onreturnkeypressed="" placeholder="Notes" />
+                      </panel>
                   	</panel>
                    	<panel name="page2" alias="PAGE2" width="100%" height="100%" align="center">
-                   		<textfield name="prophy-notes" alias="PROPHY-NOTES" width="94%" margin-top="10" style="data-box" placeholder="Notes" ypos="20"/>
-                   		<text name="submit" alias="SUBMIT" background="486b9b" width="94%" style="data-box" bottomof="PROPHY-NOTES" margin-top="10" alignment="center" onclickup="alertfunction" _message="Success! You clicked SUBMIT" text="SUBMIT"/>
+                   		<text name="submit" alias="SUBMIT" background="486b9b" width="94%" style="data-box" margin-top="10" alignment="center" onclickup="alertfunction" _message="Success! You clicked SUBMIT" text="SUBMIT"/>
                    	</panel>    
                	</pager>
             </panel>
