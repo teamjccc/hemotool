@@ -1,9 +1,9 @@
 <wire>
 	<styles>
     	<style name="100" width="100%" height="100%"/>
-      	<style name="work-space" width="100%" height="[eval: [object:CONTENTBOX.height] - [eval:[object:HEADER.height] + [object:PROPHY-INFUSION-BOX.height] + [object: [object:NAV.height]]]"/> 
-      	<style name="data-box"  width="100%" align="center" alignment="left" height="35" background="ffffff" valignment="center" alpha="1" size="14" rightmargin="-12" leftinset="5" color="212121" cornerradius="5" borderwidth="1" bordercolor="212121"/>
-      	<style name="data-box2" width="100%" align="center" alignment="left" height="35" background="ffffff" valignment="center" alpha="1" size="14" rightmargin="-12" leftinset="5" color="212121" />
+      	<!--<style name="work-space" width="100%" height="[eval: [object:CONTENTBOX.height] - [eval:[object:HEADER.height] + [object:BREAK.height] + [object:PROPHY-INFUSION-BOX.height] + [object: [object:NAV.height]]]"/> I am not calling currently-->
+      	<style name="data-box"  height="35" align="center" alignment="left" background="ffffff" valignment="center" alpha="1" size="14" rightmargin="-12" leftinset="5" color="212121" cornerradius="5" borderwidth="1" bordercolor="212121"/>
+      	<style name="data-box2" width="100%" height="35" align="center" alignment="left" background="ffffff" valignment="center" alpha="1" size="14" rightmargin="-12" leftinset="5" color="212121" />
       	<style name="testr" background="#ff0000" alpha=".4"/><!-- transparent red -->
       	<style name="testg" background="#00ff00" alpha=".4"/><!-- transparent green -->
       	<style name="testb" background="#0000ff" alpha=".4"/><!-- transparent blue -->
@@ -12,14 +12,14 @@
    <classes>
    		<class name="settings-links">
             <panel name="[param:name]" width="100%" height="40" align="center" bottomof="[param:bottomof]" onclickup="[param:onclickup]">
-                <panel name="top-rule" width="100%" height="1" valign="top" background="[param:background]" ></panel>
+                <panel name="top-rule" width="100%" height="1" valign="top" background="[param:background]"></panel>
                 <panel name="bottom-rule" width="100%" height="1" valign="bottom" background="212121"></panel>
                 <text name="text" style="text-settingsMenu" text="[param:text]"></text>
             </panel>
     	</class>
   </classes>
   <main>
-     <panel name="container" alias="CONTAINER" style="100">
+     <panel name="container" alias="CONTAINER" style="100" >
      	<panel name="contentbox" alias="CONTENTBOX" style="100" xpos="0" ypos="0">
         	<panel name="header" alias="HEADER" width="100%" height="40">
             	<panel name="header2" alias="HEADER2" width="100%" height="20" background="70757a" align="center" valign="top" alpha=".3"/>
@@ -44,9 +44,9 @@
            			<text name="tab4-txt" alias="TAB4-TXT" height="10" width="100%" color="#cccccc" font="Helvetica-Bold" size="8" bottomof="icon" align="center" alignment="center" text="Travel"></text>
         		</panel>
        		</panel>
-       		<panel name="work-box" alias="WORK-BOX" style="work-space">      
+       		<panel name="work-box" alias="WORK-BOX" width="100%" height="[eval: [object:CONTENTBOX.height] - [object:NAV.height]]">      
             	<panel name="break" alias="BREAK" background="000000" width="100%" height="2" ypos="[object:HEADER.height]"></panel>
-                <panel name="prophy-infusion-box" alias="PROPHY-INFUSION-BOX" width="100%" height="40" bottomof="BREAK" background="212324" alpha="1">
+                <panel name="prophy-infusion-box" alias="PROPHY-INFUSION-BOX" width="100%" height="40" bottomof="BREAK" background="212324">
                 	<panel name="blank" alias="BLANK" width="10" height="1"/>
                     <panel name="cancelbutton" alias="CANCELBUTTON" width="20%" height="32" valign="center" cornerradius="5" borderwidth="1" bordercolor="1b4cae" clip="yes" rightof="BLANK" onclickup="alertfunction" _message="You clicked cancel!">
                       	<panel name="highlight" width="100%" height="50%" valign="top" background="#ffffff" alpha=".3"/>
@@ -63,12 +63,12 @@
                       	<text name="Done" width="100%" height="fit" ypos="6" color="#ffffff" font="Helvetica-Bold" size="14" alignment="center" text="Done"/>
                 	</panel>
                 </panel>         		  
-				<!--<panel name="work-box2" alias="WORK-BOX2" width="100%" height="[eval: [object:CONTENTBOX.height] - [eval:[object:PROPHY-INFUSION-BOX.height] + [object:HEADER.height] + [object:NAV.height]]]" ypos="82">-->
-                	<image name="background" source="images/bkgrd-home2.png"            width="100%" height="[eval: [object:CONTENTBOX.height] - [eval:[object:PROPHY-INFUSION-BOX.height] + [object:HEADER.height] + [object:NAV.height]]]" ypos="[eval: [object:HEADER.height] + [object:BREAK.height] + [object:PROPHY-INFUSION-BOX.height]]"></image>
-                    <pager name="personal-scroll" paginate="yes" orientation="vertical" width="100%" height="[eval: [object:CONTENTBOX.height] - [eval:[object:PROPHY-INFUSION-BOX.height] + [object:HEADER.height] + [object:NAV.height]]]" ypos="[eval: [object:HEADER.height] + [object:BREAK.height] + [object:PROPHY-INFUSION-BOX.height]]">
-                    	<panel name="page1" alias="PAGE1" width="100%" height="100%" align="center">
+				<panel name="work-box2" alias="WORK-BOX2" width="100%" height="100%" ypos="82">
+                	<image name="background" source="images/bkgrd-home2.png" width="100%" height="[eval: [object:CONTENTBOX.height] - [eval:[object:PROPHY-INFUSION-BOX.height] + [object:BREAK.height] + [object:HEADER.height] + [object:NAV.height]]]" ypos=""></image>
+                    <pager name="personal-scroll" alias="PERSONAL-SCROLL" paginate="yes" orientation="vertical" width="100%" height="[eval: [object:CONTENTBOX.height] - [eval:[object:PROPHY-INFUSION-BOX.height] + [object:BREAK.height] + [object:HEADER.height] + [object:NAV.height]]]" ypos="">
+                    	<panel name="page1" alias="PAGE1" width="100%" height="100%">
                         	<textfield name="date-textfield" alias="DATE-TEXTFIELD" width="94%" style="data-box" placeholder="Date" ypos="20"/>
-                          	<text name="bleed-location-textfield" alias="BLEED-LOCATION-TEXTFIELD" width="94%" height="30" style="data-box" text="Select Medication..." bottomof="DATE-TEXTFIELD" margin-top="10" ypos="50"/>
+                          	<text name="bleed-location-textfield" alias="BLEED-LOCATION-TEXTFIELD" width="94%" height="30" style="data-box" text="Select Medication..." bottomof="DATE-TEXTFIELD" margin-top="10"/>
                           	<panel name="middle-box" alias="MIDDLE-BOX" width="94%" height="107" align="center" cornerradius="5" borderwidth="1" bordercolor="212121" bottomof="BLEED-LOCATION-TEXTFIELD" margin-top="10">
                             	<textfield name="lot-number-textfield" alias="LOT-NUMBER-TEXTFIELD" width="100%" style="data-box2" margin-top="10" placeholder="Lot Number"/>
                               	<panel name="bottom-border1" alias="BOTTOM-BORDER1" width="100%" height="1" background="212121" bottomof="LOT-NUMBER-TEXTFIELD"/>
@@ -77,13 +77,12 @@
                               	<textfield name="dose-textfield" alias="DOSE-TEXTFIELD" width="100%" style="data-box2" bottomof="BOTTOM-BORDER2" placeholder="Dose (IU)"/>
                           	</panel>
                           	<text name="select-medication-text" alias="SELECT-MEDICATION-TEXT" width="94%" bottomof="MIDDLE-BOX" style="data-box" alignment="center" margin-top="10" text="Barcode Scanner"/><!--180-->
-                        </panel>
-              			<panel name="page2" alias="PAGE2" width="100%" height="50">
+                        
                        		<textfield name="prophy-notes" alias="PROPHY-NOTES" width="94%" bottomof="SELECT-MEDICATION-TEXT" margin-top="10" style="data-box" placeholder="Notes" ypos="20"/>
                     		<text name="submit" alias="SUBMIT" background="486b9b" width="94%" style="data-box" bottomof="PROPHY-NOTES" margin-top="10" alignment="center" onclickup="alertfunction" _message="Success! You clicked SUBMIT" text="SUBMIT"/>
                       	</panel>
                     </pager>
-                <!--</panel>-->
+                </panel>
               		<panel name="settings" alias="SETTINGS" width="50%" lwidth="33%" height="120" background="2c2c2c" rightmargin="42" align="right" ypos="-125" shadowopacity="30%" shadowradius="3">
     		  	   		<object class="settings-links" name="reset" background=" " bottomof=" " onclickup="hide-settings" text="Home"/>
         		   		<object class="settings-links" name="app" background="515151" bottomof="reset" onclickup="hide-settings" text="Quit Program"/>
