@@ -1,12 +1,11 @@
 <wire>
 	<styles>
     	<style name="100" width="100%" height="100%"/>
-      	<style name="work-space" width="100%" height="[eval: [object:CONTENTBOX.height] - [eval:[object:HEADER.height] + [object:NAV.height]]]" ypos="20"/> 
+      	<style name="work-space" width="100%" height="[eval: [object:CONTENTBOX.height] - [eval:[object:HEADER.height] + [object:PROPHY-INFUSION-BOX.height] + [object: [object:NAV.height]]]"/> 
       	<style name="data-box"  width="100%" align="center" alignment="left" height="35" background="ffffff" valignment="center" alpha="1" size="14" rightmargin="-12" leftinset="5" color="212121" cornerradius="5" borderwidth="1" bordercolor="212121"/>
       	<style name="data-box2" width="100%" align="center" alignment="left" height="35" background="ffffff" valignment="center" alpha="1" size="14" rightmargin="-12" leftinset="5" color="212121" />
       	<!--<style name="data-box3" width="170 " height="30" align="center" alignment="left" background="ffffff" cornerradius="5" borderwidth="2" bordercolor="212121" valignment="center" padding-left="10" alpha="1" size="14"/>-->
-      	<style name="
-" background="#ff0000" alpha=".4"/><!-- transparent red -->
+      	<style name="testr" background="#ff0000" alpha=".4"/><!-- transparent red -->
       	<style name="testg" background="#00ff00" alpha=".4"/><!-- transparent green -->
       	<style name="testb" background="#0000ff" alpha=".4"/><!-- transparent blue -->
       	<style name="text-settingsMenu" width="60%" height="30" color="#e6e6e6" font="GillSans" size="16" rightof="img" align="left" valign="center" leftmargin="15%" alignment="center"/>
@@ -21,34 +20,32 @@
     	</class>
   </classes>
   <main>
-     	<panel name="container" alias="CONTAINER" style="100">
-       		<panel name="contentbox" alias="CONTENTBOX" style="100" xpos="0" ypos="0" background="">
-               <panel name="header" alias="HEADER" width="100%" height="40">
-                  <panel name="header2" alias="HEADER2" width="100%" height="20" background="70757a" align="center" valign="top" alpha=".3"/>
-                  <panel name="header3" alias="HEADER3" width="100%" height="40" background="4d5258" align="center" valign="top" alpha=".5"/>
-                  <text name="patient" alias="PATIENT" height="100%" width="50%" color="#cccccc" font="Helvetica-Bold" size="18" align="center" alignment="center" text="Dakota" alpha="1"/>
-               </panel>
-         
-               <panel name="nav" alias="NAV" width="100%" height="50" background="#212121" align="center" valign="bottom" alpha=".5">
-                 <panel name="tab1" width="25%" height="100%" onclickup="navLoad" _wire="profile.wire" _wirename="profile">
-                   <image name="icon" height="32" align="center" ypos="10%" source="images/profile.png"/>
-                   <text name="tab1-txt" alias="TAB1-TXT" height="10" width="100%" color="#cccccc" font="Helvetica-Bold" size="8" bottomof="icon" align="center" alignment="center" text="Profile"></text>
-                 </panel>
-                 <panel name="tab2" width="25%" height="100%" rightof="tab1" onclickup="navLoad" _wire="prophy.wire" _wirename="prophy">
-                   <image name="icon" height="32" align="center" ypos="10%" source="images/logging_active.png"/>
-                   <text name="tab2-txt" alias="TAB2-TXT" height="10" width="100%" color="#cccccc" font="Helvetica-Bold" size="8" bottomof="icon" align="center" alignment="center" text="Logging"></text>
-                 </panel>
-                 <panel name="tab3" width="25%" height="100%" rightof="tab2" onclickup="navLoad" _wire="ordering.wire" _wirename="ordering">
-                   <image name="icon" height="32" align="center" ypos="10%" source="images/ordering.png"/>
-                   <text name="tab3-txt" alias="TAB3-TXT" height="10" width="100%" color="#cccccc" font="Helvetica-Bold" size="8" bottomof="icon" align="center" alignment="center" text="Ordering"></text>
-                 </panel>
-                 <panel name="tab4" width="25%" height="100%" rightof="tab3" onclickup="navLoad" _wire="travel.wire" _wirename="travel">
-                   <image name="icon" height="32" align="center" ypos="10%" source="images/travel.png"/>
-                   <text name="tab4-txt" alias="TAB4-TXT" height="10" width="100%" color="#cccccc" font="Helvetica-Bold" size="8" bottomof="icon" align="center" alignment="center" text="Travel"></text>
-                 </panel>
-               </panel>
-         
-               <panel name="work-box" alias="WORK-BOX" style="work-space">
+     <panel name="container" alias="CONTAINER" style="100">
+     	<panel name="contentbox" alias="CONTENTBOX" style="100" xpos="0" ypos="0">
+        	<panel name="header" alias="HEADER" width="100%" height="40">
+            	<panel name="header2" alias="HEADER2" width="100%" height="20" background="70757a" align="center" valign="top" alpha=".3"/>
+                <panel name="header3" alias="HEADER3" width="100%" height="40" background="4d5258" align="center" valign="top" alpha=".5"/>
+                <text name="patient" alias="PATIENT" height="100%" width="50%" color="#cccccc" font="Helvetica-Bold" size="18" align="center" alignment="center" text="Dakota" alpha="1"/>
+            </panel>
+       	<panel name="nav" alias="NAV" width="100%" height="50" background="#212121" align="center" valign="bottom" alpha=".3">
+        	<panel name="tab1" width="25%" height="100%" onclickup="navLoad" _wire="profile.wire" _wirename="profile">
+           		<image name="icon" height="32" align="center" ypos="10%" source="images/profile.png"/>
+           		<text name="tab1-txt" alias="TAB1-TXT" height="10" width="100%" color="#cccccc" font="Helvetica-Bold" size="8" bottomof="icon" align="center" alignment="center" text="Profile"></text>
+         	</panel>
+         	<panel name="tab2" width="25%" height="100%" rightof="tab1" onclickup="navLoad" _wire="prophy.wire" _wirename="prophy">
+           		<image name="icon" height="32" align="center" ypos="10%" source="images/logging_active.png"/>
+           		<text name="tab2-txt" alias="TAB2-TXT" height="10" width="100%" color="#cccccc" font="Helvetica-Bold" size="8" bottomof="icon" align="center" alignment="center" text="Logging"></text>
+         	</panel>
+         	<panel name="tab3" width="25%" height="100%" rightof="tab2" onclickup="navLoad" _wire="ordering.wire" _wirename="ordering">
+           		<image name="icon" height="32" align="center" ypos="10%" source="images/ordering.png"/>
+           		<text name="tab3-txt" alias="TAB3-TXT" height="10" width="100%" color="#cccccc" font="Helvetica-Bold" size="8" bottomof="icon" align="center" alignment="center" text="Ordering"></text>
+         	</panel>
+         	<panel name="tab4" width="25%" height="100%" rightof="tab3" onclickup="navLoad" _wire="travel.wire" _wirename="travel">
+           		<image name="icon" height="32" align="center" ypos="10%" source="images/travel.png"/>
+           		<text name="tab4-txt" alias="TAB4-TXT" height="10" width="100%" color="#cccccc" font="Helvetica-Bold" size="8" bottomof="icon" align="center" alignment="center" text="Travel"></text>
+         </panel>
+       </panel>
+       <panel name="work-box" alias="WORK-BOX" style="work-space"  background="ff0000">
                   
                  <panel name="break" alias="BREAK" background="000000" width="100%" height="2" ypos="[object:HEADER.height]"></panel>
                   <panel name="prophy-infusion-box" alias="PROPHY-INFUSION-BOX" width="100%" height="40" bottomof="BREAK" background="212324" alpha=".5">
@@ -70,57 +67,41 @@
                       <text name="done-blue" width="100%" height="fit" ypos="5" color="#486b9b" font="Helvetica-Bold" size="14" alignment="center" text="Done" alpha=".5"/>
                       <text name="Done" width="100%" height="fit" ypos="6" color="#ffffff" font="Helvetica-Bold" size="14" alignment="center" text="Done"/>
                 	</panel>
-                  </panel>
-           
-         		  
-				<panel name="work-box2" alias="WORK-BOX2" width="100%" height="[eval: [object:CONTENTBOX.height] - [eval:[object:HEADER.height] + [object:NAV.height] + [object:]]" ypos="40">
-                    <image name="background" source="images/bkgrd-home2.png" style="work-space"></image>
-                    <pager name="personal-scroll" orientation="vertical" paginate="no" width="100%" height="[eval: [object:CONTENTBOX.height] - [eval:[object:HEADER.height] + [object:NAV.height]]]" ypos="20">
-				<!--Start placing your panels here-->
-                <!--<panel name="main-page" alias="MAIN-PAGE" width="100%" height="100%" ypos="[eval: [object:HEADER.height] + [object:BREAK.height] + [object:PROPHY-INFUSION-BOX.height]]" >
-                  <image name="background-image" source="images/bkgrd-home2.png" width="100%" height="[eval: [object:CONTENTBOX.height] - [eval:[object:PROPHY-INFUSION-BOX.height] + [object:HEADER.height] + [object:NAV.height]]]" ypos="[eval: [object:HEADER.height] + [object:BREAK.height] + [object:PROPHY-INFUSION-BOX.height]]" orientation="vertical"/>
-                  <pager name="pager1" alias="PAGER1" style="testr" width="100%" height="[eval: [object:CONTENTBOX.height] - [eval:[object:PROPHY-INFUSION-BOX.height] + [object:HEADER.height] + [object:NAV.height]]]" ypos="75" paginate="no">-->
-                      
-                    <panel name="page1" alias="PAGE1" width="100%" height="100%">
-                          <textfield name="date-textfield" alias="DATE-TEXTFIELD" width="94%" style="data-box" placeholder="Date" ypos="20"/>
-                          <text name="bleed-location-textfield" alias="BLEED-LOCATION-TEXTFIELD" width="94%" height="30" style="data-box" text="Select Medication..." bottomof="DATE-TEXTFIELD" margin-top="10" ypos="50"/>
-      
-                          <panel name="middle-box" alias="MIDDLE-BOX" width="94%" height="107" align="center" cornerradius="5" borderwidth="1" bordercolor="212121" bottomof="BLEED-LOCATION-TEXTFIELD" margin-top="10">
-                              <textfield name="lot-number-textfield" alias="LOT-NUMBER-TEXTFIELD" width="100%" style="data-box2" margin-top="10" placeholder="Lot Number"/>
-                              <panel name="bottom-border1" alias="BOTTOM-BORDER1" width="100%" height="1" background="212121" bottomof="LOT-NUMBER-TEXTFIELD"/>
-                              <textfield name="expiration-date-textfield" alias="EXPIRATION-DATE-TEXTFIELD" width="100%" style="data-box2" bottomof="BOTTOM-BORDER1" placeholder="Expiration Date"/>
-                              <panel name="bottom-border2" alias="BOTTOM-BORDER2" width="100%" height="1" background="212121" bottomof="EXPIRATION-DATE-TEXTFIELD"/>
-                              <textfield name="dose-textfield" alias="DOSE-TEXTFIELD" width="100%" style="data-box2" bottomof="BOTTOM-BORDER2" placeholder="Dose (IU)"/>
-                          </panel>
+                  </panel>         		  
+				<panel name="work-box2" alias="WORK-BOX2" width="100%" height="[eval: [object:CONTENTBOX.height] - [eval:[object:PROPHY-INFUSION-BOX.height] + [object:HEADER.height] + [object:NAV.height]]]" ypos="82">
+                	<!--ge name="background" source="images/bkgrd-home2.png"  width="100%" height="[eval: [object:CONTENTBOX.height] - [eval:[object:PROPHY-INFUSION-BOX.height] + [object:HEADER.height] + [object:NAV.height]]]"></image>-->
+                    <pager name="personal-scroll" orientation="vertical" paginate="no" width="100%" height="[eval: [object:CONTENTBOX.height] - [eval:[object:PROPHY-INFUSION-BOX.height] + [object:HEADER.height] + [object:NAV.height]]]" ypos="0">
+                    	<panel name="page1" alias="PAGE1" width="100%" height="100%" valign="top">
+                        	<textfield name="date-textfield" alias="DATE-TEXTFIELD" width="94%" style="data-box" placeholder="Date" ypos="20"/>
+                          	<text name="bleed-location-textfield" alias="BLEED-LOCATION-TEXTFIELD" width="94%" height="30" style="data-box" text="Select Medication..." bottomof="DATE-TEXTFIELD" margin-top="10" ypos="50"/>
+                          	<panel name="middle-box" alias="MIDDLE-BOX" width="94%" height="107" align="center" cornerradius="5" borderwidth="1" bordercolor="212121" bottomof="BLEED-LOCATION-TEXTFIELD" margin-top="10">
+                            	<textfield name="lot-number-textfield" alias="LOT-NUMBER-TEXTFIELD" width="100%" style="data-box2" margin-top="10" placeholder="Lot Number"/>
+                              	<panel name="bottom-border1" alias="BOTTOM-BORDER1" width="100%" height="1" background="212121" bottomof="LOT-NUMBER-TEXTFIELD"/>
+                              	<textfield name="expiration-date-textfield" alias="EXPIRATION-DATE-TEXTFIELD" width="100%" style="data-box2" bottomof="BOTTOM-BORDER1" placeholder="Expiration Date"/>
+                              	<panel name="bottom-border2" alias="BOTTOM-BORDER2" width="100%" height="1" background="212121" bottomof="EXPIRATION-DATE-TEXTFIELD"/>
+                              	<textfield name="dose-textfield" alias="DOSE-TEXTFIELD" width="100%" style="data-box2" bottomof="BOTTOM-BORDER2" placeholder="Dose (IU)"/>
+                          	</panel>
                           <text name="select-medication-text" alias="SELECT-MEDICATION-TEXT" width="94%" bottomof="MIDDLE-BOX" style="data-box" alignment="center" margin-top="10" text="Barcode Scanner"/><!--180-->
-                    </panel>
-                    <!--<pager name="pager2" alias="PAGER2" paginate="no" width="100%" height="[eval: [object:CONTENTBOX.height] - [eval:[object:PROPHY-INFUSION-BOX.height] + [object:HEADER.height] + [object:NAV.height]]]">-->
-                    <panel name="page2" alias="PAGE2" style="testg" width="100%" height="100%">
-                          <textfield name="prophy-notes" alias="PROPHY-NOTES" width="94%" margin-top="10" style="data-box" placeholder="Notes" ypos="20"/>
-                          <text name="submit" alias="SUBMIT" background="486b9b" width="94%" style="data-box" bottomof="PROPHY-NOTES" margin-top="10" alignment="center" onclickup="alertfunction" _message="Success! You clicked SUBMIT" text="SUBMIT"/>
-                          <!--</panel>-->
-                    </panel>
-                   <!--</pager>--> 
-                  </pager>
-           		</panel>
-          
-                <panel name="settings" alias="SETTINGS" width="50%" lwidth="33%" height="120" background="2c2c2c" rightmargin="42" align="right" ypos="-125" shadowopacity="30%" shadowradius="3">
-                  <object class="settings-links" name="reset" background=" " bottomof=" " onclickup="hide-settings" text="Home"/>
-                  <object class="settings-links" name="app" background="515151" bottomof="reset" onclickup="hide-settings" text="Quit Program"/>
-                  <object class="settings-links" name="email"  background="515151" bottomof="app" onclickup="hide-settings" text="Option 3?"/>
-                </panel>
-           
-             </panel>
-         <image name="btn-settings" alias="BTN-SET" source="images/hamburger.png" align="right" rightmargin="12" valign="top" onclickup="show-settings"></image>
-       
-     
-         <panel name="content" alias="CONTENT" style="100" alpha="0">
-           <include name="include" style="100"/>
-         </panel></panel></panel>
-   
-  	</main>     
- 	<actions> 
-    	<action name="navLoad">
+                       	<textfield name="prophy-notes" alias="PROPHY-NOTES" width="94%" bottomof="SELECT-MEDICATION-TEXT" margin-top="10" style="data-box" placeholder="Notes" ypos="20"/>
+                    	<text name="submit" alias="SUBMIT" background="486b9b" width="94%" style="data-box" bottomof="PROPHY-NOTES" margin-top="10" alignment="center" onclickup="alertfunction" _message="Success! You clicked SUBMIT" text="SUBMIT"/>
+                      </panel>
+                      </pager>
+                	</panel>     
+            	</panel>
+        	</panel>
+    	</panel>
+    <panel name="settings" alias="SETTINGS" width="50%" lwidth="33%" height="120" background="2c2c2c" rightmargin="42" align="right" ypos="-125" shadowopacity="30%" shadowradius="3">
+    	<object class="settings-links" name="reset" background=" " bottomof=" " onclickup="hide-settings" text="Home"/>
+        <object class="settings-links" name="app" background="515151" bottomof="reset" onclickup="hide-settings" text="Quit Program"/>
+        <object class="settings-links" name="email"  background="515151" bottomof="app" onclickup="hide-settings" text="Option 3?"/>
+    </panel>
+    <image name="btn-settings" alias="BTN-SET" source="images/hamburger.png" align="right" rightmargin="12" valign="top" onclickup="show-settings"></image>
+    <panel name="content" alias="CONTENT" style="100" alpha="0">
+         <include name="include" style="100"/>
+    </panel>
+    </main>     
+ 	<actions>       
+        <action name="navLoad">
           <load file="_wire" wirename="_wirename" target="CONTENT/include" />
           <alpha value="1" time=".5" target="CONTENT" />
         </action>
@@ -155,8 +136,6 @@
                      </action>
                      
                      <action name="null">
-	</action>-->
-           
-         
+	</action>-->    
     </actions> 
 </wire>
