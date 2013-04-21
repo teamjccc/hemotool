@@ -25,51 +25,47 @@
         	<panel name="header" alias="HEADER" width="100%" height="40">
             	<panel name="header2" alias="HEADER2" width="100%" height="20" background="70757a" align="center" valign="top" alpha=".3"/>
                 <panel name="header3" alias="HEADER3" width="100%" height="40" background="4d5258" align="center" valign="top" alpha=".5"/>
-                <text name="patient" alias="PATIENT" height="100%" width="50%" color="#cccccc" font="Helvetica-Bold" size="18" align="center" alignment="center" text="Dakota" alpha="1"/>
+                <text name="patient" alias="PATIENT" height="100%" width="50%" color="#cccccc" font="Helvetica-Bold" size="18" align="center" alignment="center" text="Dakota" />
             </panel>
-       	<panel name="nav" alias="NAV" width="100%" height="50" background="#212121" align="center" valign="bottom" alpha=".3">
-        	<panel name="tab1" width="25%" height="100%" onclickup="navLoad" _wire="profile.wire" _wirename="profile">
-           		<image name="icon" height="32" align="center" ypos="10%" source="images/profile.png"/>
-           		<text name="tab1-txt" alias="TAB1-TXT" height="10" width="100%" color="#cccccc" font="Helvetica-Bold" size="8" bottomof="icon" align="center" alignment="center" text="Profile"></text>
-         	</panel>
-         	<panel name="tab2" width="25%" height="100%" rightof="tab1" onclickup="navLoad" _wire="prophy.wire" _wirename="prophy">
-           		<image name="icon" height="32" align="center" ypos="10%" source="images/logging_active.png"/>
-           		<text name="tab2-txt" alias="TAB2-TXT" height="10" width="100%" color="#cccccc" font="Helvetica-Bold" size="8" bottomof="icon" align="center" alignment="center" text="Logging"></text>
-         	</panel>
-         	<panel name="tab3" width="25%" height="100%" rightof="tab2" onclickup="navLoad" _wire="ordering.wire" _wirename="ordering">
-           		<image name="icon" height="32" align="center" ypos="10%" source="images/ordering.png"/>
-           		<text name="tab3-txt" alias="TAB3-TXT" height="10" width="100%" color="#cccccc" font="Helvetica-Bold" size="8" bottomof="icon" align="center" alignment="center" text="Ordering"></text>
-         	</panel>
-         	<panel name="tab4" width="25%" height="100%" rightof="tab3" onclickup="navLoad" _wire="travel.wire" _wirename="travel">
-           		<image name="icon" height="32" align="center" ypos="10%" source="images/travel.png"/>
-           		<text name="tab4-txt" alias="TAB4-TXT" height="10" width="100%" color="#cccccc" font="Helvetica-Bold" size="8" bottomof="icon" align="center" alignment="center" text="Travel"></text>
-         </panel>
-       </panel>
-       <panel name="work-box" alias="WORK-BOX" style="work-space"  background="ff0000">
-                  
-                 <panel name="break" alias="BREAK" background="000000" width="100%" height="2" ypos="[object:HEADER.height]"></panel>
-                  <panel name="prophy-infusion-box" alias="PROPHY-INFUSION-BOX" width="100%" height="40" bottomof="BREAK" background="212324" alpha=".5">
-                   
-                  	<panel name="blank" alias="BLANK" width="10" height="1"/>
+       		<panel name="nav" alias="NAV" width="100%" height="50" background="#212121" align="center" valign="bottom">
+        		<panel name="tab1" width="25%" height="100%" onclickup="navLoad" _wire="profile.wire" _wirename="profile">
+           			<image name="icon" height="32" align="center" ypos="10%" source="images/profile.png"/>
+           			<text name="tab1-txt" alias="TAB1-TXT" height="10" width="100%" color="#cccccc" font="Helvetica-Bold" size="8" bottomof="icon" align="center" alignment="center" text="Profile"></text>
+         		</panel>
+         		<panel name="tab2" width="25%" height="100%" rightof="tab1" onclickup="navLoad" _wire="prophy.wire" _wirename="prophy">
+           			<image name="icon" height="32" align="center" ypos="10%" source="images/logging_active.png"/>
+           			<text name="tab2-txt" alias="TAB2-TXT" height="10" width="100%" color="#cccccc" font="Helvetica-Bold" size="8" bottomof="icon" align="center" alignment="center" text="Logging"></text>
+         		</panel>
+         		<panel name="tab3" width="25%" height="100%" rightof="tab2" onclickup="navLoad" _wire="ordering.wire" _wirename="ordering">
+           			<image name="icon" height="32" align="center" ypos="10%" source="images/ordering.png"/>
+           			<text name="tab3-txt" alias="TAB3-TXT" height="10" width="100%" color="#cccccc" font="Helvetica-Bold" size="8" bottomof="icon" align="center" alignment="center" text="Ordering"></text>
+         		</panel>
+         		<panel name="tab4" width="25%" height="100%" rightof="tab3" onclickup="navLoad" _wire="travel.wire" _wirename="travel">
+           			<image name="icon" height="32" align="center" ypos="10%" source="images/travel.png"/>
+           			<text name="tab4-txt" alias="TAB4-TXT" height="10" width="100%" color="#cccccc" font="Helvetica-Bold" size="8" bottomof="icon" align="center" alignment="center" text="Travel"></text>
+        		</panel>
+       		</panel>
+       		<panel name="work-box" alias="WORK-BOX" style="work-space">      
+            	<panel name="break" alias="BREAK" background="000000" width="100%" height="2" ypos="[object:HEADER.height]"></panel>
+                <panel name="prophy-infusion-box" alias="PROPHY-INFUSION-BOX" width="100%" height="40" bottomof="BREAK" background="212324" alpha="1">
+                	<panel name="blank" alias="BLANK" width="10" height="1"/>
                     <panel name="cancelbutton" alias="CANCELBUTTON" width="20%" height="32" valign="center" cornerradius="5" borderwidth="1" bordercolor="1b4cae" clip="yes" rightof="BLANK" onclickup="alertfunction" _message="You clicked cancel!">
                       	<panel name="highlight" width="100%" height="50%" valign="top" background="#ffffff" alpha=".3"/>
                       	<panel name="bg" width="100%" height="100%" background="#2260dd" alpha=".5"/>
                       	<text name="cancel-blue" width="100%" height="fit" ypos="5" color="#486b9b" font="Helvetica-Bold" size="14" alignment="center" text="Cancel" alpha=".5"/>
                       	<text name="Cancel" width="100%" height="fit" ypos="6" color="#ffffff" font="Helvetica-Bold" size="14" alignment="center" text="Cancel"/>
                   	</panel>
-             
                   	<text name="prophy-infusion-box-title" alias="PROPHY-INFUSION-BOX-TITLE" height="18" width="150" size="18" font="Helvetica-Bold" color="cccccc" valign="center" align="center" text="Prophy Infusion"/>
-          
                   	<panel name="blank2" alias="BLANK2" width="10" height="" align="right"/>
                   	<panel name="donebutton" alias="DONEBUTTON" width="20%" height="32" valign="center" cornerradius="5" borderwidth="1" bordercolor="1b4cae" clip="yes" leftof="BLANK2" onclickup="alertfunction" _message="You clicked done!">
-                      <panel name="highlight2" alias="" width="100%" height="50%" valign="top" background="#ffffff" alpha=".3"/>
-                      <panel name="bg2" width="100%" height="100%" background="#2260dd" alpha=".5"/>
-                      <text name="done-blue" width="100%" height="fit" ypos="5" color="#486b9b" font="Helvetica-Bold" size="14" alignment="center" text="Done" alpha=".5"/>
-                      <text name="Done" width="100%" height="fit" ypos="6" color="#ffffff" font="Helvetica-Bold" size="14" alignment="center" text="Done"/>
+                      	<panel name="highlight2" alias="" width="100%" height="50%" valign="top" background="#ffffff" alpha=".3"/>
+                      	<panel name="bg2" width="100%" height="100%" background="#2260dd" alpha=".5"/>
+                      	<text name="done-blue" width="100%" height="fit" ypos="5" color="#486b9b" font="Helvetica-Bold" size="14" alignment="center" text="Done" alpha=".5"/>
+                      	<text name="Done" width="100%" height="fit" ypos="6" color="#ffffff" font="Helvetica-Bold" size="14" alignment="center" text="Done"/>
                 	</panel>
-                  </panel>         		  
+                </panel>         		  
 				<panel name="work-box2" alias="WORK-BOX2" width="100%" height="[eval: [object:CONTENTBOX.height] - [eval:[object:PROPHY-INFUSION-BOX.height] + [object:HEADER.height] + [object:NAV.height]]]" ypos="82">
-                	<!--ge name="background" source="images/bkgrd-home2.png"  width="100%" height="[eval: [object:CONTENTBOX.height] - [eval:[object:PROPHY-INFUSION-BOX.height] + [object:HEADER.height] + [object:NAV.height]]]"></image>-->
+                	<image name="background" source="images/bkgrd-home2.png"  width="100%" height="[eval: [object:CONTENTBOX.height] - [eval:[object:PROPHY-INFUSION-BOX.height] + [object:HEADER.height] + [object:NAV.height]]]"></image>
                     <pager name="personal-scroll" orientation="vertical" paginate="no" width="100%" height="[eval: [object:CONTENTBOX.height] - [eval:[object:PROPHY-INFUSION-BOX.height] + [object:HEADER.height] + [object:NAV.height]]]" ypos="0">
                     	<panel name="page1" alias="PAGE1" width="100%" height="100%" valign="top">
                         	<textfield name="date-textfield" alias="DATE-TEXTFIELD" width="94%" style="data-box" placeholder="Date" ypos="20"/>
@@ -81,15 +77,15 @@
                               	<panel name="bottom-border2" alias="BOTTOM-BORDER2" width="100%" height="1" background="212121" bottomof="EXPIRATION-DATE-TEXTFIELD"/>
                               	<textfield name="dose-textfield" alias="DOSE-TEXTFIELD" width="100%" style="data-box2" bottomof="BOTTOM-BORDER2" placeholder="Dose (IU)"/>
                           	</panel>
-                          <text name="select-medication-text" alias="SELECT-MEDICATION-TEXT" width="94%" bottomof="MIDDLE-BOX" style="data-box" alignment="center" margin-top="10" text="Barcode Scanner"/><!--180-->
-                       	<textfield name="prophy-notes" alias="PROPHY-NOTES" width="94%" bottomof="SELECT-MEDICATION-TEXT" margin-top="10" style="data-box" placeholder="Notes" ypos="20"/>
-                    	<text name="submit" alias="SUBMIT" background="486b9b" width="94%" style="data-box" bottomof="PROPHY-NOTES" margin-top="10" alignment="center" onclickup="alertfunction" _message="Success! You clicked SUBMIT" text="SUBMIT"/>
-                      </panel>
-                      </pager>
-                	</panel>     
-            	</panel>
-        	</panel>
-    	</panel>
+                          	<text name="select-medication-text" alias="SELECT-MEDICATION-TEXT" width="94%" bottomof="MIDDLE-BOX" style="data-box" alignment="center" margin-top="10" text="Barcode Scanner"/><!--180-->
+                       		<textfield name="prophy-notes" alias="PROPHY-NOTES" width="94%" bottomof="SELECT-MEDICATION-TEXT" margin-top="10" style="data-box" placeholder="Notes" ypos="20"/>
+                    		<text name="submit" alias="SUBMIT" background="486b9b" width="94%" style="data-box" bottomof="PROPHY-NOTES" margin-top="10" alignment="center" onclickup="alertfunction" _message="Success! You clicked SUBMIT" text="SUBMIT"/>
+                      	</panel>
+                    </pager>
+                </panel>     
+            </panel>
+        </panel>
+    </panel>
     <panel name="settings" alias="SETTINGS" width="50%" lwidth="33%" height="120" background="2c2c2c" rightmargin="42" align="right" ypos="-125" shadowopacity="30%" shadowradius="3">
     	<object class="settings-links" name="reset" background=" " bottomof=" " onclickup="hide-settings" text="Home"/>
         <object class="settings-links" name="app" background="515151" bottomof="reset" onclickup="hide-settings" text="Quit Program"/>
