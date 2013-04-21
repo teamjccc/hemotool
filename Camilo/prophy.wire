@@ -66,9 +66,9 @@
                	</panel>
                	<pager name="personal-scroll" orientation="vertical" paginate="no" width="100%" height="[eval: [object:CONTENTBOX.height] - [eval:[object:PROPHY-INFUSION-BOX.height] + [object:BREAK.height] + [object:HEADER.height] + [object:NAV.height]]]" ypos="82">
                    	<panel name="page1" alias="PAGE1" width="100%" height="100%" valign="top">
-                       	<panel name="pro-pic" alias="PRO-PIC" width="100%" fitheight="yes" align="center">
+                       	<panel name="mainscroll" alias="MAINSCROLL" width="100%" fitheight="yes" align="center">
                            	<textfield name="date-textfield" alias="DATE-TEXTFIELD" width="94%" style="data-box" placeholder="Date" ypos="20"/>
-                       		<text name="bleed-location-textfield" alias="BLEED-LOCATION-TEXTFIELD" width="94%" height="30" style="data-box" text="Select Medication..." bottomof="DATE-TEXTFIELD" margin-top="10"/>
+                       		<text name="bleed-location-textfield" alias="BLEED-LOCATION-TEXTFIELD" width="94%" style="data-box" text="Select Medication..." bottomof="DATE-TEXTFIELD" margin-top="10"/>
                        		<panel name="middle-box" alias="MIDDLE-BOX" width="94%" height="107" align="center" cornerradius="5" borderwidth="1" bordercolor="212121" bottomof="BLEED-LOCATION-TEXTFIELD" margin-top="10">
                            		<textfield name="lot-number-textfield" alias="LOT-NUMBER-TEXTFIELD" width="100%" style="data-box2" margin-top="10" placeholder="Lot Number"/>
                            		<panel name="bottom-border1" alias="BOTTOM-BORDER1" width="100%" height="1" background="212121" bottomof="LOT-NUMBER-TEXTFIELD"/>
@@ -76,9 +76,12 @@
                            		<panel name="bottom-border2" alias="BOTTOM-BORDER2" width="100%" height="1" background="212121" bottomof="EXPIRATION-DATE-TEXTFIELD"/>
                            		<textfield name="dose-textfield" alias="DOSE-TEXTFIELD" width="100%" style="data-box2" bottomof="BOTTOM-BORDER2" placeholder="Dose (IU)"/>
                        		</panel>
-                       		<text name="select-medication-text" alias="SELECT-MEDICATION-TEXT" width="94%" bottomof="MIDDLE-BOX" style="data-box" alignment="center" margin-top="10" text="Barcode Scanner"/><!--180-->
-                      		<textfield name="prophy-notes" alias="PROPHY-NOTES" width="94%" height="70" bottomof="SELECT-MEDICATION-TEXT" margin-top="10" style="data-box" onreturnkeypressed="" placeholder="Notes" />
-                      </panel>
+                       		<text name="select-medication-text" alias="SELECT-MEDICATION-TEXT" width="50%" bottomof="MIDDLE-BOX" style="data-box" alignment="center" margin-top="10" text="Barcode Scanner"/><!--180-->
+                      		
+                          	<image name="barcodepic" alias="BARCODEPIC" width="45" height="35" xpos="" ypos="" margin-top="10" bottomof="MIDDLE-BOX" leftof="SELECT-MEDICATION-TEXT" background="#ffffff" source="images/barcode.png"/>
+                          	<textfield name="prophy-notes" alias="PROPHY-NOTES" width="94%" height="70" bottomof="SELECT-MEDICATION-TEXT" margin-top="10" style="data-box" onreturnkeypressed="" placeholder="Notes" />
+                          
+                        </panel>
                   	</panel>
                    	<panel name="page2" alias="PAGE2" width="100%" height="100%" align="center">
                    		<text name="submit" alias="SUBMIT" background="486b9b" width="94%" style="data-box" margin-top="10" alignment="center" onclickup="alertfunction" _message="Success! You clicked SUBMIT" text="SUBMIT"/>
