@@ -52,19 +52,19 @@
                    	<panel name="cancelbutton" alias="CANCELBUTTON" width="20%" height="32" valign="center" cornerradius="5" borderwidth="1" bordercolor="68b404" clip="yes" rightof="BLANK" onclickup="alertfunction" _message="You clicked cancel!">
                    		<panel name="button-bg2" alias="BUTTON-BG2" width="100%" height="32" valign="center" background="#72c604" cornerradius="5">
                         	<panel name="highlight" width="100%" height="50%" valign="top" background="#ffffff" alpha=".3"/>
-                   			<!--<panel name="bg" width="100%" height="100%" background="#2260dd" alpha=".5"/>-->
                    			<text name="cancel-green" width="100%" height="fit" ypos="5" color="#7ac714" font="Helvetica-Bold" size="14" alignment="center" text="Cancel" alpha=".5"/>
                    			<text name="Cancel" width="100%" height="fit" ypos="6" color="#ffffff" font="Helvetica-Bold" size="14" alignment="center" text="Cancel"/>
                       	</panel>
                		</panel>
-               		<text name="prophy-infusion-box-title" alias="PROPHY-INFUSION-BOX-TITLE" height="18" width="150" size="18" font="Helvetica-Bold" color="cccccc" valign="center" align="center" text="Prophy Infusion"/>
-               		<!--<panel name="blank2" alias="BLANK2" width="10" height="" align="right"/>
-               		<panel name="donebutton" alias="DONEBUTTON" width="20%" height="32" valign="center" cornerradius="5" borderwidth="1" bordercolor="1b4cae" clip="yes" leftof="BLANK2" onclickup="alertfunction" _message="You clicked done!">
-                   		<panel name="highlight2" alias="" width="100%" height="50%" valign="top" background="#ffffff" alpha=".3"/>
-                   		<panel name="bg2" width="100%" height="100%" background="#2260dd" alpha=".5"/>
-                   		<text name="done-blue" width="100%" height="fit" ypos="5" color="#486b9b" font="Helvetica-Bold" size="14" alignment="center" text="Done" alpha=".5"/>
-                   		<text name="Done" width="100%" height="fit" ypos="6" color="#ffffff" font="Helvetica-Bold" size="14" alignment="center" text="Done"/>
-               		</panel>-->
+               		<text name="prophy-infusion-box-title" alias="PROPHY-INFUSION-BOX-TITLE" height="22" width="150" size="17" font="Helvetica-Bold" color="cccccc" valign="center" align="center" alignment="center" text="Log Infusion"/>
+                  	<panel name="blank2" alias="BLANK2" width="10" height="" align="right"/>
+               		<panel name="donebutton" alias="DONEBUTTON" width="20%" height="32" valign="center" cornerradius="5" borderwidth="1" bordercolor="68b404" clip="yes" leftof="BLANK2" onclickup="alertfunction" _message="You clicked done!">
+                   		<panel name="button-bg2" alias="BUTTON-BG2" width="100%" height="32" valign="center" background="#72c604" cornerradius="5">
+                        	<panel name="highlight" width="100%" height="50%" valign="top" background="#ffffff" alpha=".3"/>
+                   			<text name="cancel-green" width="100%" height="fit" ypos="5" color="#7ac714" font="Helvetica-Bold" size="14" alignment="center" text="Done" alpha=".5"/>
+                   			<text name="Cancel" width="100%" height="fit" ypos="6" color="#ffffff" font="Helvetica-Bold" size="14" alignment="center" text="Done"/>
+                      	</panel>
+               		</panel>
                	</panel>
                	<pager name="personal-scroll" orientation="vertical" paginate="no" width="100%" height="[eval: [object:CONTENTBOX.height] - [eval:[object:PROPHY-INFUSION-BOX.height] + [object:BREAK.height] + [object:HEADER.height] + [object:NAV.height]]]" ypos="82">
                    	<panel name="page1" alias="PAGE1" width="100%" height="100%" valign="top">
@@ -86,7 +86,6 @@
                         </panel>
                   	</panel>
                    	<panel name="page2" alias="PAGE2" width="100%" height="100%" align="center">
-                   		<!--<text name="submit" alias="SUBMIT" background="486b9b" width="94%" style="data-box" margin-top="10" alignment="center" onclickup="alertfunction" _message="Success! You clicked SUBMIT" text="SUBMIT"/>-->
                       	<panel name="button-bg2" alias="BUTTON-BG2" width="94%" height="35" margin-top="10" align="center" background="#72c604" cornerradius="5">
                           	<panel name="submitbtn" alias="SUBMITBTN" width="100%" height="35" valign="center" cornerradius="5" borderwidth="1" bordercolor="#68b404" clip="yes" margin="10" onclickup="alertfunction" _message="You clicked done!">
                             	<panel name="highlight" width="100%" height="50%" valign="top" background="#ffffff" alpha=".3"/>
