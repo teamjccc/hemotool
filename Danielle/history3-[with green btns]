@@ -1,0 +1,154 @@
+<wire>
+   <styles>
+     <style name="100" width="100%" height="100%"/>
+     <style name="work-space" width="100%" height="[eval: [object:CONTENTBOX.height] - [eval:[object:HEADER.height] + [object:NAV.height]]]" align="center"/>
+     <style name="log-70" width="70%" height="[eval: [object:CONTENTBOX.height] - [eval:[object:HEADER.height] + [object:NAV.height]] -40]" ypos="10" align="center" />
+     <style name="carrots" width="8%" height="30" font="Helvetica-Bold" size="18" color="#212121" rightinset="10" valign="center" align="right" alignment="left" text=">" />
+     <style name="textboxes" width="75%" height="30" font="Helvetica-Bold" size="14" color="#212121" leftinset="10" valign="center" align="left" alignment="left" text="Text Goes Here" />
+     <style name="testr" background="#ff0000" alpha=".4"/><!-- transparent red -->
+     <style name="testg" background="#00ff00" alpha=".4"/><!-- transparent green -->
+     <style name="testb" background="#0000ff" alpha=".4"/><!-- transparent blue -->
+   </styles>
+   <main>
+        <panel name="container" alias="CONTAINER" style="100">
+    	 	<panel name="contentbox" alias="CONTENTBOX" style="100" xpos="0" ypos="0" background="#cccccc">
+                <panel name="header" alias="HEADER" width="100%" height="40" background="#212121" align="center" valign="top">
+                  	<panel name="header2" alias="HEADER2" width="100%" height="20" background="70757a" align="center" valign="top" alpha=".3"/>
+         			<panel name="header3" alias="HEADER3" width="100%" height="40" background="4d5258" align="center" valign="top" alpha=".5"/>
+              		<text name="patient" alias="PATIENT" height="100%" width="50%" color="#cccccc" font="Helvetica-Bold" size="18" align="center" alignment="center" text="Dakota"></text>
+                  	<image name="menu" height="70%" width="15%" valign="center" align="right" source="images/hamburger.png"/>
+                </panel>
+
+              
+             <!--<panel name="submenu" alias="SUBMENU" width="100%" height="40" ypos="[object:HEADER.height]" background="#212121">
+             	<panel name="blank" alias="BLANK" width="" height=""/>
+             	<panel name="emailbtn" alias="EMAILBTN" width="22%" height="32" valign="center" cornerradius="5" borderwidth="1" bordercolor="#1b4cae" clip="yes" rightof="BLANK" margin="10" onclickup="alertfunction" _message="You clicked cancel!">
+                <panel name="highlight" width="100%" height="50%" valign="top" background="#ffffff" alpha=".3"/>
+                <panel name="bg" width="100%" height="100%" background="#2260dd" alpha=".5"/>
+                <text name="email-blue" width="100%" height="fit" ypos="5" color="#486b9b" font="Helvetica-Bold" size="14" alignment="center" text="Email" alpha=".5"/>
+                <text name="email" width="100%" height="fit" ypos="6" color="#ffffff" font="Helvetica-Bold" size="14" alignment="center" text="Email"/>
+             </panel>
+             
+             <text name="history" alias="HISTORY" height="100%" width="100%" size="17" color="#cccccc" font="Helvetica-Bold" alignment="center" text="History"/>
+             
+             <panel name="blank2" alias="BLANK2" width="" height="" align="right"/>
+             	<panel name="date-rangebtn" alias="DATE-RANGEBTN" width="23%" height="32" valign="center" cornerradius="5" borderwidth="1" bordercolor="#1b4cae" clip="yes" leftof="BLANK2" margin="10" onclickup="alertfunction" _amigo="You clicked done!">
+                <panel name="highlight" width="100%" height="50%" valign="top" background="#ffffff" alpha=".3"/>
+				<panel name="bg" width="100%" height="100%" background="#2260dd" alpha=".5"/>
+                <text name="date-blue" width="100%" height="fit" ypos="5" color="#486b9b" font="Helvetica-Bold" size="12" alignment="center" text="Date Range" alpha=".5"/>
+                <text name="date" width="100%" height="fit" ypos="6" color="#ffffff" font="Helvetica-Bold" size="12" alignment="center" text="Date Range"/>
+             </panel> 
+          </panel> -->
+              
+              
+                <panel name="nav" alias="NAV" width="100%" height="50" background="#212121" align="center" valign="bottom">
+                    <panel name="tab1" width="25%" height="100%" onclickup="navLoad" _wire="profile.wire" _wirename="profile">
+                      <image name="icon" height="32" align="center" ypos="10%" source="images/profile.png"/>
+                      <text name="tab1-txt" alias="TAB1-TXT" height="10" width="100%" color="#cccccc" font="Helvetica-Bold" size="8" bottomof="icon" align="center" alignment="center" text="Profile"></text>
+                    </panel>
+                  	<panel name="tab2" width="25%" height="100%" rightof="tab1">
+                      <image name="icon" height="32" align="center" ypos="10%" source="images/logging_active.png"/>
+                      <text name="tab2-txt" alias="TAB2-TXT" height="10" width="100%" color="#cccccc" font="Helvetica-Bold" size="8" bottomof="icon" align="center" alignment="center" text="Logging"></text>
+                    </panel>
+                    <panel name="tab3" width="25%" height="100%" rightof="tab2" onclickup="navLoad" _wire="ordering.wire" _wirename="ordering">
+                      <image name="icon" height="32" align="center" ypos="10%" source="images/ordering.png"/>
+                      <text name="tab3-txt" alias="TAB3-TXT" height="10" width="100%" color="#cccccc" font="Helvetica-Bold" size="8" bottomof="icon" align="center" alignment="center" text="Ordering"></text>
+                    </panel>
+                    <panel name="tab4" width="25%" height="100%" rightof="tab3" onclickup="navLoad" _wire="travel.wire" _wirename="travel">
+                      <image name="icon" height="32" align="center" ypos="10%" source="images/travel.png"/>
+                      <text name="tab4-txt" alias="TAB4-TXT" height="10" width="100%" color="#cccccc" font="Helvetica-Bold" size="8" bottomof="icon" align="center" alignment="center" text="Travel"></text>
+                    </panel>
+                 </panel>
+                 
+              	<panel name="work-box" alias="WORK-BOX" style="work-space">
+                   <!-- PLACE YOUR CODE HERE -->
+                  <!--<image name="background" source="images/bkgrd-home2.png" height="[eval: [object:CONTENTBOX.height] - [eval:[object:HISTORY-BOX.height] + [object:HEADER.height] + [object:NAV.height]]]" ypos="[eval: [object:HEADER.height] + [object:BREAK.height] + [object:HISTORY-BOX.height]]"></image> -->
+                  
+                  <panel name="break" alias="BREAK" background="000000" width="100%" height="2" ypos="[object:HEADER.height]"></panel>
+           		  <panel name="history-box" alias="HISTORY-BOX" width="100%" height="40" bottomof="BREAK" background="212324">
+                     
+                 	<panel name="submenu" alias="SUBMENU" width="100%" height="40" background="#212121">
+             			<panel name="blank" alias="BLANK" width="" height=""/>
+             			<panel name="emailbtn" alias="EMAILBTN" width="22%" height="32" valign="center" cornerradius="5" background="#72c604" borderwidth="1" bordercolor="#68b404" clip="yes" rightof="BLANK" margin="10" onclickup="alertfunction" _message="You clicked cancel!">
+                		<panel name="highlight" width="100%" height="50%" valign="top" background="#ffffff" alpha=".3"/>
+                		<text name="email-green" width="100%" height="fit" ypos="5" color="#7ac714" font="Helvetica-Bold" size="14" alignment="center" text="Email" alpha=".5"/>
+                		<text name="email" width="100%" height="fit" ypos="6" color="#ffffff" font="Helvetica-Bold" size="14" alignment="center" text="Email"/>
+                    </panel>
+             	 
+             
+             		<text name="history" alias="HISTORY" height="18" width="135" size="17" valign="center" align="center" color="#cccccc" font="Helvetica-Bold" alignment="center" text="History"/>
+             
+             		<panel name="blank2" alias="BLANK2" width="" height="" align="right"/>
+             		<panel name="date-rangebtn" alias="DATE-RANGEBTN" width="23%" height="32" valign="center" cornerradius="5" background="#72c604" borderwidth="1" bordercolor="#68b404" clip="yes" leftof="BLANK2" margin="10" onclickup="alertfunction" _message="You clicked done!">
+                		<panel name="highlight" width="100%" height="50%" valign="top" background="#ffffff" alpha=".3"/>
+                		<text name="date-blue" width="100%" height="fit" ypos="5" color="#7ac714" font="Helvetica-Bold" size="12" alignment="center" text="Date Range" alpha=".5"/>
+                		<text name="date" width="100%" height="fit" ypos="6" color="#ffffff" font="Helvetica-Bold" size="12" alignment="center" text="Date Range"/>
+             		</panel> 
+          			</panel> 
+                  </panel>
+                       
+                  <panel name="historycontainer" alias="HISTORYCONTAINER" width="100%" align="center"> 
+                     
+                     <panel name="roundbox" alias="ROUNDBOX" height="310" width="94%" cornerradius="5" bordercolor="#212121" borderwidth="2" align="center" ypos="100">
+                   
+                    	 <panel name="section1" alias="SECTION1" height="50" width="100%">
+                     		<text name="text1" alias="TEXT1" style="textboxes"></text>
+                            <text name="carrot1" alias="CARROT1" style="carrots"></text>
+                    	 </panel>
+                     
+                    	 <panel name="line1" alias="LINE1" height="2" width="100%" background="#212121" align="center" bottomof="SECTION1"></panel>
+                   
+                    	 <panel name="section2" alias="SECTION2" height="50" width="100%" bottomof="LINE1">
+                     		<text name="text2" alias="TEXT2" style="textboxes"></text>
+                            <text name="carrot2" alias="CARROT2" style="carrots"></text>
+                    	 </panel>
+                       
+                       	 <panel name="line2" alias="LINE2" height="2" width="100%" background="#212121" align="center" bottomof="SECTION2"></panel>
+                       
+                         <panel name="section3" alias="SECTION3" height="50" width="100%" bottomof="LINE2">
+                     		<text name="text3" alias="TEXT3" style="textboxes"></text>
+                           	<text name="carrot3" alias="CARROT3" style="carrots"></text>
+                    	 </panel>
+                     
+                    	 <panel name="line3" alias="LINE3" height="2" width="100%" background="#212121" align="center" bottomof="SECTION3"></panel>
+                   
+                    	 <panel name="section4" alias="SECTION4" height="50" width="100%" bottomof="LINE3">
+                     		<text name="text4" alias="TEXT4" style="textboxes"></text>
+                           	<text name="carrot4" alias="CARROT4" style="carrots"></text>
+                    	 </panel>
+                     
+                       	  <panel name="line4" alias="LINE4" height="2" width="100%" background="#212121" align="center" bottomof="SECTION4"></panel>
+                       
+                         <panel name="section5" alias="SECTION5" height="50" width="100%" bottomof="LINE4">
+                     		<text name="text5" alias="TEXT5" style="textboxes"></text>
+                           	<text name="carrot5" alias="CARROT5" style="carrots"></text>
+                    	 </panel>
+                       
+                       	<panel name="line5" alias="LINE5" height="2" width="100%" background="#212121" align="center" bottomof="SECTION5"></panel>
+                   
+                    	 <panel name="section6" alias="SECTION6" height="50" width="100%" bottomof="LINE5">
+                     		<text name="text6" alias="TEXT6" style="textboxes"></text>
+                           	<text name="carrot6" alias="CARROT6" style="carrots"></text>
+                    	 </panel>
+                       
+                   </panel>
+                 </panel>
+              </panel>  
+                
+          	</panel>
+   		</panel>
+     	<panel name="content" alias="CONTENT" style="100" alpha="0">
+       		<include name="include" style="100"/>
+        </panel>
+ 	</main>     
+ 	<actions> 
+        <action name="navLoad">
+          <load file="_wire" wirename="_wirename" target="CONTENT/include" />
+          <alpha value="1" time=".5" target="CONTENT" />
+        </action>
+      
+        <action name="alertfunction">
+          <alert message="_message"></alert>
+        </action>
+    </actions> 
+</wire>
