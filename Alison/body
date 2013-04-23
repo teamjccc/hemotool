@@ -1,5 +1,5 @@
 <wire>
-  <styles>
+	<styles>
     	<style name="100" width="100%" height="100%"/>
      	<style name="work-space" width="100%" height="[eval: [object:CONTENTBOX.height] - [eval:[object:HEADER.height] + [object:NAV.height]]]" ypos="20" />
    	</styles>
@@ -49,9 +49,17 @@
 					<panel name="leftarm" width="30" height="30" xpos="51%" ypos="60%" onclickup="logPoint" />  
           		</image>
            		<text name="instruction" alias="INSTRUCTION" ignoretouches="yes" height="25%" width="100%" color="#212121" font="Helvetica-Bold" size="16" alignment="center" ontopof="background" text="Select bleed area"></text>
-        	</panel> 
-        	<text name="rotate" alias="ROTATE" margin-right="20" onclickup="flipleft" width="27%" height="6%" font="Helvetica-Bold" alignment="center" ontopof="background" size="14" color="#ffffff" borderwidth="1" bordercolor="#ffffff" cornerradius="5" background="#8cdd22" align="right" ypos="50%"  text="Rotate here"></text>
-		</panel>
+        	</panel>
+            
+          	<panel name="rotatebutton" alias="ROTATEBUTTON" width="27%" height="32" ypos="50%" ontopof="background" align="right" margin-right="20" onclickup="flipleft" font="Helvetica-Bold" size="14" cornerradius="5" borderwidth="1" bordercolor="68b404" clip="yes">
+                <panel name="button-bg2" alias="BUTTON-BG2" width="100%" height="32" valign="center" background="#72c604" cornerradius="5">
+                    <panel name="highlight" width="100%" height="50%" valign="top" background="#ffffff" alpha=".3"/>
+                    <text name="cancel-green" width="100%" height="fit" ypos="5" color="#7ac714" font="Helvetica-Bold" size="14" alignment="center" text="Rotate" alpha=".5"/>
+                    <text name="rotate" width="100%" height="fit" ypos="6" color="#ffffff" font="Helvetica-Bold" size="14" alignment="center" text="Rotate"/>
+                </panel>
+            </panel>  
+              
+        </panel>
 		<panel name="content" alias="CONTENT" style="100" alpha="0">
        		<include name="include" style="100"/>
         </panel>
