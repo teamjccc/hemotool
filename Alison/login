@@ -1,0 +1,51 @@
+<wire>
+   <datasources>
+
+      <!-- datasources go here -->
+
+   </datasources>
+
+   <styles>
+
+       <!-- styles go here -->
+
+   </styles>
+
+   <classes>
+
+        <!-- classes go here -->
+
+    </classes>
+
+    <main>
+  	<panel name="containeriPad" alias="CONTAINERiPad" width="320" height="480" align="center" valign="center" clip="yes">
+          	<panel name="background" alias="BACKGROUND" width="100%" height="100%" alpha=".5">
+       			<image name="background" source="images/log-in3.jpg" valign="center" align="center"></image>
+        	</panel>
+        	<panel name="user name" alias="USER NAME">
+          		<textfield name="username" alias="USERNAME" width="60%" height="20%" font="Helvetica-Bold"  alignment="center" align="center" valign="top" size="16" color="#666666" borderwidth="1" bordercolor="#23c522" cornerradius="5" background="#ffffff" multiline="no"  placeholder="Username" text="Username" ontopof="BACKGROUND"></textfield>
+	   		</panel>
+   		<panel name="password1" alias="PASSWORD!">
+        	<textfield name="password" alias="PASSWORD" width="60%" height="20%" font="Helvetica-Bold" alignment="center" size="16" color="#666666" borderwidth="1" bordercolor="#23c522" cornerradius="5" background="#ffffff" multiline="no" xpos="40" ypos="200" placeholder="password" text="Password"></textfield>
+        </panel>
+		<panel name="forgot" alisas="FORGOT">
+       		<textfield name="forgotpassword" alias="FORGOTPASSWORD" width="60%" height="20%" font="Helvetica-Bold" xpos="40" ypos="300" size="16" color="#ffffff" border="1" cornerradius="5" fieldcolor="#666666" multiline="no" align="center"  placeholder="forgot password" text="Forgot password?"></textfield>
+		</panel>      
+       	<panel name="button-bg2" alias="BUTTON-BG2" width="60%" height="32" xpos="60" ypos="400" background="#72c604" cornerradius="5">
+       		<panel name="submitbtn" alias="SUBMITBTN" width="100%" height="32" valign="center" cornerradius="5" borderwidth="1" bordercolor="#68b404" clip="yes" margin="10" onclickup="alertfunction" _amigo="You clicked done!">
+           	<panel name="highlight" width="100%" height="50%" valign="top" background="#ffffff" alpha=".3"/>
+           	<text name="submit-blue" width="100%" height="fit" ypos="5" color="#7ac714" font="Helvetica-Bold" size="14" alignment="center" text="Sign in" alpha=".5"/>
+           	<text name="submit" width="100%" height="fit" ypos="6" color="#ffffff" font="Helvetica-Bold" size="14" alignment="center" text="Sign in"/> 
+         </panel>
+     </panel> 
+</panel>
+	<panel name="create" alias="CREATE">
+    	<textfield name="createaccount" alias="CREATEACCOUNT" width="27%" height="5%" font="Helvetica-Bold" alignment="center" size="16" color="#ffffff" border="1" cornerradius="5" fieldcolor="#666666" multiline="no" xpos="40" ypos="520"  placeholder="create account" text="Create an account"/>
+    </panel>
+</main>
+<actions>
+	<action name="alertfunction">
+       	<alert message="_message"></alert>
+    </action>
+</actions>
+</wire>
