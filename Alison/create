@@ -1,8 +1,8 @@
 <wire>
    <styles>
-  	<style name="100" width="100%" height="100%"/>
+		<style name="100" width="100%" height="100%"/>
 		<style name="work-space" width="100%" height="[eval: [object:CONTENTBOX.height] - [eval:[object:HEADER.height] + [object:NAV.height]]]" />
-     	<style name="textField1" width="100" height="100%" font="Helvetica" alignment="left" size="14" color="#ffffff" borderwidth="1" bordercolor="#212121" cornerradius="5" background="#666666" multiline="no"/>
+     	<style name="textField1" width="80%" height="35" font="Helvetica" alignment="left" size="14" color="#ffffff" borderwidth="1" bordercolor="#212121" cornerradius="5" background="#666666" multiline="no" valignment="center"/>
      	<style name="textField2" width="100" height="100%" font="Helvetica" alignment="left" size="14" color="#ffffff" borderwidth="1" bordercolor="#666666" cornerradius="5" background="#72c604" multiline="no"/>
 	 	<style name="textField3" width="100" height="100%" font="Helvetica" alignment="left" size="12" bordercolor="#212121" multiline="yes"/>
      	<style name="testr" background="#ff0000" alpha=".4"/><!-- transparent red -->
@@ -10,7 +10,7 @@
       	<style name="testb" background="#0000ff" alpha=".4"/><!-- transparent blue -->
    </styles>
 <main>
-<panel name="containeriPad" alias="CONTAINERIPAD" width="320" height="480" align="center" valign="center" clip="yes">
+
 	<panel name="container" alias="CONTAINER" style="100">
 		<panel name="contentbox" alias="CONTENTBOX" style="100" background="#cccccc">
 			<panel name="header" alias="HEADER" width="100%" height="40" background="#212121" align="center" valign="top">
@@ -37,20 +37,17 @@
 			</panel>
 			<panel name="work-box" alias="WORK-BOX" width="100%" height="[eval: [object:CONTENTBOX.height] - [eval:[object:HEADER.height] + [object:NAV.height]]]" ypos="40">
 				<image name="background" source="images/lime.background.new.png" style="work-space"></image>
-					<textfield name="username" alias="USERNAME" width="80%" height="35" style="textField1" xpos="30" ypos="50" valignment="center" placeholder="Username"></textfield>
-				<panel name="password1" alias="PASSWORD1" height="35" width="100%">
-					<textfield name="password" alias="PASSWORD" width="80%" height="100%" style="textField1" xpos="30" ypos="105" valignment="center" placeholder="Password"></textfield>
+				<textfield name="username" alias="USERNAME" style="textField1" xpos="30" ypos="50" placeholder="Username"></textfield>
+				<textfield name="password" alias="PASSWORD" style="textField1" xpos="30" ypos="105" placeholder="Password"></textfield>
+				<textfield name="confirmPassword" alias="CONFIRMPASSWORD" style="textField1" xpos="30" ypos="155" placeholder="Confirm password"></textfield>
+              	<panel name="termService" alias="TERMSERVICE" height="30%" width="100" xpos="30" ypos="210">
+					<text name="Privacy" alias="PRIVACY" width="100%" height="26" font="Helvetica-Bold" size="16" alignment="left" color="#212121" text="Terms of use:"/>
+					<text name="textUse" alias="TEXTUSE" width="70%" height="100%" style="textField3" ypos="7" text="I agree to HemoTool's terms of service and privacy. "/>
 				</panel>
-				<panel name="confirm1" alias="CONFIRM1" height="35" width="100%">
-					<textfield name="confirmPassword" alias="CONFIRMPASSWORD" width="80%" height="100%" style="textField1" xpos="30" ypos="155" valignment="center" placeholder="Confirm password"></textfield>
-				</panel>
+              	<image name="check" source="images/stainless_checkbox.png" xpos="110" ypos="236" onclickup="alertfunction" _message="Checkbox!"></image>
 			</panel>
-			<panel name="termService" alias=" TERMSERVICE" height="30%" width="100" bottomof="PASSWORD1">
-				<text name="Privacy" alias="PRIVACY" width="100%" height="26" xpos="30" ypos="200" font="Helvetica-Bold" size="16" alignment="left" color="#212121" text="Terms of use:"/>
-				<text name="textUse" alias="TEXTUSE" width="100%" height="45%" xpos="30" ypos="220"  style="textField3" text="I agree to HemoTool's terms of service and privacy. "/>
-				<image name="check" source="images/stainless_checkbox.png" xpos="140" ypos="220"></image>
-			</panel>
-			<panel name="button-bg2" alias="BUTTON-BG2" width="25%" height="32" xpos="200" ypos="270" background="#72c604" cornerradius="5">
+			
+			<panel name="button-bg2" alias="BUTTON-BG2" width="25%" height="32" xpos="200" ypos="320" background="#72c604" cornerradius="5">
 				<panel name="submitbtn" alias="SUBMITBTN" width="100%" height="32" valign="center" cornerradius="5" borderwidth="1" bordercolor="#68b404" clip="yes" margin="10" onclickup="alertfunction" _message="Next!">
 					<panel name="highlight" width="100%" height="50%" valign="top" background="#ffffff" alpha=".3"/>
 					<text name="submit-blue" width="100%" height="fit" ypos="5" color="#7ac714" font="Helvetica-Bold" size="14" alignment="center" text="Next" alpha=".5"/>
@@ -62,7 +59,7 @@
 			</panel>
 		</panel>
 	</panel>
-</panel>
+
 </main>     
   	<actions> 
 		<action name="navLoad">
