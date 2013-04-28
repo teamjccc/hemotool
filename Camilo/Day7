@@ -1,0 +1,92 @@
+<wire>
+
+    <datasources>
+    
+        <!-- datasources go here -->
+    
+    </datasources>
+    
+    <styles>
+    
+        <!-- styles go here -->
+    
+    </styles>
+    
+    <classes>
+    
+        <class name="navObj">
+            <panel name="[param:name]" alias="[param:alias]" width="33%" height="100%" align="[param:align]" alpha="[param:alpha]" valign="bottom" onclickup="reveal-selection">
+                <text name="label" height="100%" width="100%" font="GillSans" size="14" alignment="center" color="#ffffff"  ignoretouches="yes" text="[param:text]"  />
+            </panel>
+        </class>
+        
+        <class name="camera">
+            <panel name="camera-container" alias="CAMERA-CONTAINER" width="100%" height="90%" >
+                <camera name="camera" alias="CAMERA" height="100%" width="100%" type="barcodescan" onscan="scanned" onscantarget="../..">
+                    <panel name="box" width="300" height="300" bordercolor="#ff0000" borderwidth="3" align="center" valign="center" ></panel>
+                </camera>
+            </panel>
+        </class>
+    
+    </classes>
+    
+    <main>
+    
+        <panel name="CONTAINER" alias="CONTAINER" width="100%" height="100%">
+            <panel name="navigation" alias="NAV" width="100%" height="10%" valign="bottom" background="#333333">
+                <object class="navObj" name="map" alias="MAP-NAV" align="left" text="Map" alpha="1" />
+                <object class="navObj" name="camera" alias="CAMERA-NAV" align="center" text="Camera" alpha=".5" />
+                <object class="navObj" name="saved" alias="SAVED-NAV" align="right" text="Saved" alpha=".5" />
+            </panel>
+        </panel>
+    
+    </main>
+    
+    <actions>
+    
+        <action name="oninit" oninit="yes">
+            <assign property="var:currentNav" value="map"/>
+            <assign property="var:camerastatus" value="off" />
+        </action>
+        
+        <action name="reveal-selection">
+            <sync>
+                <if lhs="[var:camerastatus]" operator="e" rhs="on">
+                    <play action="delete-camera" />
+                </if>
+                <alpha value=".5" target="NAV/[var:currentNav]"/>
+                <assign property="var:currentNav" value="[object:name]"/>
+                <alpha value="1" target="NAV/[var:currentNav]"/>
+            </sync>
+            <if lhs="[object:name]" operator="=" rhs="map">
+                <alert message="map selected" />
+            </if>
+            <if lhs="[object:name]" operator="=" rhs="camera">
+                <create class="camera" target="CONTAINER" />
+                <assign property="var:camerastatus" value="on" />
+                <assign property="object:CAMERA-NAV/label.text" value="Cancel" />
+                <set onclickup="delete-camera" target="CAMERA-NAV" />
+            </if>
+            <if lhs="[object:name]" operator="=" rhs="saved">
+                <alert message="saved selected" />
+            </if>
+        </action>
+        
+        <action name="delete-camera" >
+            <delete target="CAMERA-CONTAINER" />
+            <assign property="object:CAMERA-NAV/label.text" value="Camera" />
+            <set onclickup="reveal-selection" target="CAMERA-NAV" />
+            <assign property="var:camerastatus" value="off" />
+        </action>
+        
+        <action name="scanned" >
+            <sync>
+                <alert message="[object:CAMERA.scanvalue]" />
+                <assign property="var:scanCode" value="[object:CAMERA.scanvalue]" />
+                <play action="delete-camera"/>
+            </sync>
+        </action>
+    
+    </actions>
+    
+</wire>
