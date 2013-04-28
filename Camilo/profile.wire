@@ -1,0 +1,112 @@
+<wire>
+   <styles>
+     <style name="100" width="100%" height="100%"/>
+     <style name="work-space" width="100%" height="[eval: [object:CONTENTBOX.height] - [eval:[object:HEADER.height] + [object:NAV.height]]]" ypos="20" />
+     <style name="sm-space" />
+     <style name="lg-space" />
+   </styles>
+   <main>
+        <panel name="container" alias="CONTAINER" style="100">
+    	 	<panel name="contentbox" alias="CONTENTBOX" style="100" xpos="0" ypos="0" background="#cccccc">	
+                <panel name="header" alias="HEADER" width="100%" height="40" background="#212121" align="center" valign="top">
+              		<text name="patient" alias="PATIENT" height="100%" width="50%" color="#cccccc" font="Helvetica-Bold" size="18" align="center" alignment="center" text="Dakota"></text>
+                  	<image name="menu" height="70%" width="15%" valign="center" align="right" source="images/hamburger.png"/> 
+                </panel>	
+                <panel name="nav" alias="NAV" width="100%" height="50" background="#212121" align="center" valign="bottom">
+                    <panel name="tab1" width="25%" height="100%" onclickup="navLoad" _wire="profile.wire" _wirename="profile">
+                      <image name="icon" height="32" align="center" ypos="10%" source="images/profile_active.png"/>
+                      <text name="tab1-txt" alias="TAB1-TXT" height="10" width="100%" color="#cccccc" font="Helvetica-Bold" size="8" bottomof="icon" align="center" alignment="center" text="Profile"></text>
+                    </panel>
+                  	<panel name="tab2" width="25%" height="100%" rightof="tab1" onclickup="navLoad" _wire="logging.wire" _wirename="logging">
+                      <image name="icon" height="32" align="center" ypos="10%" source="images/logging.png"/>
+                      <text name="tab2-txt" alias="TAB2-TXT" height="10" width="100%" color="#cccccc" font="Helvetica-Bold" size="8" bottomof="icon" align="center" alignment="center" text="Logging"></text>
+                    </panel>
+                    <panel name="tab3" width="25%" height="100%" rightof="tab2" onclickup="navLoad" _wire="ordering.wire" _wirename="ordering">
+                      <image name="icon" height="32" align="center" ypos="10%" source="images/ordering.png"/>
+                      <text name="tab3-txt" alias="TAB3-TXT" height="10" width="100%" color="#cccccc" font="Helvetica-Bold" size="8" bottomof="icon" align="center" alignment="center" text="Ordering"></text>
+                    </panel>
+                    <panel name="tab4" width="25%" height="100%" rightof="tab3" onclickup="navLoad" _wire="travel.wire" _wirename="travel">
+                      <image name="icon" height="32" align="center" ypos="10%" source="images/travel.png"/>
+                      <text name="tab4-txt" alias="TAB4-TXT" height="10" width="100%" color="#cccccc" font="Helvetica-Bold" size="8" bottomof="icon" align="center" alignment="center" text="Travel"></text>
+                    </panel>
+                 </panel>
+                   <panel name="work-box" alias="WORK-BOX" width="100%" height="[eval: [object:CONTENTBOX.height] - [eval:[object:HEADER.height] + [object:NAV.height]]]" ypos="20">
+                    <image name="background" source="images/lime.background.new.png" style="work-space"></image>
+                    <pager name="personal-scroll" orientation="vertical" paginate="no" width="100%" height="[eval: [object:CONTENTBOX.height] - [eval:[object:HEADER.height] + [object:NAV.height]]]" ypos="20">
+                      <panel name="personal" alias="PERSONAL" width="100%" height="100%" valign="top">
+                          <text name="heading-personal" alias="HEADING-PERSONAL" width="100%" height="26" xpos="10" ypos="20" font="Helvetica-Bold" size="16" alignment="left" cornerradius="5" color="#212121" text="Personal Information"/>
+                          <panel name="pro-pic" alias="PRO-PIC" width="33%" fitheight="yes" align="left">
+                            <panel name="image-box" alias="IMAGE-BOX" width="90" height="106" xpos="10" background="#212121" cornerradius="10" bottomof="HEADING-PERSONAL"/>
+                            <image name="pic" alias="PIC" width="75" height="80" xpos="18" ypos="55" background="#ffffff" source="images/profile.png"/>  
+                            <text name="edit" alias="EDIT" width="100" height="20" xpos="6" ypos="132" font="Helvetica" color="#ffffff" size="10" alignment="center" text="Edit Image"/> 
+                          </panel>
+                          <panel name="info-personal" alias="INFO-PERSONAL" fitheight="yes"  width="64%" ypos="48" rightof="PRO-PIC">
+                            <textfield name="first" alias="FIRST" width="100%" style="textfield" placeholder="First Name" align="left" ></textfield>
+                            <panel name="space" alias="SPACE" style="lg-space" rightmargin="-12" bottomof="FIRST"/>
+                            <textfield name="last" alias="LAST" width="100%" style="textfield" placeholder="Last Name" bottomof="SPACE"></textfield>
+                            <panel name="space2" alias="SPACE2" style="lg-space" rightmargin="-12" bottomof="LAST"/>
+                            <textfield name="email" alias="EMAIL" width="100%" style="textfield" placeholder="Email" bottomof="SPACE2"/>
+                            <panel name="space3" alias="SPACE3" style="lg-space" rightmargin="-12" bottomof="EMAIL"/>                            
+                          </panel>
+                          <panel name="info-personal2" alias="INFO-PERSONAL2" fitheight="yes"  width="94%" align="center" bottomof="INFO-PERSONAL" >
+                            <textfield name="dob" alias="DOB" width="73%" style="textfield" placeholder="DOB (mm/dd/yyyy)" bottomof="SPACE3"/>
+                            <panel name="space4" alias="SPACE4" style="sm-space" rightof="DOB"/>
+                            <textfield name="weight" alias="WEIGHT" width="25%" style="textfield" placeholder="Weight" rightof="SPACE4" bottomof="SPACE3"/>
+                            <panel name="space5" alias="SPACE5" style="lg-space" bottomof="WEIGHT"/>
+                            <textfield name="address1" alias="ADDRESS1" width="100%" style="textfield" placeholder="Address" bottomof="SPACE5"/>
+                            <panel name="space6" alias="SPACE6" style="lg-space" bottomof="ADDRESS1"/>
+                            <textfield name="address2" alias="ADDRESS2" width="100%" style="textfield" placeholder="Address" bottomof="SPACE6"/>
+                            <panel name="space7" alias="SPACE7" style="lg-space" bottomof="ADDRESS2"/>
+                            <textfield name="city" alias="CITY" width="60%" style="textfield" placeholder="City" bottomof="SPACE7"/>
+                            <panel name="space8" alias="SPACE8" style="sm-space" rightof="CITY"/>
+                            <textfield name="state" alias="STATE" width="14%" style="textfield" placeholder="State" rightof="SPACE8" bottomof="SPACE7"/>
+                            <panel name="space9" alias="SPACE9" style="sm-space" rightof="STATE"/>
+                            <textfield name="zip" alias="ZIP" width="22%" style="textfield" placeholder="Zip" rightof="SPACE9" bottomof="SPACE7"/>
+                            <panel name="space10" alias="SPACE10" style="lg-space" bottomof="ZIP"/>
+                            <image name="homephone" alias="HOMEPHONE" height="30" source="images/homephone.png" bottomof="SPACE10"/>
+                            <panel name="space11" alias="SPACE11" style="sm-space" rightof="HOMEPHONE" bottomof="SPACE10"/>
+                            <textfield name="homeph" alias="HOMEPH" width="37.5%" style="textfield" placeholder="###-###-####" bottomof="SPACE10" rightof="SPACE11"/>
+                            <panel name="space12" alias="SPACE12" width="2.5%" height="30" rightof="HOMEPHONE"/>
+                            <image name="cellphone" alias="CELLPHONE" height="30" source="images/cellphone.png" rightof="SPACE12" bottomof="SPACE10"/>
+                            <panel name="space13" alias="SPACE13" style="sm-space" rightof="CELLPHONE"/>                            
+                            <textfield name="mobileph" alias="MOBILEPH" width="37.5%" style="textfield" placeholder="###-###-####" rightof="SPACE13" bottomof="SPACE10"/>
+                          </panel>
+                      </panel>
+                      
+                      <panel name="medical" alias="MEDICAL" width="94%" height="100%" align="center" background="#00ff00">
+                          <text name="heading-medical" alias="HEADING-MEDICAL" width="100%" height="26" xpos="10" font="Helvetica-Bold" size="16" valign="center" alignment="left" color="#212121" text="Medical Information"/>
+                          <textfield name="med1" alias="MED1" width="100%" style="textfield" placeholder="Medication Name" bottomof="HEADING-MEDICAL"/>
+                          <panel name="space12" alias="SPACE12" style="lg-space" bottomof="MED1"/>
+                          <textfield name="med2" alias="MED2" width="100%" style="textfield" placeholder="Medication Name" bottomof="SPACE12"/>
+                          <panel name="space13" alias="SPACE13" style="lg-space" bottomof="MED2"/>
+                       	  <textfield name="med3" alias="MED3" width="100%" style="textfield" placeholder="Medication Name" bottomof="SPACE13"/>
+                          <panel name="space14" alias="SPACE14" style="lg-space" bottomof="MED3"/>
+                          <text name="diagnosis" alias="DIAGNOSIS" width="100%" height="26" xpos="10" font="Helvetica-Bold" size="16" valign="center" alignment="left" color="#212121" text="Diagnosis" bottomof="SPACE14"/>
+                      </panel>
+                        
+                      <panel name="physician" alias="PHYSICIAN" width="100%" height="100%">
+                          <text name="heading-physician" alias="HEADING-PHYSICIAN" width="100%" height="26" xpos="10" font="Helvetica-Bold" size="16" alignment="left" color="#212121" text="Physician Information"/>
+                      </panel>
+                        
+                      <panel name="ins" alias="INS" width="100%" height="100%">
+                          <text name="heading-ins" alias="HEADING-INS" width="100%" height="26" xpos="10" font="Helvetica-Bold" size="16" alignment="left" color="#212121" text="Insurance Information"/>   
+                      </panel>
+                       
+                      <panel name="emergency" alias="EMERGENCY" width="100%" height="100%">
+                          <text name="heading-emergency" alias="HEADING-EMERGENCY" width="100%" height="26" xpos="10" font="Helvetica-Bold" size="16" alignment="left" color="#212121" text="Emergency Contact"/> 
+                      </panel>
+                    </pager>
+              	 </panel>
+          	</panel>
+   		</panel>
+     	<panel name="content" alias="CONTENT" style="100" alpha="0">
+       		<include name="include" style="100"/>
+        </panel>
+ 	</main>     
+ 	<actions> 
+        <action name="navLoad">
+          <load file="_wire" wirename="_wirename" target="CONTENT/include" />
+          <alpha value="1" time=".5" target="CONTENT" />
+        </action>
+    </actions> 
+</wire>
