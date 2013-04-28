@@ -1,46 +1,121 @@
 <wire>
-   <styles>
-     <style name="100" width="100%" height="100%"/>
-     <style name="work-space" width="100%" height="[eval: [object:CONTENTBOX.height] - [eval:[object:HEADER.height] + [object:NAV.height]]]" ypos="20" />
-   </styles>
-   <main>
-      	<panel name="container" alias="CONTAINER" style="100">
-    	 	<panel name="contentbox" alias="CONTENTBOX" style="100" xpos="0" ypos="0" background="#cccccc">	
-                <panel name="header" alias="HEADER" width="100%" height="40" background="#212121" align="center" valign="top">
-              		<text name="patient" alias="PATIENT" height="100%" width="50%" color="#cccccc" font="Helvetica-Bold" size="18" align="center" alignment="center" text="Dakota"></text>
-                  	<image name="menu" height="70%" width="15%" valign="center" align="right" source="images/hamburger.png"/> 
-                </panel>	
-                <panel name="nav" alias="NAV" width="100%" height="50" background="#212121" align="center" valign="bottom">
-                    <panel name="tab1" width="25%" height="100%" onclickup="navLoad" _wire="profile.wire" _wirename="profile">
-                      <image name="icon" height="32" align="center" ypos="10%" source="images/profile.png"/>
-                      <text name="tab1-txt" alias="TAB1-TXT" height="10" width="100%" color="#cccccc" font="Helvetica-Bold" size="8" bottomof="icon" align="center" alignment="center" text="Profile"></text>
-                    </panel>
-                  	<panel name="tab2" width="25%" height="100%" rightof="tab1" onclickup="navLoad" _wire="logging.wire" _wirename="logging">
-                      <image name="icon" height="32" align="center" ypos="10%" source="images/logging.png"/>
-                      <text name="tab2-txt" alias="TAB2-TXT" height="10" width="100%" color="#cccccc" font="Helvetica-Bold" size="8" bottomof="icon" align="center" alignment="center" text="Logging"></text>
-                    </panel>
-                    <panel name="tab3" width="25%" height="100%" rightof="tab2" onclickup="navLoad" _wire="ordering.wire" _wirename="ordering">
-                      <image name="icon" height="32" align="center" ypos="10%" source="images/ordering.png"/>
-                      <text name="tab3-txt" alias="TAB3-TXT" height="10" width="100%" color="#cccccc" font="Helvetica-Bold" size="8" bottomof="icon" align="center" alignment="center" text="Ordering"></text>
-                    </panel>
-                    <panel name="tab4" width="25%" height="100%" rightof="tab3" onclickup="navLoad" _wire="travel.wire" _wirename="travel">
-                      <image name="icon" height="32" align="center" ypos="10%" source="images/travel_active.png"/>
-                      <text name="tab4-txt" alias="TAB4-TXT" height="10" width="100%" color="#cccccc" font="Helvetica-Bold" size="8" bottomof="icon" align="center" alignment="center" text="Travel"></text>
-                    </panel>
-                 </panel>
-                 <panel name="work-box" alias="WORK-BOX"  style="work-space">
-                   <!-- PLACE YOUR CODE HERE -->
-                 </panel>
-          	</panel>
-   		</panel>
-     	<panel name="content" alias="CONTENT" style="100" alpha="0">
-       		<include name="include" style="100"/>
-        </panel>
- 	</main>     
- 	<actions> 
-        <action name="navLoad">
-          <load file="_wire" wirename="_wirename" target="CONTENT/include" />
-          <alpha value="1" time=".5" target="CONTENT" />
-        </action>
-    </actions> 
+<styles>
+   <style name="100" width="100%" height="100%"/>
+	<style name="work-space" width="100%" height="[eval: [object:CONTENTBOX.height] - [eval:[object:HEADER.height] + [object:NAV.height]]]" ypos="20" />
+  	<style name="testr" background="#ff0000" alpha=".4"/><!-- transparent red -->
+    <style name="testg" background="#00ff00" alpha=".4"/><!-- transparent green -->
+    <style name="testb" background="#0000ff" alpha=".4"/><!-- transparent blue -->
+  	<style name="text-settingsMenu" width="60%" height="30" color="#e6e6e6" font="GillSans" size="16" rightof="img" align="left" valign="center" leftmargin="15%" alignment="center"/>
+</styles>
+<classes>
+  	<class name="settings-links">
+    	<panel name="[param:name]" width="100%" height="40" align="center"  bottomof="[param:bottomof]" onclickup="[param:onclickup]">
+      		<panel name="top-rule"     width="100%" height="1"  valign="top"    background="[param:background]"></panel>
+      		<panel name="bottom-rule"  width="100%" height="1"  valign="bottom" background="212121"></panel>
+      		<text name="text" style="text-settingsMenu" text="[param:text]"></text>
+    	</panel>
+  	</class>
+  	<class name="annotations">
+      <annotation name="pin-[param:location]" location="[param:location]" title="[param:title]" subtitle="[param:subtitle]" color="[param:color]" animateddrop="yes" />
+    </class>
+</classes>
+<main>
+<panel name="container" alias="CONTAINER" style="100">
+	<panel name="contentbox" alias="CONTENTBOX" style="100" xpos="0" ypos="0" background="#cccccc">	
+		<panel name="header" alias="HEADER" width="100%" height="40" background="#212121" align="center" valign="top">
+			<text name="patient" alias="PATIENT" height="100%" width="50%" color="#cccccc" font="Helvetica-Bold" size="18" align="center" alignment="center" text="Dakota"></text>
+		</panel>	
+		<panel name="nav" alias="NAV" width="100%" height="50" background="#212121" align="center" valign="bottom">
+			<panel name="tab1" width="25%" height="100%" onclickup="navLoad" _wire="profile.wire" _wirename="profile">
+				<image name="icon" height="32" align="center" ypos="10%" source="images/profile.png"/>
+			  	<text name="tab1-txt" alias="TAB1-TXT" height="10" width="100%" color="#cccccc" font="Helvetica-Bold" size="8" bottomof="icon" align="center" alignment="center" text="Profile"></text>
+			</panel>
+			<panel name="tab2" width="25%" height="100%" rightof="tab1" onclickup="navLoad" _wire="logging.wire" _wirename="logging">
+			  	<image name="icon" height="32" align="center" ypos="10%" source="images/logging.png"/>
+			  	<text name="tab2-txt" alias="TAB2-TXT" height="10" width="100%" color="#cccccc" font="Helvetica-Bold" size="8" bottomof="icon" align="center" alignment="center" text="Logging"></text>
+			</panel>
+			<panel name="tab3" width="25%" height="100%" rightof="tab2" onclickup="navLoad" _wire="ordering.wire" _wirename="ordering">
+			  	<image name="icon" height="32" align="center" ypos="10%" source="images/ordering.png"/>
+			  	<text name="tab3-txt" alias="TAB3-TXT" height="10" width="100%" color="#cccccc" font="Helvetica-Bold" size="8" bottomof="icon" align="center" alignment="center" text="Ordering"></text>
+			</panel>
+			<panel name="tab4" width="25%" height="100%" rightof="tab3">
+			  	<image name="icon" height="32" align="center" ypos="10%" source="images/travel_active.png"/>
+			  	<text name="tab4-txt" alias="TAB4-TXT" height="10" width="100%" color="#cccccc" font="Helvetica-Bold" size="8" bottomof="icon" align="center" alignment="center" text="Travel"></text>
+			</panel>
+		</panel>
+		<panel name="work-box" alias="WORK-BOX" style="work-space">
+			<image name="background" source="images/lime.background.new.png" style="work-space"></image>
+			<!--<panel name="map" alias="MAP" width="300" height="300" ypos="28" align="center" style="testr" ></panel>-->
+          
+          	<map name="map" alias="MAP" width="300" height="280" ypos="28" align="center" datasource="geo" type="map" currentlocation="yes" showuser="yes" >
+          		<object name="pin" class="annotations" location="[param:lat] [param:long]" title="[param:name]" subtitle="[param:address]" color="red" />
+        	</map>
+          
+          	<panel name="button-bg" alias="BUTTON-BG" width="94%" height="32" align="center" background="#72c604" cornerradius="5" ypos="320">
+				<panel name="gps-search-btn" alias="GPS-SEARCH-BTN" width="100%" height="32" valign="center" cornerradius="5" borderwidth="1" bordercolor="#68b404" clip="yes" margin="10" onclickup="alertfunction" _message="phone location!">
+					<panel name="highlight" width="100%" height="50%" valign="top" background="#ffffff" alpha=".3"/>
+					<text name="gps-green" width="100%" height="fit" ypos="5" color="#7ac714" font="Helvetica-Bold" size="14" alignment="center" text="Use Your Location" alpha=".5"/>
+					<text name="gps" width="100%" height="fit" ypos="6" color="#ffffff" font="Helvetica-Bold" size="14" alignment="center" text="Use Your Location"/>
+				</panel>
+			</panel> 
+			<panel name="zip-input" alias="ZIP-INPUT" height="50" width="94%" align="center" bottomof="BUTTON-BG">
+				<textfield name="zipcode" alias="ZIPCODE" height="32" width="40%" align="left" valignment="center" valign="center" alignment="left" leftinset="5" cornerradius="5" bordercolor="#212121" borderwidth="1" background="ffffff" color="#212121" clip="yes" placeholder="Enter Zip Code"></textfield> 
+				<panel name="button-bg" alias="BUTTON-BG" width="40%" height="32" align="right" valign="center" background="#72c604" cornerradius="5">
+					<panel name="search-btn" alias="GPS-SEARCH-BTN" width="100%" height="32" valign="center" cornerradius="5" borderwidth="1" bordercolor="#68b404" clip="yes" margin="10" onclickup="alertfunction" _message="You clicked search!">
+						<panel name="highlight" width="100%" height="50%" valign="top" background="#ffffff" alpha=".3"/>
+						<text name="search-green" width="100%" height="fit" ypos="5" color="#7ac714" font="Helvetica-Bold" size="14" alignment="center" text="Search" alpha=".5"/>
+						<text name="search" width="100%" height="fit" ypos="6" color="#ffffff" font="Helvetica-Bold" size="14" alignment="center" text="Search"/>
+					</panel>
+				</panel>
+			</panel>
+		</panel>
+      	<panel name="settings" alias="SETTINGS" width="50%" lwidth="33%" height="120" background="2c2c2c" rightmargin="42" align="right" ypos="-125" shadowopacity="30%" shadowradius="3">
+        	<object class="settings-links" name="reset" background=" " 		bottomof=" " 	 onclickup="hide-settings" text="Home"/>
+          	<object class="settings-links" name="app"   background="515151" bottomof="reset" onclickup="hide-settings" text="Quit Program"/>
+          	<object class="settings-links" name="email" background="515151" bottomof="app" 	 onclickup="hide-settings" text="Option 3?"/>
+      	</panel>
+    	<image name="btn-settings" alias="BTN-SET" source="images/hamburger.png" align="right" rightmargin="12" valign="top" onclickup="show-settings"></image>  
+	</panel>
+</panel>
+<panel name="content" alias="CONTENT" style="100" alpha="0">
+	<include name="include" style="100"/>
+</panel>
+</main>     
+<actions> 
+	<action name="navLoad">
+	  <load file="_wire" wirename="_wirename" target="CONTENT/include" />
+	  <alpha value="1" time=".5" target="CONTENT" />
+	</action>
+	<action name="alertfunction">
+	  <alert message="_message"/>
+	</action>
+  	<action name="show-settings">
+    	<translate ypos="0" time=".5" curve="linear" target="SETTINGS" />
+      	<set onclickup="hide-settings" />
+  	</action>
+  	<action name="hide-settings">
+    	<translate ypos="-125" time=".5" curve="linear" target="SETTINGS" />
+    	<set onclickup="show-settings" />
+  	</action>
+  	<action name="show-settings2">
+    	<translate ypos="0" time=".5" curve="linear" target="SETTINGS" />
+    	<set onclickup="hide-settings" />
+  	</action>
+  	<action name="hide-settings2">
+    	<translate ypos="-125" time=".5" curve="linear" target="SETTINGS" />
+    	<set onclickup="show-settings" />
+  	</action>
+  	<!--<action name="keyboard">
+        <keyboard visible="yes" target="DATE-TEXTFIELD"/>
+    </action>-->
+  	<action name="oninit" oninit="yes">	 
+    </action>
+  	<action name="zoom-to-user" oninit="yes">
+      <assign property="object:MAP.region" value="[object:MAP.gpslatitude] [object:MAP.gpslongitude] [object:MAP.gpslatitude] [object:MAP.gpslongitude]"/>
+    </action>
+  	<action name="keyboard-hidden">
+        <keyboard visible="no" target="DATE-TEXTFIELD"/>
+    </action>
+    <action name="null"></action>
+</actions> 
 </wire>
