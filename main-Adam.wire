@@ -1,0 +1,64 @@
+<wire>
+ <styles>
+     <style name="100" width="100%" height="100%"/>
+ </styles>
+ <main>   
+    <panel name="container" alias="CONTAINER" style="100" background="#ffffff">
+      <panel name="top" alias="TOP" width="8%" background="#666666" alpha="2" valign="center">
+        <image name="logo" source="images/HemoTool_logo.png" width="100%" valign="center" align="center"></image>
+      </panel>
+      <panel name="main" alias="MAIN" width="100%" height="88%" valign="bottom" alpha="1">
+        <image name="background" source="images/bkgrd-home2.png"></image>
+      </panel>
+      <panel name="icons" alias="ICONS" width="80%" height="75%" valign="bottom" align="center" alpha="1">
+          <panel name="profile" alias="PROFILE" height="50%" width="50%" xpos="0" ypos="0" onclickup="navLoad" _wire="profile.wire" _wirename="profile">
+            <image name="icon" source="images/iconProfile.png" align="center" ignoretouches="yes"></image>
+            <text name="label" width="100%" height="20" font="Helvetica-Bold" size="14" color="#656666" alignment="center" align="center" bottomof="PROFILE" leftof="LOGGINGBOX" text="Profile" ignoretouches="yes"></text>
+          </panel>
+          <panel name="logging" alias="LOGGINGBOX" height="50%" width="50%" rightof="profile" onclickup="navLoad" _wire="logging.wire" _wirename="logging">
+            <image name="icon" source="images/iconSyringe.png" align="center"></image>
+            <text name="label" width="100%" height="20" font="Helvetica-Bold" size="14" color="#656666" alignment="center" align="center" bottomof="logging" text="Logging"></text>
+          </panel>
+          <panel name="ordering" alias="ORDERINGBOX" height="50%" width="50%" bottomof="profile" onclickup="navLoad" _wire="ordering.wire" _wirename="ordering">
+            <image name="icon" source="images/iconOrdering.png" align="center"></image>
+            <text name="label" width="100%" height="20" font="Helvetica-Bold" size="14" color="#656666" alignment="center" align="center" bottomof="ordering" text="Ordering"></text>
+          </panel>
+          <panel name="travel" alias="TRAVELBOX" height="50%" width="50%" bottomof="logging" rightof="ordering" onclickup="navLoad" _wire="travel.wire" _wirename="travel">
+            <image name="icon" source="images/iconTravel.png" align="center"></image>
+            <text name="label" width="100%" height="20" font="Helvetica-Bold" size="14" color="#656666" alignment="center" align="center" bottomof="travel" text="Travel"></text>
+          </panel>
+      </panel>
+    </panel>
+    <panel name="content" alias="CONTENT" style="100" alpha="0">
+        <include name="include" style="100"/>
+    </panel>
+ </main>     
+ <actions> 
+  <action name="boot" oninit="yes">
+    <assign property="var:activeView" value="profile" />
+    <!-- <alert message="[var:activeView]" /> -->
+  </action>
+  <action name="navLoad">
+    <sync>
+        <set onclickup="navLoad" target="ICONS/[var:activeView]" />
+        <load source="images/icon.[var:activeView].png" target="ICONS/[var:activeView]/icon" />
+      	<assign property="var:activeView" value="[object:name]" />
+        <set onclickup="null" />
+        <load source="images/icon.[var:activeView].on.png" target="icon" />
+    	<!--<alert message="load [object:name].wire" />-->
+    	<load file="_wire" wirename="_wirename" target="CONTENT/include" />
+    	<!--<load file="[object:name].wire" target="CONTENT/include" />-->
+    	<alpha value="1" time=".5" target="CONTENT" />
+        <alert message="[var:activeView]" />
+    </sync>
+   
+  </action>
+   
+   
+   
+  <action name="null"></action>
+   
+   
+   
+ </actions> 
+</wire>
