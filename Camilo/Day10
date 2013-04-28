@@ -1,0 +1,197 @@
+<wire>
+  <datasources>  
+    <datasource name="geo" source="http://rarewire.com/rw/templates/upFront.json" query="/upFront/node" providertype="json"/>
+    <!--Know you datasource. Knowing where it is located. Make sure it is created very cleanly. Use root elements. 
+  	contents of query will very with provider type.By using parsenamespac.e you can omit the *[local-name()=. You can
+ 		simply start with item or content tag or whatever is your root element.  
+		XML - http://www.w3schools.com/xpath/xpath_syntax.asp
+		SQL Queries - http://www.w3schools.com/sql/sql_select.asp
+
+	Provider types include: 
+		XML
+		SQLlight
+		Twitter - (JSON or XML feed) - 
+		Facebook - 
+		Push - 
+		JSON - 
+
+	datasource with event tag. - You can call datasources for the camera, music, GPS
+		
+	-->
+    <datasource name="write-deal" source="sql://mydeals" query="CREATE TABLE IF NOT EXISTS DEALS (ID INTEGER PRIMARY KEY AUTOINCREMENT, nid TEXT);" providertype="sql"/>
+    <datasource name="read-deals" source="sql://mydeals" query="SELECT * FROM DEALS ORDER BY ID DESC;" providertype="sql"/> 
+  </datasources>
+  <classes>
+    <class name="camera">
+      <camera name="camera" alias="CAMERA-BOX"  height="91.19%" width="100%" align="center" valign="top" type="barcodescan" onscan="reveal-results" onscantarget="CONTENT">
+        <panel name="target" width="200" height="200" align="center" valign="center" borderwidth="2" bordercolor="#b4ae0e" ignorestouches="yes"></panel>
+        <panel name="lightBTN" ypos="2%" xpos="2%" height="40" width="40" onclickup="activate-light">
+          <image name="icon" source="graphics/icon.light-off.png"></image>
+        </panel>
+      </camera>
+    </class>
+    <class name="scratcher">
+      <panel name="prize" alias="PRIZE" width="100%" height="100%" background="#eeeeee">
+        <canvas name="mask" width="275" height="332" background="#959595" maskimage="[param:image]" stroke="yes" pensize="50" align="center" valign="center"></canvas>
+      </panel>
+    </class>
+    <class name="annotations">
+      <annotation name="pin-[param:location]" location="[param:location]" title="[param:title]" subtitle="[param:subtitle]" color="[param:color]" animateddrop="yes" />
+    </class>
+    <class name="waiter">
+      <wait name="wait" alias="WAITER" width="100%" height="100%" />
+    </class>
+    <class name="deal-item">
+      <panel name="item-[param:dataSourceIndex]" width="100%" height="15%" onswipeleft="remove-deal" _nid="[param:nid]" background="#eeeeee">
+        <text name="label" height="100%" width="100%" font="helvetica" size="15" alignment="left" color="#333333" leftinset="20" text="[param:nid]" />
+        <panel name="border-bottom" width="100%" height="1" background="#000000" valign="bottom" alpha="[eval: '[param:dataSourceIndex]' == '[param:dataSourceResultCount]' ? '0' : '.1']"></panel>
+        <panel name="boder-top" width="100%" height="1" background="#ffffff" alpha="[eval: '[param:dataSourceIndex]' == '1' ? '0' : '1']"></panel>
+      </panel>
+    </class>
+  </classes>
+  <main>
+    <panel name="content" alias="CONTENT" width="100%" height="100%" background="#ffffff">
+      <panel name="container" width="100%" height="100%" background="#eeeeee">
+        <map name="map" alias="MAP" width="100%" height="91.19%" datasource="geo" type="map" currentlocation="yes" showuser="yes" >
+          <object name="pin" class="annotations" location="[param:lat] [param:long]" title="[param:name]" subtitle="[param:address]" color="green" />
+        </map>
+        <panel name="deals" alias="DEALS-LIST" width="100%" height="91.19%" background="#dddddd" hidden="yes"> 
+          <list name="list" width="100%" height="90%" datasource="read-deals" orientation="vertical" paginate="no"  ypos="10%">
+            <object name="item" class="deal-item" nid="[param:nid]" dataSourceIndex="[param:dataSourceIndex]" />
+          </list>
+          <panel name="toolbar" width="100%" height="10%" background="#4598a1">
+            <text name="label" height="100%" width="100%" font="GillSans" size="15" alignment="center" color="#ffffff" text="Swipe left to remove" />
+          </panel>
+        </panel>
+      </panel>
+    </panel>
+    <panel name="navigation" alias="NAVIGATION" width="100%" height="125" valign="bottom">
+      <image name="background" source="graphics/navigation.background.png" valign="bottom"></image>
+      <panel name="locateBTN" alias="LOCATE" width="33%" height="70%" valign="bottom" onclick="nav-down" onclickup="reveal-location">
+        <image name="glow" source="graphics/button.glow.png" align="center" valign="bottom" alpha="0"></image>
+        <image name="icon" source="graphics/icon.location.png" align="center" valign="center" ignoretouches="yes"></image>
+        <text name="label" height="25" width="100%" font="GillSans" size="14" alignment="center" color="#ffffff" ignoretouches="yes" text="Locate" alpha=".5" bottomof="icon" />
+      </panel>
+      <panel name="dealsBTN" alias="DEALS" width="33%" height="70%" align="right" valign="bottom" onclick="nav-down" onclickup="reveal-deals">
+        <image name="glow" source="graphics/button.glow.png" align="center" valign="bottom" alpha="0"></image>
+        <panel name="badge" width="30" height="30" cornerradius="15" background="#4598a1" ypos="5" xpos="60%" alpha="0">
+          <text name="label" height="100%" width="100%" font="helvetica-bold" size="12" alignment="center" color="#eeeeee" text="" />
+        </panel>
+        <image name="icon" source="graphics/icon.deals.png" align="center" valign="center" ignoretouches="yes"></image>
+        <text name="label" height="25" width="100%" font="GillSans" size="14" alignment="center" color="#ffffff" ignoretouches="yes" text="My Deals" alpha=".5" bottomof="icon" />
+      </panel>
+      <image name="bigBTN" alias="BIG-BTN" source="graphics/button.scan-up.png" align="center" valign="bottom">
+        <panel name="scanBTN" alias="SCAN" width="100%" height="70%" align="center" valign="bottom" onclick="btn-down" onclickup="launch-scanner">
+          <image name="glow" source="graphics/button.glow.png" align="center" valign="bottom" alpha="0"></image>
+          <image name="icon" source="graphics/icon.qr.png" valign="center" align="center" ignoretouches="yes"></image>
+          <text name="label" height="25" width="100%" font="GillSans" size="14" alignment="center" color="#ffffff" ignoretouches="yes" text="Scan" alpha=".5" bottomof="icon" />
+        </panel>
+      </image>
+    </panel>
+  </main>
+  <actions>
+    <action name="onStartUp" oninit="yes">
+      <alpha value="1" time=".25" target="LOCATE/glow" />
+      <alpha value="1" time=".15" target="LOCATE/label" />
+      <assign property="var:currentSection" value="LOCATE" />
+    </action>
+    <action name="zoom-to-user" oninit="yes">
+      <assign property="object:MAP.region" value="[object:MAP.gpslatitude] [object:MAP.gpslongitude] [object:MAP.gpslatitude] [object:MAP.gpslongitude]"/>
+    </action>
+    <action name="nav-down"></action>
+    <action name="reveal-location">
+      <if lhs="[var:currentSection]" operator="!=" rhs="LOCATE">
+        <replace type="cubeleft" target="DEALS-LIST" replacement="MAP" time=".5" />
+      </if>
+      <assign property="object:MAP.region" value="[object:MAP.gpslatitude] [object:MAP.gpslongitude] [object:MAP.gpslatitude] [object:MAP.gpslongitude]"/>
+      <play action="set-state" _alias="LOCATE" />
+    </action>
+    <action name="reveal-deals">
+      <if lhs="[var:currentSection]" operator="!=" rhs="DEALS">
+        <replace type="cuberight" target="MAP" replacement="DEALS-LIST" time=".5" />
+      </if>
+      <play action="set-state" _alias="DEALS" />
+    </action>
+    <action name="btn-down">
+      <load source="graphics/button.scan-down.png" target="BIG-BTN" />
+    </action>
+    <action name="launch-scanner">
+      <create class="camera" target="CONTENT/container" />
+      <alpha value="1" time=".25" target="glow" />
+      <alpha value="1" time=".15" target="label" />
+      <load source="graphics/button.scan-up.png" target="BIG-BTN" />
+      <assign property="object:SCAN/label.text" value="Cancel" />
+      <translate ypos="100%" time=".25" target="DEALS" />
+      <translate ypos="100%" time=".25" target="LOCATE" />
+      <set onclickup="dismiss-scanner" />
+    </action>
+    <action name="dismiss-scanner">
+      <play action="deactive-light" />
+      <load source="graphics/button.scan-up.png" target="BIG-BTN" />
+      <assign property="object:SCAN/label.text" value="Scan" />
+      <translate valign="bottom" time=".25" target="DEALS" />
+      <translate valign="bottom" time=".25" target="LOCATE" />
+      <alpha value="0" time=".25" target="glow" />
+      <alpha value=".5" time=".15" target="label" />
+      <delete target="CAMERA-BOX" />
+      <set onclickup="launch-scanner" />
+    </action>
+    <action name="set-state">
+      <if lhs="[var:currentSection]" operator="!=" rhs="">
+        <alpha value="0" time=".25" target="[var:currentSection]/glow" />
+        <alpha value=".5" time=".15" target="[var:currentSection]/label" />
+      </if>
+      <alpha value="1" time=".25" target="glow" />
+      <alpha value="1" time=".15" target="label" />
+      <assign property="var:currentSection" value="_alias" />
+    </action>
+    <action name="activate-light">
+      <event type="torchModeOn" target="CAMERA-BOX"/>
+      <set onclickup="deactive-light" target="CAMERA-BOX/lightBTN" />
+    </action>
+    <action name="deactive-light">
+      <event type="torchModeOff" target="CAMERA-BOX"/>
+      <set onclickup="activate-light" target="CAMERA-BOX/lightBTN"/>
+    </action>
+    <action name="reveal-results">
+      <sync>
+        <assign property="var:result" value="[object:CAMERA-BOX.scanvalue]" />
+        <play action="deactive-light" /> 
+        <create class="waiter" target="CONTENT" /> 
+        <create class="scratcher" image="graphics/winner.[var:result].png" target="CONTENT/container"  />
+        <delete target="CAMERA-BOX" />
+        <assign property="object:SCAN/label.text" value="Save" />
+        <set onclickup="save-results" target="SCAN" />
+        <delete target="WAITER" />
+      </sync>
+    </action>
+    <action name="save-results">
+      <play anim="write-deal" />
+      <load source="graphics/button.scan-up.png" target="BIG-BTN" />
+      <assign property="object:SCAN/label.text" value="Scan" />
+      <translate valign="bottom" time=".25" target="DEALS" />
+      <translate valign="bottom" time=".25" target="LOCATE" />
+      <alpha value="0" time=".25" target="glow" />
+      <alpha value=".5" time=".15" target="label" />
+      <set onclickup="launch-scanner" target="SCAN" />
+      <delete target="PRIZE" /> 
+    </action>
+    <action name="write-deal">
+       <assign property="datasource:write-deal.query" value="INSERT INTO DEALS (nid) values ('[var:result]')" /> 
+       <assign property="datasource:read-deals.query" value="SELECT * FROM DEALS"/>
+    </action>
+    <action name="count-deals" datasource="read-deals" datasourceevent="querycomplete">
+      <alpha value="[eval: '[datasource:read-deals.dataSourceResultCount]' > '0' ? '1' : '0']" target="DEALS/badge"/>
+      <assign property="object:DEALS/badge/label.text" value="[datasource:read-deals.dataSourceResultCount]" />
+    </action>
+    <action name="remove-deal">
+      <sync>
+        <translate xpos="-100%" time=".25" />
+        <assign property="datasource:write-deal.query" value="DELETE FROM DEALS WHERE nid='_nid'" /> 
+        <assign property="datasource:read-deals.query" value="SELECT * FROM DEALS"/>
+      </sync>
+    </action>
+    <action name="null"></action>
+
+  </actions>
+</wire>
