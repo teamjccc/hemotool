@@ -1,0 +1,31 @@
+<wire>
+  <datasources>
+    <datasource name="rx" source="res://rxinfo.sql" query="SELECT * FROM rx WHERE rowid BETWEEN 1 AND 1000" providertype="sql" />
+  </datasources>
+  <classes>
+    <class name="item">
+        <text name="headline" width="100%" height="50%" color="#ffffff" font="helvetica" size="18" align="center" valign="top" alignment="center" text="[param:text]"></text>
+    </class>
+  </classes>
+  <main>
+    <panel name="bg" width="100%" height="100%">
+      <panel name="list-container" width="100%" lwidth="95%" height="100%" align="center" clip="yes">
+        <tableview name="list" datasource="rx" width="102%" lwidth="102%" height="100%" rowheight="35" align="center" orientation="vertical" paginate="no">
+          <object class="item" dataSourceIndex="[param:dataSourceIndex]" text="[param:PROPRIETARYNAME]"/>
+        </tableview>
+      </panel>
+      <panel name="button" alias="BUTTON" width="100" height="50" background="00ff00">
+      	<text name="load-list" width="100%" height="100%" color="#000000" font="Arial" size="18" alignment="center" text="Load Next" onclickup="load"></text>
+      </panel>
+    </panel>
+  </main>
+<actions>
+  <action name="load">
+    <sync>
+      <assign property="datasource:rx.query" value="SELECT * FROM rx WHERE rowid BETWEEN 1000 AND 2000" /> 
+      <alpha value="0" time="0" target="BUTTON" />
+      <alert message="[datasource:rx.dataSourceResultCount]"/>
+    </sync>  
+  </action>
+</actions>
+</wire>
