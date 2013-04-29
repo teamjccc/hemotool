@@ -66,31 +66,31 @@
                       	</panel>
                		</panel>
                	</panel>
-               	<pager name="personal-scroll" orientation="vertical" paginate="no" width="100%" height="[eval: [object:CONTENTBOX.height] - [eval:[object:PROPHY-INFUSION-BOX.height] + [object:BREAK.height] + [object:HEADER.height] + [object:NAV.height]]]" ypos="82">
+               	<pager name="personal-scroll" alias="PERSONAL-SCROLL" orientation="vertical" paginate="no" width="100%" height="[eval: [object:CONTENTBOX.height] - [eval:[object:PROPHY-INFUSION-BOX.height] + [object:BREAK.height] + [object:HEADER.height] + [object:NAV.height]]]" ypos="82">
                    	<panel name="page1" alias="PAGE1" width="100%" height="100%" valign="top">
                        	<panel name="mainscroll" alias="MAINSCROLL" width="100%" fitheight="yes" align="center">
-                           	<textfield name="date-textfield" alias="DATE-TEXTFIELD" width="94%" style="data-box" placeholder="Date" ypos="20"/>                          	
+                           	<textfield name="date-textfield" alias="DATE-TEXTFIELD" width="94%" style="data-box" onreturnkeypressed="keyboard-off" _example="DATE-TEXTFIELD" placeholder="Date" ypos="20" />                          	
                           	<panel name="select-medication-panel" alias="SELECT-MEDICATION-PANEL" margin-top="10" bottomof="DATE-TEXTFIELD" style="data-box" width="94%" align="center">
-                          		<image name="downarrowpic" alias="DOWNARROWPIC" width="45" height="33" xpos="" align="right" ypos="1" background="#ffffff" source="images/triangle_down.png"/>
+                          		<image name="downarrowpic" alias="DOWNARROWPIC" width="41" height="29" xpos="" align="right" ypos="3" background="#ffffff" source="images/barcode.png"/>
                               	<text name="select-medication-text" alias="SELECT-MEDICATION-TEXT" width="100%" height="100%" alignment="center" text="Select Medication..." margin-top="10"/>
                             </panel>                         
                        		<panel name="middle-box" alias="MIDDLE-BOX" width="94%" height="107" align="center" cornerradius="5" borderwidth="1" bordercolor="212121" bottomof="SELECT-MEDICATION-PANEL" margin-top="10">
-                           		<textfield name="lot-number-textfield" alias="LOT-NUMBER-TEXTFIELD" width="100%" style="data-box2" margin-top="10" placeholder="Lot Number"/>
+                           		<textfield name="lot-number-textfield" alias="LOT-NUMBER-TEXTFIELD" width="100%" style="data-box2" margin-top="10" onreturnkeypressed="keyboard-off" placeholder="Lot Number"/>
                            		<panel name="bottom-border1" alias="BOTTOM-BORDER1" width="100%" height="1" background="212121" bottomof="LOT-NUMBER-TEXTFIELD"/>
-                           		<textfield name="expiration-date-textfield" alias="EXPIRATION-DATE-TEXTFIELD" width="100%" style="data-box2" bottomof="BOTTOM-BORDER1" placeholder="Expiration Date"/>
+                           		<textfield name="expiration-date-textfield" alias="EXPIRATION-DATE-TEXTFIELD" width="100%" style="data-box2" onreturnkeypressed="keyboard-off" bottomof="BOTTOM-BORDER1" placeholder="Expiration Date"/>
                            		<panel name="bottom-border2" alias="BOTTOM-BORDER2" width="100%" height="1" background="212121" bottomof="EXPIRATION-DATE-TEXTFIELD"/>
-                           		<textfield name="dose-textfield" alias="DOSE-TEXTFIELD" width="100%" style="data-box2" bottomof="BOTTOM-BORDER2" placeholder="Dose (IU)"/>
+                           		<textfield name="dose-textfield" alias="DOSE-TEXTFIELD" width="100%" style="data-box2" onreturnkeypressed="keyboard-off" bottomof="BOTTOM-BORDER2" placeholder="Dose (IU)"/>
                        		</panel>
                       		<panel name="barcodepanel" alias="BARCODEPANEL" margin-top="10" bottomof="MIDDLE-BOX" style="data-box" width="94%" align="center">
-                          		<image name="barcodepic" alias="BARCODEPIC" width="41" height="29" xpos="20" ypos="1" background="#ffffff" source="images/barcode.png"/>
+                          		<image name="barcodepic" alias="BARCODEPIC" width="41" height="29" xpos="20" ypos="3" background="#ffffff" source="images/barcode.png"/>
                               	<text name="barcode-scanner-text" alias="BARCODE-SCANNER-TEXT" width="100%" height="100%" alignment="center" text="Barcode Scanner" /><!--180-->
                             </panel>  
-                        	<textfield name="prophy-notes" alias="PROPHY-NOTES" width="94%" height="70" bottomof="BARCODEPANEL" margin-top="10" style="data-box" onreturnkeypressed="" placeholder="Notes" />
+                        	<textfield name="prophy-notes" alias="PROPHY-NOTES" width="94%" height="70" bottomof="BARCODEPANEL" margin-top="10" style="data-box" onreturnkeypressed="keyboard-off" placeholder="Notes" />
                         </panel>
                   	</panel>
-                   	<panel name="page2" alias="PAGE2" width="100%" height="100%" align="center">
-                      	<panel name="button-bg2" alias="BUTTON-BG2" width="94%" height="35" margin-top="10" align="center" background="#72c604" cornerradius="5">
-                          	<panel name="submitbtn" alias="SUBMITBTN" width="100%" height="35" valign="center" cornerradius="5" borderwidth="1" bordercolor="#68b404" clip="yes" margin="10" onclickup="alertfunction" _message="Success! You clicked Submit!">
+                   	<panel name="page2" alias="PAGE2" width="100%" height="80" align="center">
+                      	<panel name="button-bg2" alias="BUTTON-BG2" width="94%" height="35" margin-top="10" align="center" background="#72c604" cornerradius="5" onclickup="alertfunction" _message="Success! You clicked Submit!">
+                          	<panel name="submitbtn" alias="SUBMITBTN" width="100%" height="35" valign="center" cornerradius="5" borderwidth="1" bordercolor="#68b404" clip="yes" margin="10">
                             	<panel name="highlight" width="100%" height="50%" valign="top" background="#ffffff" alpha=".3"/>
                              	<text name="submit-blue" width="100%" height="fit" ypos="5" color="#7ac714" font="Helvetica-Bold" size="18" alignment="center" text="Submit" alpha=".5"/>
                                	<text name="submit" width="100%" height="fit" ypos="6" color="ffffff" font="Helvetica-Bold" size="18" alignment="center" text="Submit"/> 
@@ -100,9 +100,9 @@
                	</pager>
             </panel>
           	<panel name="settings" alias="SETTINGS" width="50%" lwidth="33%" height="120" background="2c2c2c" rightmargin="42" align="right" ypos="-125" shadowopacity="30%" shadowradius="3">
-    			<object class="settings-links" name="reset" background=" " bottomof=" " onclickup="hide-settings" text="Home"/>
-        		<object class="settings-links" name="app" background="515151" bottomof="reset" onclickup="hide-settings" text="Quit Program"/>
-                <object class="settings-links" name="email"  background="515151" bottomof="app" onclickup="hide-settings" text="Option 3?"/>
+    			<object class="settings-links" name="main" background="515151" bottomof=" " onclickup="navHamburger" _wire="profile.wire" _wirename="profile" text="Home"/>
+        		<object class="settings-links" name="quit" background="515151" bottomof="main" onclickup="hide-settings" text="Quit Program"/>
+                <object class="settings-links" name="email"  background="515151" bottomof="quit" onclickup="hide-settings" text="Option 3?"/>
     		</panel>
           	<image name="btn-settings" alias="BTN-SET" source="images/hamburger.png" align="right" rightmargin="12" valign="top" onclickup="show-settings"></image>
         </panel>
@@ -113,9 +113,16 @@
  </main>     
  	<actions> 
         <action name="navLoad">
-          <load file="_wire" wirename="_wirename" target="CONTENT/include" />
-          <alpha value="1" time=".5" target="CONTENT" />
+          	<load file="_wire" wirename="_wirename" target="CONTENT/include" />
+          	<alpha value="1" time=".5" target="CONTENT" />
         </action>
+      	<action name="navHamburger">
+          	<sync>
+              	<!--<alert message="load [object:name].wire" />-->
+              	<play action="hide-settings"></play> 
+              	<play action="navLoad"></play>
+            </sync>
+ 		</action>
     	<action name="alertfunction">
           <alert message="_message"></alert>
         </action>
@@ -127,14 +134,9 @@
             <translate ypos="-125" time=".5" curve="linear" target="SETTINGS" />
             <set onclickup="show-settings" />
         </action>
-      	<action name="show-settings2">
-          <translate ypos="0" time=".5" curve="linear" target="SETTINGS" />
-        <set onclickup="hide-settings" />
+      	<action name="keyboard-off">
+          <keyboard visible="no" target="_example" />
       	</action>
-        <action name="hide-settings2">
-            <translate ypos="-125" time=".5" curve="linear" target="SETTINGS" />
-            <set onclickup="show-settings" />
-        </action>
    	<!--<action name="keyboard">
     	    <keyboard visible="yes" target="DATE-TEXTFIELD"/>
       	</action>
@@ -143,8 +145,8 @@
         </action>
         <action name="onresume" onresume="yes">
         	put actions you want to trigger when the app is opened from sleep (running in the background). Delete this action if not needed. 
-        </action>
+        </action>-->
         <action name="null">
-		</action>-->  
+		</action>  
     </actions> 
 </wire>
