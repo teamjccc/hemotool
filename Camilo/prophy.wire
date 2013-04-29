@@ -4,10 +4,11 @@
      	<style name="work-space" width="100%" height="[eval: [object:CONTENTBOX.height] - [eval:[object:HEADER.height] + [object:NAV.height]]]" ypos="40" />
      	<style name="data-box"   height="35" align="center" alignment="left" background="ffffff" valignment="center" alpha="1" size="14" rightmargin="-12" leftinset="5" color="212121" cornerradius="5" borderwidth="1" bordercolor="212121"/>
       	<style name="data-box2"  width="100%" height="35" align="center" alignment="left" background="ffffff" valignment="center" alpha="1" size="14" rightmargin="-12" leftinset="5" color="212121" />
+      	<style name="textfield" height="30" cornerradius="5" font="Helvetica" size="14" align="left" alignment="left" rightmargin="-12" leftinset="5" background="#ffffff" bordercolor="#212121" borderwidth="1" color="#212121" />
+      	<style name="text-settingsMenu" width="60%" height="30" color="#e6e6e6" font="GillSans" size="16" rightof="img" align="left" valign="center" leftmargin="15%" alignment="center"/>
       	<style name="testr" background="#ff0000" alpha=".4"/><!-- transparent red -->
       	<style name="testg" background="#00ff00" alpha=".4"/><!-- transparent green -->
       	<style name="testb" background="#0000ff" alpha=".4"/><!-- transparent blue -->
-      	<style name="text-settingsMenu" width="60%" height="30" color="#e6e6e6" font="GillSans" size="16" rightof="img" align="left" valign="center" leftmargin="15%" alignment="center"/>
 	</styles>
   	<classes>
    		<class name="settings-links">
@@ -17,19 +18,25 @@
                 <text name="text" style="text-settingsMenu" text="[param:text]"></text>
             </panel>
     	</class>
+      	<class name="navObject">
+      		<panel name="[param:name]" width="25%" height="100%" rightof="[param:rightof]" onclickup="navLoad" _wire="[param:_wire]" _wirename="[param:_wirename]">
+          		<image name="icon" height="32" align="center" ypos="10%" source="[param:source]"/>
+              	<text name="navText"  height="10" width="100%" color="#cccccc" font="Helvetica-Bold" size="8" bottomof="icon" align="center" alignment="center" text="Profile"></text>
+      		</panel>
+      	</class>
 	</classes>
 <main>
-	<panel name="container" alias="CONTAINER" style="100">
+	<!--<panel name="container" alias="CONTAINER" style="100">-->
      	<panel name="contentbox" alias="CONTENTBOX" style="100" xpos="0" ypos="0">	
     		<panel name="header" alias="HEADER" width="100%" height="40" background="212121">
                	<text name="patient" alias="PATIENT" width="50%" height="100%" color="#cccccc" font="Helvetica-Bold" size="18" align="center" alignment="center" text="Dakota" />
             </panel>	
             <panel name="nav" alias="NAV" width="100%" height="50" background="#212121" align="center" valign="bottom">
-        		<panel name="tab1" width="25%" height="100%" onclickup="navLoad" _wire="profile.wire" _wirename="profile">
+        		<!--<panel name="tab1" width="25%" height="100%" onclickup="navLoad" _wire="profile.wire" _wirename="profile">
            			<image name="icon" height="32" align="center" ypos="10%" source="images/profile.png"/>
            			<text name="tab1-txt" alias="TAB1-TXT" height="10" width="100%" color="#cccccc" font="Helvetica-Bold" size="8" bottomof="icon" align="center" alignment="center" text="Profile"></text>
          		</panel>
-         		<panel name="tab2" width="25%" height="100%" rightof="tab1" onclickup="navLoad" _wire="prophy.wire" _wirename="prophy">
+				<panel name="tab2" width="25%" height="100%" rightof="tab1" onclickup="navLoad" _wire="prophy.wire" _wirename="prophy">
            			<image name="icon" height="32" align="center" ypos="10%" source="images/logging_active.png"/>
            			<text name="tab2-txt" alias="TAB2-TXT" height="10" width="100%" color="#cccccc" font="Helvetica-Bold" size="8" bottomof="icon" align="center" alignment="center" text="Logging"></text>
          		</panel>
@@ -40,7 +47,12 @@
          		<panel name="tab4" width="25%" height="100%" rightof="tab3" onclickup="navLoad" _wire="travel.wire" _wirename="travel">
            			<image name="icon" height="32" align="center" ypos="10%" source="images/travel.png"/>
            			<text name="tab4-txt" alias="TAB4-TXT" height="10" width="100%" color="#cccccc" font="Helvetica-Bold" size="8" bottomof="icon" align="center" alignment="center" text="Travel"></text>
-        		</panel>
+        		</panel>-->
+              	<object class="navObject" name="tab1" _wire="profile.wire" rightof=" " _wirename="profile" source="images/profile.png" ></object>
+              	<object class="navObject" name="tab2" _wire="prophy.wire" rightof="tab1" _wirename="prophy" source="images/logging_active.png" ></object>
+              	<object class="navObject" name="tab3" _wire="ordering.wire" rightof="tab2" _wirename="ordering" source="images/ordering.png" ></object>
+              	<object class="navObject" name="tab4" _wire="travel.wire" rightof="tab3" _wirename="travel" source="images/travel.png" ></object>
+         		
        		</panel>
             <panel name="work-box" alias="WORK-BOX" width="100%" height="[eval: [object:CONTENTBOX.height] - [eval:[object:HEADER.height] + [object:NAV.height]]]" ypos="0">
                	<image name="background" source="images/lime.background.new.png" width="100%" height="[eval: [object:CONTENTBOX.height] - 132]" ypos="82"></image>
@@ -69,7 +81,7 @@
                	<pager name="personal-scroll" alias="PERSONAL-SCROLL" orientation="vertical" paginate="no" width="100%" height="[eval: [object:CONTENTBOX.height] - [eval:[object:PROPHY-INFUSION-BOX.height] + [object:BREAK.height] + [object:HEADER.height] + [object:NAV.height]]]" ypos="82">
                    	<panel name="page1" alias="PAGE1" width="100%" height="100%" valign="top">
                        	<panel name="mainscroll" alias="MAINSCROLL" width="100%" fitheight="yes" align="center">
-                           	<textfield name="date-textfield" alias="DATE-TEXTFIELD" width="94%" style="data-box" onreturnkeypressed="keyboard-off" _example="DATE-TEXTFIELD" placeholder="Date" ypos="20" />                          	
+                           	<textfield name="date-textfield" alias="DATE-TEXTFIELD" width="94%" style="data-box" onreturnkeypressed="keyboard-off" placeholder="Date" ypos="20" />                          	
                           	<panel name="select-medication-panel" alias="SELECT-MEDICATION-PANEL" margin-top="10" bottomof="DATE-TEXTFIELD" style="data-box" width="94%" align="center">
                           		<image name="downarrowpic" alias="DOWNARROWPIC" width="41" height="29" xpos="" align="right" ypos="3" background="#ffffff" source="images/barcode.png"/>
                               	<text name="select-medication-text" alias="SELECT-MEDICATION-TEXT" width="100%" height="100%" alignment="center" text="Select Medication..." margin-top="10"/>
@@ -105,7 +117,7 @@
                 <object class="settings-links" name="email"  background="515151" bottomof="quit" onclickup="hide-settings" text="Option 3?"/>
     		</panel>
           	<image name="btn-settings" alias="BTN-SET" source="images/hamburger.png" align="right" rightmargin="12" valign="top" onclickup="show-settings"></image>
-        </panel>
+        <!--</panel>-->
    	</panel>
     <panel name="content" alias="CONTENT" style="100" alpha="0">
     	<include name="include" style="100"/>
@@ -135,7 +147,7 @@
             <set onclickup="show-settings" />
         </action>
       	<action name="keyboard-off">
-          <keyboard visible="no" target="_example" />
+          <keyboard visible="no"/>
       	</action>
    	<!--<action name="keyboard">
     	    <keyboard visible="yes" target="DATE-TEXTFIELD"/>
