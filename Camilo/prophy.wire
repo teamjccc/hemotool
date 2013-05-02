@@ -1,12 +1,11 @@
 <wire>
-   <datasources>
-      
-      	
+  	<datasources>
       <!-- To keep your data clean, always use a datasource to write to the db and a datasource to query and read that data. -->
     	<datasource name="infusion" source="sql://infusion" query="CREATE TABLE IF NOT EXISTS INFUSION (ID INTEGER PRIMARY KEY AUTOINCREMENT, DATE TEXT, MEDICATION TEXT, LOTNUM TEXT, EXPDATE TEXT, DOSE TEXT, SCAN TEXT, NOTES TEXT);" providertype="sql"/> <!-- for each column create, pair with a type (TEXT). Order is VERY Important, make sure your order is identical throughout the wire -->
       <!-- This will be the datasource you will use if you want to call/query your database -->
         <datasource name="infusion-list" source="sql://infusion" query="SELECT * FROM INFUSION ORDER BY ID DESC;" providertype="sql"/> 
 	</datasources>
+  
 	<styles>
       <style name="100" width="100%" height="100%"/>
       <style name="work-space" width="100%" height="[eval: [object:CONTENTBOX.height] - [eval:[object:HEADER.height] + [object:NAV.height]]]" ypos="40" />
