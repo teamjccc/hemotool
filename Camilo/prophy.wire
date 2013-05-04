@@ -3,7 +3,7 @@
       <!-- To keep your data clean, always use a datasource to write to the db and a datasource to query and read that data. -->
     	<datasource name="infusion" source="sql://infusions" query="CREATE TABLE IF NOT EXISTS INFUSIONS (ID INTEGER PRIMARY KEY AUTOINCREMENT, DATE TEXT, MEDICATION TEXT, LOTNUM TEXT, EXPDATE TEXT, DOSE TEXT, SCAN TEXT, NOTES TEXT);" providertype="sql"/> <!-- for each column create, pair with a type (TEXT). Order is VERY Important, make sure your order is identical throughout the wire -->
       <!-- This will be the datasource you will use if you want to call/query your database -->
-        <datasource name="infusion-list" source="sql://infusions" query="SELECT * FROM INFUSIONS ORDER BY ID DESC;" providertype="sql"/> 
+        <datasource name="infusion-list" source="sql://infusions" query="SELECT * FROM INFUSIONS ORDER BY ID ASC;" providertype="sql"/> 
 	</datasources>
   
 	<styles>
@@ -42,7 +42,10 @@
           	</panel>
       	</class>
         <class name="medList-item">
-          <text name="[param:dataSourceIndex]-entry" width="100%" height="20%" color="#ffffff" size="14" text="[param:med1] [param:med2] [param:med3]" />
+          <text name="[param:dataSourceIndex]-entry" width="100%" height="20%" color="#ffffff" size="14" text="[param:med]" />
+      	</class>
+      <class name="medList-item-first">
+          <text name="[param:dataSourceIndex]-entry" width="100%" height="20%" color="#00ff00" size="14" text="[param:med]" />
       	</class>
 	</classes>
 
@@ -51,6 +54,7 @@
   <panel name="contentbox" alias="CONTENTBOX" style="100" xpos="0" ypos="0">	
     <panel name="header" alias="HEADER" width="100%" height="40" background="212121">
       <text name="patient" alias="PATIENT" width="50%" height="100%" color="#cccccc" font="Helvetica-Bold" size="18" align="center" alignment="center" text="Dakota" />
+      <panel name="close-list" alias="CLOSE-MEDLIST" background="#00ff00" width="40" height="40" valign="center" onclickup="close-medList" alpha="0" />
     </panel>	
     
     <panel name="nav" alias="NAV" width="100%" height="50" background="#212121" align="center" valign="bottom">
@@ -142,7 +146,8 @@
     </panel>
   	<panel name="myList" alias="MY-LIST" width="100%" height="[eval:[object:CONTENTBOX.height] - [object:HEADER.height]]" ypos="100%">
       <list name="list" datasource="infusion-list" width="100%" height="100%" orientation="vertical" paginate="no" background="#000000">
-        <object class="medList-item" med1="[param:]" med2="[param:]" med3="[param:]" />
+        <object class="medList-item" med="[param:MEDICATION] [param:DATE] [param:NOTES]" lhs="[param:dataSourceIndex]" operator="!=" rhs="1"/>
+        <object class="medList-item-first" med="[param:MEDICATION] [param:DATE] [param:NOTES]" lhs="[param:dataSourceIndex]" operator="=" rhs="1"/>
       </list>
   	</panel>
 </main>     
@@ -237,8 +242,12 @@
             <keyboard visible="no" target="PROPHY-NOTES"/>
             <translate valign="bottom" time=".25" target="MY-LIST" />
             <assign property="var:infusionSave" value="0" />
+            <alpha value="1" time=".2" target="CLOSE-MEDLIST" />
           </if>
         </action>
-
+    	<action name="close-medList">
+           <translate ypos="100%" time=".25" target="MY-LIST" />
+           <alpha value="1" time=".2" target="CLOSE-MEDLIST" />
+    	</action>
     </actions> 
 </wire>
