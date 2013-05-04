@@ -1,9 +1,9 @@
 <wire>
   	<datasources>
       <!-- To keep your data clean, always use a datasource to write to the db and a datasource to query and read that data. -->
-    	<datasource name="infusion" source="sql://infusion" query="CREATE TABLE IF NOT EXISTS INFUSION (ID INTEGER PRIMARY KEY AUTOINCREMENT, DATE TEXT, MEDICATION TEXT, LOTNUM TEXT, EXPDATE TEXT, DOSE TEXT, SCAN TEXT, NOTES TEXT);" providertype="sql"/> <!-- for each column create, pair with a type (TEXT). Order is VERY Important, make sure your order is identical throughout the wire -->
+    	<datasource name="infusion" source="sql://infusions" query="CREATE TABLE IF NOT EXISTS INFUSIONS (ID INTEGER PRIMARY KEY AUTOINCREMENT, DATE TEXT, MEDICATION TEXT, LOTNUM TEXT, EXPDATE TEXT, DOSE TEXT, SCAN TEXT, NOTES TEXT);" providertype="sql"/> <!-- for each column create, pair with a type (TEXT). Order is VERY Important, make sure your order is identical throughout the wire -->
       <!-- This will be the datasource you will use if you want to call/query your database -->
-        <datasource name="infusion-list" source="sql://infusion" query="SELECT * FROM INFUSION ORDER BY ID DESC;" providertype="sql"/> 
+        <datasource name="infusion-list" source="sql://infusions" query="SELECT * FROM INFUSIONS ORDER BY ID DESC;" providertype="sql"/> 
 	</datasources>
   
 	<styles>
@@ -40,6 +40,9 @@
               <panel name="radio" width="30" height="30" cornerradius="15" background="[param:background]" borderwidth="1" bordercolor="#222222" valign="center"/>
               <text name="label" width="100%" height="100%" leftinset="40" size="12" text="[param:label]" />
           	</panel>
+      	</class>
+        <class name="medList-item">
+          <text name="[param:dataSourceIndex]-entry" width="100%" height="20%" color="#ffffff" size="14" text="[param:med1] [param:med2] [param:med3]" />
       	</class>
 	</classes>
 
@@ -107,14 +110,15 @@
           </panel>
         </panel>
         <panel name="page2" alias="PAGE2" width="100%" height="45" align="center">
-          <panel name="button-bg2" alias="BUTTON-BG2" width="94%" height="35" margin-top="10" align="center" background="#72c604" cornerradius="5" onclickup="alertfunction" _message="Success! You clicked Submit!">
+          <panel name="button-bg2" alias="BUTTON-BG2" width="94%" height="35" margin-top="10" align="center" background="#72c604" cornerradius="5" onclickup="save-infusion" _message="Success! You clicked Submit!">
             <panel name="submitbtn" alias="SUBMITBTN" width="100%" height="35" valign="center" cornerradius="5" borderwidth="1" bordercolor="#68b404" clip="yes" margin="10">
               <panel name="highlight" width="100%" height="50%" valign="top" background="#ffffff" alpha=".3"/>
               <text name="submit-blue" width="100%" height="fit" ypos="5" color="#7ac714" font="Helvetica-Bold" size="18" alignment="center" text="Submit" alpha=".5"/>
               <text name="submit" width="100%" height="fit" ypos="6" color="ffffff" font="Helvetica-Bold" size="18" alignment="center" text="Submit"/> 
             </panel> 
           </panel>
-        </panel>    
+        </panel> 
+        <panel name="spacer" width="100%" height="50%"></panel>
       </pager>
     </panel>
     
@@ -136,6 +140,11 @@
           <text name="label" text="submit date" width="100%" height="100%" align="center" alignment="center" onclickup="set-date" />
         </panel>
     </panel>
+  	<panel name="myList" alias="MY-LIST" width="100%" height="[eval:[object:CONTENTBOX.height] - [object:HEADER.height]]" ypos="100%">
+      <list name="list" datasource="infusion-list" width="100%" height="100%" orientation="vertical" paginate="no" background="#000000">
+        <object class="medList-item" med1="[param:]" med2="[param:]" med3="[param:]" />
+      </list>
+  	</panel>
 </main>     
   <actions> 
     <!--<action name="navLoad">
@@ -217,13 +226,18 @@
         <!-- INFUSION ACTION -->
         <action name="save-infusion">
             <!-- AGAIN, very important that you match case and order that you outlined in the datasource ( DATE, MEDICATION, LOTNUM, EXPDATE, DOSE, SCAN, NOTES ) -->
-            <assign property="datasource:infusion.query" value="INSERT INTO INFUSION (DATE, MEDICATION, LOTNUM, EXPDATE, DOSE, SCAN, NOTES) values ('[object:DATE-TEXTFIELD.text]','[object:BLEED-LOCATION-TEXTFIELD.text]','[object:LOT-NUMBER-TEXTFIELD.text]','[object:EXPIRATION-DATE-TEXTFIELD.text]','[object:DOSE-TEXTFIELD.text]','[object:SELECT-MEDICATION-TEXT.text]','[object:PROPHY-NOTES.text]')" />
-            <assign property="datasource:infusion-list.query" value="SELECT * FROM INFUSION"/>
+            <assign property="var:infusionSave" value="1" />
+          	<assign property="datasource:infusion.query" value="INSERT INTO INFUSIONS (DATE, MEDICATION, LOTNUM, EXPDATE, DOSE, SCAN, NOTES) values ('[object:DATE-TEXTFIELD.text]','[object:[var:currentMedRadio]/label.text]','[object:LOT-NUMBER-TEXTFIELD.text]','[object:EXPIRATION-DATE-TEXTFIELD.text]','[object:DOSE-TEXTFIELD.text]','[object:SELECT-MEDICATION-TEXT.text]','[object:PROPHY-NOTES.text]')" />
+            <assign property="datasource:infusion-list.query" value="SELECT * FROM INFUSIONS"/>
         </action>
         <!-- this is just a listener that will fire when we hit save to let us know what we saved and how many indexes we have in our db -->
       	<action name="check-db" datasource="infusion-list">
-          <alert title="[datasource:infusion-list.dataSourceResultCount] infusions" message="You just added: '[object:DATE-TEXTFIELD.text]','[object:BLEED-LOCATION-TEXTFIELD.text]','[object:LOT-NUMBER-TEXTFIELD.text]','[object:EXPIRATION-DATE-TEXTFIELD.text]','[object:DOSE-TEXTFIELD.text]','[object:SELECT-MEDICATION-TEXT.text]','[object:PROPHY-NOTES.text]'" />
-          <keyboard visible="no" target="PROPHY-NOTES"/>
+          <if lhs="[var:infusionSave]" operator="=" rhs="1">
+            <alert title="[datasource:infusion-list.dataSourceResultCount] infusions" message="You just added: '[object:DATE-TEXTFIELD.text]','[object:[var:currentMedRadio]/label.text]','[object:LOT-NUMBER-TEXTFIELD.text]','[object:EXPIRATION-DATE-TEXTFIELD.text]','[object:DOSE-TEXTFIELD.text]','[object:SELECT-MEDICATION-TEXT.text]','[object:PROPHY-NOTES.text]'" />
+            <keyboard visible="no" target="PROPHY-NOTES"/>
+            <translate valign="bottom" time=".25" target="MY-LIST" />
+            <assign property="var:infusionSave" value="0" />
+          </if>
         </action>
 
     </actions> 
