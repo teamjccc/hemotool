@@ -94,8 +94,8 @@
       <pager name="personal-scroll" alias="PERSONAL-SCROLL" orientation="vertical" paginate="no" width="100%" height="[eval: [object:CONTENTBOX.height] - [eval:[object:PROPHY-INFUSION-BOX.height] + [object:BREAK.height] + [object:HEADER.height] + [object:NAV.height]]]" ypos="82">
         <panel name="page1" alias="PAGE1" width="100%" height="100%" valign="top">
           <panel name="mainscroll" alias="MAINSCROLL" width="100%" fitheight="yes" align="center">
-            <!--<textfield name="date-textfield" alias="DATE-TEXTFIELD" width="94%" style="data-box" onreturnkeypressed="keyboard-off" placeholder="Date" ypos="20" />-->                         	
-            <object class="textfield" name="date-textfield" alias="DATE-TEXTFIELD" width="94%" placeholder="Date" _alias="DATE-TEXTFIELD" ypos="20" onclickup="launch-datePicker"></object>
+            <text name="date-textfield" alias="DATE-TEXTFIELD" width="94%" style="data-box" onclickup="launch-datePicker" text="Date" ypos="20" />	
+            <!--<object class="textfield" name="date-textfield" alias="DATE-TEXTFIELD" width="94%" placeholder="Date" _alias="DATE-TEXTFIELD" ypos="20" onclickup="launch-datePicker"></object>-->
             <pager name="select-medication-panel" alias="SELECT-MEDICATION-PANEL" margin-top="10" bottomof="DATE-TEXTFIELD" width="94%" height="120" align="center" paginate="no" orientation="vertical">
             
             </pager>
@@ -217,15 +217,6 @@
       <alert message="_alias"></alert>
       <keyboard visible="no" target="_alias"/>
     </action>
-    <!--<action name="keyboard">
-         <keyboard visible="yes" target="DATE-TEXTFIELD"/>
-       </action>
-        <action name="oninit" oninit="yes">
-         put actions you want to trigger when the app is started (not running in the background). Delete this action if not needed. 
-        </action>
-        <action name="onresume" onresume="yes">
-         put actions you want to trigger when the app is opened from sleep (running in the background). Delete this action if not needed. 
-        </action>-->
     <action name="null">
     </action>  
         <!-- INFUSION ACTION -->
@@ -249,5 +240,14 @@
            <translate ypos="100%" time=".25" target="MY-LIST" />
            <alpha value="1" time=".2" target="CLOSE-MEDLIST" />
     	</action>
+    	<!--<action name="keyboard">
+         <keyboard visible="yes" target="DATE-TEXTFIELD"/>
+       </action>
+        <action name="oninit" oninit="yes">
+         put actions you want to trigger when the app is started (not running in the background). Delete this action if not needed. 
+        </action>
+        <action name="onresume" onresume="yes">
+         put actions you want to trigger when the app is opened from sleep (running in the background). Delete this action if not needed. 
+        </action>-->
     </actions> 
 </wire>
