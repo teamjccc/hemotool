@@ -17,6 +17,14 @@
                 <text name="text" style="text-settingsMenu" text="[param:text]"></text>
             </panel>
     	</class>
+      
+      <class name="camera">
+        <camera name="camera" alias="CAMERA" height="100%" width="100%" type="video" face="back" onscan="picture" onscantarget="../../../../..">
+   <panel name="box" height="300" width="300" bordercolor="#72c604" borderwidth="2" align="center" valign="center"></panel>
+    
+     </camera>
+      
+      </class>
 	</classes>
 <main>
 	<panel name="container" alias="CONTAINER" style="100">
@@ -70,17 +78,20 @@
                    	<panel name="page1" alias="PAGE1" width="100%" height="100%" valign="top">
                        	<panel name="mainscroll" alias="MAINSCROLL" width="100%" fitheight="yes" align="center">
                         	<panel name="middle-box" alias="MIDDLE-BOX" width="94%" height="107" align="center" cornerradius="5" borderwidth="1" bordercolor="212121" margin-top="10" ypos="20">
-                           		<textfield name="date-textfield" alias="DATE-TEXTFIELD" width="100%" style="data-box2" margin-top="10" placeholder="Date"/>
+                           		<textfield name="date-textfield" alias="DATE-TEXTFIELD" width="100%" style="data-box2" margin-top="10" placeholder="Date" onreturnkeypressed="keyboard-off"/>
                            		<panel name="bottom-border1" alias="BOTTOM-BORDER1" width="100%" height="1" background="212121" bottomof="DATE-TEXTFIELD"/>
-                           		<textfield name="bleed-location-textfield" alias="BLEED-LOCATION-TEXTFIELD" width="100%" style="data-box2" bottomof="BOTTOM-BORDER1" placeholder="Bleed Location"/>
+                           		<textfield name="bleed-location-textfield" alias="BLEED-LOCATION-TEXTFIELD" width="100%" style="data-box2" bottomof="BOTTOM-BORDER1" placeholder="Bleed Location" onreturnkeypressed="keyboard-off"/>
                            		<panel name="bottom-border2" alias="BOTTOM-BORDER2" width="100%" height="1" background="212121" bottomof="BLEED-LOCATION-TEXTFIELD"/>
-                           		<textfield name="type-bleed-textfield" alias="TYPE-BLEED-TEXTFIELD" width="100%" style="data-box2" bottomof="BOTTOM-BORDER2" placeholder="Type of Bleed"/>
+                           		<textfield name="type-bleed-textfield" alias="TYPE-BLEED-TEXTFIELD" width="100%" style="data-box2" bottomof="BOTTOM-BORDER2" placeholder="Type of Bleed" onreturnkeypressed="keyboard-off"/>
                        		</panel>
-                      		<panel name="camerapanel" alias="CAMERAPANEL" margin-top="10" bottomof="MIDDLE-BOX" style="data-box" width="94%" align="center">
+                      		<panel name="camerapanel" alias="CAMERAPANEL" margin-top="10" bottomof="MIDDLE-BOX" style="data-box" width="94%" align="center" onclickup="activate camera" >
                           		<image name="camerapic" alias="CAMERAPIC" width="45" height="33" xpos="30" ypos="1" background="#ffffff" source="images/camera.png"/>
-                              	<text name="add-photo-text" alias="ADD-PHOTO-TEXT" width="100%" height="100%" alignment="center" text="Add Photo" /><!--180-->
-                            </panel>  
-                        	<textfield name="bleed-notes" alias="BLEED-NOTES" width="94%" height="70" bottomof="CAMERAPANEL" margin-top="10" style="data-box" onreturnkeypressed="" placeholder="Notes" />
+                              	<text name="add-photo-text" alias="ADD-PHOTO-TEXT" width="100%" height="100%" alignment="center" text="Add Photo" />
+                            
+                          </panel>  
+                          
+                          <panel name="camera-container" alias="CAMERA-CONTAINER" alpha="0" width="100%" height="[eval: [object:CONTENTBOX.height] - [eval:[object:PROPHY-INFUSION-BOX.height] + [object:BREAK.height] + [object:HEADER.height] + [object:NAV.height]]]" ></panel>
+                        	<textfield name="bleed-notes" alias="BLEED-NOTES" width="94%" height="70" bottomof="CAMERAPANEL" margin-top="10" style="data-box" onreturnkeypressed="keyboard-off" placeholder="Notes" />
                         </panel>
                   	</panel>    
                	</pager>
@@ -121,16 +132,43 @@
             <translate ypos="-125" time=".5" curve="linear" target="SETTINGS" />
             <set onclickup="show-settings" />
         </action>
-   	<!--<action name="keyboard">
-    	    <keyboard visible="yes" target="DATE-TEXTFIELD"/>
+      
+      <action name="activate camera">
+      <sync>
+       <alert message="You clicked camera function!"></alert>
+        <if lhs="[object:name]" operator="=" rhs="camerapanel">
+                <create class="camera" target="CONTAINER" />
+                <assign property="var:camerastatus" value="on" />
+                <assign property="object:CAMERAPANEL/label.text" value="Cancel" />
+                <set onclickup="delete-camera" target="CAMERA-CONTAINER" />
+            </if>
+      </sync>
+      </action>
+      
+        <action name="oninit" oninit="yes">
+           <alert message="You clicked camera off function!"></alert>
+            <assign property="var:camerastatus" value="off" />
+        </action>
+      
+       <action name="delete-camera" >
+          <alert message="You clicked delete camera function!"></alert>
+            <delete target="CAMERA-CONTAINER" />
+            <assign property="object:CAMERA-CONTAINER/label.text" value="Camera" />
+            <set onclickup="reveal-selection" target="CAMERA-CONTAINER" />
+            <assign property="var:camerastatus" value="off" />
+        </action>
+      
+      
+   <action name="keyboard-off">
+    	    <keyboard visible="no"/>
       	</action>
-       	<action name="oninit" oninit="yes">
+       	<!--<action name="oninit" oninit="yes">
         	put actions you want to trigger when the app is started (not running in the background). Delete this action if not needed. 
         </action>
         <action name="onresume" onresume="yes">
         	put actions you want to trigger when the app is opened from sleep (running in the background). Delete this action if not needed. 
-        </action>
+        </action>-->
         <action name="null">
-		</action>-->  
+		</action>
     </actions> 
 </wire>
