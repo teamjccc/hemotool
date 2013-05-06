@@ -1,0 +1,205 @@
+<wire>
+  <styles>
+  	<style name="100" width="100%" height="100%"/>
+     	<style name="work-space" width="100%" height="[eval: [object:CONTENTBOX.height] - [eval:[object:HEADER.height] + [object:NAV.height]]]" ypos="40" align="center"/>
+     	<style name="log-70" width="70%" height="[eval: [object:CONTENTBOX.height] - [eval:[object:HEADER.height] + [object:NAV.height]] -40]" ypos="10" align="center" />
+     	<style name="testr" background="#ff0000" alpha=".4"/><!-- transparent red -->
+     	<style name="testg" background="#00ff00" alpha=".4"/><!-- transparent green -->
+    	<style name="testb" background="#0000ff" alpha=".4"/><!-- transparent blue -->
+    	<style name="text-settingsMenu" width="60%" height="30" color="#e6e6e6" font="GillSans" size="16" rightof="img" align="left" valign="center" leftmargin="15%" alignment="center"/>
+	</styles>
+  	<classes>
+   		<class name="settings-links">
+            <panel name="[param:name]" width="100%" height="40" align="center" bottomof="[param:bottomof]" onclickup="[param:onclickup]">
+                <panel name="top-rule" width="100%" height="1" valign="top" background="[param:background]"></panel>
+                <panel name="bottom-rule" width="100%" height="1" valign="bottom" background="212121"></panel>
+                <text name="text" style="text-settingsMenu" text="[param:text]"></text>
+            </panel>
+    	</class>
+	</classes>
+   	<main>
+	<panel name="container" alias="CONTAINER" style="100">
+      	<panel name="contentbox" alias="CONTENTBOX" style="100" xpos="0" ypos="0" background="#cccccc">
+        	<panel name="header" alias="HEADER" width="100%" height="40" background="#212121" align="center" valign="top">
+          	<text name="patient" alias="PATIENT" height="100%" width="50%" color="#cccccc" font="Helvetica-Bold" size="18" align="center" alignment="center" text="Dakota"></text>
+        </panel>
+        
+        <panel name="nav" alias="NAV" width="100%" height="50" background="#212121" align="center" valign="bottom">
+          <panel name="tab1" width="25%" height="100%" onclickup="navLoad" _wire="profile.wire" _wirename="profile">
+            <image name="icon" height="32" align="center" ypos="10%" source="images/profile.png"/>
+            <text name="tab1-txt" alias="TAB1-TXT" height="10" width="100%" color="#cccccc" font="Helvetica-Bold" size="8" bottomof="icon" align="center" alignment="center" text="Profile"></text>
+          </panel>
+          <panel name="tab2" width="25%" height="100%" rightof="tab1">
+            <image name="icon" height="32" align="center" ypos="10%" source="images/logging_active.png"/>
+            <text name="tab2-txt" alias="TAB2-TXT" height="10" width="100%" color="#cccccc" font="Helvetica-Bold" size="8" bottomof="icon" align="center" alignment="center" text="Logging"></text>
+          </panel>
+          <panel name="tab3" width="25%" height="100%" rightof="tab2" onclickup="navLoad" _wire="ordering.wire" _wirename="ordering">
+            <image name="icon" height="32" align="center" ypos="10%" source="images/ordering.png"/>
+            <text name="tab3-txt" alias="TAB3-TXT" height="10" width="100%" color="#cccccc" font="Helvetica-Bold" size="8" bottomof="icon" align="center" alignment="center" text="Ordering"></text>
+          </panel>
+          <panel name="tab4" width="25%" height="100%" rightof="tab3" onclickup="navLoad" _wire="travel.wire" _wirename="travel">
+            <image name="icon" height="32" align="center" ypos="10%" source="images/travel.png"/>
+            <text name="tab4-txt" alias="TAB4-TXT" height="10" width="100%" color="#cccccc" font="Helvetica-Bold" size="8" bottomof="icon" align="center" alignment="center" text="Travel"></text>
+          </panel>
+        </panel>
+        
+        <panel name="work-box" alias="WORK-BOX" style="work-space">
+          <image name="background" source="images/lime.background.new.png" style="work-space" ypos="0"></image>
+          <panel name="pagetitle" alias="PAGETITLE" height="100" width="100%">
+            <text name="daterange" alias="DATERANGE" height="100%" width="50%" color="#212121" font="Helvetica-Bold" size="18" align="center" alignment="center" text="Select Date Range"></text>
+          </panel>
+          
+          <panel name="startpicker" alias="STARTPICKER" height="80" width="65%" align="center" bottomof="PAGETITLE">
+            <text name="startdate" alias="STARTDATE" height="100%" width="40%" align="left" color="#212121" font="Helvetica-Bold" size="16" text="Start Date:"></text>
+            <text name="start-box" alias="START-BOX" height="32" width="50%" color="#212121" align="right" valign="center" alignment="center" cornerradius="5" borderwidth="1" bordercolor="#212121" clip="yes" text="mm/dd/yyyy" onclickup="launch-datePicker1"></text>
+          </panel>
+
+          <panel name="endpicker" alias="ENDPICKER" height="50" width="65%" align="center" bottomof="STARTPICKER">
+            <text name="enddate" alias="ENDDATE" height="100%" width="40%" align="left" color="#212121" font="Helvetica-Bold" size="16" text="End Date:"></text>
+            <text name="end-box" alias="END-BOX" height="32" width="50%" align="right" valign="center" alignment="center" cornerradius="5" borderwidth="1" bordercolor="#212121" clip="yes" text="mm/dd/yyyy" onclickup="launch-datePicker2"></text>
+          </panel>
+          
+          
+          <panel name="checkboxes-box" alias="CHECKBOXES-BOX" height="100" width="94%" align="right" bottomof="ENDPICKER">
+            
+            <image name="bleeds-unchecked" alias="BLEEDS-UNCHECKED" source="images/stainless_checkbox-white-Centre.png" valign="center" align="left" width="15%" alpha="1" onclick="switchbox-bleeds"></image>
+            <image name="bleeds-checked" alias="BLEEDS-CHECKED" source="images/stainless_checkbox.png" valign="center" align="left" width="15%" alpha="0" onclick="switchback-bleeds"></image>
+            
+            <text name="bleeds" alias="BLEEDS" width="35%" height="46" rightof="BLEEDS-UNCHECKED" leftinset="15" valign="center" color="#212121" font="Helvetica-Bold" size="16" text="Bleeds"></text>
+            
+            
+            <image name="infusion-unchecked" alias="INFUSION-UNCHECKED" source="images/stainless_checkbox-white-Centre.png" valign="center" rightof="BLEEDS" width="15%" alpha="1" onclick="switchbox-infusions"></image>
+            <image name="infusion-checked" alias="INFUSION-CHECKED" source="images/stainless_checkbox.png" valign="center" rightof="BLEEDS" width="15%" alpha="0" onclick="switchback-infusions"></image>
+            
+            <text name="infusions" alias="INFUSIONS" width="35%" height="46" rightof="INFUSION-UNCHECKED" leftinset="15" valign="center" color="#212121" font="Helvetica-Bold" size="16" text="Infusions"></text>
+            
+          </panel>
+          
+          <panel name="buttons" alias="BUTTONS" width="65%" height="42" align="center" bottomof="CHECKBOXES-BOX">
+            <panel name="button-bg" alias="BUTTON-BG" width="35%" height="32" valign="center" align="left" background="#72c604" cornerradius="5">
+              <panel name="cancelbtn" alias="CANCELBTN" width="100%" height="32" valign="center" cornerradius="5" borderwidth="1" bordercolor="#68b404" clip="yes" margin="10" onclickup="alertfunction" _message="You clicked cancel!">
+                <panel name="highlight" width="100%" height="50%" valign="top" background="#ffffff" alpha=".3"/>
+                <text name="cancel-blue" width="100%" height="fit" ypos="5" color="#7ac714" font="Helvetica-Bold" size="14" alignment="center" text="Cancel" alpha=".5"/>
+                <text name="cancel" width="100%" height="fit" ypos="6" color="#ffffff" font="Helvetica-Bold" size="14" alignment="center" text="Cancel"/>
+              </panel>
+            </panel> 
+            
+            <panel name="button-bg2" alias="BUTTON-BG2" width="35%" height="32" valign="center" align="right" background="#72c604" cornerradius="5">
+              <panel name="submitbtn" alias="SUBMITBTN" width="100%" height="32" valign="center" cornerradius="5" borderwidth="1" bordercolor="#68b404" clip="yes" margin="10" onclickup="alertfunction" _message="You clicked submit!">
+                <panel name="highlight" width="100%" height="50%" valign="top" background="#ffffff" alpha=".3"/>
+                <text name="submit-blue" width="100%" height="fit" ypos="5" color="#7ac714" font="Helvetica-Bold" size="14" alignment="center" text="Submit" alpha=".5"/>
+                <text name="submit" width="100%" height="fit" ypos="6" color="#ffffff" font="Helvetica-Bold" size="14" alignment="center" text="Submit"/> 
+              </panel>
+            </panel> 
+          </panel>
+        </panel>
+        <panel name="settings" alias="SETTINGS" width="50%" lwidth="33%" height="120" background="2c2c2c" rightmargin="42" align="right" ypos="-125" shadowopacity="30%" shadowradius="3">
+          <object class="settings-links" name="main" background="515151" bottomof=" " onclickup="navHamburger" _wire="profile.wire" _wirename="profile" text="Home"/>
+          <object class="settings-links" name="quit" background="515151" bottomof="main" onclickup="hide-settings" text="Quit Program"/>
+          <object class="settings-links" name="email"  background="515151" bottomof="quit" onclickup="hide-settings" text="Option 3?"/>
+        </panel>
+        <image name="btn-settings" alias="BTN-SET" source="images/hamburger.png" align="right" rightmargin="12" valign="top" onclickup="show-settings"></image>
+      </panel>
+      </panel>
+      <panel name="content" alias="CONTENT" style="100" alpha="0">
+        <include name="include" style="100"/>
+      </panel>
+      <panel name="datePickert1" alias="DATEPICKER1" width="100%" height="100%" alpha="0">
+        <panel name="background" width="100%" height="100%" background="#000000" alpha=".8"/>
+        <datepicker name="selectdate" alias="SELECTDATE" width="100%" height="40%" time="no" valign="center"></datepicker>
+        <panel name="submit" width="80%" height="40" background="#72c604" cornerradius="5" bottomof="SELECTDATE" margin-top="35" align="center">
+          <panel name="submit-datebtn" alias="SUBMIT-DATEBTN" width="100%" height="40" valign="center" cornerradius="5" borderwidth="1" bordercolor="#68b404" clip="yes" margin="10" onclickup="set-date-start">
+                <panel name="highlight" width="100%" height="50%" valign="top" background="#ffffff" alpha=".3"/>
+                <text name="submit-green" width="100%" height="fit" ypos="5" color="#7ac714" font="Helvetica-Bold" size="16" valign="center" alignment="center" text="Submit Date" alpha=".5"/>
+                <text name="submit-date" width="100%" height="fit" ypos="6" color="#ffffff" font="Helvetica-Bold" size="16" valign="center" alignment="center" text="Submit Date"/>
+          </panel>
+           <!-- <text name="label" text="submit date" width="100%" height="100%" align="center" alignment="center" onclickup="set-date" />-->
+        </panel>
+      </panel>
+
+		<panel name="datePicker2" alias="DATEPICKER2" width="100%" height="100%" alpha="0">
+			<panel name="background" width="100%" height="100%" background="#000000" alpha=".8"/>
+			<datepicker name="selectdate2" alias="SELECTDATE2" width="100%" height="40%" time="no" valign="center"></datepicker>
+			<panel name="submit" width="80%" height="40" background="#72c604" cornerradius="5" bottomof="SELECTDATE2" margin-top="35" align="center">
+              <panel name="submit-datebtn" alias="SUBMIT-DATEBTN" width="100%" height="40" valign="center" cornerradius="5" borderwidth="1" bordercolor="#68b404" clip="yes" margin="10" onclickup="set-date-end">
+                	<panel name="highlight" width="100%" height="50%" valign="top" background="#ffffff" alpha=".3"/>
+                	<text name="submit-green" width="100%" height="fit" ypos="5" color="#7ac714" font="Helvetica-Bold" size="16" valign="center" alignment="center" text="Submit Date" alpha=".5"/>
+                	<text name="submit-date" width="100%" height="fit" ypos="6" color="#ffffff" font="Helvetica-Bold" size="16" valign="center" alignment="center" text="Submit Date"/>
+              </panel>
+				<!--<text name="label" text="submit date" width="100%" height="100%" align="center" alignment="center" onclickup="set-date2" />-->
+			</panel>
+		</panel>
+      
+
+  </main>     
+  
+ 	<actions> 
+        <action name="navLoad">
+          <load file="_wire" wirename="_wirename" target="CONTENT/include" />
+          <alpha value="1" time=".5" target="CONTENT" />
+        </action>
+      
+      	<action name="alertfunction">
+          <alert message="_message"></alert>
+        </action>
+      	
+      	<action name="show-settings">
+          <translate ypos="0" time=".5" curve="linear" target="SETTINGS" />
+        <set onclickup="hide-settings" />
+      	</action>
+        
+      	<action name="hide-settings">
+            <translate ypos="-125" time=".5" curve="linear" target="SETTINGS" />
+            <set onclickup="show-settings" />
+        </action>
+      	
+      	<action name="keyboard-off">
+          <keyboard visible="no" />
+      	</action>
+      
+      	<!-- <action name="select">
+          <sync>
+            <play action="switchbox"/>
+            <play action="switchback"/>
+          </sync>
+      	</action>-->
+      
+        <action name="switchbox-bleeds">
+          <alpha value="0" time="0.2" target="BLEEDS-UNCHECKED"></alpha>
+          <alpha value="1" time="0.2" target="BLEEDS-CHECKED"></alpha>
+        </action>  
+      
+      	<action name="switchback-bleeds">
+          <alpha value="0" time=".2" target="BLEEDS-CHECKED"></alpha>
+          <alpha value="1" time="0.2" target="BLEEDS-UNCHECKED"></alpha>
+        </action>  
+      
+      	<action name="switchbox-infusions">
+          <alpha value="0" time="0.2" target="INFUSION-UNCHECKED"></alpha>
+          <alpha value="1" time="0.2" target="INFUSION-CHECKED"></alpha>
+        </action>  
+      
+      	<action name="switchback-infusions">
+          <alpha value="0" time=".2" target="INFUSION-CHECKED"></alpha>
+          <alpha value="1" time="0.2" target="INFUSION-UNCHECKED"></alpha>
+        </action>  
+      
+      <action name="launch-datePicker1">
+      	<alpha value="1" time=".5" target="DATEPICKER1"></alpha>
+      </action>
+      
+      <action name="launch-datePicker2">
+      	<alpha value="1" time=".5" target="DATEPICKER2"></alpha>
+      </action>
+      
+      <action name="set-date-start">
+      	<assign property="object:START-BOX.text" value="[object:SELECTDATE.month]/[object:SELECTDATE.day]/[object:SELECTDATE.year]" />
+      	<alpha value="0" time=".5" target="DATEPICKER1" />
+      </action>
+      
+      <action name="set-date-end">
+      	<assign property="object:END-BOX.text" value="[object:SELECTDATE.month]/[object:SELECTDATE.day]/[object:SELECTDATE.year]" />
+      	<alpha value="0" time=".5" target="DATEPICKER2" />
+      </action>
+    </actions> 
+</wire>
