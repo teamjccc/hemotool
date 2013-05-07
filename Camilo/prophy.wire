@@ -1,195 +1,196 @@
 <wire>
-  	<datasources>
-      <!-- To keep your data clean, always use a datasource to write to the db and a datasource to query and read that data. -->
-    	<datasource name="infusion" source="sql://infusions" query="CREATE TABLE IF NOT EXISTS INFUSIONS (ID INTEGER PRIMARY KEY AUTOINCREMENT, DATE TEXT, MEDICATION TEXT, LOTNUM TEXT, EXPDATE TEXT, DOSE TEXT, SCAN TEXT, NOTES TEXT);" providertype="sql"/> <!-- for each column create, pair with a type (TEXT). Order is VERY Important, make sure your order is identical throughout the wire -->
-      <!-- This will be the datasource you will use if you want to call/query your database -->
-        <datasource name="infusion-list" source="sql://infusions" query="SELECT * FROM INFUSIONS ORDER BY ID ASC;" providertype="sql"/> 
-	</datasources>
+  <datasources>
+    <!-- To keep your data clean, always use a datasource to write to the db and a datasource to query and read that data. -->
+    <datasource name="infusion" source="sql://infusions" query="CREATE TABLE IF NOT EXISTS INFUSIONS (ID INTEGER PRIMARY KEY AUTOINCREMENT, DATE TEXT, MEDICATION TEXT, LOTNUM TEXT, EXPDATE TEXT, DOSE TEXT, SCAN TEXT, NOTES TEXT);" providertype="sql"/> <!-- for each column create, pair with a type (TEXT). Order is VERY Important, make sure your order is identical throughout the wire -->
+    <!-- This will be the datasource you will use if you want to call/query your database -->
+    <datasource name="infusion-list" source="sql://infusions" query="SELECT * FROM INFUSIONS ORDER BY ID ASC;" providertype="sql"/> 
+  </datasources>
   
-	<styles>
-      <style name="100" width="100%" height="100%"/>
-      <style name="work-space" width="100%" height="[eval: [object:CONTENTBOX.height] - [eval:[object:HEADER.height] + [object:NAV.height]]]" ypos="40" />
-      <style name="data-box"   height="35" align="center" alignment="left" background="ffffff" valignment="center" alpha="1" size="14" rightmargin="-12" leftinset="5" color="212121" cornerradius="5" borderwidth="1" bordercolor="212121"/>
-      <style name="data-box2"  width="100%" height="35" align="center" alignment="left" background="ffffff" valignment="center" alpha="1" size="14" rightmargin="-12" leftinset="5" color="212121" />
-      <style name="textfield" height="30" cornerradius="5" font="Helvetica" size="14" align="left" alignment="left" rightmargin="-12" leftinset="5" background="#ffffff" bordercolor="#212121" borderwidth="1" color="#212121" />
-      <style name="text-settingsMenu" width="60%" height="30" color="#e6e6e6" font="GillSans" size="16" rightof="img" align="left" valign="center" leftmargin="15%" alignment="center"/>
-      <style name="testr" background="#ff0000" alpha=".4"/><!-- transparent red -->
-      <style name="testg" background="#00ff00" alpha=".4"/><!-- transparent green -->
-      <style name="testb" background="#0000ff" alpha=".4"/><!-- transparent blue -->
-	</styles>
+  <styles>
+    <style name="100" width="100%" height="100%"/>
+    <style name="work-space" width="100%" height="[eval: [object:CONTENTBOX.height] - [eval:[object:HEADER.height] + [object:NAV.height]]]" ypos="40" />
+    <style name="data-box"   height="35" align="center" alignment="left" background="ffffff" valignment="center" alpha="1" size="14" rightmargin="-12" leftinset="5" color="212121" cornerradius="5" borderwidth="1" bordercolor="212121"/>
+    <style name="data-box2"  width="100%" height="35" align="center" alignment="left" background="ffffff" valignment="center" alpha="1" size="14" rightmargin="-12" leftinset="5" color="212121" />
+    <style name="textfield" height="30" cornerradius="5" font="Helvetica" size="14" align="left" alignment="left" rightmargin="-12" leftinset="5" background="#ffffff" bordercolor="#212121" borderwidth="1" color="#212121" />
+    <style name="text-settingsMenu" width="60%" height="30" color="#e6e6e6" font="GillSans" size="16" rightof="img" align="left" valign="center" leftmargin="15%" alignment="center"/>
+    <style name="testr" background="#ff0000" alpha=".4"/><!-- transparent red -->
+    <style name="testg" background="#00ff00" alpha=".4"/><!-- transparent green -->
+    <style name="testb" background="#0000ff" alpha=".4"/><!-- transparent blue -->
+  </styles>
   
-  	<classes>
-      <class name="settings-links">
-      		<panel name="[param:name]" width="100%" height="40" align="center" bottomof="[param:bottomof]" onclickup="[param:onclickup]">
-        		<panel name="top-rule" width="100%" height="1" valign="top" background="[param:background]"></panel>
-        		<panel name="bottom-rule" width="100%" height="1" valign="bottom" background="212121"></panel>
-        		<text name="text" style="text-settingsMenu" text="[param:text]"></text>
-      		</panel>
-	  	</class>
-    	<class name="navObject">
-      		<panel name="[param:name]" width="25%" height="100%" rightof="[param:rightof]" onclickup="navLoad" _wire="[param:_wire]" _wirename="[param:_wirename]">
-        		<image name="icon" height="32" align="center" ypos="10%" source="[param:source]"/>
-        		<text name="navText"  height="10" width="100%" color="#cccccc" font="Helvetica-Bold" size="8" bottomof="icon" align="center" alignment="center" text="Profile"></text>
-      		</panel>
-    	</class>
-    	<class name="textfield">
-    		<textfield name="[param:name]" alias="[param:alias]" width="[param:width]" style="data-box" onreturnkeypressed="keyboard-off" placeholder="[param:placeholder]" _alias="[param:_alias]" ypos="[param:ypos]" />
-    	</class>
-      	<class name="med-radio">
-      		<panel name="[param:label]-container" alias="[param:label]-container" width="100%" height="40" onclickup="set-radio">
-              <panel name="radio" width="30" height="30" cornerradius="15" background="[param:background]" borderwidth="1" bordercolor="#222222" valign="center"/>
-              <text name="label" width="100%" height="100%" leftinset="40" size="12" text="[param:label]" />
-          	</panel>
-      	</class>
-        <class name="medList-item">
-          <text name="[param:dataSourceIndex]-entry" width="100%" height="20%" color="#ffffff" size="14" text="[param:med]" />
-      	</class>
-      <class name="medList-item-first">
-          <text name="[param:dataSourceIndex]-entry" width="100%" height="20%" color="#00ff00" size="14" text="[param:med]" />
-      	</class>
-	</classes>
-
-<main>
-
-  <panel name="contentbox" alias="CONTENTBOX" style="100" xpos="0" ypos="0">	
-    <panel name="header" alias="HEADER" width="100%" height="40" background="212121">
-      <text name="patient" alias="PATIENT" width="50%" height="100%" color="#cccccc" font="Helvetica-Bold" size="18" align="center" alignment="center" text="Dakota" />
-      <panel name="close-list" alias="CLOSE-MEDLIST" background="#00ff00" width="40" height="40" valign="center" onclickup="close-medList" alpha="0" />
-    </panel>	
+  <classes>
+    <class name="settings-links">
+      <panel name="[param:name]" width="100%" height="40" align="center" bottomof="[param:bottomof]" onclickup="[param:onclickup]">
+        <panel name="top-rule" width="100%" height="1" valign="top" background="[param:background]"></panel>
+        <panel name="bottom-rule" width="100%" height="1" valign="bottom" background="212121"></panel>
+        <text name="text" style="text-settingsMenu" text="[param:text]"></text>
+      </panel>
+    </class>
+    <class name="navObject">
+      <panel name="[param:name]" width="25%" height="100%" rightof="[param:rightof]" onclickup="navLoad" _wire="[param:_wire]" _wirename="[param:_wirename]">
+        <image name="icon" height="32" align="center" ypos="10%" source="[param:source]"/>
+        <text name="navText"  height="10" width="100%" color="#cccccc" font="Helvetica-Bold" size="8" bottomof="icon" align="center" alignment="center" text="Profile"></text>
+      </panel>
+    </class>
+    <class name="textfield">
+      <textfield name="[param:name]" alias="[param:alias]" width="[param:width]" style="data-box" onreturnkeypressed="keyboard-off" placeholder="[param:placeholder]" _alias="[param:_alias]" ypos="[param:ypos]" />
+    </class>
+    <class name="med-radio">
+      <panel name="[param:label]-container" alias="[param:label]-container" width="100%" height="40" onclickup="set-radio">
+        <panel name="radio" width="30" height="30" cornerradius="15" background="[param:background]" borderwidth="1" bordercolor="#222222" valign="center"/>
+        <text name="label" width="100%" height="100%" leftinset="40" size="12" text="[param:label]" />
+      </panel>
+    </class>
+    <class name="medList-item">
+      <text name="[param:dataSourceIndex]-entry" width="100%" height="20%" color="#ffffff" size="14" text="[param:med]" />
+    </class>
+    <class name="medList-item-first">
+      <text name="[param:dataSourceIndex]-entry" width="100%" height="20%" color="#00ff00" size="14" text="[param:med]" />
+    </class>
+  </classes>
+  
+  <main>
     
-    <panel name="nav" alias="NAV" width="100%" height="50" background="#212121" align="center" valign="bottom">
-      <object class="navObject" name="tab1" _wire="profile.wire" rightof=" " _wirename="profile" source="images/profile.png" ></object>
-      <object class="navObject" name="tab2" _wire="prophy.wire" rightof="tab1" _wirename="prophy" source="images/logging_active.png" ></object>
-      <object class="navObject" name="tab3" _wire="ordering.wire" rightof="tab2" _wirename="ordering" source="images/ordering.png" ></object>
-      <object class="navObject" name="tab4" _wire="travel.wire" rightof="tab3" _wirename="travel" source="images/travel.png" ></object>
-    </panel>
-    
-    <panel name="work-box" alias="WORK-BOX" width="100%" height="[eval: [object:CONTENTBOX.height] - [eval:[object:HEADER.height] + [object:NAV.height]]]" ypos="0">
+    <panel name="contentbox" alias="CONTENTBOX" style="100" xpos="0" ypos="0">	
+      <panel name="header" alias="HEADER" width="100%" height="40" background="212121">
+        <text name="patient" alias="PATIENT" width="50%" height="100%" color="#cccccc" font="Helvetica-Bold" size="18" align="center" alignment="center" text="Dakota" />
+        <panel name="close-list" alias="CLOSE-MEDLIST" background="#00ff00" width="40" height="40" valign="center" onclickup="close-medList" alpha="0" />
+      </panel>	
       
-      <image name="background" source="images/lime.background.new.png" width="100%" height="[eval: [object:CONTENTBOX.height] - 132]" ypos="82"></image>
-      
-      <panel name="break" alias="BREAK" background="000000" width="100%" height="2" ypos="[object:HEADER.height]"></panel>
-      <panel name="prophy-infusion-box" alias="PROPHY-INFUSION-BOX" width="100%" height="40" bottomof="BREAK" background="212324">
-        <panel name="header2" alias="HEADER2" width="100%" height="20" background="70757a" align="center" valign="top" alpha=".3"/>
-        <panel name="header3" alias="HEADER3" width="100%" height="40" background="4d5258" align="center" valign="top" alpha=".5"/>
-        <text name="prophy-infusion-box-title" alias="PROPHY-INFUSION-BOX-TITLE" height="22" width="150" size="17" font="Helvetica-Bold" color="cccccc" valign="center" align="center" alignment="center" text="Log Infusion"/>
-        <panel name="blank" alias="BLANK" width="10" height="1"/>
-        <panel name="cancelbutton" alias="CANCELBUTTON" width="20%" height="32" valign="center" cornerradius="5" borderwidth="1" bordercolor="68b404" clip="yes" rightof="BLANK" onclickup="alertfunction" _message="You clicked cancel!">
-          <panel name="button-bg2" alias="BUTTON-BG2" width="100%" height="32" valign="center" background="#72c604" cornerradius="5">
-            <panel name="highlight" width="100%" height="50%" valign="top" background="#ffffff" alpha=".3"/>
-            <text name="cancel-green" width="100%" height="fit" ypos="5" color="#7ac714" font="Helvetica-Bold" size="14" alignment="center" text="Cancel" alpha=".5"/>
-            <text name="Cancel" width="100%" height="fit" ypos="6" color="#ffffff" font="Helvetica-Bold" size="14" alignment="center" text="Cancel"/>
-          </panel>
-        </panel>
-        <panel name="blank2" alias="BLANK2" width="10" height="" align="right"/>
-        <panel name="donebutton" alias="DONEBUTTON" width="20%" height="32" valign="center" cornerradius="5" borderwidth="1" bordercolor="68b404" clip="yes" leftof="BLANK2" onclickup="alertfunction" _message="You clicked done!">
-          <panel name="button-bg2" alias="BUTTON-BG2" width="100%" height="32" valign="center" background="#72c604" cornerradius="5">
-            <panel name="highlight" width="100%" height="50%" valign="top" background="#ffffff" alpha=".3"/>
-            <text name="cancel-green" width="100%" height="fit" ypos="5" color="#7ac714" font="Helvetica-Bold" size="14" alignment="center" text="Done" alpha=".5"/>
-            <text name="Cancel" width="100%" height="fit" ypos="6" color="#ffffff" font="Helvetica-Bold" size="14" alignment="center" text="Done"/>
-          </panel>
-        </panel>
+      <panel name="nav" alias="NAV" width="100%" height="50" background="#212121" align="center" valign="bottom">
+        <object class="navObject" name="tab1" _wire="profile.wire" rightof=" " _wirename="profile" source="images/profile.png" ></object>
+        <object class="navObject" name="tab2" _wire="prophy.wire" rightof="tab1" _wirename="prophy" source="images/logging_active.png" ></object>
+        <object class="navObject" name="tab3" _wire="ordering.wire" rightof="tab2" _wirename="ordering" source="images/ordering.png" ></object>
+        <object class="navObject" name="tab4" _wire="travel.wire" rightof="tab3" _wirename="travel" source="images/travel.png" ></object>
       </panel>
       
-      <pager name="personal-scroll" alias="PERSONAL-SCROLL" orientation="vertical" paginate="no" width="100%" height="[eval: [object:CONTENTBOX.height] - [eval:[object:PROPHY-INFUSION-BOX.height] + [object:BREAK.height] + [object:HEADER.height] + [object:NAV.height]]]" ypos="82">
-        <panel name="page1" alias="PAGE1" width="100%" height="100%" valign="top">
-          <panel name="mainscroll" alias="MAINSCROLL" width="100%" fitheight="yes" align="center">
-            <!--<textfield name="date-textfield" alias="DATE-TEXTFIELD" width="94%" style="data-box" onreturnkeypressed="keyboard-off" placeholder="Date" ypos="20" />-->                         	
-            <object class="textfield" name="date-textfield" alias="DATE-TEXTFIELD" width="94%" placeholder="Date" _alias="DATE-TEXTFIELD" ypos="20" onclickup="launch-datePicker"></object>
-            <pager name="select-medication-panel" alias="SELECT-MEDICATION-PANEL" margin-top="10" bottomof="DATE-TEXTFIELD" width="94%" height="120" align="center" paginate="no" orientation="vertical">
-            
-            </pager>
-            <panel name="barcodepanel" alias="BARCODEPANEL" margin-top="10" bottomof="SELECT-MEDICATION-PANEL" style="data-box" width="94%" align="center">
-              <image name="barcodepic" alias="BARCODEPIC" width="41" height="29" xpos="20" ypos="3" background="#ffffff" source="images/barcode.png"/>
-              <text name="barcode-scanner-text" alias="BARCODE-SCANNER-TEXT" width="100%" height="100%" alignment="center" text="Barcode Scanner" /><!--180-->
-            </panel>  
-            <panel name="middle-box" alias="MIDDLE-BOX" width="94%" height="107" align="center" cornerradius="5" borderwidth="1" bordercolor="212121" bottomof="BARCODEPANEL" margin-top="10">
-              <textfield name="lot-number-textfield" alias="LOT-NUMBER-TEXTFIELD" width="100%" style="data-box2" margin-top="10" onreturnkeypressed="keyboard-off" placeholder="Lot Number"/>
-              <panel name="bottom-border1" alias="BOTTOM-BORDER1" width="100%" height="1" background="212121" bottomof="LOT-NUMBER-TEXTFIELD"/>
-              <textfield name="expiration-date-textfield" alias="EXPIRATION-DATE-TEXTFIELD" width="100%" style="data-box2" onreturnkeypressed="keyboard-off" bottomof="BOTTOM-BORDER1" placeholder="Expiration Date"/>
-              <panel name="bottom-border2" alias="BOTTOM-BORDER2" width="100%" height="1" background="212121" bottomof="EXPIRATION-DATE-TEXTFIELD"/>
-              <textfield name="dose-textfield" alias="DOSE-TEXTFIELD" width="100%" style="data-box2" onreturnkeypressed="keyboard-off" bottomof="BOTTOM-BORDER2" placeholder="Dose (IU)"/>
-            </panel>
-            <textfield name="prophy-notes" alias="PROPHY-NOTES" width="94%" height="70" bottomof="MIDDLE-BOX" margin-top="10" style="data-box" onreturnkeypressed="keyboard-off" placeholder="Notes" />
-          </panel>
-        </panel>
-        <panel name="page2" alias="PAGE2" width="100%" height="45" align="center">
-          <panel name="button-bg2" alias="BUTTON-BG2" width="94%" height="35" margin-top="10" align="center" background="#72c604" cornerradius="5" onclickup="save-infusion" _message="Success! You clicked Submit!">
-            <panel name="submitbtn" alias="SUBMITBTN" width="100%" height="35" valign="center" cornerradius="5" borderwidth="1" bordercolor="#68b404" clip="yes" margin="10">
-              <panel name="highlight" width="100%" height="50%" valign="top" background="#ffffff" alpha=".3"/>
-              <text name="submit-blue" width="100%" height="fit" ypos="5" color="#7ac714" font="Helvetica-Bold" size="18" alignment="center" text="Submit" alpha=".5"/>
-              <text name="submit" width="100%" height="fit" ypos="6" color="ffffff" font="Helvetica-Bold" size="18" alignment="center" text="Submit"/> 
-            </panel> 
-          </panel>
-        </panel> 
-        <panel name="spacer" width="100%" height="50%"></panel>
-      </pager>
-    </panel>
-    
-    <panel name="settings" alias="SETTINGS" width="50%" lwidth="33%" height="120" background="2c2c2c" rightmargin="42" align="right" ypos="-125" shadowopacity="30%" shadowradius="3">
-      <object class="settings-links" name="main" background="515151" bottomof=" " onclickup="navHamburger" _wire="profile.wire" _wirename="profile" text="Home"/>
-      <object class="settings-links" name="quit" background="515151" bottomof="main" onclickup="hide-settings" text="Quit Program"/>
-      <object class="settings-links" name="email"  background="515151" bottomof="quit" onclickup="hide-settings" text="Option 3?"/>
-    </panel>
-    <image name="btn-settings" alias="BTN-SET" source="images/hamburger.png" align="right" rightmargin="12" valign="top" onclickup="show-settings"></image>
+      <panel name="work-box" alias="WORK-BOX" width="100%" height="[eval: [object:CONTENTBOX.height] - [eval:[object:HEADER.height] + [object:NAV.height]]]" ypos="0">
         
-   	</panel>
-    <panel name="content" alias="CONTENT" style="100" alpha="0">
-    	<include name="include" style="100"/>
-    </panel>
-  	<panel name="datePicker" alias="DATEPICKER" width="100%" height="100%" alpha="0">
-      	<panel name="background" width="100%" height="100%" background="#000000" alpha=".8"/>
-  		<datepicker name="selectdate" alias="SELECTDATE" width="100%" height="40%" time="no" valign="center"></datepicker>
-        <panel name="submit" width="80%" height="40" background="#00ff00" bottomof="selectdate" margin-top="10" align="center">
-          <text name="label" text="submit date" width="100%" height="100%" align="center" alignment="center" onclickup="set-date" />
+        <image name="background" source="images/lime.background.new.png" width="100%" height="[eval: [object:CONTENTBOX.height] - 132]" ypos="82"></image>
+        
+        <panel name="break" alias="BREAK" background="000000" width="100%" height="2" ypos="[object:HEADER.height]"></panel>
+        <panel name="prophy-infusion-box" alias="PROPHY-INFUSION-BOX" width="100%" height="40" bottomof="BREAK" background="212324">
+          <panel name="header2" alias="HEADER2" width="100%" height="20" background="70757a" align="center" valign="top" alpha=".3"/>
+          <panel name="header3" alias="HEADER3" width="100%" height="40" background="4d5258" align="center" valign="top" alpha=".5"/>
+          <text name="prophy-infusion-box-title" alias="PROPHY-INFUSION-BOX-TITLE" height="22" width="150" size="17" font="Helvetica-Bold" color="cccccc" valign="center" align="center" alignment="center" text="Log Infusion"/>
+          <panel name="blank" alias="BLANK" width="10" height="1"/>
+          <panel name="cancelbutton" alias="CANCELBUTTON" width="20%" height="32" valign="center" cornerradius="5" borderwidth="1" bordercolor="68b404" clip="yes" rightof="BLANK" onclickup="alertfunction" _message="You clicked cancel!">
+            <panel name="button-bg2" alias="BUTTON-BG2" width="100%" height="32" valign="center" background="#72c604" cornerradius="5">
+              <panel name="highlight" width="100%" height="50%" valign="top" background="#ffffff" alpha=".3"/>
+              <text name="cancel-green" width="100%" height="fit" ypos="5" color="#7ac714" font="Helvetica-Bold" size="14" alignment="center" text="Cancel" alpha=".5"/>
+              <text name="Cancel" width="100%" height="fit" ypos="6" color="#ffffff" font="Helvetica-Bold" size="14" alignment="center" text="Cancel"/>
+            </panel>
+          </panel>
+          <panel name="blank2" alias="BLANK2" width="10" height="" align="right"/>
+          <panel name="donebutton" alias="DONEBUTTON" width="20%" height="32" valign="center" cornerradius="5" borderwidth="1" bordercolor="68b404" clip="yes" leftof="BLANK2" onclickup="alertfunction" _message="You clicked done!">
+            <panel name="button-bg2" alias="BUTTON-BG2" width="100%" height="32" valign="center" background="#72c604" cornerradius="5">
+              <panel name="highlight" width="100%" height="50%" valign="top" background="#ffffff" alpha=".3"/>
+              <text name="cancel-green" width="100%" height="fit" ypos="5" color="#7ac714" font="Helvetica-Bold" size="14" alignment="center" text="Done" alpha=".5"/>
+              <text name="Cancel" width="100%" height="fit" ypos="6" color="#ffffff" font="Helvetica-Bold" size="14" alignment="center" text="Done"/>
+            </panel>
+          </panel>
         </panel>
+        
+        <pager name="personal-scroll" alias="PERSONAL-SCROLL" orientation="vertical" paginate="no" width="100%" height="[eval: [object:CONTENTBOX.height] - [eval:[object:PROPHY-INFUSION-BOX.height] + [object:BREAK.height] + [object:HEADER.height] + [object:NAV.height]]]" ypos="82">
+          <panel name="page1" alias="PAGE1" width="100%" height="100%" valign="top">
+            <panel name="mainscroll" alias="MAINSCROLL" width="100%" fitheight="yes" align="center">
+              <text name="date-textfield" alias="DATE-TEXTFIELD" width="94%" style="data-box" onclickup="launch-datePicker" text="Date" ypos="20" />	
+              <!--<object class="textfield" name="date-textfield" alias="DATE-TEXTFIELD" width="94%" placeholder="Date" _alias="DATE-TEXTFIELD" ypos="20" onclickup="launch-datePicker"></object>-->
+              <pager name="select-medication-panel" alias="SELECT-MEDICATION-PANEL" margin-top="10" bottomof="DATE-TEXTFIELD" width="94%" height="120" align="center" paginate="no" orientation="vertical">
+                
+              </pager>
+              <panel name="barcodepanel" alias="BARCODEPANEL" margin-top="10" bottomof="SELECT-MEDICATION-PANEL" style="data-box" width="94%" align="center">
+                <image name="barcodepic" alias="BARCODEPIC" width="41" height="29" xpos="20" ypos="3" background="#ffffff" source="images/barcode.png"/>
+                <text name="barcode-scanner-text" alias="BARCODE-SCANNER-TEXT" width="100%" height="100%" alignment="center" text="Barcode Scanner" /><!--180-->
+              </panel>  
+              <panel name="middle-box" alias="MIDDLE-BOX" width="94%" height="107" align="center" cornerradius="5" borderwidth="1" bordercolor="212121" bottomof="BARCODEPANEL" margin-top="10">
+                <textfield name="lot-number-textfield" alias="LOT-NUMBER-TEXTFIELD" width="100%" style="data-box2" margin-top="10" onreturnkeypressed="keyboard-off" placeholder="Lot Number"/>
+                <panel name="bottom-border1" alias="BOTTOM-BORDER1" width="100%" height="1" background="212121" bottomof="LOT-NUMBER-TEXTFIELD"/>
+                <textfield name="expiration-date-textfield" alias="EXPIRATION-DATE-TEXTFIELD" width="100%" style="data-box2" onreturnkeypressed="keyboard-off" bottomof="BOTTOM-BORDER1" placeholder="Expiration Date"/>
+                <panel name="bottom-border2" alias="BOTTOM-BORDER2" width="100%" height="1" background="212121" bottomof="EXPIRATION-DATE-TEXTFIELD"/>
+                <textfield name="dose-textfield" alias="DOSE-TEXTFIELD" width="100%" style="data-box2" onreturnkeypressed="keyboard-off" bottomof="BOTTOM-BORDER2" placeholder="Dose (IU)"/>
+              </panel>
+              <textfield name="prophy-notes" alias="PROPHY-NOTES" width="94%" height="70" bottomof="MIDDLE-BOX" margin-top="10" style="data-box" onreturnkeypressed="keyboard-off" placeholder="Notes" />
+            </panel>
+          </panel>
+          <panel name="page2" alias="PAGE2" width="100%" height="55" align="center">
+            <panel name="button-bg2" alias="BUTTON-BG2" width="94%" height="35" margin-top="10" align="center" background="#72c604" cornerradius="5" onclickup="save-infusion" ypos="10" _message="Success! You clicked Submit!">
+              <panel name="submitbtn" alias="SUBMITBTN" width="100%" height="35" valign="center" cornerradius="5" borderwidth="1" bordercolor="#68b404" clip="yes" margin="10">
+                <panel name="highlight" width="100%" height="50%" valign="top" background="#ffffff" alpha=".3"/>
+                <text name="submit-blue" width="100%" height="fit" ypos="5" color="#7ac714" font="Helvetica-Bold" size="18" alignment="center" text="Submit" alpha=".5"/>
+                <text name="submit" width="100%" height="fit" ypos="6" color="ffffff" font="Helvetica-Bold" size="18" alignment="center" text="Submit"/> 
+              </panel> 
+            </panel>
+          </panel> 
+          <panel name="spacer" width="100%" height="50%"></panel>
+        </pager>
+      </panel>
+      
+      <panel name="settings" alias="SETTINGS" width="50%" lwidth="33%" height="120" background="2c2c2c" rightmargin="42" align="right" ypos="-125" shadowopacity="30%" shadowradius="3">
+        <object class="settings-links" name="main" background="515151" bottomof=" " onclickup="navHamburger" _wire="profile.wire" _wirename="profile" text="Home"/>
+        <object class="settings-links" name="quit" background="515151" bottomof="main" onclickup="hide-settings" text="Quit Program"/>
+        <object class="settings-links" name="email"  background="515151" bottomof="quit" onclickup="hide-settings" text="Option 3?"/>
+      </panel>
+      <image name="btn-settings" alias="BTN-SET" source="images/hamburger.png" align="right" rightmargin="12" valign="top" onclickup="show-settings"></image>
+      
     </panel>
-  	<panel name="myList" alias="MY-LIST" width="100%" height="[eval:[object:CONTENTBOX.height] - [object:HEADER.height]]" ypos="100%">
+    <panel name="content" alias="CONTENT" style="100" alpha="0">
+      <include name="include" style="100"/>
+    </panel>
+    <panel name="datePicker" alias="DATEPICKER" width="100%" height="100%" alpha="0">
+      <panel name="background" width="100%" height="100%" background="#000000" alpha=".8"/>
+      <datepicker name="selectdate" alias="SELECTDATE" width="100%" height="40%" time="no" valign="center"></datepicker>
+      <panel name="submit" width="80%" height="40" background="#00ff00" bottomof="selectdate" margin-top="10" align="center">
+        <text name="label" text="submit date" width="100%" height="100%" align="center" alignment="center" onclickup="set-date" />
+      </panel>
+    </panel>
+    <panel name="myList" alias="MY-LIST" width="100%" height="[eval:[object:CONTENTBOX.height] - [object:HEADER.height]]" ypos="100%">
       <list name="list" datasource="infusion-list" width="100%" height="100%" orientation="vertical" paginate="no" background="#000000">
         <object class="medList-item" med="[param:MEDICATION] [param:DATE] [param:NOTES]" lhs="[param:dataSourceIndex]" operator="!=" rhs="1"/>
         <object class="medList-item-first" med="[param:MEDICATION] [param:DATE] [param:NOTES]" lhs="[param:dataSourceIndex]" operator="=" rhs="1"/>
       </list>
-  	</panel>
-</main>     
+    </panel>
+  </main>     
   <actions> 
     <!--<action name="navLoad">
       <load file="_wire" wirename="_wirename" target="CONTENT/include" />
       <alpha value="1" time=".5" target="CONTENT" />
     </action>-->
     <action name="setPref" oninit="yes">
-    	<sync>
-      	<!-- these will be set at the profile level -->
-          <assign property="preferences:med1" value="Med 1" />
-          <assign property="preferences:med2" value="Med 2" />
-          <assign property="preferences:med3" value="Med 3" />
-          <!-- build my med radio buttons / keep wihtin prophy wire -->
-          <play action="build-meds" />
-      	</sync>
+      <sync>
+        <!-- these will be set at the profile level -->
+        <assign property="preferences:med1" value="Med 1" />
+        <assign property="preferences:med2" value="Med 2" />
+        <assign property="preferences:med3" value="Med 3" />
+        <!-- build my med radio buttons / keep wihtin prophy wire -->
+        <play action="build-meds" />
+      </sync>
     </action>
     <action name="build-meds">
-        <assign property="var:currentMedRadio" value="[preferences:med1]-container" />
-    	<if lhs="[preferences:med1]" operator="!=" rhs="">
-        	<create class="med-radio" label="[preferences:med1]" background="00ff00" target="SELECT-MEDICATION-PANEL" />
-      	</if>
-      	<if lhs="[preferences:med2]" operator="!=" rhs="">
-      		<create class="med-radio" label="[preferences:med2]" background="ffffff" target="SELECT-MEDICATION-PANEL" />
-      	</if>
-      	<if lhs="[preferences:med3]" operator="!=" rhs="">
-      		<create class="med-radio" label="[preferences:med3]" background="ffffff" target="SELECT-MEDICATION-PANEL" />
-      	</if>
+      <assign property="var:currentMedRadio" value="[preferences:med1]-container" />
+      <if lhs="[preferences:med1]" operator="!=" rhs="">
+        <create class="med-radio" label="[preferences:med1]" background="00ff00" target="SELECT-MEDICATION-PANEL" />
+      </if>
+      <if lhs="[preferences:med2]" operator="!=" rhs="">
+        <create class="med-radio" label="[preferences:med2]" background="ffffff" target="SELECT-MEDICATION-PANEL" />
+      </if>
+      <if lhs="[preferences:med3]" operator="!=" rhs="">
+        <create class="med-radio" label="[preferences:med3]" background="ffffff" target="SELECT-MEDICATION-PANEL" />
+      </if>
     </action>
     <action name="set-radio">
       <sync>
-      	<assign property="object:[var:currentMedRadio]/radio.background" value="ffffff" />
+        <assign property="object:[var:currentMedRadio]/radio.background" value="ffffff" />
         <assign property="var:currentMedRadio" value="[object:name]" />
-      	<assign property="object:[var:currentMedRadio]/radio.background" value="00ff00" />
+        <assign property="object:[var:currentMedRadio]/radio.background" value="00ff00" />
       </sync>
     </action>
     <action name="launch-datePicker">
       <alpha value="1" time=".5" target="DATEPICKER" />
     </action>
     <action name="set-date">
-      <assign property="object:DATE-TEXTFIELD.text" value="[object:SELECTDATE.month]/[object:SELECTDATE.day]/[object:SELECTDATE.year]" />
+      <assign property="object:DATE-TEXTFIELD.text" value="[object:SELECTDATE.date]" />
+      
       <alpha value="0" time=".5" target="DATEPICKER" />
     </action>
     <action name="navHamburger">
@@ -217,6 +218,30 @@
       <alert message="_alias"></alert>
       <keyboard visible="no" target="_alias"/>
     </action>
+    <action name="null">
+    </action>  
+    <!-- INFUSION ACTION -->
+    <action name="save-infusion">
+      <!-- AGAIN, very important that you match case and order that you outlined in the datasource ( DATE, MEDICATION, LOTNUM, EXPDATE, DOSE, SCAN, NOTES ) -->
+      <assign property="var:infusionSave" value="1" />
+      <assign property="datasource:infusion.query" value="INSERT INTO INFUSIONS (DATE, MEDICATION, LOTNUM, EXPDATE, DOSE, SCAN, NOTES) values ('[object:DATE-TEXTFIELD.text]','[object:[var:currentMedRadio]/label.text]','[object:LOT-NUMBER-TEXTFIELD.text]','[object:EXPIRATION-DATE-TEXTFIELD.text]','[object:DOSE-TEXTFIELD.text]','[object:SELECT-MEDICATION-TEXT.text]','[object:PROPHY-NOTES.text]')" />
+      <assign property="datasource:infusion-list.query" value="SELECT * FROM INFUSIONS"/>
+    </action>
+    <!-- this is just a listener that will fire when we hit save to let us know what we saved and how many indexes we have in our db -->
+    <action name="check-db" datasource="infusion-list">
+      <if lhs="[var:infusionSave]" operator="=" rhs="1">
+        <alert title="[datasource:infusion-list.dataSourceResultCount] infusions" message="You just added: '[object:DATE-TEXTFIELD.text]','[object:[var:currentMedRadio]/label.text]','[object:LOT-NUMBER-TEXTFIELD.text]','[object:EXPIRATION-DATE-TEXTFIELD.text]','[object:DOSE-TEXTFIELD.text]','[object:SELECT-MEDICATION-TEXT.text]','[object:PROPHY-NOTES.text]'" />
+        <keyboard visible="no" target="PROPHY-NOTES"/>
+        <translate valign="bottom" time=".25" target="MY-LIST" />
+        <assign property="var:infusionSave" value="0" />
+        <alpha value="1" time=".2" target="CLOSE-MEDLIST" />
+        <alert title="Result" message="[datasource:infusion-list.1.DATE]"></alert>
+      </if>
+    </action>
+    <action name="close-medList">
+      <translate ypos="100%" time=".25" target="MY-LIST" />
+      <alpha value="1" time=".2" target="CLOSE-MEDLIST" />
+    </action>
     <!--<action name="keyboard">
          <keyboard visible="yes" target="DATE-TEXTFIELD"/>
        </action>
@@ -226,28 +251,5 @@
         <action name="onresume" onresume="yes">
          put actions you want to trigger when the app is opened from sleep (running in the background). Delete this action if not needed. 
         </action>-->
-    <action name="null">
-    </action>  
-        <!-- INFUSION ACTION -->
-        <action name="save-infusion">
-            <!-- AGAIN, very important that you match case and order that you outlined in the datasource ( DATE, MEDICATION, LOTNUM, EXPDATE, DOSE, SCAN, NOTES ) -->
-            <assign property="var:infusionSave" value="1" />
-          	<assign property="datasource:infusion.query" value="INSERT INTO INFUSIONS (DATE, MEDICATION, LOTNUM, EXPDATE, DOSE, SCAN, NOTES) values ('[object:DATE-TEXTFIELD.text]','[object:[var:currentMedRadio]/label.text]','[object:LOT-NUMBER-TEXTFIELD.text]','[object:EXPIRATION-DATE-TEXTFIELD.text]','[object:DOSE-TEXTFIELD.text]','[object:SELECT-MEDICATION-TEXT.text]','[object:PROPHY-NOTES.text]')" />
-            <assign property="datasource:infusion-list.query" value="SELECT * FROM INFUSIONS"/>
-        </action>
-        <!-- this is just a listener that will fire when we hit save to let us know what we saved and how many indexes we have in our db -->
-      	<action name="check-db" datasource="infusion-list">
-          <if lhs="[var:infusionSave]" operator="=" rhs="1">
-            <alert title="[datasource:infusion-list.dataSourceResultCount] infusions" message="You just added: '[object:DATE-TEXTFIELD.text]','[object:[var:currentMedRadio]/label.text]','[object:LOT-NUMBER-TEXTFIELD.text]','[object:EXPIRATION-DATE-TEXTFIELD.text]','[object:DOSE-TEXTFIELD.text]','[object:SELECT-MEDICATION-TEXT.text]','[object:PROPHY-NOTES.text]'" />
-            <keyboard visible="no" target="PROPHY-NOTES"/>
-            <translate valign="bottom" time=".25" target="MY-LIST" />
-            <assign property="var:infusionSave" value="0" />
-            <alpha value="1" time=".2" target="CLOSE-MEDLIST" />
-          </if>
-        </action>
-    	<action name="close-medList">
-           <translate ypos="100%" time=".25" target="MY-LIST" />
-           <alpha value="1" time=".2" target="CLOSE-MEDLIST" />
-    	</action>
-    </actions> 
+  </actions> 
 </wire>
