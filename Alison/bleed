@@ -23,8 +23,8 @@
       </panel>
     </class>
     
-    <class name="camera">
-      <camera name="camera" alias="CAMERA" height="100%" width="100%" type="video" face="back" album="Camera Roll" onclickup="picture"  oncapture="" photoquality="" onscantarget="../../../../.." >
+    <class name="cameraClass" alias="CAMERACLASS">
+      <camera name="camera" alias="CAMERA" height="100%" width="100%" face="back" onclickup="activate camera" >
         <!--<panel name="exit" width="50%" height="50" background="#fff000" bottomof="CAMERA" margin-top="0" align="left" onclickup="alertfunction" _message="You clicked exit!" alpha=".5">
           <text name="label" text="Exit" width="100%" height="100%" align="center" alignment="center" onclickup="alertfunction" _message="You clicked exit!" />
         </panel>
@@ -44,7 +44,7 @@
           <panel name="header2" alias="HEADER2" width="100%" height="20" background="70757a" align="center" valign="top" alpha=".3"/>
           <panel name="header3" alias="HEADER3" width="100%" height="40" background="4d5258" align="center" valign="top" alpha=".5"/>
           <text name="patient"  alias="PATIENT" width="50%" height="100%" color="#cccccc" font="Helvetica-Bold" size="18" align="center" alignment="center" text="Dakota" />
-        </panel>	
+        </panel>  
         <panel name="nav" alias="NAV" width="100%" height="50" background="#212121" align="center" valign="bottom">
           <panel name="tab1" alias="TAB1" width="25%" height="100%" onclickup="navLoad" _wire="profile.wire" _wirename="profile">
             <image name="icon" height="32" align="center" ypos="10%" source="images/profile.png"/>
@@ -150,19 +150,26 @@
     
     <action name="activate camera">
       <sync>
-        <create class="camera" target="CONTAINER" />
-        <assign property="var:camerastatus" value="on" />
-        <set onclickup="picture" target="CONTAINER" />
+        <create class="cameraClass" target="CONTAINER" />
+        <!--<assign property="var:camerastatus" value="on" />-->
+        <set onclickup="picture" target="CAMERA" />
       </sync>
     </action>
     
     <action name="picture">
       <sync>
         <event type="captureStillImage" target="CAMERA"/>
+        <!--<set onclickup="deleteCamera" target="CAMERA" />-->
         <delete target="CAMERA" />
-        <assign property="var:camerastatus" value="off" />
+        <!--<assign property="var:camerastatus" value="off" />-->
       </sync>
     </action>
+    
+    <action name="deleteCamera">
+      <sync>
+       
+      </sync>
+    </action>  
     
     <action name="keyboard-off">
       <keyboard visible="no"/>
