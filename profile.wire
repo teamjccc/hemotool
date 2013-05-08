@@ -1,6 +1,17 @@
 <wire>
+  <datasources>
+      <!-- To keep your data clean, always use a datasource to write to the db and a datasource to query and read that data. -->
+    	<datasource name="infusion" source="sql://infusions" query="CREATE TABLE IF NOT EXISTS PROFILE (ID INTEGER PRIMARY KEY AUTOINCREMENT, DATE TEXT, MEDICATION TEXT, LOTNUM TEXT, EXPDATE TEXT, DOSE TEXT, SCAN TEXT, NOTES TEXT);" providertype="sql"/> <!-- for each column create, pair with a type (TEXT). Order is VERY Important, make sure your order is identical throughout the wire -->
+      <!-- This will be the datasource you will use if you want to call/query your database -->
+        <datasource name="profiles" source="sql://profiless" query="SELECT * FROM PROFILES ORDER BY ID ASC;" providertype="sql"/> 
+	</datasources>
    <styles>
      <style name="100" width="100%" height="100%"/>
+     <style name="tab-text" height="10" width="100%" color="#cccccc" font="Helvetica-Bold" size="8" bottomof="icon" align="center" alignment="center"/>
+     <style name="sm-space" width="2%" height="30" />
+     <style name="lg-space" width="100%" height="7" />
+     <style name="bg-space" width="100%" height="21" />
+     <style name="textfield" height="30" cornerradius="5" font="Helvetica" size="14" align="left" alignment="left" rightmargin="-12" leftinset="5" background="#ffffff" bordercolor="#212121" borderwidth="1" color="#212121" />
      <style name="work-space" width="100%" height="[eval: [object:CONTENTBOX.height] - [eval:[object:HEADER.height] + [object:NAV.height]]]" ypos="20" />
    </styles>
    <main>
@@ -28,9 +39,167 @@
                       <text name="tab4-txt" alias="TAB4-TXT" height="10" width="100%" color="#cccccc" font="Helvetica-Bold" size="8" bottomof="icon" align="center" alignment="center" text="Travel"></text>
                     </panel>
                  </panel>
-                 <panel name="work-box" alias="WORK-BOX"  style="work-space">
-                   <!-- PLACE YOUR CODE HERE -->
-                 </panel>
+                   <panel name="work-box" alias="WORK-BOX" width="100%" height="[eval: [object:CONTENTBOX.height] - [eval:[object:HEADER.height] + [object:NAV.height]]]" ypos="20">
+                    <image name="background" source="images/lime.background.new.png" style="work-space"></image>
+                    <pager name="personal-scroll" orientation="vertical" paginate="no" width="100%" height="[eval: [object:CONTENTBOX.height] - [eval:[object:HEADER.height] + [object:NAV.height]]]" ypos="20">
+                      <panel name="personal" alias="PERSONAL" width="100%" fitheight="yes" valign="top">
+                          <text name="heading-personal" alias="HEADING-PERSONAL" width="100%" height="26" xpos="10" ypos="20" font="Helvetica-Bold" size="16" alignment="left" cornerradius="5" color="#212121" text="Personal Information"/>
+                          
+                          <panel name="pro-pic" alias="PRO-PIC" width="33%" fitheight="yes" align="left">
+                            <panel name="image-box" alias="IMAGE-BOX" width="90" height="106" xpos="10" background="#212121" cornerradius="10" bottomof="HEADING-PERSONAL"/>
+                            <image name="pic" alias="PIC" width="75" height="80" xpos="18" ypos="55" background="#ffffff" source="images/profile.png"/>  
+                            <text name="edit" alias="EDIT" width="100" height="20" xpos="6" ypos="132" font="Helvetica" color="#ffffff" size="10" alignment="center" text="Edit Image"/> 
+                          </panel>
+                        
+                          <panel name="info-personal" alias="INFO-PERSONAL" fitheight="yes" width="64%" ypos="48" rightof="PRO-PIC">
+                            <textfield name="first" alias="FIRST" width="100%" style="textfield" placeholder="First Name" align="left" ></textfield>
+                            <panel name="space" alias="SPACE" style="lg-space" rightmargin="-12" bottomof="FIRST"/>
+                            <textfield name="last" alias="LAST" width="100%" style="textfield" placeholder="Last Name" bottomof="SPACE"></textfield>
+                            <panel name="space2" alias="SPACE2" style="lg-space" rightmargin="-12" bottomof="LAST"/>
+                            <textfield name="email" alias="EMAIL" width="100%" style="textfield" placeholder="Email" bottomof="SPACE2"/>
+                            <panel name="space3" alias="SPACE3" style="lg-space" rightmargin="-12" bottomof="EMAIL"/>                            
+                          </panel>
+                        
+                          <panel name="info-personal2" alias="INFO-PERSONAL2" fitheight="yes" width="94%" align="center" bottomof="INFO-PERSONAL" >
+                            <textfield name="dob" alias="DOB" width="73%" style="textfield" placeholder="DOB (mm/dd/yyyy)" bottomof="SPACE3"/>
+                            <panel name="space4" alias="SPACE4" style="sm-space" rightof="DOB"/>
+                            <textfield name="weight" alias="WEIGHT" width="25%" style="textfield" placeholder="Weight" rightof="SPACE4" bottomof="SPACE3"/>
+                            <panel name="space5" alias="SPACE5" style="lg-space" bottomof="WEIGHT"/>
+                            <textfield name="address1" alias="ADDRESS1" width="100%" style="textfield" placeholder="Address" bottomof="SPACE5"/>
+                            <panel name="space6" alias="SPACE6" style="lg-space" bottomof="ADDRESS1"/>
+                            <textfield name="address2" alias="ADDRESS2" width="100%" style="textfield" placeholder="Address" bottomof="SPACE6"/>
+                            <panel name="space7" alias="SPACE7" style="lg-space" bottomof="ADDRESS2"/>
+                            <textfield name="city" alias="CITY" width="60%" style="textfield" placeholder="City" bottomof="SPACE7"/>
+                            <panel name="space8" alias="SPACE8" style="sm-space" rightof="CITY"/>
+                            <textfield name="state" alias="STATE" width="14%" style="textfield" placeholder="State" rightof="SPACE8" bottomof="SPACE7"/>
+                            <panel name="space9" alias="SPACE9" style="sm-space" rightof="STATE"/>
+                            <textfield name="zip" alias="ZIP" width="22%" style="textfield" placeholder="Zip" rightof="SPACE9" bottomof="SPACE7"/>
+                            <panel name="space10" alias="SPACE10" style="lg-space" bottomof="ZIP"/>
+                            <image name="homephone" alias="HOMEPHONE" height="30" source="images/homephone.png" bottomof="SPACE10"/>
+                            <panel name="space11" alias="SPACE11" style="sm-space" rightof="HOMEPHONE" bottomof="SPACE10"/>
+                            <textfield name="homeph" alias="HOMEPH" width="37.5%" style="textfield" placeholder="###-###-####" bottomof="SPACE10" rightof="SPACE11"/>
+                            <panel name="space12" alias="SPACE12" width="2.5%" height="30" rightof="HOMEPH"/>
+                            <image name="cellphone" alias="CELLPHONE" height="30" source="images/cellphone.png" bottomof="SPACE10" rightof="SPACE12" />
+                            <panel name="space13" alias="SPACE13" width="0.25%" height="30" rightof="CELLPHONE"/>                            
+                            <textfield name="mobileph" alias="MOBILEPH" width="37.5%" style="textfield" placeholder="###-###-####" rightof="SPACE13" bottomof="SPACE10"/>
+                          </panel>
+                      
+                          <panel name="medical" alias="MEDICAL" width="94%" fitheight="yes" align="center" valign="top" bottomof="INFO-PERSONAL2">
+                            <panel name="bg-space" alias="BG-SPACE" style="bg-space" bottomof="MOBILEPH"/>
+                            <text name="heading-medical" alias="HEADING-MEDICAL" width="100%" height="30" font="Helvetica-Bold" size="16" valign="center" alignment="left" color="#212121" text="Medical Information" bottomof="BG-SPACE"/>
+                            <text name="med1" alias="MED1" width="100%" style="textfield" text="Medication Name" bottomof="HEADING-MEDICAL"/>
+                            <panel name="space12" alias="SPACE12" style="lg-space" bottomof="MED1"/>
+                            <text name="med2" alias="MED2" width="100%" style="textfield" text="Medication Name" bottomof="SPACE12"/>
+                            <panel name="space13" alias="SPACE13" style="lg-space" bottomof="MED2"/>
+                            <text name="med3" alias="MED3" width="100%" style="textfield" text="Medication Name" bottomof="SPACE13"/>
+                            <panel name="bg-space3" alias="BG-SPACE3" style="bg-space" bottomof="MED3"/>
+                            <text name="diagnosis" alias="DIAGNOSIS" width="100%" height="26" font="Helvetica-Bold" size="16" valign="center" alignment="left" color="#212121" text="Diagnosis" bottomof="BG-SPACE3"/>
+                            <panel name="space17" alias="SPACE17" style="lg-space" bottomof="DIAGNOSIS"/>
+                            <text name="disorder" alias="DISORDER" width="100%" style="textfield" text="Bleeding Disorder"  valign="center" bottomof="SPACE17"/>
+                            <panel name="space18" alias="SPACE18" style="lg-space" bottomof="DISORDER"/>
+                            <text name="severity" alias="SEVERITY" width="100%" style="textfield" text="Severity" bottomof="SPACE18"/>
+                            <image name="checkbox" alias="CHECKBOX" source="images/checkbox-empty.png" bottomof="SEVERITY"/>
+                            <panel name="space24" alias="SPACE24" width="2.5%" height="30" rightof="checkbox" bottomof="SEVERITY"/>
+                            <text name="inhibitor" alias="INHIBITOR" width="60%" height="45" font="Helvetica-Bold" size="14" valign="center" alignment="left" color="#212121" text="Inhibitor" bottomof="SEVERITY" rightof="SPACE24"/>
+                          </panel>
+                        
+                          <panel name="physician" alias="PHYSICIAN" width="94%" fitheight="yes" align="center" valign="top" bottomof="MEDICAL">
+                            <panel name="bg-space2" alias="BG-SPACE2" style="bg-space" bottomof="CHECKBOX"/>
+                            <text name="heading-physician" alias="HEADING-PHYSICIAN" width="100%" height="26" font="Helvetica-Bold" size="16" alignment="left" color="#212121" text="Physician Information" bottomof="BG-SPACE2"/>
+                            <textfield name="doctor" alias="DOCTOR" width="100%" style="textfield" placeholder="Doctor" bottomof="HEADING-PHYSICIAN"/>
+                            <panel name="space16" alias="SPACE16" style="lg-space" bottomof="DOCTOR"/>                           
+                            <textfield name="address3" alias="ADDRESS3" width="100%" style="textfield" placeholder="Address" bottomof="SPACE16"/>
+                            <panel name="space30" alias="SPACE30" style="lg-space" bottomof="ADDRESS3"/>
+                            <textfield name="address4" alias="ADDRESS4" width="100%" style="textfield" placeholder="Address" bottomof="SPACE30"/>
+                            <panel name="space31" alias="SPACE31" style="lg-space" bottomof="ADDRESS4"/>
+                            <textfield name="city2" alias="CITY2" width="60%" style="textfield" placeholder="City" bottomof="SPACE31"/>
+                            <panel name="space32" alias="SPACE32" style="sm-space" rightof="CITY2"/>
+                            <textfield name="state2" alias="STATE2" width="14%" style="textfield" placeholder="State" rightof="SPACE32" bottomof="SPACE31"/>
+                            <panel name="space33" alias="SPACE33" style="sm-space" rightof="STATE2"/>
+                            <textfield name="zip2" alias="ZIP2" width="22%" style="textfield" placeholder="Zip" rightof="SPACE33" bottomof="SPACE31"/>
+                            <panel name="space34" alias="SPACE34" style="lg-space" bottomof="ZIP2"/>
+                            <image name="busphone" alias="BUSPHONE" height="30" source="images/work_phone.png" bottomof="SPACE34"/>
+                            <panel name="space35" alias="SPACE35" style="sm-space" rightof="BUSPHONE" bottomof="SPACE34"/>
+                            <textfield name="busph" alias="BUSPH" width="37.5%" style="textfield" placeholder="###-###-####" bottomof="SPACE34" rightof="SPACE35"/>
+                          </panel>
+                        
+                          <panel name="ins" alias="INS" width="94%" fitheight="yes" align="center" valign="top" bottomof="PHYSICIAN">
+                            <panel name="bg-space3" alias="BG-SPACE3" style="bg-space" bottomof="BUSPHONE"/>
+                            <text name="heading-ins" alias="HEADING-INS" width="100%" height="26" font="Helvetica-Bold" size="16" alignment="left" color="#212121" text="Insurance Information" bottomof="BG-SPACE3"/>  
+                            <panel name="space39" alias="SPACE39" style="lg-space" bottomof="HEADING-INS"/>
+                            
+                            <text name="heading-primary" alias="HEADING-PRIMARY" width="100%" height="16" font="Helvetica-Bold" size="14" valign="bottom" alignment="left" color="#212121" text="Primary" bottomof="SPACE39"/>
+                            <panel name="space40" alias="SPACE40" style="lg-space" bottomof="HEADING-PRIMARY"/>
+                            <textfield name="ins-co" alias="INS-CO" width="100%" style="textfield" placeholder="Insurance Co." bottomof="SPACE40"/>
+                            <panel name="space41" alias="SPACE41" style="lg-space" bottomof="INS-CO"/>
+                            <textfield name="id-no" alias="ID-NO" width="49%" style="textfield" placeholder="Member ID No." bottomof="SPACE41"/>
+                            <panel name="space42" alias="SPACE42" style="sm-space" rightof="ID-NO"/>
+                            <textfield name="grp-no" alias="GRP-NO" width="49%" style="textfield" placeholder="Group No." rightof="SPACE42" bottomof="SPACE41"/>
+                            <panel name="space43" alias="SPACE43" style="lg-space" bottomof="GRP-NO"/>
+                            <textfield name="policy-holder" alias="POLICY-HOLDER" width="100%" style="textfield" placeholder="Policy Holder" bottomof="SPACE43"/>
+                            <panel name="space55" alias="SPACE55" width="100%" height="14" bottomof="POLICY-HOLDER"/>
+                            
+                            <text name="heading-secondary" alias="HEADING-SECONDARY" width="100%" height="16" font="Helvetica-Bold" size="14" valign="bottom" alignment="left" color="#212121" text="Secondary" bottomof="SPACE55"/>
+                            <panel name="space44" alias="SPACE44" style="lg-space" bottomof="HEADING-SECONDARY"/>
+                            <textfield name="ins-co2" alias="INS-CO2" width="100%" style="textfield" placeholder="Insurance Co." bottomof="SPACE44"/>
+                            <panel name="space45" alias="SPACE45" style="lg-space" bottomof="INS-CO2"/>
+                            <textfield name="id-no2" alias="ID-NO2" width="49%" style="textfield" placeholder="Member ID No." bottomof="SPACE45"/>
+                            <panel name="space46" alias="SPACE46" style="sm-space" rightof="ID-NO2"/>
+                            <textfield name="grp-no2" alias="GRP-NO2" width="49%" style="textfield" placeholder="Group No." rightof="SPACE46" bottomof="SPACE45"/>
+                            <panel name="space47" alias="SPACE47" style="lg-space" bottomof="GRP-NO2"/>
+                            <textfield name="policy-holder2" alias="POLICY-HOLDER2" width="100%" style="textfield" placeholder="Policy Holder" bottomof="SPACE47"/>
+                            <panel name="space56" alias="SPACE56" width="100%" height="14" bottomof="POLICY-HOLDER2"/>
+                            
+                            <text name="heading-tertiary" alias="HEADING-TERTIARY" width="100%" height="16" font="Helvetica-Bold" size="14" valign="bottom" alignment="left" color="#212121" text="Tertiary" bottomof="SPACE56"/>
+                            <panel name="space48" alias="SPACE48" style="lg-space" bottomof="HEADING-TERTIARY"/>
+                            <textfield name="ins-co3" alias="INS-CO3" width="100%" style="textfield" placeholder="Insurance Co." bottomof="SPACE48"/>
+                            <panel name="space49" alias="SPACE49" style="lg-space" bottomof="INS-CO3"/>
+                            <textfield name="id-no3" alias="ID-NO3" width="49%" style="textfield" placeholder="Member ID No." bottomof="SPACE49"/>
+                            <panel name="space50" alias="SPACE50" style="sm-space" rightof="ID-NO3"/>
+                            <textfield name="grp-no3" alias="GRP-NO3" width="49%" style="textfield" placeholder="Group No." rightof="SPACE50" bottomof="SPACE49"/>
+                            <panel name="space51" alias="SPACE51" style="lg-space" bottomof="GRP-NO3"/>
+                            <textfield name="policy-holder3" alias="POLICY-HOLDER3" width="100%" style="textfield" placeholder="Policy Holder" bottomof="SPACE51"/>
+                          </panel>
+                        
+                          <panel name="emergency" alias="EMERGENCY" width="94%" fitheight="yes" align="center" valign="top" bottomof="INS">
+                            <panel name="bg-space4" alias="BG-SPACE4" style="bg-space" bottomof="POLICY-HOLDER3"/>
+                            <text name="heading-emergency" alias="HEADING-EMERGENCY" width="100%" height="26" font="Helvetica-Bold" size="16" alignment="left" color="#212121" text="Emergency Contact" bottomof="BG-SPACE4"/> 
+                            <panel name="space19" alias="SPACE19" style="lg-space" bottomof="HEADING-EMERGENCY"/>
+                            <textfield name="contact" alias="CONTACT" width="100%" style="textfield" placeholder="Contact #1" bottomof="SPACE19"/>
+                            <panel name="space20" alias="SPACE20" style="lg-space" bottomof="CONTACT"/>
+                            <image name="homephone2" alias="HOMEPHONE2" height="30" source="images/homephone.png" bottomof="SPACE20"/>
+                            <panel name="space21" alias="SPACE21" style="sm-space" rightof="HOMEPHONE2" bottomof="SPACE20"/>
+                            <textfield name="homeph2" alias="HOMEPH2" width="37.5%" style="textfield" placeholder="###-###-####" bottomof="SPACE20" rightof="SPACE21"/>
+                            <panel name="space22" alias="SPACE22" width="2.5%" height="30" rightof="HOMEPH2"/>
+                            <image name="cellphone2" alias="CELLPHONE2" height="30" source="images/cellphone.png" bottomof="SPACE20" rightof="SPACE22" />
+                            <panel name="space23" alias="SPACE23" width="0.25%" height="30" rightof="CELLPHONE2"/>                            
+                            <textfield name="mobileph2" alias="MOBILEPH2" width="37.5%" style="textfield" placeholder="###-###-####" rightof="SPACE23" bottomof="SPACE20"/>
+                            <panel name="space60" alias="SPACE60" style="lg-space" bottomof="MOBILEPH2"/>
+                            <textfield name="contact2" alias="CONTACT2" width="100%" style="textfield" placeholder="Contact #2" bottomof="SPACE60"/>
+                            <panel name="space61" alias="SPACE61" style="lg-space" bottomof="CONTACT2"/>
+                            <image name="homephone3" alias="HOMEPHONE3" height="30" source="images/homephone.png" bottomof="SPACE61"/>
+                            <panel name="space62" alias="SPACE62" style="sm-space" rightof="HOMEPHONE3" bottomof="SPACE61"/>
+                            <textfield name="homeph3" alias="HOMEPH3" width="37.5%" style="textfield" placeholder="###-###-####" bottomof="SPACE61" rightof="SPACE62"/>
+                            <panel name="space63" alias="SPACE63" width="2.5%" height="30" rightof="HOMEPH3"/>
+                            <image name="cellphone3" alias="CELLPHONE3" height="30" source="images/cellphone.png" bottomof="SPACE61" rightof="SPACE63" />
+                            <panel name="space64" alias="SPACE64" width="0.25%" height="30" rightof="CELLPHONE3"/>                            
+                            <textfield name="mobileph3" alias="MOBILEPH3" width="37.5%" style="textfield" placeholder="###-###-####" rightof="SPACE64" bottomof="SPACE61"/>
+                            <panel name="bg-space5" alias="BG-SPACE5" width="100%" height="70" bottomof="MOBILEPH3"/>
+                          </panel>
+                        
+                          
+                          <panel name="button-delete" alias="BUTTON-DELETE" width="94%" height="32" align="center" background="#ff0c1d" cornerradius="5" bottomof="BG-SPACE5">
+                            <panel name="delete-btn" alias="DELETE-BTN" width="100%" height="32" valign="center" cornerradius="5" borderwidth="1" bordercolor="#e40515" clip="yes" margin="10" onclickup="alertfunction" _message="Are you sure you want to DELETE this profile?">
+                                <panel name="highlight" width="100%" height="50%" valign="top" background="#ffffff" alpha=".3"/>
+                                <text name="delete-red" width="100%" height="fit" ypos="5" color="#ff0c1d" font="Helvetica-Bold" size="14" alignment="center" text="Delete" alpha=".5"/>
+                                <text name="dlt" width="100%" height="fit" ypos="6" color="#ffffff" font="Helvetica-Bold" size="14" alignment="center" text="Delete"/>
+                            </panel>
+                          </panel> 
+                        </panel>
+                      <panel name="blank" alias="BLANK" width="100%" height="30" bottomof="MOBILEPH3">
+                      </panel>
+                    </pager>
+              	 </panel>
           	</panel>
    		</panel>
      	<panel name="content" alias="CONTENT" style="100" alpha="0">
@@ -41,6 +210,9 @@
         <action name="navLoad">
           <load file="_wire" wirename="_wirename" target="CONTENT/include" />
           <alpha value="1" time=".5" target="CONTENT" />
+        </action>
+        <action name="alertfunction">
+          <alert message="_message"/>
         </action>
     </actions> 
 </wire>
