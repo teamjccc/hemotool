@@ -1,8 +1,4 @@
 <wire>
-  <datasources>
-    <datasource name="photos" source="adsf" query="Camera Roll" providertype="camera"/>
-  </datasources>
-  
   <styles>
     <style name="100" width="100%" height="100%"/>
     <style name="work-space" width="100%" height="[eval: [object:CONTENTBOX.height] - [eval:[object:HEADER.height] + [object:NAV.height]]]" ypos="40" />
@@ -23,8 +19,8 @@
       </panel>
     </class>
     
-    <class name="cameraClass" alias="CAMERACLASS">
-      <camera name="camera" alias="CAMERA" height="100%" width="100%" face="back" onclickup="activate camera" >
+    <class name="camera">
+      <camera name="camera" alias="CAMERA" height="100%" width="100%" album="Camera Roll" type="video" face="back" oncapture="" photoquality="high" onscantarget="../../../../.." >
         <!--<panel name="exit" width="50%" height="50" background="#fff000" bottomof="CAMERA" margin-top="0" align="left" onclickup="alertfunction" _message="You clicked exit!" alpha=".5">
           <text name="label" text="Exit" width="100%" height="100%" align="center" alignment="center" onclickup="alertfunction" _message="You clicked exit!" />
         </panel>
@@ -44,7 +40,7 @@
           <panel name="header2" alias="HEADER2" width="100%" height="20" background="70757a" align="center" valign="top" alpha=".3"/>
           <panel name="header3" alias="HEADER3" width="100%" height="40" background="4d5258" align="center" valign="top" alpha=".5"/>
           <text name="patient"  alias="PATIENT" width="50%" height="100%" color="#cccccc" font="Helvetica-Bold" size="18" align="center" alignment="center" text="Dakota" />
-        </panel>  
+        </panel>	
         <panel name="nav" alias="NAV" width="100%" height="50" background="#212121" align="center" valign="bottom">
           <panel name="tab1" alias="TAB1" width="25%" height="100%" onclickup="navLoad" _wire="profile.wire" _wirename="profile">
             <image name="icon" height="32" align="center" ypos="10%" source="images/profile.png"/>
@@ -150,26 +146,32 @@
     
     <action name="activate camera">
       <sync>
-        <create class="cameraClass" target="CONTAINER" />
-        <!--<assign property="var:camerastatus" value="on" />-->
-        <set onclickup="picture" target="CAMERA" />
+        <alert message="You clicked camera function!"></alert>
+        <if lhs="[object:name]" operator="e" rhs="camerapanel">
+          <create class="camera" target="CONTAINER" />
+          <assign property="var:camerastatus" value="on" />
+          <!--<alert message="[var:camerastatus]"></alert>-->
+          <!--<assign property="object:CAMERAPANEL/label.text" value="Cancel" />-->
+          <set onclickup="delete-camera" target="CONTAINER" />
+        </if>
       </sync>
+    </action>
+    
+    <action name="delete-camera" >
+      <alert message="Taking picture!"></alert>
+      <play action="picture"></play>
+      <alert message="Deleting CAMERA"></alert>
+      <delete target="CAMERA" />
+      <assign property="var:camerastatus" value="off" />
     </action>
     
     <action name="picture">
       <sync>
         <event type="captureStillImage" target="CAMERA"/>
-        <!--<set onclickup="deleteCamera" target="CAMERA" />-->
-        <delete target="CAMERA" />
-        <!--<assign property="var:camerastatus" value="off" />-->
+        <alert message="captureStillImage"></alert>
+        <!--<play action="delete-camera"></play>-->
       </sync>
     </action>
-    
-    <action name="deleteCamera">
-      <sync>
-       
-      </sync>
-    </action>  
     
     <action name="keyboard-off">
       <keyboard visible="no"/>
