@@ -38,7 +38,7 @@
     <class name="med-radio">
       <panel name="[param:label]-container" alias="[param:label]-container" width="100%" height="40" onclickup="set-radio">
         <panel name="radio" width="30" height="30" cornerradius="15" background="[param:background]" borderwidth="1" bordercolor="#222222" valign="center"/>
-        <text name="label" width="100%" height="100%" leftinset="40" size="12" text="[param:label]" />
+        <text name="label" width="100%" height="100%" leftinset="40" size="12" text="[param:label]" /><!-- Need to add text from profile page. Strength.-->
       </panel>
     </class>
     <class name="medList-item">
@@ -51,7 +51,7 @@
   
   <main>
     
-    <panel name="contentbox" alias="CONTENTBOX" style="100" xpos="0" ypos="0">	
+    <panel name="contentbox" alias="CONTENTBOX" style="100" xpos="0" ypos="0">  
       <panel name="header" alias="HEADER" width="100%" height="40" background="212121">
         <text name="patient" alias="PATIENT" width="50%" height="100%" color="#cccccc" font="Helvetica-Bold" size="18" align="center" alignment="center" text="Dakota" />
         <panel name="close-list" alias="CLOSE-MEDLIST" background="#00ff00" width="40" height="40" valign="center" onclickup="close-medList" alpha="0" />
@@ -94,23 +94,22 @@
         <pager name="personal-scroll" alias="PERSONAL-SCROLL" orientation="vertical" paginate="no" width="100%" height="[eval: [object:CONTENTBOX.height] - [eval:[object:PROPHY-INFUSION-BOX.height] + [object:BREAK.height] + [object:HEADER.height] + [object:NAV.height]]]" ypos="82">
           <panel name="page1" alias="PAGE1" width="100%" height="100%" valign="top">
             <panel name="mainscroll" alias="MAINSCROLL" width="100%" fitheight="yes" align="center">
-              <text name="date-textfield" alias="DATE-TEXTFIELD" width="94%" style="data-box" onclickup="launch-datePicker" text="Date" ypos="20" />	
-              <!--<object class="textfield" name="date-textfield" alias="DATE-TEXTFIELD" width="94%" placeholder="Date" _alias="DATE-TEXTFIELD" ypos="20" onclickup="launch-datePicker"></object>-->
+              <text name="date-textfield" alias="DATE-TEXTFIELD" width="94%" style="data-box" onclickup="launch-datePicker" color="afafaf" text="Date" ypos="20" />	
               <pager name="select-medication-panel" alias="SELECT-MEDICATION-PANEL" margin-top="10" bottomof="DATE-TEXTFIELD" width="94%" height="120" align="center" paginate="no" orientation="vertical">
                 
               </pager>
-              <panel name="barcodepanel" alias="BARCODEPANEL" margin-top="10" bottomof="SELECT-MEDICATION-PANEL" style="data-box" width="94%" align="center">
+               <!--<panel name="barcodepanel" alias="BARCODEPANEL" margin-top="10" bottomof="SELECT-MEDICATION-PANEL" style="data-box" width="94%" align="center">
                 <image name="barcodepic" alias="BARCODEPIC" width="41" height="29" xpos="20" ypos="3" background="#ffffff" source="images/barcode.png"/>
-                <text name="barcode-scanner-text" alias="BARCODE-SCANNER-TEXT" width="100%" height="100%" alignment="center" text="Barcode Scanner" /><!--180-->
-              </panel>  
-              <panel name="middle-box" alias="MIDDLE-BOX" width="94%" height="107" align="center" cornerradius="5" borderwidth="1" bordercolor="212121" bottomof="BARCODEPANEL" margin-top="10">
-                <textfield name="lot-number-textfield" alias="LOT-NUMBER-TEXTFIELD" width="100%" style="data-box2" margin-top="10" onreturnkeypressed="keyboard-off" placeholder="Lot Number"/>
+                <text name="barcode-scanner-text" alias="BARCODE-SCANNER-TEXT" width="100%" height="100%" alignment="center" text="Barcode Scanner" />180
+              </panel>-->  
+              <panel name="middle-box" alias="MIDDLE-BOX" width="94%" height="107" align="center" cornerradius="5" borderwidth="1" bordercolor="212121" bottomof="SELECT-MEDICATION-PANEL" margin-top="10">
+                <textfield name="lot-number-textfield" alias="LOT-NUMBER-TEXTFIELD" width="100%" style="data-box2" margin-top="10" onreturnkeypressed="keyboard-off" autocorrect="no" placeholder="Lot Number"/>
                 <panel name="bottom-border1" alias="BOTTOM-BORDER1" width="100%" height="1" background="212121" bottomof="LOT-NUMBER-TEXTFIELD"/>
-                <textfield name="expiration-date-textfield" alias="EXPIRATION-DATE-TEXTFIELD" width="100%" style="data-box2" onreturnkeypressed="keyboard-off" bottomof="BOTTOM-BORDER1" placeholder="Expiration Date"/>
+                <textfield name="expiration-date-textfield" alias="EXPIRATION-DATE-TEXTFIELD" width="100%" style="data-box2" onreturnkeypressed="keyboard-off" bottomof="BOTTOM-BORDER1" autocorrect="no" placeholder="Expiration Date"/>
                 <panel name="bottom-border2" alias="BOTTOM-BORDER2" width="100%" height="1" background="212121" bottomof="EXPIRATION-DATE-TEXTFIELD"/>
-                <textfield name="dose-textfield" alias="DOSE-TEXTFIELD" width="100%" style="data-box2" onreturnkeypressed="keyboard-off" bottomof="BOTTOM-BORDER2" placeholder="Dose (IU)"/>
+                <textfield name="dose-textfield" alias="DOSE-TEXTFIELD" width="100%" style="data-box2" onreturnkeypressed="keyboard-off" bottomof="BOTTOM-BORDER2" autocorrect="no" placeholder="Dosage"/>
               </panel>
-              <textfield name="prophy-notes" alias="PROPHY-NOTES" width="94%" height="70" bottomof="MIDDLE-BOX" margin-top="10" style="data-box" onreturnkeypressed="keyboard-off" placeholder="Notes" />
+              <textfield name="prophy-notes" alias="PROPHY-NOTES" width="94%" height="70" valignment="top" bottomof="MIDDLE-BOX" margin-top="10" style="data-box" onreturnkeypressed="keyboard-off" placeholder="Notes" />
             </panel>
           </panel>
           <panel name="page2" alias="PAGE2" width="100%" height="55" align="center">
@@ -146,8 +145,8 @@
     </panel>
     <panel name="myList" alias="MY-LIST" width="100%" height="[eval:[object:CONTENTBOX.height] - [object:HEADER.height]]" ypos="100%">
       <list name="list" datasource="infusion-list" width="100%" height="100%" orientation="vertical" paginate="no" background="#000000">
-        <object class="medList-item" med="[param:MEDICATION] [param:DATE] [param:NOTES]" lhs="[param:dataSourceIndex]" operator="!=" rhs="1"/>
-        <object class="medList-item-first" med="[param:MEDICATION] [param:DATE] [param:NOTES]" lhs="[param:dataSourceIndex]" operator="=" rhs="1"/>
+        <object class="medList-item" med="[param:MEDICATION] [param:DATE] [param:NOTES] [param:DOSE]" lhs="[param:dataSourceIndex]" operator="!=" rhs="1"/>
+        <object class="medList-item-first" med="[param:MEDICATION] [param:DATE] [param:NOTES] [param:DOSE]" lhs="[param:dataSourceIndex]" operator="=" rhs="1"/>
       </list>
     </panel>
   </main>     
@@ -235,7 +234,7 @@
         <translate valign="bottom" time=".25" target="MY-LIST" />
         <assign property="var:infusionSave" value="0" />
         <alpha value="1" time=".2" target="CLOSE-MEDLIST" />
-        <alert title="Result" message="[datasource:infusion-list.1.DATE]"></alert>
+        <!--<alert title="Result" message="[datasource:infusion-list.1.DATE]"></alert>-->
       </if>
     </action>
     <action name="close-medList">
