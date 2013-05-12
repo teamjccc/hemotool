@@ -1,0 +1,195 @@
+<wire>
+ <styles>
+     <style name="100" width="100%" height="100%"/>
+     <style name="work-space" width="100%" height="[eval: [object:CONTENTBOX.height] - [eval:[object:HEADER.height] + [object:NAV.height]]]" ypos="40" />
+     <style name="data-box"   height="35" align="center" alignment="left" background="ffffff" valignment="center" alpha="1" size="14" rightmargin="-12" leftinset="5" color="212121" cornerradius="5" borderwidth="1" bordercolor="212121"/>
+     <style name="data-box2"  width="100%" height="35" align="center" alignment="left" background="ffffff" valignment="center" alpha="1" size="14" rightmargin="-12" leftinset="5" color="212121" />
+     <style name="textfield" height="30" cornerradius="5" font="Helvetica" size="14" align="left" alignment="left" rightmargin="-12" leftinset="5" background="#ffffff" bordercolor="#212121" borderwidth="1" color="#212121" />
+     <style name="text-settingsMenu" width="60%" height="30" color="#e6e6e6" font="GillSans" size="16" rightof="img" align="left" valign="center" leftmargin="15%" alignment="center"/>
+     <style name="testr" background="#ff0000" alpha=".4"/><!-- transparent red -->
+     <style name="testg" background="#00ff00" alpha=".4"/><!-- transparent green -->
+     <style name="testb" background="#0000ff" alpha=".4"/><!-- transparent blue -->
+ </styles>
+ <main>   
+    <panel name="container" alias="CONTAINER" style="100" background="#ffffff">
+      <panel name="header" alias="HEADER" width="100%" height="40" background="#212121" align="center" valign="top" alpha="0">
+        <text name="patient" alias="PATIENT" height="100%" width="50%" color="#cccccc" font="Helvetica-Bold" size="18" align="center" alignment="center" text="Dakota"></text>
+        <image name="menu" rightmargin="12" valign="center" align="right" source="images/hamburger.png"/> 
+      </panel>	
+      <panel name="nav" alias="NAV" width="100%" height="50" background="#212121" align="center" valign="bottom" alpha="0">
+        <panel name="tab1" width="25%" height="100%" onclickup="navLoad" _wire="profile.wire" _wirename="profile">
+          <image name="icon" height="32" align="center" ypos="10%" source="images/profile_active.png"/>
+          <text name="tab1-txt" alias="TAB1-TXT" height="10" width="100%" color="#cccccc" font="Helvetica-Bold" size="8" bottomof="icon" align="center" alignment="center" text="Profile"></text>
+        </panel>
+        <panel name="tab2" width="25%" height="100%" rightof="tab1" onclickup="navLoad" _wire="logging.wire" _wirename="logging">
+          <image name="icon" height="32" align="center" ypos="10%" source="images/logging.png"/>
+          <text name="tab2-txt" alias="TAB2-TXT" height="10" width="100%" color="#cccccc" font="Helvetica-Bold" size="8" bottomof="icon" align="center" alignment="center" text="Logging"></text>
+        </panel>
+        <panel name="tab3" width="25%" height="100%" rightof="tab2" onclickup="navLoad" _wire="ordering.wire" _wirename="ordering">
+          <image name="icon" height="32" align="center" ypos="10%" source="images/ordering.png"/>
+          <text name="tab3-txt" alias="TAB3-TXT" height="10" width="100%" color="#cccccc" font="Helvetica-Bold" size="8" bottomof="icon" align="center" alignment="center" text="Ordering"></text>
+        </panel>
+        <panel name="tab4" width="25%" height="100%" rightof="tab3" onclickup="navLoad" _wire="travel.wire" _wirename="travel">
+          <image name="icon" height="32" align="center" ypos="10%" source="images/travel.png"/>
+          <text name="tab4-txt" alias="TAB4-TXT" height="10" width="100%" color="#cccccc" font="Helvetica-Bold" size="8" bottomof="icon" align="center" alignment="center" text="Travel"></text>
+        </panel>
+      </panel>
+      <panel name="top" alias="TOP" width="8%" background="#666666" alpha="1" valign="center">
+        <image name="logo" source="images/HemoTool-logo.png" width="100%" valign="center" align="center"></image>
+      </panel>
+      <panel name="main" alias="MAIN" width="100%" height="88%" valign="bottom" alpha="1">
+        <image name="background" source="images/bkgrd-home2.png"></image>
+      </panel>
+      <panel name="icons" alias="ICONS" width="80%" height="75%" valign="bottom" align="center" alpha="1">
+          <panel name="profile" alias="PROFILE" height="50%" width="50%" xpos="0" ypos="0" onclickup="navLoad" _wire="profile.wire" _wirename="profile">
+            <image name="icon" source="images/iconProfile.png" align="center" ignoretouches="yes"></image>
+            <text name="label" width="100%" height="20" font="Helvetica-Bold" size="14" color="#656666" alignment="center" align="center" bottomof="PROFILE" leftof="LOGGINGBOX" text="Profile" ignoretouches="yes"></text>
+          </panel>
+          <panel name="logging" alias="LOGGINGBOX" height="50%" width="50%" rightof="profile" onclickup="navLoad" _wire="logging.wire" _wirename="logging">
+            <image name="icon" source="images/iconSyringe.png" align="center"></image>
+            <text name="label" width="100%" height="20" font="Helvetica-Bold" size="14" color="#656666" alignment="center" align="center" bottomof="logging" text="Logging"></text>
+          </panel>
+          <panel name="ordering" alias="ORDERINGBOX" height="50%" width="50%" bottomof="profile" onclickup="navLoad" _wire="ordering.wire" _wirename="ordering">
+            <image name="icon" source="images/iconOrdering.png" align="center"></image>
+            <text name="label" width="100%" height="20" font="Helvetica-Bold" size="14" color="#656666" alignment="center" align="center" bottomof="ordering" text="Ordering"></text>
+          </panel>
+          <panel name="travel" alias="TRAVELBOX" height="50%" width="50%" bottomof="logging" rightof="ordering" onclickup="navLoad" _wire="travel.wire" _wirename="travel">
+            <image name="icon" source="images/iconTravel.png" align="center"></image>
+            <text name="label" width="100%" height="20" font="Helvetica-Bold" size="14" color="#656666" alignment="center" align="center" bottomof="travel" text="Travel"></text>
+          </panel>
+      </panel>
+    </panel>
+    <panel name="content" alias="CONTENT" style="100" alpha="0">
+        <include name="include" style="100"/>
+    </panel>
+ </main>     
+ <actions> 
+  <action name="boot" oninit="yes">
+    <assign property="var:activeView" value="profile" />
+    <!-- <alert message="[var:activeView]" /> -->
+  </action>
+   
+  <action name="navLoad">
+    <sync>
+        <set onclickup="navLoad" target="ICONS/[var:activeView]" />
+        <load source="images/icon.[var:activeView].png" target="ICONS/[var:activeView]/icon" />
+      	<assign property="var:activeView" value="[object:name]" />
+        <set onclickup="null" />
+        <load source="images/icon.[var:activeView].on.png" target="icon" />
+    	<!--<alert message="load [object:name].wire" />-->
+    	<load file="_wire" wirename="_wirename" target="CONTENT/include" />
+    	<!--<load file="[object:name].wire" target="CONTENT/include" />-->
+    	<alpha value="1" time=".5" target="CONTENT" />
+        <alert message="[var:activeView]" />
+    </sync>
+  </action>
+   
+   <action name="navLoad">
+      <load file="_wire" wirename="_wirename" target="CONTENT/include" />
+      <alpha value="0" time=".5" target="ICONS"></alpha>
+      <alpha value="1" time=".5" target="HEADER"></alpha>
+      <alpha value="1" time=".5" target="NAV"></alpha>
+      <alpha value="1" time=".5" target="CONTENT" />
+    </action>
+    <action name="setPref" oninit="yes">
+      <sync>
+        <!-- these will be set at the profile level -->
+        <assign property="preferences:med1" value="Med 1" />
+        <assign property="preferences:med2" value="Med 2" />
+        <assign property="preferences:med3" value="Med 3" />
+        <!-- build my med radio buttons / keep wihtin prophy wire -->
+        <play action="build-meds" />
+      </sync>
+    </action>
+    <action name="build-meds">
+      <assign property="var:currentMedRadio" value="[preferences:med1]-container" />
+      <if lhs="[preferences:med1]" operator="!=" rhs="">
+        <create class="med-radio" label="[preferences:med1]" background="00ff00" target="SELECT-MEDICATION-PANEL" />
+      </if>
+      <if lhs="[preferences:med2]" operator="!=" rhs="">
+        <create class="med-radio" label="[preferences:med2]" background="ffffff" target="SELECT-MEDICATION-PANEL" />
+      </if>
+      <if lhs="[preferences:med3]" operator="!=" rhs="">
+        <create class="med-radio" label="[preferences:med3]" background="ffffff" target="SELECT-MEDICATION-PANEL" />
+      </if>
+    </action>
+    <action name="set-radio">
+      <sync>
+        <assign property="object:[var:currentMedRadio]/radio.background" value="ffffff" />
+        <assign property="var:currentMedRadio" value="[object:name]" />
+        <assign property="object:[var:currentMedRadio]/radio.background" value="00ff00" />
+      </sync>
+    </action>
+    <action name="launch-datePicker">
+      <alpha value="1" time=".5" target="DATEPICKER" />
+    </action>
+    <action name="set-date">
+      <assign property="object:DATE-TEXTFIELD.text" value="[object:SELECTDATE.date]" />
+      
+      <alpha value="0" time=".5" target="DATEPICKER" />
+    </action>
+    <action name="navHamburger">
+      <sync>
+        <!--<alert message="load [object:name].wire" />-->
+        <play action="hide-settings"></play> 
+        <play action="navLoad"></play>
+      </sync>
+    </action>
+    <action name="alertfunction">
+      <alert message="_message"></alert>
+    </action>
+    <action name="show-settings">
+      <translate ypos="0" time=".5" curve="linear" target="SETTINGS" />
+      <set onclickup="hide-settings" />
+    </action>
+    <action name="hide-settings">
+      <translate ypos="-125" time=".5" curve="linear" target="SETTINGS" />
+      <set onclickup="show-settings" />
+    </action>
+    <action name="keyboard-off">
+      <keyboard visible="no"/>
+    </action>
+    <!--<action name="keyboard-off-target">
+      <alert message="_alias"></alert>
+      <keyboard visible="no" target="_alias"/>
+    </action>-->
+    <action name="null">
+    </action>  
+    <!-- INFUSION ACTION -->
+    <action name="save-infusion">
+      <!-- AGAIN, very important that you match case and order that you outlined in the datasource ( DATE, MEDICATION, LOTNUM, EXPDATE, DOSE, SCAN, NOTES ) -->
+      <assign property="var:infusionSave" value="1" />
+      <assign property="datasource:infusion.query" value="INSERT INTO INFUSIONS (DATE, MEDICATION, LOTNUM, EXPDATE, DOSE, SCAN, NOTES) values ('[object:DATE-TEXTFIELD.text]','[object:[var:currentMedRadio]/label.text]','[object:LOT-NUMBER-TEXTFIELD.text]','[object:EXPIRATION-DATE-TEXTFIELD.text]','[object:DOSE-TEXTFIELD.text]','[object:SELECT-MEDICATION-TEXT.text]','[object:PROPHY-NOTES.text]')" />
+      <assign property="datasource:infusion-list.query" value="SELECT * FROM INFUSIONS"/>
+    </action>
+    <!-- this is just a listener that will fire when we hit save to let us know what we saved and how many indexes we have in our db -->
+    <action name="check-db" datasource="infusion-list">
+      <if lhs="[var:infusionSave]" operator="=" rhs="1">
+        <alert title="[datasource:infusion-list.dataSourceResultCount] infusions" message="You just added: '[object:DATE-TEXTFIELD.text]','[object:[var:currentMedRadio]/label.text]','[object:LOT-NUMBER-TEXTFIELD.text]','[object:EXPIRATION-DATE-TEXTFIELD.text]','[object:DOSE-TEXTFIELD.text]','[object:SELECT-MEDICATION-TEXT.text]','[object:PROPHY-NOTES.text]'" />
+        <keyboard visible="no" target="PROPHY-NOTES"/>
+        <translate valign="bottom" time=".25" target="MY-LIST" />
+        <assign property="var:infusionSave" value="0" />
+        <alpha value="1" time=".2" target="CLOSE-MEDLIST" />
+        <!--<alert title="Result" message="[datasource:infusion-list.1.DATE]"></alert>-->
+      </if>
+    </action>
+    <action name="close-medList">
+      <translate ypos="100%" time=".25" target="MY-LIST" />
+      <alpha value="1" time=".2" target="CLOSE-MEDLIST" />
+    </action>
+    <!--<action name="keyboard">
+         <keyboard visible="yes" target="DATE-TEXTFIELD"/>
+       </action>
+        <action name="oninit" oninit="yes">
+         put actions you want to trigger when the app is started (not running in the background). Delete this action if not needed. 
+        </action>
+        <action name="onresume" onresume="yes">
+         put actions you want to trigger when the app is opened from sleep (running in the background). Delete this action if not needed. 
+        </action>-->
+   
+  <action name="null"></action>
+   
+   
+   
+ </actions> 
+</wire>

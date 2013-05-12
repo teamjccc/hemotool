@@ -4,9 +4,6 @@
     	<datasource name="infusion" source="sql://infusions" query="CREATE TABLE IF NOT EXISTS PROFILE (ID INTEGER PRIMARY KEY AUTOINCREMENT, DATE TEXT, MEDICATION TEXT, LOTNUM TEXT, EXPDATE TEXT, DOSE TEXT, SCAN TEXT, NOTES TEXT);" providertype="sql"/> <!-- for each column create, pair with a type (TEXT). Order is VERY Important, make sure your order is identical throughout the wire -->
       <!-- This will be the datasource you will use if you want to call/query your database -->
         <datasource name="profiles" source="sql://profiless" query="SELECT * FROM PROFILES ORDER BY ID ASC;" providertype="sql"/> 
-      <!-- This is the camera roll -->
-    	<datasource name="photos" source="adsf" query="Camera Roll" providertype="camera"/>
-
 	</datasources>
    <styles>
      <style name="100" width="100%" height="100%"/>
@@ -17,56 +14,41 @@
      <style name="textfield" height="30" cornerradius="5" font="Helvetica" size="14" align="left" alignment="left" rightmargin="-12" leftinset="5" background="#ffffff" bordercolor="#212121" borderwidth="1" color="#212121" />
      <style name="work-space" width="100%" height="[eval: [object:CONTENTBOX.height] - [eval:[object:HEADER.height] + [object:NAV.height]]]" ypos="20" />
    </styles>
-   <classes>
-        <class name="photopreview">
-        <panel name="[param:name]" height="100%" width="100%" >
-          <image name="image" url="[param:url]" height="100%" width="100%" align="center" _asset="[param:url]" valign="center" onclickup="save-cameraRoll" />
-        </panel>                
-        </class>
-        <class name="settings-links">
-        <panel name="[param:name]" width="100%" height="40" align="center" bottomof="[param:bottomof]" onclickup="[param:onclickup]">
-          <panel name="top-rule" width="100%" height="1" valign="top" background="[param:background]"></panel>
-          <panel name="bottom-rule" width="100%" height="1" valign="bottom" background="212121"></panel>
-          <text name="text" style="text-settingsMenu" text="[param:text]"></text>
-        </panel>
-        </class>
-        <class name="navObject">
-          <panel name="[param:name]" width="25%" height="100%" rightof="[param:rightof]" onclickup="navLoad" _wire="[param:_wire]" _wirename="[param:_wirename]">
-            <image name="icon" height="32" align="center" ypos="10%" source="[param:source]"/>
-            <text name="navText"  height="10" width="100%" color="#cccccc" font="Helvetica-Bold" size="8" bottomof="icon" align="center" alignment="center" text="Profile"></text>
-          </panel>
-        </class>
-        <class name="textfield">
-          <textfield name="[param:name]" alias="[param:alias]" width="[param:width]" style="data-box" onreturnkeypressed="keyboard-off" placeholder="[param:placeholder]" _alias="[param:_alias]" ypos="[param:ypos]" />
-        </class>
-        <class name="med-radio">
-          <panel name="[param:label]-container" alias="[param:label]-container" width="100%" height="40" onclickup="set-radio">
-            <panel name="radio" width="30" height="30" cornerradius="15" background="[param:background]" borderwidth="1" bordercolor="#222222" valign="center"/>
-            <text name="label" width="100%" height="100%" leftinset="40" size="12" text="[param:label]" /><!-- Need to add text from profile page. Strength.-->
-          </panel>
-        </class>
-        <class name="medList-item">
-          <text name="[param:dataSourceIndex]-entry" width="100%" height="20%" color="#ffffff" size="14" text="[param:med]" />
-        </class>
-        <class name="medList-item-first">
-          <text name="[param:dataSourceIndex]-entry" width="100%" height="20%" color="#00ff00" size="14" text="[param:med]" />
-        </class>
-      </classes>
    <main>
       	<panel name="container" alias="CONTAINER" style="100">
-    	 	<panel name="content" alias="CONTENT" style="100" xpos="0" ypos="0" background="#cccccc">	
-                
-                   <panel name="work-box" alias="WORK-BOX" width="100%" height="[eval: [object:CONTENT.height] - [eval:[object:HEADER.height] + [object:NAV.height]]]" ypos="20">
+    	 	<panel name="contentbox" alias="CONTENTBOX" style="100" xpos="0" ypos="0" background="#cccccc">	
+                <panel name="header" alias="HEADER" width="100%" height="40" background="#212121" align="center" valign="top">
+              		<text name="patient" alias="PATIENT" height="100%" width="50%" color="#cccccc" font="Helvetica-Bold" size="18" align="center" alignment="center" text="Dakota"></text>
+                  	<image name="menu" valign="center" rightmargin="12" align="right" source="images/hamburger.png"/> 
+                </panel>	
+                <panel name="nav" alias="NAV" width="100%" height="50" background="#212121" align="center" valign="bottom">
+                    <panel name="tab1" width="25%" height="100%" onclickup="navLoad" _wire="profile.wire" _wirename="profile">
+                      <image name="icon" height="32" align="center" ypos="10%" source="images/profile_active.png"/>
+                      <text name="tab1-txt" alias="TAB1-TXT" height="10" width="100%" color="#cccccc" font="Helvetica-Bold" size="8" bottomof="icon" align="center" alignment="center" text="Profile"></text>
+                    </panel>
+                  	<panel name="tab2" width="25%" height="100%" rightof="tab1" onclickup="navLoad" _wire="logging.wire" _wirename="logging">
+                      <image name="icon" height="32" align="center" ypos="10%" source="images/logging.png"/>
+                      <text name="tab2-txt" alias="TAB2-TXT" height="10" width="100%" color="#cccccc" font="Helvetica-Bold" size="8" bottomof="icon" align="center" alignment="center" text="Logging"></text>
+                    </panel>
+                    <panel name="tab3" width="25%" height="100%" rightof="tab2" onclickup="navLoad" _wire="ordering.wire" _wirename="ordering">
+                      <image name="icon" height="32" align="center" ypos="10%" source="images/ordering.png"/>
+                      <text name="tab3-txt" alias="TAB3-TXT" height="10" width="100%" color="#cccccc" font="Helvetica-Bold" size="8" bottomof="icon" align="center" alignment="center" text="Ordering"></text>
+                    </panel>
+                    <panel name="tab4" width="25%" height="100%" rightof="tab3" onclickup="navLoad" _wire="travel.wire" _wirename="travel">
+                      <image name="icon" height="32" align="center" ypos="10%" source="images/travel.png"/>
+                      <text name="tab4-txt" alias="TAB4-TXT" height="10" width="100%" color="#cccccc" font="Helvetica-Bold" size="8" bottomof="icon" align="center" alignment="center" text="Travel"></text>
+                    </panel>
+                 </panel>
+                   <panel name="work-box" alias="WORK-BOX" width="100%" height="[eval: [object:CONTENTBOX.height] - [eval:[object:HEADER.height] + [object:NAV.height]]]" ypos="20">
                     <image name="background" source="images/lime.background.new.png" style="work-space"></image>
-                    <pager name="personal-scroll" orientation="vertical" paginate="no" width="100%" height="[eval: [object:CONTENT.height] - [eval:[object:HEADER.height] + [object:NAV.height]]]" ypos="20">
+                    <pager name="personal-scroll" orientation="vertical" paginate="no" width="100%" height="[eval: [object:CONTENTBOX.height] - [eval:[object:HEADER.height] + [object:NAV.height]]]" ypos="20">
                       <panel name="personal" alias="PERSONAL" width="100%" fitheight="yes" valign="top">
                           <text name="heading-personal" alias="HEADING-PERSONAL" width="100%" height="26" xpos="10" ypos="20" font="Helvetica-Bold" size="16" alignment="left" cornerradius="5" color="#212121" text="Personal Information"/>
                           
-                          <panel name="pro-pic" alias="PRO-PIC" width="33%" height="106" align="left" onclickup="load-cameraRoll">
-                            <panel name="image-box" alias="IMAGE-BOX" width="90" height="106" xpos="10" background="#212121" cornerradius="10" bottomof="HEADING-PERSONAL" ignoretouches="yes"/>
-                            <image name="pic" alias="PIC" width="75" height="80" xpos="18" ypos="55" background="#ffffff" source="images/profile.png" ignoretouches="yes"/>  
-                            <image name="pic-complete" alias="PIC-COMPLETE" width="75" height="80" xpos="18" ypos="55" background="#ffffff" asset=" " ignoretouches="yes" alpha="0"/>  
-                            <text name="edit" alias="EDIT" width="100" height="20" xpos="6" ypos="132" font="Helvetica" color="#ffffff" size="10" alignment="center" text="Edit Image" ignoretouches="yes"/> 
+                          <panel name="pro-pic" alias="PRO-PIC" width="33%" fitheight="yes" align="left">
+                            <panel name="image-box" alias="IMAGE-BOX" width="90" height="106" xpos="10" background="#212121" cornerradius="10" bottomof="HEADING-PERSONAL"/>
+                            <image name="pic" alias="PIC" width="75" height="80" xpos="18" ypos="55" background="#ffffff" source="images/profile.png"/>  
+                            <text name="edit" alias="EDIT" width="100" height="20" xpos="6" ypos="132" font="Helvetica" color="#ffffff" size="10" alignment="center" text="Edit Image"/> 
                           </panel>
                         
                           <panel name="info-personal" alias="INFO-PERSONAL" fitheight="yes" width="64%" ypos="48" rightof="PRO-PIC">
@@ -116,20 +98,13 @@
                             <text name="disorder" alias="DISORDER" width="100%" style="textfield" text="Bleeding Disorder"  valign="center" bottomof="SPACE17"/>
                             <panel name="space18" alias="SPACE18" style="lg-space" bottomof="DISORDER"/>
                             <text name="severity" alias="SEVERITY" width="100%" style="textfield" text="Severity" bottomof="SPACE18"/>
-                            <!--<image name="checkbox" alias="CHECKBOX" source="images/checkbox-empty.png" bottomof="SEVERITY"/>
-                            
-                            <!--<text name="inhibitor" alias="INHIBITOR" width="60%" height="45" font="Helvetica-Bold" size="14" valign="center" alignment="left" color="#212121" text="Inhibitor" bottomof="SEVERITY" rightof="SPACE24"/>-->
-                            	<panel name="checkbox-box" alias="CHECKBOX-BOX" height="30" width="94%" align="right" bottomof="SEVERITY">
-            
-                                  <image name="unchecked" alias="UNCHECKED" source="images/checkbox-empty.png" valign="center" align="left" width="15%" alpha="1" onclick="switchbox"></image>
-                                  <image name="checked" alias="CHECKED" source="images/checkbox.png" valign="center" align="left" width="15%" alpha="0" onclick="switchback"></image>
-                                  
-                                  <text name="inhibitor" alias="INHIBITOR" width="60%" height="45" font="Helvetica-Bold" size="14" valign="center" alignment="left" color="#212121" text="Inhibitor" rightof="UNCHECKED"></text>
-                                </panel>
+                            <image name="checkbox" alias="CHECKBOX" source="images/checkbox-empty.png" bottomof="SEVERITY"/>
+                            <panel name="space24" alias="SPACE24" width="2.5%" height="30" rightof="checkbox" bottomof="SEVERITY"/>
+                            <text name="inhibitor" alias="INHIBITOR" width="60%" height="45" font="Helvetica-Bold" size="14" valign="center" alignment="left" color="#212121" text="Inhibitor" bottomof="SEVERITY" rightof="SPACE24"/>
                           </panel>
                         
                           <panel name="physician" alias="PHYSICIAN" width="94%" fitheight="yes" align="center" valign="top" bottomof="MEDICAL">
-                            <panel name="bg-space2" alias="BG-SPACE2" style="bg-space" bottomof="CHECKBOX-BOX"/>
+                            <panel name="bg-space2" alias="BG-SPACE2" style="bg-space" bottomof="CHECKBOX"/>
                             <text name="heading-physician" alias="HEADING-PHYSICIAN" width="100%" height="26" font="Helvetica-Bold" size="16" alignment="left" color="#212121" text="Physician Information" bottomof="BG-SPACE2"/>
                             <textfield name="doctor" alias="DOCTOR" width="100%" style="textfield" placeholder="Doctor" bottomof="HEADING-PHYSICIAN"/>
                             <panel name="space16" alias="SPACE16" style="lg-space" bottomof="DOCTOR"/>                           
@@ -212,17 +187,8 @@
                             <panel name="bg-space5" alias="BG-SPACE5" width="100%" height="70" bottomof="MOBILEPH3"/>
                           </panel>
                         
-                          <panel name="button-submit" alias="BUTTON-SUBMIT" width="94%" height="32" align="center" background="#72c604" cornerradius="5" bottomof="BG-SPACE5">
-                            <panel name="submit-btn" alias="SUBMIT-BTN" width="100%" height="32" valign="center" cornerradius="5" borderwidth="1" bordercolor="#68b404" clip="yes" margin="10" onclickup="alertfunction" _message="Success! Your profile has been saved.">
-                                <panel name="highlight" width="100%" height="50%" valign="top" background="#ffffff" alpha=".3"/>
-                                <text name="submit-green" width="100%" height="fit" ypos="5" color="#7ac714" font="Helvetica-Bold" size="14" alignment="center" text="Delete" alpha=".5"/>
-                                <text name="sbmt" width="100%" height="fit" ypos="6" color="#ffffff" font="Helvetica-Bold" size="14" alignment="center" text="Submit"/>
-                            </panel>
-                          </panel>
                           
-                          <panel name="bg-space6" alias="BG-SPACE6" width="100%" height="30" bottomof="BUTTON-SUBMIT"/>
-                         
-                          <panel name="button-delete" alias="BUTTON-DELETE" width="94%" height="32" align="center" background="#ff0c1d" cornerradius="5" bottomof="BG-SPACE6">
+                          <panel name="button-delete" alias="BUTTON-DELETE" width="94%" height="32" align="center" background="#ff0c1d" cornerradius="5" bottomof="BG-SPACE5">
                             <panel name="delete-btn" alias="DELETE-BTN" width="100%" height="32" valign="center" cornerradius="5" borderwidth="1" bordercolor="#e40515" clip="yes" margin="10" onclickup="alertfunction" _message="Are you sure you want to DELETE this profile?">
                                 <panel name="highlight" width="100%" height="50%" valign="top" background="#ffffff" alpha=".3"/>
                                 <text name="delete-red" width="100%" height="fit" ypos="5" color="#ff0c1d" font="Helvetica-Bold" size="14" alignment="center" text="Delete" alpha=".5"/>
@@ -239,65 +205,14 @@
      	<panel name="content" alias="CONTENT" style="100" alpha="0">
        		<include name="include" style="100"/>
         </panel>
-     	<panel name="cameraRoll" alias="CAMERAROLL" height="100%" width="100%" ypos="100%">
-            <list name="photos" height="100%" width="100%" datasource="photos" align="center" valign="center">
-                <object name="[param:dataSourceIndex]" class="photopreview"   url="[param:url]" size="[param:size]"/>
-            </list>            
-        </panel>
-        <wait name="wait" alias="WAIT" width="100%" height="100%" alpha="0"/>
  	</main>     
-    <actions> 
-       <action name="boot" oninit="yes">
-         <assign property="var:activeView" value="profile" />
-         <alert message="[var:activeView]" />
-       </action>
-       <action name="navLoad">
-         <sync>
-             <set onclickup="navLoad" target="NAV/[var:activeView]" />
-             <load source="images/icon.[var:activeView].png" target="NAV/[var:activeView]/icon" />
-           	<assign property="var:activeView" value="[object:name]" />
-             <set onclickup="null" />
-             <load source="images/icon.[var:activeView].on.png" target="icon" />
-         	<!--<alert message="load [object:name].wire" />-->
-         	<load file="_wire" wirename="_wirename" target="CONTENT/include" />
-         	<!--<load file="[object:name].wire" target="CONTENT/include" />-->
-         	<alpha value="1" time=".5" target="CONTENT" />
-             <alert message="[var:activeView]" />
-         </sync>
-        
-       </action>
-      <action name="load-cameraRoll">
-        <translate ypos="0" time=".25" target="CAMERAROLL" />
-        <assign property="datasource:photos.query" value="Camera Roll" />
-        <alpha alpha="1" target="WAIT" />
-      </action>
-      <action name="camera-complete" datasource="photos">
-        <alpha alpha="0" target="WAIT" />
-      </action>
-      <action name="save-cameraRoll">
-        <sync>
-        	<assign property="preferences:userProfileImage" value="_asset" />
-        	<alert title="saved preference:userProfileImage" message="_asset" />
-        	<translate ypos="100%" time=".25" target="CAMERAROLL" />
-            <assign property="datasource:photos.query" value="xxyyzz" />
-            <!--<assign property="object:PIC.asset" value="[preferences:userProfileImage]" />-->
-        </sync>
-      </action>
-                
-      <action name="keyboard">
-        <keyboard visible="yes" target="text"/>
-      </action>
-      
-      <action name="switchbox">
-          <alpha value="0" time="0.2" target="UNCHECKED"></alpha>
-          <alpha value="1" time="0.2" target="CHECKED"></alpha>
+ 	<actions> 
+        <action name="navLoad">
+          <load file="_wire" wirename="_wirename" target="CONTENT/include" />
+          <alpha value="1" time=".5" target="CONTENT" />
         </action>
-      
-       <action name="switchback">
-          <alpha value="0" time=".2" target="BLEEDS-CHECKED"></alpha>
-          <alpha value="1" time="0.2" target="BLEEDS-UNCHECKED"></alpha>
+        <action name="alertfunction">
+          <alert message="_message"/>
         </action>
-      
     </actions> 
 </wire>
-
