@@ -7,10 +7,10 @@
     <!-- This will be the datasource you will use if you want to call/query your database -->
     <datasource name="medorder-list" source="sql://medorder" query="SELECT * FROM MEDORDER ORDER BY ID ASC;" providertype="sql"/> 
   </datasources>
-  
-  <styles>  
+  <styles>    
     <style name="100" width="100%" height="100%"/>
-    <style name="work-space" width="100%" height="[eval: [object:CONTENTBOX.height] - [eval:[object:HEADER.height] + [object:NAV.height]]]" ypos="20" />
+    <style name="work-space" width="100%" height="[eval: [object:CONTENTBOX.height] - [eval:[object:HEADER.height] + [object:NAV.height]]]" ypos="0" />
+    <style name="text-settingsMenu" width="60%" height="30" color="#e6e6e6" font="GillSans" size="16" rightof="img" align="left" valign="center" leftmargin="15%" alignment="center"/>
   </styles>
   <classes>
     <class name="navObject">
@@ -19,94 +19,92 @@
         <text name="navText"  height="10" width="100%" color="#cccccc" font="Helvetica-Bold" size="8" bottomof="icon" align="center" alignment="center" text="Profile"></text>
       </panel>
     </class>
+    <class name="settings-links">
+      <panel name="[param:name]" width="100%" height="40" align="center" bottomof="[param:bottomof]" onclickup="[param:onclickup]">
+        <panel name="top-rule" width="100%" height="1" valign="top" background="[param:background]"></panel>
+        <panel name="bottom-rule" width="100%" height="1" valign="bottom" background="212121"></panel>
+        <text name="text" style="text-settingsMenu" text="[param:text]"></text>
+      </panel>
+    </class>
   </classes>
+  
   <main>
-    <panel name="containeriPad" alias="CONTAINERIPAD" width="320" height="480" align="center" valign="center" clip="yes">
-      <panel name="container" alias="CONTAINER" style="100">
-        
-        <panel name="contentbox" alias="CONTENTBOX" style="100" xpos="0" ypos="0" background="#cccccc"> 
-          
-          <panel name="header" alias="HEADER" width="100%" height="40" background="#212121" align="center" valign="top">
-            
-            <text name="patient" alias="PATIENT" height="100%" width="50%" color="#cccccc" font="Helvetica-Bold" size="18" align="center" alignment="center" text="Dakota"></text>
-            
-            <image name="menu" height="70%" width="15%" valign="center" align="right" source="images/hamburger.png"/>
-            
-          </panel>            
-          
-          <panel name="nav" alias="NAV" width="100%" height="50" background="#212121" align="center" valign="bottom">
-            <object class="navObject" name="tab1" _wire="profile.wire" rightof=" " _wirename="profile" source="images/profile.png" ></object>
-            <object class="navObject" name="tab2" _wire="prophy.wire" rightof="tab1" _wirename="prophy" source="images/logging_active.png" ></object>
-            <object class="navObject" name="tab3" _wire="ordering.wire" rightof="tab2" _wirename="ordering" source="images/ordering.png" ></object>
-            <object class="navObject" name="tab4" _wire="travel.wire" rightof="tab3" _wirename="travel" source="images/travel.png" ></object>
-          </panel>
-          
-          <panel name="work-box" alias="WORK-BOX" width="100%" height="[eval: [object:CONTENTBOX.height] - [eval:[object:HEADER.height] + [object:NAV.height]]]" ypos="20">
-            <image name="background" source="images/lime.background.new.png" style="work-space"></image>
-            <pager name="ordering-scroll" orientation="vertical" paginate="no" width="100%" height="[eval: [object:CONTENTBOX.height] - [eval:[object:HEADER.height] + [object:NAV.height]]]" ypos="20">
-              <panel name="medication" alias="MEDICATION" width="94%" height="100%" align="center" valign="top">
-                <text name="heading-med" alias="HEADING-MED" width="100%" height="26" ypos="15" font="Helvetica-Bold" size="16" alignment="center" cornerradius="5" color="#212121" text="Medication to Order"/>
-                <text name="heading-med1" alias="HEADING-MED1" width="100%" height="26" align="center" ypos="35" font="Helvetica-Bold" size="12" alignment="center" cornerradius="5" color="#212121" text="Enter doses needed."/>
-                
-                <!-- Product one info -->
-                <text name="product1" alias="PRODUCT1" width="100%" height="26" ypos="68" font="Helvetica-Bold" size="15" alignment="left" cornerradius="5" color="#212121" text="Product 1"/>
-                <text name="minor1" alias="MINOR1" width="29%" height="26" xpos="10" ypos="88" font="Helvetica" size="14"  alignment="left" cornerradius="5" color="#212121" text="Minor bleed"/>
-                <textfield name="minorbleed1" alias="MINORBLEED1" width="8%" height="6%" rightof="MINOR1" align="left"  ypos="90"  size="16" color="#666666" borderwidth=".5" bordercolor="#666666"  multiline="no" placeholder=" " text=" " onreturnkeypressed="keyboard-off">
-                </textfield>
-                <text name="major1" alias="MAJOR1" width="29%" height="26" rightof="MINORBLEED1" margin-left="30%" align="left" ypos="88" font="Helvetica" size="14" alignment="left" cornerradius="5" color="#212121" text="Major bleed"/>
-                <textfield name="majorbleed1" alias="MAJORBLEED1" width="8%" height="6%" rightof="MAJOR1" align="left"  ypos="90"  size="16" color="#666666" borderwidth=".5" bordercolor="#666666"  multiline="no" placeholder=" " text=" " onreturnkeypressed="keyboard-off">
-                </textfield>
-                
-                <!-- Product two info -->                         
-                <text name="product2" alias="PRODCUT2" width="100%" height="26" ypos="148" font="Helvetica-Bold" size="15" alignment="left" cornerradius="5" color="#212121" text="Product 2"/>
-                <text name="minor2" alias="MINOR2" width="29%" height="26" xpos="10" ypos="168" font="Helvetica" size="14"  alignment="left" cornerradius="5" color="#212121" text="Minor bleed"/>
-                <textfield name="minorbleed2" alias="MINORBLEED2" width="8%" height="6%" rightof="MINOR1" align="left"  ypos="170"  size="16" color="#666666" borderwidth=".5" bordercolor="#666666"  multiline="no" placeholder=" " text=" " onreturnkeypressed="keyboard-off">
-                </textfield>
-                <text name="major2" alias="MAJOR2" width="29%" height="26" rightof="MINORBLEED1" margin-left="30%" align="left" ypos="168" font="Helvetica" size="14" alignment="left" cornerradius="5" color="#212121" text="Major bleed"/>
-                <textfield name="majorbleed2" alias="MAJORBLEED2" width="8%" height="6%" rightof="MAJOR2" align="left"  ypos="170"  size="16" color="#666666" borderwidth=".5" bordercolor="#666666"  multiline="no" placeholder=" " text=" " onreturnkeypressed="keyboard-off">
-                </textfield>
-                
-                <!-- product three info -->                                                                                         
-                <text name="product3" alias="PRODUCT3" width="100%" height="26" ypos="228" font="Helvetica-Bold" size="15" alignment="left" cornerradius="5" color="#212121" text="Product 3"/>
-                <text name="minor3" alias="MINOR3" width="29%" height="26" xpos="10" ypos="248" font="Helvetica" size="14"  alignment="left" cornerradius="5" color="#212121" text="Minor bleed"/>
-                <textfield name="minorbleed3" alias="MINORBLEED3" width="8%" height="6%" rightof="MINOR3" align="left"  ypos="250"  size="16" color="#666666" borderwidth=".5" bordercolor="#666666"  multiline="no" placeholder=" " text=" " onreturnkeypressed="keyboard-off">
-                </textfield>
-                <text name="major3" alias="MAJOR3" width="29%" height="26" rightof="MINORBLEED3" margin-left="30%" align="left" ypos="248" font="Helvetica" size="14" alignment="left" cornerradius="5" color="#212121" text="Major bleed"/>
-                <textfield name="majorbleed3" alias="MAJORBLEED3" width="8%" height="6%" rightof="MAJOR3" align="left"  ypos="250"  size="16" color="#666666" borderwidth=".5" bordercolor="#666666"  multiline="no" placeholder=" " text=" " onreturnkeypressed="keyboard-off">
-                </textfield>
-                
-                <!-- MED NOTES -->
-                <textfield name="notes" alias="NOTES" width="60%" height="20%" font="Helvetica" alignment="left" ypos="300"  size="12" color="#666666" borderwidth=".5" bordercolor="#212121" cornerradius="5" background="#ffffff" multiline="yes"  placeholder=" " text="Notes" onreturnkeypressed="keyboard-off">
-                </textfield>
-                
-                
-                <panel name="button-bg2" alias="BUTTON-BG2" width="30%" height="32" ypos="345" xpos="210" background="#72c604" cornerradius="5">
-                  <panel name="submitbtn" alias="SUBMITBTN" width="100%" height="32" valign="center" cornerradius="5" borderwidth="1" bordercolor="#68b404" clip="yes" margin="10" onclickup="alertfunction" _amigo="You clicked done!">
-                    <panel name="highlight" width="100%" height="50%" valign="top" background="#ffffff" alpha=".3"/>
-                    <text name="submit-blue" width="100%" height="fit" ypos="5" color="#7ac714" font="Helvetica-Bold" size="14" alignment="center" text="Next" alpha=".5"/>
-                    <text name="submit" width="100%" height="fit" ypos="6" color="#ffffff" font="Helvetica-Bold" size="14" alignment="center" text="Next"/> 
-                  </panel>
-                </panel> 
-              </panel>
-              
-            </pager>
-          </panel>
-        </panel>
+    <panel name="contentbox" alias="CONTENTBOX" style="100" xpos="0" ypos="0" background="#cccccc"> 
+      <panel name="header" alias="HEADER" width="100%" height="40" background="#212121" align="center" valign="top">
+        <text name="patient" alias="PATIENT" height="100%" width="50%" color="#cccccc" font="Helvetica-Bold" size="18" align="center" alignment="center" text="Dakota"></text> 
       </panel>
       
-      <panel name="content" alias="CONTENT" style="100" alpha="0">
-        <include name="include" style="100"/>
+      <panel name="nav" alias="NAV" width="100%" height="50" background="#212121" align="center" valign="bottom">
+        <object class="navObject" name="tab1" _wire="profile.wire" rightof=" " _wirename="profile" source="images/profile.png" ></object>
+        <object class="navObject" name="tab2" _wire="prophy.wire" rightof="tab1" _wirename="prophy" source="images/logging_active.png" ></object>
+        <object class="navObject" name="tab3" _wire="ordering.wire" rightof="tab2" _wirename="ordering" source="images/ordering.png" ></object>
+        <object class="navObject" name="tab4" _wire="travel.wire" rightof="tab3" _wirename="travel" source="images/travel.png" ></object>
       </panel>
+    </panel>
+    
+    <panel name="work-box" alias="WORK-BOX" width="100%" height="[eval: [object:CONTENTBOX.height] - [eval:[object:HEADER.height] + [object:NAV.height]]]" ypos="0">
+      <image name="background" source="images/lime.background.new.png" width="100%" height="[eval: [object:CONTENTBOX.height] - 90]" ypos="40"></image>
+      <pager name="ordering-scroll" orientation="vertical" paginate="no" width="100%" height="[eval: [object:CONTENTBOX.height] - [eval:[object:HEADER.height] + [object:NAV.height]]]" ypos="20">
+        <panel name="medication" alias="MEDICATION" width="94%" height="100%" align="center" valign="top">
+          <text name="heading-med" alias="HEADING-MED" width="100%" height="26" ypos="15" font="Helvetica-Bold" size="16" alignment="center" cornerradius="5" color="#212121" text="Medication to Order"/>         
+          <text name="heading-med1" alias="HEADING-MED1" width="100%" height="26" align="center" ypos="35" font="Helvetica-Bold" size="12" alignment="center" cornerradius="5" color="#212121" text="Enter doses needed."/>
+          <!-- Product one info -->
+          <text name="product1" alias="PRODUCT1" width="100%" height="26" ypos="68" font="Helvetica-Bold" size="15" alignment="left" cornerradius="5" color="#212121" text="Product 1"/>
+          <text name="minor1" alias="MINOR1" width="29%" height="26" xpos="10" ypos="88" font="Helvetica" size="14"  alignment="left" cornerradius="5" color="#212121" text="Minor bleed"/>
+          <textfield name="minorbleed1" alias="MINORBLEED1" width="8%" height="6%" rightof="MINOR1" align="left"  ypos="90"  size="16" color="#666666" borderwidth=".5" bordercolor="#666666"  multiline="no" onreturnkeypressed="keyboard-off" placeholder=" " text=" ">
+          </textfield>
+          <text name="major1" alias="MAJOR1" width="29%" height="26" rightof="MINORBLEED1" margin-left="30%" align="left" ypos="88" font="Helvetica" size="14" alignment="left" cornerradius="5" color="#212121" text="Major bleed"/>
+          <textfield name="majorbleed1" alias="MAJORBLEED1" width="8%" height="6%" rightof="MAJOR1" align="left"  ypos="90"  size="16" color="#666666" borderwidth=".5" bordercolor="#666666"  multiline="no" onreturnkeypressed="keyboard-off" placeholder=" " text=" ">
+          </textfield>
+          
+          <!-- Product two info -->                         
+          <text name="product2" alias="PRODCUT2" width="100%" height="26" ypos="148" font="Helvetica-Bold" size="15" alignment="left" cornerradius="5" color="#212121" text="Product 2"/>
+          <text name="minor2" alias="MINOR2" width="29%" height="26" xpos="10" ypos="168" font="Helvetica" size="14"  alignment="left" cornerradius="5" color="#212121" text="Minor bleed"/>
+          <textfield name="minorbleed2" alias="MINORBLEED2" width="8%" height="6%" rightof="MINOR1" align="left"  ypos="170"  size="16" color="#666666" borderwidth=".5" bordercolor="#666666"  multiline="no"  onreturnkeypressed="keyboard-off" placeholder=" " text=" ">
+          </textfield>
+          <text name="major2" alias="MAJOR2" width="29%" height="26" rightof="MINORBLEED1" margin-left="30%" align="left" ypos="168" font="Helvetica" size="14" alignment="left" cornerradius="5" color="#212121" text="Major bleed"/>
+          <textfield name="majorbleed2" alias="MAJORBLEED2" width="8%" height="6%" rightof="MAJOR2" align="left"  ypos="170"  size="16" color="#666666" borderwidth=".5" bordercolor="#666666"  multiline="no" onreturnkeypressed="keyboard-off" placeholder=" " text=" ">
+          </textfield>
+          
+          <!-- product three info -->                                                                                         
+          <text name="product3" alias="PRODUCT3" width="100%" height="26" ypos="228" font="Helvetica-Bold" size="15" alignment="left" cornerradius="5" color="#212121" text="Product 3"/>
+          <text name="minor3" alias="MINOR3" width="29%" height="26" xpos="10" ypos="248" font="Helvetica" size="14"  alignment="left" cornerradius="5" color="#212121" text="Minor bleed"/>
+          <textfield name="minorbleed3" alias="MINORBLEED3" width="8%" height="6%" rightof="MINOR3" align="left"  ypos="250"  size="16" color="#666666" borderwidth=".5" bordercolor="#666666"  multiline="no" onreturnkeypressed="keyboard-off" placeholder=" " text=" ">
+          </textfield>
+          <text name="major3" alias="MAJOR3" width="29%" height="26" rightof="MINORBLEED3" margin-left="30%" align="left" ypos="248" font="Helvetica" size="14" alignment="left" cornerradius="5" color="#212121" text="Major bleed"/>
+          <textfield name="majorbleed3" alias="MAJORBLEED3" width="8%" height="6%" rightof="MAJOR3" align="left"  ypos="250"  size="16" color="#666666" borderwidth=".5" bordercolor="#666666"  multiline="no" placeholder=" " text=" ">
+          </textfield>
+          
+          <!-- MED NOTES -->
+          <textfield name="notes" alias="NOTES" width="60%" height="20%" font="Helvetica" alignment="left" ypos="300"  size="12" color="#666666" borderwidth=".5" bordercolor="#212121" cornerradius="5" _alert="NOTES" background="#ffffff" multiline="yes" autocorrect="yes" placeholder="Notes" text="">
+          </textfield>
+          
+          <panel name="button-bg2" alias="BUTTON-BG2" width="30%" height="32" ypos="345" xpos="210" background="#72c604" cornerradius="5">
+            <panel name="submitbtn" alias="SUBMITBTN" width="100%" height="32" valign="center" cornerradius="5" borderwidth="1" bordercolor="#68b404" clip="yes" margin="10" onclickup="alertfunction" _amigo="You clicked done!">
+              <panel name="highlight" width="100%" height="50%" valign="top" background="#ffffff" alpha=".3"/>
+              <text name="submit-blue" width="100%" height="fit" ypos="5" color="#7ac714" font="Helvetica-Bold" size="14" alignment="center" text="Next" alpha=".5"/>
+              <text name="submit" width="100%" height="fit" ypos="6" color="#ffffff" font="Helvetica-Bold" size="14" alignment="center" text="Next"/> 
+            </panel>
+          </panel> 
+        </panel>
+      </pager>
+      <panel name="settings" alias="SETTINGS" width="50%" lwidth="33%" height="120" background="2c2c2c" rightmargin="42" align="right" ypos="-125" shadowopacity="30%" shadowradius="3">
+        <object class="settings-links" name="main" background="515151" bottomof=" " onclickup="navHamburger" _wire="profile.wire" _wirename="profile" text="Home"/>
+        <object class="settings-links" name="quit" background="515151" bottomof="main" onclickup="hide-settings" text="Quit Program"/>
+        <object class="settings-links" name="email"  background="515151" bottomof="quit" onclickup="hide-settings" text="Option 3?"/>
+      </panel>
+      <image name="btn-settings" alias="BTN-SET" source="images/hamburger.png" align="right" rightmargin="12" valign="top" onclickup="show-settings"></image>
+    </panel>    
+    <panel name="content" alias="CONTENT" style="100" alpha="0">
+      <include name="include" style="100"/>
     </panel>
   </main>    
   
   <actions>
-    
     <action name="navLoad">
       <load file="_wire" wirename="_wirename" target="CONTENT/include" />
       <alpha value="1" time=".5" target="CONTENT" />
     </action>
-    
     <action name="navHamburger">
       <sync>
         <!--<alert message="load [object:name].wire" />-->
@@ -151,7 +149,5 @@
       <translate ypos="100%" time=".25" target="MY-LIST" />
       <alpha value="1" time=".2" target="CLOSE-MEDLIST" />
     </action>
-    
   </actions>
-  
 </wire>
