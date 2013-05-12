@@ -55,7 +55,7 @@
       <panel name="header" alias="HEADER" width="100%" height="40" background="212121">
         <text name="patient" alias="PATIENT" width="50%" height="100%" color="#cccccc" font="Helvetica-Bold" size="18" align="center" alignment="center" text="Dakota" />
         <panel name="close-list" alias="CLOSE-MEDLIST" background="#00ff00" width="40" height="40" valign="center" onclickup="close-medList" alpha="0" />
-      </panel>	
+      </panel>  
       
       <panel name="nav" alias="NAV" width="100%" height="50" background="#212121" align="center" valign="bottom">
         <object class="navObject" name="tab1" _wire="profile.wire" rightof=" " _wirename="profile" source="images/profile.png" ></object>
@@ -65,9 +65,7 @@
       </panel>
       
       <panel name="work-box" alias="WORK-BOX" width="100%" height="[eval: [object:CONTENTBOX.height] - [eval:[object:HEADER.height] + [object:NAV.height]]]" ypos="0">
-        
         <image name="background" source="images/lime.background.new.png" width="100%" height="[eval: [object:CONTENTBOX.height] - 132]" ypos="82"></image>
-        
         <panel name="break" alias="BREAK" background="000000" width="100%" height="2" ypos="[object:HEADER.height]"></panel>
         <panel name="prophy-infusion-box" alias="PROPHY-INFUSION-BOX" width="100%" height="40" bottomof="BREAK" background="212324">
           <panel name="header2" alias="HEADER2" width="100%" height="20" background="70757a" align="center" valign="top" alpha=".3"/>
@@ -98,7 +96,7 @@
               <pager name="select-medication-panel" alias="SELECT-MEDICATION-PANEL" margin-top="10" bottomof="DATE-TEXTFIELD" width="94%" height="120" align="center" paginate="no" orientation="vertical">
                 
               </pager>
-               <!--<panel name="barcodepanel" alias="BARCODEPANEL" margin-top="10" bottomof="SELECT-MEDICATION-PANEL" style="data-box" width="94%" align="center">
+              <!--<panel name="barcodepanel" alias="BARCODEPANEL" margin-top="10" bottomof="SELECT-MEDICATION-PANEL" style="data-box" width="94%" align="center">
                 <image name="barcodepic" alias="BARCODEPIC" width="41" height="29" xpos="20" ypos="3" background="#ffffff" source="images/barcode.png"/>
                 <text name="barcode-scanner-text" alias="BARCODE-SCANNER-TEXT" width="100%" height="100%" alignment="center" text="Barcode Scanner" />180
               </panel>-->  
@@ -109,7 +107,7 @@
                 <panel name="bottom-border2" alias="BOTTOM-BORDER2" width="100%" height="1" background="212121" bottomof="EXPIRATION-DATE-TEXTFIELD"/>
                 <textfield name="dose-textfield" alias="DOSE-TEXTFIELD" width="100%" style="data-box2" onreturnkeypressed="keyboard-off" bottomof="BOTTOM-BORDER2" autocorrect="no" placeholder="Dosage"/>
               </panel>
-              <textfield name="prophy-notes" alias="PROPHY-NOTES" width="94%" height="70" valignment="top" bottomof="MIDDLE-BOX" margin-top="10" style="data-box" onreturnkeypressed="keyboard-off" placeholder="Notes" />
+              <textfield name="prophy-notes" alias="PROPHY-NOTES" width="94%" valignment="center" bottomof="MIDDLE-BOX" margin-top="10" style="data-box" onreturnkeypressed="keyboard-off" placeholder="Notes" />
             </panel>
           </panel>
           <panel name="page2" alias="PAGE2" width="100%" height="55" align="center">
@@ -139,8 +137,12 @@
     <panel name="datePicker" alias="DATEPICKER" width="100%" height="100%" alpha="0">
       <panel name="background" width="100%" height="100%" background="#000000" alpha=".8"/>
       <datepicker name="selectdate" alias="SELECTDATE" width="100%" height="40%" time="no" valign="center"></datepicker>
-      <panel name="submit" width="80%" height="40" background="#00ff00" bottomof="selectdate" margin-top="10" align="center">
-        <text name="label" text="submit date" width="100%" height="100%" align="center" alignment="center" onclickup="set-date" />
+      <panel name="submit" width="80%" height="40" background="#72c604" cornerradius="5" bottomof="SELECTDATE" margin-top="35" align="center">
+        <panel name="submit-datebtn" alias="SUBMIT-DATEBTN" width="100%" height="40" valign="center" cornerradius="5" borderwidth="1" bordercolor="#68b404" clip="yes" margin="10" onclickup="set-date">
+          <panel name="highlight" width="100%" height="50%" valign="top" background="#ffffff" alpha=".3"/>
+          <text name="submit-green" width="100%" height="fit" ypos="5" color="#7ac714" font="Helvetica-Bold" size="16" valign="center" alignment="center" text="Submit Date" alpha=".5"/>
+          <text name="submit-date" width="100%" height="fit" ypos="6" color="#ffffff" font="Helvetica-Bold" size="16" valign="center" alignment="center" text="Submit Date"/>
+        </panel>
       </panel>
     </panel>
     <panel name="myList" alias="MY-LIST" width="100%" height="[eval:[object:CONTENTBOX.height] - [object:HEADER.height]]" ypos="100%">
@@ -151,10 +153,10 @@
     </panel>
   </main>     
   <actions> 
-    <!--<action name="navLoad">
+    <action name="navLoad">
       <load file="_wire" wirename="_wirename" target="CONTENT/include" />
       <alpha value="1" time=".5" target="CONTENT" />
-    </action>-->
+    </action>
     <action name="setPref" oninit="yes">
       <sync>
         <!-- these will be set at the profile level -->
@@ -188,8 +190,7 @@
       <alpha value="1" time=".5" target="DATEPICKER" />
     </action>
     <action name="set-date">
-      <assign property="object:DATE-TEXTFIELD.text" value="[object:SELECTDATE.date]" />
-      
+      <assign property="object:DATE-TEXTFIELD.text" value="[object:SELECTDATE.month] [object:SELECTDATE.day] [object:SELECTDATE.year]" />
       <alpha value="0" time=".5" target="DATEPICKER" />
     </action>
     <action name="navHamburger">
@@ -213,10 +214,10 @@
     <action name="keyboard-off">
       <keyboard visible="no"/>
     </action>
-    <action name="keyboard-off-target">
+    <!--<action name="keyboard-off-target">
       <alert message="_alias"></alert>
       <keyboard visible="no" target="_alias"/>
-    </action>
+    </action>-->
     <action name="null">
     </action>  
     <!-- INFUSION ACTION -->
