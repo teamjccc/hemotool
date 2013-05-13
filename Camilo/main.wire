@@ -16,6 +16,7 @@
     <style name="testg" background="#00ff00" alpha=".4"/><!-- transparent green -->
     <style name="testb" background="#0000ff" alpha=".4"/><!-- transparent blue -->
   </styles>
+  
   <classes>
     <class name="settings-links">
       <panel name="[param:name]" width="100%" height="40" align="center" bottomof="[param:bottomof]" onclickup="[param:onclickup]">
@@ -25,13 +26,15 @@
       </panel>
     </class>
   </classes>
+  
   <main>   
-    <panel name="container" alias="CONTAINER" style="100">
+    <panel name="contentbox" alias="CONTENTBOX" style="100">
+      
       <panel name="header" alias="HEADER" width="100%" height="40" background="#212121" align="center" valign="top" alpha="0">
         <text name="patient" alias="PATIENT" height="100%" width="50%" color="#cccccc" font="Helvetica-Bold" size="18" align="center" alignment="center" text="Dakota"></text>
         <!--<image name="menu" rightmargin="12" valign="center" align="right" source="images/hamburger.png"/> -->
         <image name="btn-settings" alias="BTN-SET" source="images/hamburger.png" align="right" rightmargin="12" valign="top" onclickup="show-settings"></image>
-      </panel>	
+      </panel>  
       <panel name="nav" alias="NAV" width="100%" height="50" background="#212121" align="center" valign="bottom" alpha="0">
         <panel name="tab1" width="25%" height="100%" onclickup="navLoad" _wire="profile.wire" _wirename="profile">
           <image name="icon" height="32" align="center" ypos="10%" source="images/profile_active.png"/>
@@ -50,8 +53,8 @@
           <text name="tab4-txt" alias="TAB4-TXT" height="10" width="100%" color="#cccccc" font="Helvetica-Bold" size="8" bottomof="icon" align="center" alignment="center" text="Travel"></text>
         </panel>
       </panel>
-      <panel name="top" alias="TOP" width="100%" height="12%" alpha="1" valign="top">
-        <image name="logo" source="images/logo.png" width="100%" height="100%"></image>
+      <panel name="top" alias="TOP" width="100%" height="12%" alpha="1" valign="top" ignoretouches="yes">
+        <image name="logo" source="images/logo.png" width="100%" height="100%" ignoretouches="yes"></image>
       </panel>
       <panel name="main" alias="MAIN" width="100%" height="88%" valign="bottom" alpha="1">
         <image name="background" source="images/lime.background.new.png"></image>
@@ -74,16 +77,16 @@
           <text name="label" width="100%" height="20" font="Helvetica-Bold" size="14" color="#656666" alignment="center" align="center" bottomof="travel" text="Travel"></text>
         </panel>
       </panel>
-      <panel name="settings" alias="SETTINGS" width="50%" lwidth="33%" height="120" background="2c2c2c" rightmargin="42" align="right" ypos="-125" shadowopacity="30%" shadowradius="3">
+      <panel name="settings" alias="SETTINGS" width="50%" lwidth="33%" height="80" background="2c2c2c" rightmargin="50" align="right" ypos="-125" shadowopacity="30%" shadowradius="3">
         <object class="settings-links" name="main" background="515151" bottomof=" " onclickup="navHamburger" _wire="profile.wire" _wirename="profile" text="Home"/>
         <object class="settings-links" name="quit" background="515151" bottomof="main" onclickup="hide-settings" text="Quit Program"/>
-        <object class="settings-links" name="email"  background="515151" bottomof="quit" onclickup="hide-settings" text="Option 3?"/>
+      </panel>
+      <panel name="content" alias="CONTENT" width="100%" height="100%" ypos="" alpha="0">
+        <include name="include" width="100%" height="100%" ypos="0"/>
       </panel>
     </panel>
     
-    <panel name="content" alias="CONTENT" width="100%" height="100%" alpha="0">
-      <include name="include" width="100%" height="[eval: [object:CONTENTBOX.height] - [eval:[object:HEADER.height] + [object:NAV.height]]]" ypos="200" />
-    </panel>
+    
   </main>     
   <actions> 
     <action name="boot" oninit="yes">
