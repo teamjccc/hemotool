@@ -1,7 +1,7 @@
 <wire>
   <styles>
-    <!--<style name="100" width="100%" height="100%"/>
-    <style name="tab-text" height="10" width="100%" color="#cccccc" font="Helvetica-Bold" size="8" bottomof="icon" align="center" alignment="center"/>-->
+    <style name="100" width="100%" height="100%"/>
+    <style name="tab-text" height="10" width="100%" color="#cccccc" font="Helvetica-Bold" size="8" bottomof="icon" align="center" alignment="center"/>
     <style name="sm-space" width="2%" height="30" />
     <style name="lg-space" width="100%" height="7" />
     <style name="bg-space" width="100%" height="21" />
@@ -25,8 +25,8 @@
     
     <!--<panel name="header" alias="HEADER" width="100%" height="40" background="#212121" align="center" valign="top">
           <text name="patient" alias="PATIENT" height="100%" width="50%" color="#cccccc" font="Helvetica-Bold" size="18" align="center" alignment="center" text="Dakota"></text>
-          <image name="menu" valign="center" rightmargin="12" align="right" source="images/hamburger.png"/> 
-        </panel>	
+          <image name="menu" valign="center" rightmargin="12" align="right" source="images/'burger.png"/> 
+        </panel>  
         <panel name="nav" alias="NAV" width="100%" height="50" background="#212121" align="center" valign="bottom">
           <panel name="tab1" width="25%" height="100%" onclickup="navLoad" _wire="profile.wire" _wirename="profile">
             <image name="icon" height="32" align="center" ypos="10%" source="images/profile_active.png"/>
@@ -45,7 +45,14 @@
             <text name="tab4-txt" alias="TAB4-TXT" height="10" width="100%" color="#cccccc" font="Helvetica-Bold" size="8" bottomof="icon" align="center" alignment="center" text="Travel"></text>
           </panel>
         </panel>-->
-    <panel name="work-box" alias="WORK-BOX" width="100%" height="390" ypos="40" >
+   <!--<panel name="work-box" alias="WORK-BOX" width="100%" height="390" ypos="40" >-->
+      
+      
+      <!--Adam I really want to use an eval like this but it won't load unless I put in a hard pixel value. Since we are loading
+	a wire into a wire and they will be different height we must put an eval inside this wire? but it won't work. The app will crash. This is also a problem ith iphone 5 since it has a larger screen.-->
+
+
+	<!--<panel name="work-box" alias="WORK-BOX" width="100%" height="[eval: [object:CONTENTBOX.height] - [eval:[object:HEADER.height] + [object:NAV.height]]]" ypos="40">
       <image name="background" source="images/lime.background.new.png"></image>
       <pager name="personal-scroll" orientation="vertical" paginate="no" width="100%" height="100%" ypos="0">
         <panel name="personal" alias="PERSONAL" width="100%" fitheight="yes" valign="top" >
@@ -201,11 +208,12 @@
               <text name="dlt" width="100%" height="fit" ypos="6" color="#ffffff" font="Helvetica-Bold" size="14" alignment="center" text="Delete"/>
             </panel>
           </panel> 
+          
         </panel>
         <panel name="blank" alias="BLANK" width="100%" height="30" bottomof="MOBILEPH3">
         </panel>
       </pager>
-    </panel>
+    </panel>-->
     
     
     <!--<panel name="content" alias="CONTENT" width="100%" height="[eval: [object:CONTENTBOX.height] - [eval:[object:HEADER.height] + [object:NAV.height]]]" alpha="0">
