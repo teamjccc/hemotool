@@ -81,7 +81,7 @@
         <object class="settings-links" name="main" background="515151" bottomof=" " onclickup="navHamburger" _wire="profile.wire" _wirename="profile" text="Home"/>
         <object class="settings-links" name="quit" background="515151" bottomof="main" onclickup="hide-settings" text="Quit Program"/>
       </panel>
-      <panel name="content" alias="CONTENT" width="100%" height="100%" ypos="" alpha="0">
+      <panel name="content" alias="CONTENT" width="100%" height="100%" ypos="40" alpha="0">
         <include name="include" width="100%" height="100%" ypos="0"/>
       </panel>
     </panel>
@@ -96,12 +96,12 @@
     
     <action name="navLoad">
       <sync>
-        <alpha value="0" time=".5" target="ICONS"></alpha>
-        <alpha value="0" time=".5" target="TOP" />
-        <alpha value="0" time=".5" target="MAIN" />
-        <alpha value="1" time=".5" target="HEADER" />
-        <alpha value="1" time=".5" target="NAV"></alpha>
-        <alpha value="1" time=".5" target="CONTENT"></alpha>
+        <alpha value="0" time=".25" target="ICONS"></alpha>
+        <alpha value="0" time=".25" target="TOP" />
+        <alpha value="0" time=".25" target="MAIN" />
+        <alpha value="1" time=".25" target="HEADER" />
+        <alpha value="1" time=".25" target="NAV"></alpha>
+        <alpha value="1" time=".25" target="CONTENT"></alpha>
         <load file="_wire" wirename="_wirename" target="CONTENT/include" />
       </sync>
     </action>
